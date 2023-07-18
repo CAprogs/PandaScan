@@ -12,11 +12,19 @@
 import os
 import pandas as pd
 import yaml
+import re
 import tkinter as tk
-from pathlib import Path
+from tkinter import ttk
 from tkinter import filedialog
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage
 from tkinter import messagebox
+from tkinter.font import Font
+from pathlib import Path
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from PIL import Image
+
+# Issue sur les mangas du dossier .yml ( selection de chapitres pendant le scapping)
 
 # Obtenir le chemin absolu du répertoire contenant le script
 script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
@@ -30,6 +38,15 @@ chapters_path = script_directory / "datas/mangas_chapters.yml"
 with open(chapters_path, 'r') as file:
         chapitres = yaml.safe_load(file)
 datas = pd.read_csv(mangas_path)
+
+################################ Variables Globales ############################################
+All_chapters_len = 0    #  stocker le nombre de chapitres total d'un manga sélectionné
+total_downloads = 0     #  stocker le nombre de téléchargements de Chapitres à effectuer
+current_download = 0    #  variable d'incrémentation du nombre de téléchargements
+manga_current_name = '' #  stocker le nom du manga sélectionné
+chapters_current_selected = [] # stocker la liste des chapitres sélectionnés
+Download_state = False
+#################################################################################################
 
 # Initialiser la fenêtre Tkinter
 window = Tk()
@@ -51,14 +68,85 @@ canvas = Canvas(
 )
 canvas.place(x = 0, y = 0)
 
+# Définition de Fonts personnalisés
+bold_font = Font(family="Arial", size=10)
+
 ######################################################################    FONCTIONS  & CLASSES  ######################################################################
 # Importation des éléments graphique
 def relative_to_assets(path: str) -> Path:
     return assets_directory / Path(path)
 
-def show_Download_info():
-    canvas.itemconfigure(image_1, state=tk.NORMAL)
+# Mettre à jour les chapitres et mangas disponibles
+def Update_chapters():  
+    None
 
+# Ajouter manuellement des mangas à la liste des mangas disponibles ( ajouter un bouton +)
+def Add_mangas_to_list():  
+    None
+
+# Download ou non les éléments sélectionnés
+def show_Download_info():
+    global current_download
+    global total_downloads
+    global All_chapters_len
+
+    # Réinitialiser les variables du téléchargement
+    current_download = 0
+
+    def Hide_DownloadBox():
+        canvas.itemconfigure(image_1, state=tk.HIDDEN)
+
+    def perform_download():                                                                 # Modifier à la fin du programme pour le vrai téléchargement
+        global current_download
+        global total_downloads
+        global Download_state
+
+        current_download += 1
+        progress = int((current_download / total_downloads) * 100)
+        progressbar["value"] = progress
+        percentage_label["text"] = f"{progress}%"
+        window.update_idletasks()
+
+        if current_download < total_downloads:
+            window.after(5000, perform_download)
+        else:
+            progressbar.place_forget()
+            percentage_label.place_forget()
+            messagebox.showinfo("Information", "Download Finished!")
+            Hide_DownloadBox() # cacher la barre d'infos après 2 secondes
+            button_1.configure(state="normal")  # Réactiver le bouton de téléchargement
+            Download_state = False
+            
+
+    def Download_settings():
+        global Download_state
+        canvas.itemconfigure(image_1, state=tk.NORMAL)
+        Download_state = True
+        button_1.configure(state="disabled")  # Désactiver le bouton de téléchargement
+        progressbar.place(x=800.0, y=520.0) 
+        percentage_label.place(x=830.0, y=545.0) 
+        perform_download()
+
+    if select_all_var.get() == 1 and All_chapters_len != 0:
+        total_downloads = All_chapters_len
+        Download_settings()
+    elif total_downloads == 0:
+        print('Aucun élément sélectionné')
+    else:
+        Download_settings()
+    
+
+# Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
+def select_all():
+    global All_chapters_len
+    if select_all_var.get() == 1:
+        chapters_box.select_set(0, tk.END)  # Sélectionner tous les éléments de la ListBox
+        canvas.itemconfigure(Chapter_selected, text=f'{All_chapters_len} selected')
+    else:
+        chapters_box.selection_clear(0, tk.END)  # Désélectionner tous les éléments de la ListBox
+        canvas.itemconfigure(Chapter_selected, text=f'0 selected')
+
+# Update les résultats de recherche de la SearchBar dans la Manga Name List
 def update_results(event):
     keyword = entry_1.get()
     cleaned_datas = datas['name'].fillna('')  # Remplacer les valeurs manquantes par une chaîne vide
@@ -68,6 +156,7 @@ def update_results(event):
     for result in result_list:
         result_box.insert(tk.END, result)  # Insérer chaque résultat dans la liste
 
+# Actions lorsqu'un manga est sélectionné
 def on_mangas_select(event):
     selected_indices = result_box.curselection()  # Récupérer les indices des éléments sélectionnés
     selected_items = [result_box.get(index) for index in selected_indices]  # Récupérer les éléments sélectionnés
@@ -86,23 +175,36 @@ def on_mangas_select(event):
         except:
             print("aucun manga sélectionné")
 
+# Update les résultats dans la Chapter List lorqu'un manga est sélectionné
 def update_chapters(manga_name):
     global chapitres
+    global All_chapters_len
     if manga_name in chapitres:
         chapters = chapitres[manga_name]
         chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
         for chapter in chapters:
             chapters_box.insert(tk.END, chapter)  # Insérer chaque chapitre dans la liste déroulante
+        All_chapters_len = len(chapters) # Récupérer le nombre total de chapitres du manga sélectionné
+        if select_all_var.get() == 1:
+            select_all()
 
+# Actions lorsque des chapitres sont sélectionnés
 def on_chapters_select(event):
     global selected_chapters
+    global total_downloads
     selected_chapters = chapters_box.curselection()  # Récupérer les indices des chapitres sélectionnés
     selected_items = [chapters_box.get(index) for index in selected_chapters]  # Récupérer les chapitres sélectionnés
     print(selected_items)
-    canvas.itemconfigure(Chapter_selected, text=f'{len(selected_items)} selected')
+    total_downloads = len(selected_items)
+    canvas.itemconfigure(Chapter_selected, text=f'{total_downloads} selected')
 
+#### Évènements lorsque la souris Entre/Sort d'un bouton ###
 def Download_enter(event):
-    button_1.configure(image=button_download_2)
+    global Download_state
+    if Download_state == True:
+        None
+    else:
+        button_1.configure(image=button_download_2)
 
 def Download_leave(event):
     button_1.configure(image=button_download_1)
@@ -241,22 +343,28 @@ result_box.bind('<<ListboxSelect>>', on_mangas_select)
 chapters_box.bind('<<ListboxSelect>>', on_chapters_select)
 ##########################################################################################
 
+
+############################################### Informations de téléchargement ##########################################    
 Info_download = PhotoImage(
-    file=relative_to_assets("Info_download.png"))                                               ### Informations de téléchargement
+    file=relative_to_assets("Info_download.png"))                                              
 image_1 = canvas.create_image(
     843.0,
     575.0,
-    image=Info_download
+    image=Info_download,
+    state=tk.HIDDEN  # Cacher l'image dès le début
 )
-canvas.itemconfigure(image_1, state=tk.HIDDEN)
 
-Check_box = PhotoImage(
-    file=relative_to_assets("Check_box.png"))                                                   ### Checkbox 
-image_2 = canvas.create_image(
-    547.0,
-    533.0,
-    image=Check_box
-)
+progressbar = ttk.Progressbar(window, mode="determinate")       # Création de la barre de progression
+percentage_label = tk.Label(window, text="0%")                  # Création du label pour afficher le pourcentage
+
+#########################################################################################################################
+
+select_all_var = tk.IntVar() # Création d'une variable entière pour suivre l'état de la Checkbox ( 0 / 1 )
+# Création de la checkBox pour sélectionner tous les chapitres d'un Manga
+Check_box = tk.Checkbutton(window, text="Select All", variable=select_all_var, command=select_all,bg="white")                     ### Checkbox
+Check_box.place(
+    x=547.0,
+    y=525.0)
 
 chapters_info_box = PhotoImage(
     file=relative_to_assets("Chapters_info.png"))                                               ### Zone d'infos sur les chapitres disponibles
