@@ -11,5 +11,6 @@ L'application automatise :
 ## Prérequis
 
 ## Présentation de l'App
+<img width="951" alt="Capture d’écran 2023-07-19 à 07 39 54" src="https://github.com/CAprogs/PandaScan/assets/104645407/22cdf853-ed0c-4f24-baab-437214ff04fb">
 
 ## Mises à Jour
