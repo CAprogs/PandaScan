@@ -1,4 +1,4 @@
-# PandaScan | An app made to download Mangas Scans
+# PandaScan | Download Mangas Scans with ease
 
 ![APP_LOGO](https://github.com/CAprogs/PandaScan/assets/104645407/37d0a0e8-0f19-4a9c-b2c3-34126dc71a21)
 
