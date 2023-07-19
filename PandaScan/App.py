@@ -15,7 +15,6 @@ import yaml
 import re
 import tkinter as tk
 from tkinter import ttk
-from tkinter import filedialog
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage
 from tkinter import messagebox
 from tkinter.font import Font
@@ -25,6 +24,7 @@ from selenium import webdriver
 from PIL import Image
 
 # Issue sur les mangas du dossier .yml ( selection de chapitres pendant le scapping)
+# Réajuster les dimensions des crop de mangas
 
 # Obtenir le chemin absolu du répertoire contenant le script
 script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
@@ -45,7 +45,8 @@ total_downloads = 0     #  stocker le nombre de téléchargements de Chapitres �
 current_download = 0    #  variable d'incrémentation du nombre de téléchargements
 manga_current_name = '' #  stocker le nom du manga sélectionné
 chapters_current_selected = [] # stocker la liste des chapitres sélectionnés
-Download_state = False
+Download_state = False # Etat du bouton Download
+nom_fichier = '' # Chemin vers le fichier du manga à télécharger
 #################################################################################################
 
 # Initialiser la fenêtre Tkinter
@@ -69,12 +70,26 @@ canvas = Canvas(
 canvas.place(x = 0, y = 0)
 
 # Définition de Fonts personnalisés
-bold_font = Font(family="Arial", size=10)
+bold_font = Font(family="Arial", size=10) 
+
+# #====================================================== Configuration de Selenium pour utiliser Chrome ================================================================
+# Chemin vers le profil Chrome
+chrome_profile_path = '/Users/charles-albert/Library/Application Support/Google/Chrome/Default'
+options = webdriver.ChromeOptions()
+options.add_argument('--user-data-dir=' + chrome_profile_path) # Ajout du profil Chrome
+driver = webdriver.Chrome(options=options,executable_path='/Users/charles-albert/Desktop/chromedriver_mac_arm64/chromedriver') # Chemin vers l'exécutable chromedriver
+driver.maximize_window() # Ouvrir le navigateur en full size
+# =======================================================================================================================================================================
 
 ######################################################################    FONCTIONS  & CLASSES  ######################################################################
 # Importation des éléments graphique
 def relative_to_assets(path: str) -> Path:
     return assets_directory / Path(path)
+
+# Action à effectuer à la fermeture de l'application
+def on_closing():
+    driver.quit() # Fermeture du navigateur
+    window.destroy() # Fermeture de la fenêtre tkinter
 
 # Mettre à jour les chapitres et mangas disponibles
 def Update_chapters():  
@@ -84,11 +99,45 @@ def Update_chapters():
 def Add_mangas_to_list():  
     None
 
+# Fonction pour attribuer le bon format au chapitre / volume
+def chapter_or_volume(chapter_name):
+    if 'chapitre' in chapter_name:
+        result = chapter_name.replace('chapitre ','')
+    else:
+        result = chapter_name.replace(' ','-')
+    return result
+
+# Fonction pour crop l'image
+def crop(path_image,size):
+    # Récupérer l'image capturée
+    image = Image.open(path_image)
+    # Dimensions de l'image initiale
+    initial_width = size['width'] # Largeur initiale image
+    initial_height = size['height'] # Hauteur initiale image
+    # Dimensions du screenshot
+    screen_width = image.width # Largeur screenshot
+    screen_height = image.height # Hauteur screenshot
+    # Calculer les coordonnées de recadrage
+    x = (screen_width - initial_width) // 2
+    y = (screen_height - initial_height) // 2
+    a = 25 # Nbre de pixels à ajuster pour la bonne taille
+    b = 80 # Nbre de pixels à ajuster pour la bonne taille
+    if initial_width > initial_height: # Si l'image est en mode paysage
+        # Recadrer l'image en ajustant pour conserver la largeur initiale
+        x = ( x // 2 ) + b
+        image = image.crop((x,0,screen_width - x,screen_height))
+    else:
+        # Recadrer l'image pour ne conserver que l'élément souhaité
+        image = image.crop((x-a, y-a, x + initial_width+a, y + initial_height+a))
+    # Enregistrer l'image recadrée
+    image.save(path_image)
+
 # Download ou non les éléments sélectionnés
 def show_Download_info():
     global current_download
     global total_downloads
     global All_chapters_len
+    global nom_fichier
 
     # Réinitialiser les variables du téléchargement
     current_download = 0
@@ -96,11 +145,70 @@ def show_Download_info():
     def Hide_DownloadBox():
         canvas.itemconfigure(image_1, state=tk.HIDDEN)
 
+    def Download():
+        global chapters_current_selected
+        global manga_current_name
+        global current_download
+        global nom_fichier
+
+        chapter_name = chapters_current_selected[current_download]  # Nom du Chapitre
+        nom_chapitre = nom_fichier / chapter_name
+        # Création du Dossier du chapitre correspondant s'il n'existe pas ***
+        if not os.path.exists(nom_chapitre):
+            os.makedirs(nom_chapitre)
+            chapter_number = chapter_or_volume(chapter_name)
+            page = 1 # Page de départ
+            lien_chapitre = str(f'https://www.japscan.lol/lecture-en-ligne/{manga_current_name}/{chapter_number}/{page}.html')  # Lien du chapitre
+            driver.get(lien_chapitre) # Accès à la page avec Selenium
+            soup = BeautifulSoup(driver.page_source, 'html.parser') # Transformation de la page pour analyse
+            # récupération du nombre de pages du chapitre
+            try:
+                element = driver.find_element_by_xpath('/html/body/div[7]/div[1]/div[2]/div/p[6]') # chemin vers l'élément qui contient le nombre de pages (div 6)
+            except:
+                try:
+                    element = driver.find_element_by_xpath('/html/body/div[7]/div[1]/div[2]/div/p[5]') # chemin vers l'élément qui contient le nombre de pages (div 5)            
+                except:
+                    print("Pas d'informations trouvées.")
+                    return
+            element_nombre_pages = element.text.strip() # conversion en string
+            resultat = re.search(r'\d+', element_nombre_pages) # Utiliser une expression régulière pour extraire le chiffre
+            if resultat: # Si on trouve le nombre de pages, on le récupère
+                nombre_pages = int(resultat.group(0))
+                print(f"""\n Téléchargement en cours ...
+                    {chapter_name}
+                    {nombre_pages} pages """)
+                # Rechercher l'image => Faire un screenshot => Redimensionner l'image => la sauvegarder
+                while page <= nombre_pages:
+                    image_element = soup.find('div', id='single-reader') # Obtention de la balise contenant l'URL de l'image
+                    image_url = image_element.find('img', class_='img-fluid')['src'] # Obtention de l'URL de l'image
+                    element = driver.find_element_by_xpath('//*[@id="single-reader"]/img') # Trouver l'élément souhaité sur la page à partir de l'URL de l'image
+                    size = element.size
+                    driver.get(image_url)
+                    # chemin de sauvegarde de l'image
+                    path_image = f"{nom_chapitre}/{page}.png"
+                    # prendre le screenshot de la page entière
+                    driver.save_screenshot(path_image)    
+                    crop(path_image,size) # Crop l'image aux bonnes dimensions et la sauvegarder
+                    print(f"Page {page} téléchargée.")
+                    # Accès à la page suivante
+                    page += 1
+                    if page > nombre_pages:
+                        break
+                    else:
+                        lien_chapitre=str(f'https://www.japscan.lol/lecture-en-ligne/{manga_current_name}/{chapter_number}/{page}.html')
+                        driver.get(lien_chapitre)
+                        soup = BeautifulSoup(driver.page_source, 'html.parser')  # Analyse de la nouvelle page
+            else:
+                print("Aucun chiffre trouvé.")
+                return
+
     def perform_download():                                                                 # Modifier à la fin du programme pour le vrai téléchargement
         global current_download
         global total_downloads
         global Download_state
+        global manga_current_name
 
+        Download()
         current_download += 1
         progress = int((current_download / total_downloads) * 100)
         progressbar["value"] = progress
@@ -108,18 +216,19 @@ def show_Download_info():
         window.update_idletasks()
 
         if current_download < total_downloads:
-            window.after(5000, perform_download)
+            window.after(2000, perform_download)  # Passer au prochain téléchargement après 2 s
         else:
             progressbar.place_forget()
             percentage_label.place_forget()
-            messagebox.showinfo("Information", "Download Finished!")
+            messagebox.showinfo("Information", "Successfull Pandaload 🐼")
             Hide_DownloadBox() # cacher la barre d'infos après 2 secondes
             button_1.configure(state="normal")  # Réactiver le bouton de téléchargement
             Download_state = False
             
-
     def Download_settings():
         global Download_state
+        global nom_fichier
+
         canvas.itemconfigure(image_1, state=tk.NORMAL)
         Download_state = True
         button_1.configure(state="disabled")  # Désactiver le bouton de téléchargement
@@ -129,16 +238,22 @@ def show_Download_info():
 
     if select_all_var.get() == 1 and All_chapters_len != 0:
         total_downloads = All_chapters_len
+        nom_fichier = script_directory / manga_current_name
+        if not os.path.exists(nom_fichier):
+            os.makedirs(nom_fichier)
         Download_settings()
     elif total_downloads == 0:
         print('Aucun élément sélectionné')
     else:
+        nom_fichier = script_directory / manga_current_name
+        if not os.path.exists(nom_fichier):
+            os.makedirs(nom_fichier)
         Download_settings()
     
-
 # Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
 def select_all():
     global All_chapters_len
+
     if select_all_var.get() == 1:
         chapters_box.select_set(0, tk.END)  # Sélectionner tous les éléments de la ListBox
         canvas.itemconfigure(Chapter_selected, text=f'{All_chapters_len} selected')
@@ -158,6 +273,8 @@ def update_results(event):
 
 # Actions lorsqu'un manga est sélectionné
 def on_mangas_select(event):
+    global manga_current_name
+
     selected_indices = result_box.curselection()  # Récupérer les indices des éléments sélectionnés
     selected_items = [result_box.get(index) for index in selected_indices]  # Récupérer les éléments sélectionnés
     if not selected_items:
@@ -165,6 +282,7 @@ def on_mangas_select(event):
     else:
         print(selected_items)
         manga_name = selected_items[0]
+        manga_current_name = manga_name
         try:
             update_chapters(manga_name)
             if len(manga_name) > 15:
@@ -179,6 +297,8 @@ def on_mangas_select(event):
 def update_chapters(manga_name):
     global chapitres
     global All_chapters_len
+    global chapters_current_selected
+
     if manga_name in chapitres:
         chapters = chapitres[manga_name]
         chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
@@ -187,13 +307,17 @@ def update_chapters(manga_name):
         All_chapters_len = len(chapters) # Récupérer le nombre total de chapitres du manga sélectionné
         if select_all_var.get() == 1:
             select_all()
+            chapters_current_selected = chapters
 
 # Actions lorsque des chapitres sont sélectionnés
 def on_chapters_select(event):
     global selected_chapters
     global total_downloads
+    global chapters_current_selected
+
     selected_chapters = chapters_box.curselection()  # Récupérer les indices des chapitres sélectionnés
     selected_items = [chapters_box.get(index) for index in selected_chapters]  # Récupérer les chapitres sélectionnés
+    chapters_current_selected = selected_items
     print(selected_items)
     total_downloads = len(selected_items)
     canvas.itemconfigure(Chapter_selected, text=f'{total_downloads} selected')
@@ -355,7 +479,7 @@ image_1 = canvas.create_image(
 )
 
 progressbar = ttk.Progressbar(window, mode="determinate")       # Création de la barre de progression
-percentage_label = tk.Label(window, text="0%")                  # Création du label pour afficher le pourcentage
+percentage_label = tk.Label(window, text="0%", bg="white")                  # Création du label pour afficher le pourcentage
 
 #########################################################################################################################
 
@@ -439,6 +563,9 @@ button_2.place(
 button_2.bind("<Enter>", Update_enter)  # Lorsque la souris entre dans la zone du bouton
 button_2.bind("<Leave>", Update_leave)   # Lorsque la souris quitte la zone du bouton
 ######################################################################################################################################################################################
+
+# Action à exécuter lors de la fermeture de la fenêtre
+window.protocol("WM_DELETE_WINDOW", on_closing)
 
 window.resizable(False, False)
 window.mainloop()
