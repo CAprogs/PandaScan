@@ -1,4 +1,13 @@
 # ------------------------------------------------------------------------------------------------------------
+# ____                     __               ____                               
+#/\  _`\                  /\ \             /\  _`\                             
+#\ \ \L\ \ __      ___    \_\ \     __     \ \,\L\_\    ___     __      ___    
+# \ \ ,__/'__`\  /' _ `\  /'_` \  /'__`\    \/_\__ \   /'___\ /'__`\  /' _ `\  
+#  \ \ \/\ \L\.\_/\ \/\ \/\ \L\ \/\ \L\.\_    /\ \L\ \/\ \__//\ \L\.\_/\ \/\ \ 
+#   \ \_\ \__/.\_\ \_\ \_\ \___,_\ \__/.\_\   \ `\____\ \____\ \__/.\_\ \_\ \_\
+#    \/_/\/__/\/_/\/_/\/_/\/__,_ /\/__/\/_/    \/_____/\/____/\/__/\/_/\/_/\/_/
+#                                                                              
+#  ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan 🐼 | @2023 by CAprogs
 # This is an project that aims to download mangas scans from a website by selecting the manga and chapters wished.
 # Due to some restrictions , those scans can't be download by an simple request so we tae screenshot of the image and then crop it to the right size.
