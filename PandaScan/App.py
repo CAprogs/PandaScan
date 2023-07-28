@@ -10,7 +10,7 @@
 #  ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan 🐼 | @2023 by CAprogs
 # This is an project that aims to download mangas scans from a website by selecting the manga and chapters wished.
-# Due to some restrictions , those scans can't be download by an simple request so we tae screenshot of the image and then crop it to the right size.
+# Due to some restrictions , those scans can't be download by an simple request so we take screenshot of the image and then crop it to the right size.
 # Internet access, Chomium ( The Automate ChromeBrowser ) and Ublock ( A Chrome Extension ) are required to use this Software.
 # The Download Time depends on the number of Chapters to download and their Number of pages.
 # An Update button is available so your manga list can be up to date if there's new manga chapters availables ( Not available Yet )
@@ -86,7 +86,7 @@ bold_font = Font(family="Arial", size=10)
 chrome_profile_path = '/Users/charles-albert/Library/Application Support/Google/Chrome/Default'
 options = webdriver.ChromeOptions()
 options.add_argument('--user-data-dir=' + chrome_profile_path) # Ajout du profil Chrome
-driver = webdriver.Chrome(options=options,executable_path='/Users/charles-albert/Desktop/chromedriver_mac_arm64/chromedriver') # Chemin vers l'exécutable chromedriver
+driver = webdriver.Chrome(options=options) # Chemin vers l'exécutable chromedriver
 driver.maximize_window() # Ouvrir le navigateur en full size
 # =======================================================================================================================================================================
 
