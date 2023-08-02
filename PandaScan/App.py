@@ -7,7 +7,7 @@
 #   \ \_\ \__/.\_\ \_\ \_\ \___,_\ \__/.\_\   \ `\____\ \____\ \__/.\_\ \_\ \_\
 #    \/_/\/__/\/_/\/_/\/_/\/__,_ /\/__/\/_/    \/_____/\/____/\/__/\/_/\/_/\/_/
 #                                                                              
-#  ------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan 🐼 | @2023 by CAprogs
 # This is an project that aims to download mangas scans from a website by selecting the manga and chapters wished.
 # Due to some restrictions , those scans can't be download by an simple request so we take screenshot of the image and then crop it to the right size.
@@ -32,7 +32,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from PIL import Image
 
-# Issue sur les mangas du dossier .yml ( selection de chapitres pendant le scapping)
+# Changer de site pour les mangas
 # Réajuster les dimensions des crop de mangas
 
 # Obtenir le chemin absolu du répertoire contenant le script
@@ -86,7 +86,18 @@ bold_font = Font(family="Arial", size=10)
 chrome_profile_path = '/Users/charles-albert/Library/Application Support/Google/Chrome/Default'
 options = webdriver.ChromeOptions()
 options.add_argument('--user-data-dir=' + chrome_profile_path) # Ajout du profil Chrome
-driver = webdriver.Chrome(options=options) # Chemin vers l'exécutable chromedriver
+user_agent_cookies = {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+}
+
+# Extraire le User-Agent et les cookies du format JSON
+new_user_agent = user_agent_cookies["user-agent"]
+
+# Utiliser les options du navigateur pour modifier le User-Agent
+options.add_argument(f"user-agent={new_user_agent}")
+
+# Instancier le navigateur avec les options configurées
+driver = webdriver.Chrome(options=options)
 driver.maximize_window() # Ouvrir le navigateur en full size
 # =======================================================================================================================================================================
 
