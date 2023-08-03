@@ -9,28 +9,29 @@
 #                                                                              
 # ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan 🐼 | @2023 by CAprogs
-# This is an project that aims to download mangas scans from a website by selecting the manga and chapters wished.
-# Due to some restrictions , those scans can't be download by an simple request so we take screenshot of the image and then crop it to the right size.
-# Internet access, Chomium ( The Automate ChromeBrowser ) and Ublock ( A Chrome Extension ) are required to use this Software.
+# This is a project that aims to download mangas scans from a website by selecting the manga and chapters wished.
+# scans are downloaded by a simple request.
+# Ublock ( A Chrome Extension ) is recommand to use this Software.
 # The Download Time depends on the number of Chapters to download and their Number of pages.
 # An Update button is available so your manga list can be up to date if there's new manga chapters availables ( Not available Yet )
 # Credits: @Tkinter Designer by ParthJadhav 
 # ------------------------------------------------------------------------------------------------------------
 
+# Mettre à jour le code et la description du code
+# Mettre à jour la docu
+
 # Importation des bibliothèques utiles
 import os
 import pandas as pd
 import yaml
-import re
 import tkinter as tk
+import requests
+from lxml import html
 from tkinter import ttk
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage
 from tkinter import messagebox
 from tkinter.font import Font
 from pathlib import Path
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from PIL import Image
 
 # Changer de site pour les mangas
 # Réajuster les dimensions des crop de mangas
@@ -81,26 +82,6 @@ canvas.place(x = 0, y = 0)
 # Définition de Fonts personnalisés
 bold_font = Font(family="Arial", size=10) 
 
-# #====================================================== Configuration de Selenium pour utiliser Chrome ================================================================
-# Chemin vers le profil Chrome
-chrome_profile_path = '/Users/charles-albert/Library/Application Support/Google/Chrome/Default'
-options = webdriver.ChromeOptions()
-options.add_argument('--user-data-dir=' + chrome_profile_path) # Ajout du profil Chrome
-user_agent_cookies = {
-    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
-}
-
-# Extraire le User-Agent et les cookies du format JSON
-new_user_agent = user_agent_cookies["user-agent"]
-
-# Utiliser les options du navigateur pour modifier le User-Agent
-options.add_argument(f"user-agent={new_user_agent}")
-
-# Instancier le navigateur avec les options configurées
-driver = webdriver.Chrome(options=options)
-driver.maximize_window() # Ouvrir le navigateur en full size
-# =======================================================================================================================================================================
-
 ######################################################################    FONCTIONS  & CLASSES  ######################################################################
 # Importation des éléments graphique
 def relative_to_assets(path: str) -> Path:
@@ -108,7 +89,6 @@ def relative_to_assets(path: str) -> Path:
 
 # Action à effectuer à la fermeture de l'application
 def on_closing():
-    driver.quit() # Fermeture du navigateur
     window.destroy() # Fermeture de la fenêtre tkinter
 
 # Mettre à jour les chapitres et mangas disponibles
@@ -120,37 +100,9 @@ def Add_mangas_to_list():
     None
 
 # Fonction pour attribuer le bon format au chapitre / volume
-def chapter_or_volume(chapter_name):
-    if 'chapitre' in chapter_name:
-        result = chapter_name.replace('chapitre ','')
-    else:
-        result = chapter_name.replace(' ','-')
+def chapter_transform(chapter_name):
+    result = chapter_name.replace(' ','-')
     return result
-
-# Fonction pour crop l'image
-def crop(path_image,size):
-    # Récupérer l'image capturée
-    image = Image.open(path_image)
-    # Dimensions de l'image initiale
-    initial_width = size['width'] # Largeur initiale image
-    initial_height = size['height'] # Hauteur initiale image
-    # Dimensions du screenshot
-    screen_width = image.width # Largeur screenshot
-    screen_height = image.height # Hauteur screenshot
-    # Calculer les coordonnées de recadrage
-    x = (screen_width - initial_width) // 2
-    y = (screen_height - initial_height) // 2
-    a = 25 # Nbre de pixels à ajuster pour la bonne taille
-    b = 80 # Nbre de pixels à ajuster pour la bonne taille
-    if initial_width > initial_height: # Si l'image est en mode paysage
-        # Recadrer l'image en ajustant pour conserver la largeur initiale
-        x = ( x // 2 ) + b
-        image = image.crop((x,0,screen_width - x,screen_height))
-    else:
-        # Recadrer l'image pour ne conserver que l'élément souhaité
-        image = image.crop((x-a, y-a, x + initial_width+a, y + initial_height+a))
-    # Enregistrer l'image recadrée
-    image.save(path_image)
 
 # Download ou non les éléments sélectionnés
 def show_Download_info():
@@ -165,6 +117,35 @@ def show_Download_info():
     def Hide_DownloadBox():
         canvas.itemconfigure(image_1, state=tk.HIDDEN)
 
+    # Fonction de téléchargement
+    def download_image_from_xpath(response_url, xpath, save_path, page):
+
+        if response_url.status_code == 200:
+            # Parser le contenu HTML
+            tree = html.fromstring(response_url.content)
+            # Trouver l'élément à partir du xpath donné
+            image_element = tree.xpath(xpath)
+            if image_element:
+                # Extraire l'URL de l'image à partir de l'attribut 'src'
+                image_url = image_element[0].get('src')
+                # Télécharger l'image
+                image_response = requests.get(image_url)
+                if image_response.status_code == 200:
+                    # Sauvegarder l'image dans le fichier spécifié
+                    with open(save_path, 'wb') as f:
+                        f.write(image_response.content)
+                    print(f"Image {page} téléchargée.")
+                    return True
+                else:
+                    print(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")
+                    return False
+            else:
+                print("Aucun élément trouvé pour le xpath donné.")
+                return False
+        else:
+            print(f"Échec de la requête HTTP. Code d'état : {response_url.status_code}")
+            return False
+        
     def Download():
         global chapters_current_selected
         global manga_current_name
@@ -176,51 +157,20 @@ def show_Download_info():
         # Création du Dossier du chapitre correspondant s'il n'existe pas ***
         if not os.path.exists(nom_chapitre):
             os.makedirs(nom_chapitre)
-            chapter_number = chapter_or_volume(chapter_name)
-            page = 1 # Page de départ
-            lien_chapitre = str(f'https://www.japscan.lol/lecture-en-ligne/{manga_current_name}/{chapter_number}/{page}.html')  # Lien du chapitre
-            driver.get(lien_chapitre) # Accès à la page avec Selenium
-            soup = BeautifulSoup(driver.page_source, 'html.parser') # Transformation de la page pour analyse
-            # récupération du nombre de pages du chapitre
-            try:
-                element = driver.find_element_by_xpath('/html/body/div[7]/div[1]/div[2]/div/p[6]') # chemin vers l'élément qui contient le nombre de pages (div 6)
-            except:
-                try:
-                    element = driver.find_element_by_xpath('/html/body/div[7]/div[1]/div[2]/div/p[5]') # chemin vers l'élément qui contient le nombre de pages (div 5)            
-                except:
-                    print("Pas d'informations trouvées.")
-                    return
-            element_nombre_pages = element.text.strip() # conversion en string
-            resultat = re.search(r'\d+', element_nombre_pages) # Utiliser une expression régulière pour extraire le chiffre
-            if resultat: # Si on trouve le nombre de pages, on le récupère
-                nombre_pages = int(resultat.group(0))
-                print(f"""\n Téléchargement en cours ...
-                    {chapter_name}
-                    {nombre_pages} pages """)
-                # Rechercher l'image => Faire un screenshot => Redimensionner l'image => la sauvegarder
-                while page <= nombre_pages:
-                    image_element = soup.find('div', id='single-reader') # Obtention de la balise contenant l'URL de l'image
-                    image_url = image_element.find('img', class_='img-fluid')['src'] # Obtention de l'URL de l'image
-                    element = driver.find_element_by_xpath('//*[@id="single-reader"]/img') # Trouver l'élément souhaité sur la page à partir de l'URL de l'image
-                    size = element.size
-                    driver.get(image_url)
-                    # chemin de sauvegarde de l'image
-                    path_image = f"{nom_chapitre}/{page}.png"
-                    # prendre le screenshot de la page entière
-                    driver.save_screenshot(path_image)    
-                    crop(path_image,size) # Crop l'image aux bonnes dimensions et la sauvegarder
-                    print(f"Page {page} téléchargée.")
-                    # Accès à la page suivante
-                    page += 1
-                    if page > nombre_pages:
-                        break
-                    else:
-                        lien_chapitre=str(f'https://www.japscan.lol/lecture-en-ligne/{manga_current_name}/{chapter_number}/{page}.html')
-                        driver.get(lien_chapitre)
-                        soup = BeautifulSoup(driver.page_source, 'html.parser')  # Analyse de la nouvelle page
+        chapter_number = chapter_transform(chapter_name)
+        page = 0 # Page de départ
+        lien_chapitre = str(f"https://scantrad-vf.co/manga/{manga_current_name}/{chapter_number}/?style=list")  # Lien du chapitre
+        response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
+
+        while True: # Téléchargement des images
+            xpath = f'//*[@id="image-{page}"]'
+            save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
+            response = download_image_from_xpath(response_url, xpath, save_path, page)
+            if response == True:
+                page += 1
             else:
-                print("Aucun chiffre trouvé.")
-                return
+                print(f"\nTéléchargement {current_download} terminé.\n") 
+                break
 
     def perform_download():                                                                 # Modifier à la fin du programme pour le vrai téléchargement
         global current_download
