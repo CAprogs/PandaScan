@@ -13,12 +13,14 @@
 # scans are downloaded by a simple request.
 # Ublock ( A Chrome Extension ) is recommand to use this Software.
 # The Download Time depends on the number of Chapters to download and their Number of pages.
-# An Update button is available so your manga list can be up to date if there's new manga chapters availables ( Not available Yet )
+# Note 1 : Some websites may not provide accurate informations or may be empty. Another Features that permit to switch between websites for download will be available at the next update.
+# Note 2 : An Update button will be available so your manga list can be up to date if there's new manga chapters availables ( Not available Yet )
 # Credits: @Tkinter Designer by ParthJadhav 
 # ------------------------------------------------------------------------------------------------------------
 
-# Mettre à jour le code et la description du code
 # Mettre à jour la docu
+# Mettre en place une façon de sélectionner d'autres sites web ( associés à d'autres méthodes d'upload )
+# Mettre à jour le bouton Update
 
 # Importation des bibliothèques utiles
 import os
@@ -32,9 +34,6 @@ from tkinter import Tk, Canvas, Entry, Button, PhotoImage
 from tkinter import messagebox
 from tkinter.font import Font
 from pathlib import Path
-
-# Changer de site pour les mangas
-# Réajuster les dimensions des crop de mangas
 
 # Obtenir le chemin absolu du répertoire contenant le script
 script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
