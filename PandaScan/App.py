@@ -18,9 +18,9 @@
 # Credits: @Tkinter Designer by ParthJadhav 
 # ------------------------------------------------------------------------------------------------------------
 
-# Mettre à jour la docu
-# Mettre en place une façon de sélectionner d'autres sites web ( associés à d'autres méthodes d'upload )
-# Mettre à jour le bouton Update
+# Mettre à jour la docu 0/1
+# Mettre à jour le bouton Update 0/2
+# Migrer les fonctions de téléchargements dans un fichier externe .py ? ( test de performance ) 0/2
 
 # Importation des bibliothèques utiles
 import os
@@ -30,23 +30,12 @@ import tkinter as tk
 import requests
 from lxml import html
 from tkinter import ttk
-from tkinter import Tk, Canvas, Entry, Button, PhotoImage
+from tkinter import Tk, Canvas, Entry, Button, PhotoImage, StringVar, OptionMenu
 from tkinter import messagebox
 from tkinter.font import Font
 from pathlib import Path
+from bs4 import BeautifulSoup
 
-# Obtenir le chemin absolu du répertoire contenant le script
-script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
-
-# chemin relatif vers le dossier "frame0"
-assets_directory = script_directory / "frame0"
-mangas_path = script_directory / "datas/mangas.csv"
-chapters_path = script_directory / "datas/mangas_chapters.yml"
-
-# Chargement des datas
-with open(chapters_path, 'r') as file:
-        chapitres = yaml.safe_load(file)
-datas = pd.read_csv(mangas_path)
 
 ################################ Variables Globales ############################################
 All_chapters_len = 0    #  stocker le nombre de chapitres total d'un manga sélectionné
@@ -56,6 +45,22 @@ manga_current_name = '' #  stocker le nom du manga sélectionné
 chapters_current_selected = [] # stocker la liste des chapitres sélectionnés
 Download_state = False # Etat du bouton Download
 nom_fichier = '' # Chemin vers le fichier du manga à télécharger
+selected_website = "scantrad-vf"
+#################################################################################################
+
+# Obtenir le chemin absolu du répertoire contenant le script
+script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
+
+# chemin relatif vers le dossier "frame0"
+assets_directory = script_directory / "frame0"
+mangas_path = script_directory / f"datas/{selected_website}/mangas.csv"
+chapters_path = script_directory / f"datas/{selected_website}/mangas_chapters.yml"
+
+# Chargement des datas ( par défaut )
+with open(chapters_path, 'r') as file:
+        chapitres = yaml.safe_load(file)
+datas = pd.read_csv(mangas_path)
+
 #################################################################################################
 
 # Initialiser la fenêtre Tkinter
@@ -81,7 +86,7 @@ canvas.place(x = 0, y = 0)
 # Définition de Fonts personnalisés
 bold_font = Font(family="Arial", size=10) 
 
-######################################################################    FONCTIONS  & CLASSES  ######################################################################
+######################################################################   FONCTIONS  & CLASSES  ######################################################################
 # Importation des éléments graphique
 def relative_to_assets(path: str) -> Path:
     return assets_directory / Path(path)
@@ -90,8 +95,26 @@ def relative_to_assets(path: str) -> Path:
 def on_closing():
     window.destroy() # Fermeture de la fenêtre tkinter
 
+def Update_website(*args):
+    global selected_website
+    global mangas_path
+    global chapters_path
+    global chapitres
+    global datas
+
+    selected_item = website_list_var.get()
+    selected_website = selected_item
+    print("Élément sélectionné :", selected_item)                                               ##### Track activity
+
+    mangas_path = script_directory / f"datas/{selected_website}/mangas.csv"
+    chapters_path = script_directory / f"datas/{selected_website}/mangas_chapters.yml"
+
+    with open(chapters_path, 'r') as file:
+        chapitres = yaml.safe_load(file)
+    datas = pd.read_csv(mangas_path)
+
 # Mettre à jour les chapitres et mangas disponibles
-def Update_chapters():  
+def Update_chapters():
     None
 
 # Ajouter manuellement des mangas à la liste des mangas disponibles ( ajouter un bouton +)
@@ -100,8 +123,14 @@ def Add_mangas_to_list():
 
 # Fonction pour attribuer le bon format au chapitre / volume
 def chapter_transform(chapter_name):
-    result = chapter_name.replace(' ','-')
-    return result
+    global selected_website
+
+    if selected_website == "scantrad-vf":
+        result = chapter_name.replace(' ','-')
+        return result
+    elif selected_website == "lelscans.net":
+        result = chapter_name.replace('chapitre ','')
+        return result
 
 # Download ou non les éléments sélectionnés
 def show_Download_info():
@@ -116,8 +145,8 @@ def show_Download_info():
     def Hide_DownloadBox():
         canvas.itemconfigure(image_1, state=tk.HIDDEN)
 
-    # Fonction de téléchargement
-    def download_image_from_xpath(response_url, xpath, save_path, page):
+    # Fonction de téléchargement (scantrad-vf)
+    def scantrad_download(response_url, xpath, save_path, page):
 
         if response_url.status_code == 200:
             # Parser le contenu HTML
@@ -133,43 +162,92 @@ def show_Download_info():
                     # Sauvegarder l'image dans le fichier spécifié
                     with open(save_path, 'wb') as f:
                         f.write(image_response.content)
-                    print(f"Image {page} téléchargée.")
+                    print(f"Image {page} téléchargée.")                                         ##### Track activity
                     return True
                 else:
-                    print(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")
+                    print(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")                    ##### Track activity
                     return False
             else:
-                print("Aucun élément trouvé pour le xpath donné.")
+                print("Aucun élément trouvé pour le xpath donné.")                              ##### Track activity
                 return False
         else:
-            print(f"Échec de la requête HTTP. Code d'état : {response_url.status_code}")
+            print(f"Échec de la requête HTTP. Code d'état : {response_url.status_code}")                        ##### Track activity
             return False
+    
+    # Fonction de téléchargement (lelscans.net)
+    def lelscans_download(response_url, save_path, page):
+
+        if response_url.status_code == 200:
+            # Parser le contenu HTML
+            soup = BeautifulSoup(response_url.content, "html.parser")
+            
+            image_element = soup.find("img", src=True)
+            if image_element:
+                image_url = image_element["src"]
+
+                # Télécharger l'image
+                image_response = requests.get('https://lelscans.net/'+image_url)
+
+                if image_response.status_code == 200:
+                    # Sauvegarder l'image dans le fichier spécifié
+                    with open(save_path, 'wb') as f:
+                        f.write(image_response.content)
+                    print(f"Image {page} téléchargée.")                                         ##### Track activity
+                    return True
+                else:
+                    print(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")                    ##### Track activity
+                    return False
+            else:
+                print("Aucun élément trouvée.")                                                 ##### Track activity
+                return False
         
     def Download():
         global chapters_current_selected
         global manga_current_name
         global current_download
         global nom_fichier
+        global selected_website
 
         chapter_name = chapters_current_selected[current_download]  # Nom du Chapitre
         nom_chapitre = nom_fichier / chapter_name
         # Création du Dossier du chapitre correspondant s'il n'existe pas ***
         if not os.path.exists(nom_chapitre):
             os.makedirs(nom_chapitre)
-        chapter_number = chapter_transform(chapter_name)
-        page = 0 # Page de départ
-        lien_chapitre = str(f"https://scantrad-vf.co/manga/{manga_current_name}/{chapter_number}/?style=list")  # Lien du chapitre
-        response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
 
-        while True: # Téléchargement des images
-            xpath = f'//*[@id="image-{page}"]'
-            save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
-            response = download_image_from_xpath(response_url, xpath, save_path, page)
-            if response == True:
-                page += 1
-            else:
-                print(f"\nTéléchargement {current_download} terminé.\n") 
-                break
+        chapter_number = chapter_transform(chapter_name) # retourne le format adapté pour le site correspondant
+
+        if selected_website == "scantrad-vf":
+            page = 0 # Page de départ
+            lien_chapitre = str(f"https://scantrad-vf.co/manga/{manga_current_name}/{chapter_number}/?style=list")  # Lien du chapitre
+            response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
+
+            while True: # Téléchargement des images
+                xpath = f'//*[@id="image-{page}"]'
+                save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
+                response = scantrad_download(response_url, xpath, save_path, page)
+                if response == True:
+                    page += 1
+                else:
+                    print(f"\nTéléchargement {current_download} terminé.\n")                                    ##### Track activity
+                    break
+
+        elif selected_website == "lelscans.net":
+            page = 1 # Page de départ
+
+            while True: # Téléchargement des images
+                lien_chapitre = str(f"https://lelscans.net/scan-{manga_current_name}/{chapter_number}/{page}")  # Lien du chapitre
+                response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
+                save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
+                response = lelscans_download(response_url, save_path, page)
+                if response == True:
+                    page += 1
+                else:
+                    print(f"\nTéléchargement {current_download} terminé.\n")                                    ##### Track activity
+                    break
+        
+        else:
+            None     ############ Add another method for another website here ###########
+            
 
     def perform_download():                                                                 # Modifier à la fin du programme pour le vrai téléchargement
         global current_download
@@ -212,7 +290,7 @@ def show_Download_info():
             os.makedirs(nom_fichier)
         Download_settings()
     elif total_downloads == 0:
-        print('Aucun élément sélectionné')
+        print('Aucun élément sélectionné')                                              ##### Track activity
     else:
         nom_fichier = script_directory / manga_current_name
         if not os.path.exists(nom_fichier):
@@ -247,9 +325,9 @@ def on_mangas_select(event):
     selected_indices = result_box.curselection()  # Récupérer les indices des éléments sélectionnés
     selected_items = [result_box.get(index) for index in selected_indices]  # Récupérer les éléments sélectionnés
     if not selected_items:
-        print("liste vide")
+        print("liste vide")                                                         ##### Track activity
     else:
-        print(selected_items)
+        print(selected_items)                                                       ##### Track activity
         manga_name = selected_items[0]
         manga_current_name = manga_name
         try:
@@ -260,7 +338,7 @@ def on_mangas_select(event):
             else:
                 canvas.itemconfigure(Manga_selected, text=manga_name)
         except:
-            print("aucun manga sélectionné")
+            print("aucun manga sélectionné")                                            ##### Track activity
 
 # Update les résultats dans la Chapter List lorqu'un manga est sélectionné
 def update_chapters(manga_name):
@@ -287,7 +365,7 @@ def on_chapters_select(event):
     selected_chapters = chapters_box.curselection()  # Récupérer les indices des chapitres sélectionnés
     selected_items = [chapters_box.get(index) for index in selected_chapters]  # Récupérer les chapitres sélectionnés
     chapters_current_selected = selected_items
-    print(selected_items)
+    print(selected_items)                                                                       ##### Track activity
     total_downloads = len(selected_items)
     canvas.itemconfigure(Chapter_selected, text=f'{total_downloads} selected')
 
@@ -361,6 +439,38 @@ entry_1.place(
     width=269.0,
     height=16.0
 )
+##########################################################################################  Choix déroulant site de scrapping
+
+canvas.create_text(
+    413.0,
+    150.0,
+    anchor="nw",
+    text="🌐",                                                                    ### 🌐
+    fill="#FFFFFF",
+    font=("Inter", 15 * -1)
+)
+
+# Liste déroulante pour le choix du site
+website_list_var = StringVar(window)
+website_list_var.set(selected_website)  # Valeur par défaut
+
+# Langues par défaut ( possibilité d'ajouter d'autres langues )
+website_menu = OptionMenu(
+    window,
+    website_list_var,
+    "scantrad-vf",
+    "lelscans.net"
+)
+website_menu.place(
+    x=440.0,
+    y=150.0
+)
+website_menu.configure(
+    bg="#FFFFFF"
+)
+# Associer la fonction au changement de site en utilisant trace_add()
+website_list_var.trace_add("write", Update_website)
+
 ##########################################################################################
 
 Chapters_list_Box = PhotoImage(
@@ -519,7 +629,7 @@ button_2 = Button(
     image=button_update_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_update clicked"),
+    command=lambda: print("button_update clicked"),                                 ##### Track activity
     relief="flat",
     cursor="hand2 "
 )
