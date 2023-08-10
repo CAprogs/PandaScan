@@ -11,7 +11,7 @@ L'application automatise :
 
 ## Author
 
-- [@CAprogs]([https://www.github.com/octokatherine](https://github.com/CAprogs))
+- [@CAprogs]([https://github.com/CAprogs])
 
 
 ## Infos Update ♻️
