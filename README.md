@@ -9,6 +9,11 @@ L'application automatise :
 - .. leur stockage ( Les fichiers sont automatiquement créés au bon endroit )
 - .. leur téléchargement ( Les fichiers sont automatiquement téléchargés via votre site favoris )
 
+## Author
+
+- [@CAprogs]([https://www.github.com/octokatherine](https://github.com/CAprogs))
+
+
 ## Infos Update ♻️
 
 - ✅ Update de l'interface graphique 
@@ -17,6 +22,8 @@ L'application automatise :
 • Switch de sites de Scrapping
 - ✅ Correction de bugs :
 • Téléchargement de mangas impossible après sélection
+
+## Roadmap 🚧
 - 🔲 Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres ) 
 - 🔲 Ajout de "fmteam.fr"
 - 🔲 Allègement du code ( Scripts secondaires ?/ suppression de méthodes inutiles )
@@ -24,14 +31,15 @@ L'application automatise :
 - 🔲 Mise à jour Docu
 - 🔲 Déploiement ( script .Exe , Docker )
     
-## Prérequis 🛠️
+##  Tools u need 🛠️
 
-## Présentation de l'App 👁️
-### Old interface
-<img width="951" alt="Capture d’écran 2023-07-19 à 07 39 54" src="https://github.com/CAprogs/PandaScan/assets/104645407/22cdf853-ed0c-4f24-baab-437214ff04fb">
+## APP's View 👁️
 
-### New interface
 <img width="958" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
+
+##  Usage/Examples 
+
+## License
 
 
 
