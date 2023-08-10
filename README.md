@@ -11,18 +11,18 @@ L'application automatise :
 
 ## Infos Update ♻️
 
--✅ Update de l'interface graphique 
--✅ Ajout de fonctionnalités et de mangas :
-    --• Lelscans.net ajouté
-    --• Switch de sites de Scrapping
--✅ Correction de bugs :
-    --• Téléchargement de mangas impossible après sélection
--🔲 Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres ) 
--🔲 Ajout de "fmteam.fr"
--🔲 Allègement du code ( Scripts secondaires ?/ suppression de méthodes inutiles )
--🔲 Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
--🔲 mise à jour Docu
--🔲 Déploiement ( script .Exe , Docker )
+- ✅ Update de l'interface graphique 
+- ✅ Ajout de fonctionnalités et de mangas :
+    -- • Lelscans.net ajouté
+    -- • Switch de sites de Scrapping
+- ✅ Correction de bugs :
+    -- • Téléchargement de mangas impossible après sélection
+- 🔲 Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres ) 
+- 🔲 Ajout de "fmteam.fr"
+- 🔲 Allègement du code ( Scripts secondaires ?/ suppression de méthodes inutiles )
+- 🔲 Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
+- 🔲 mise à jour Docu
+- 🔲 Déploiement ( script .Exe , Docker )
     
 ## Prérequis 🛠️
 
