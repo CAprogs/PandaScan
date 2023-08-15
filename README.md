@@ -40,7 +40,7 @@ L'application automatise :
 ##  Usage/Examples 
 
 ## License
-
+• (MIT LICENSE)[https://github.com/CAprogs/PandaScan/blob/main/LICENSE]
 
 
 
