@@ -20,7 +20,7 @@
 
 # Mettre à jour la docu 0/1
 # Mettre à jour le bouton Update 0/2
-# Migrer les fonctions de téléchargements dans un fichier externe .py ? ( test de performance ) 0/2
+# Migrer les dépendances de l'app dans des fichiers externes .py 0/-||-
 
 # Importation des bibliothèques utiles
 import os
@@ -28,6 +28,8 @@ import pandas as pd
 import yaml
 import tkinter as tk
 import requests
+import zipfile
+import io
 from lxml import html
 from tkinter import ttk
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage, StringVar, OptionMenu
@@ -35,7 +37,6 @@ from tkinter import messagebox
 from tkinter.font import Font
 from pathlib import Path
 from bs4 import BeautifulSoup
-
 
 ################################ Variables Globales ############################################
 All_chapters_len = 0    #  stocker le nombre de chapitres total d'un manga sélectionné
@@ -104,8 +105,8 @@ def Update_website(*args):
 
     selected_item = website_list_var.get()
     selected_website = selected_item
-    print("Élément sélectionné :", selected_item)                                               ##### Track activity
-
+    print(f"\nWebsite sélectionné : {selected_item}")                                               ##### Track activity
+    
     mangas_path = script_directory / f"datas/{selected_website}/mangas.csv"
     chapters_path = script_directory / f"datas/{selected_website}/mangas_chapters.yml"
 
@@ -113,8 +114,11 @@ def Update_website(*args):
         chapitres = yaml.safe_load(file)
     datas = pd.read_csv(mangas_path)
 
+    result_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante ( mangas list )
+    chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante ( chapters list )
+
 # Mettre à jour les chapitres et mangas disponibles
-def Update_chapters():
+def Update_datas():
     None
 
 # Ajouter manuellement des mangas à la liste des mangas disponibles ( ajouter un bouton +)
@@ -128,7 +132,7 @@ def chapter_transform(chapter_name):
     if selected_website == "scantrad-vf":
         result = chapter_name.replace(' ','-')
         return result
-    elif selected_website == "lelscans.net":
+    elif selected_website == "lelscans.net" or selected_website == "fmteam.fr":
         result = chapter_name.replace('chapitre ','')
         return result
 
@@ -171,7 +175,7 @@ def show_Download_info():
                 print("Aucun élément trouvé pour le xpath donné.")                              ##### Track activity
                 return False
         else:
-            print(f"Échec de la requête HTTP. Code d'état : {response_url.status_code}")                        ##### Track activity
+            print(f"Échec de la requête HTTP.| Code d'état : {response_url.status_code}")                        ##### Track activity
             return False
     
     # Fonction de téléchargement (lelscans.net)
@@ -198,9 +202,34 @@ def show_Download_info():
                     print(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")                    ##### Track activity
                     return False
             else:
-                print("Aucun élément trouvée.")                                                 ##### Track activity
+                print("Aucun élément trouvé.")                                                 ##### Track activity
                 return False
-        
+        else:
+            print(f"Échec du téléchargement.| Code d'état : {response_url.status_code}")
+            return False
+    
+    # Fonction de téléchargement (fmteam.fr)
+    def fmteam_download(response_url, nom_fichier):
+
+        if response_url.status_code == 200:
+            # Utiliser io.BytesIO pour créer un flux binaire à partir du contenu de la réponse
+            zip_stream = io.BytesIO(response_url.content)
+            # Créer un objet zipfile.ZipFile à partir du flux binaire
+            with zipfile.ZipFile(zip_stream, "r") as zip_ref:
+                namelist = zip_ref.namelist()
+                if namelist:
+                    # Obtenir le nom du premier fichier/dossier dans la liste
+                    first_file = namelist[0]
+                    file_name, unecessary = first_file.split("/")
+                    file_name_path = nom_fichier / file_name
+                    if not os.path.exists(file_name_path):
+                        zip_ref.extractall(nom_fichier)
+                        return True
+                    else:
+                        return False
+        else:
+            print("Échec du téléchargement.")
+    
     def Download():
         global chapters_current_selected
         global manga_current_name
@@ -210,46 +239,75 @@ def show_Download_info():
 
         chapter_name = chapters_current_selected[current_download]  # Nom du Chapitre
         nom_chapitre = nom_fichier / chapter_name
-        # Création du Dossier du chapitre correspondant s'il n'existe pas ***
-        if not os.path.exists(nom_chapitre):
-            os.makedirs(nom_chapitre)
 
+        # Création du Dossier du chapitre correspondant s'il n'existe pas
         chapter_number = chapter_transform(chapter_name) # retourne le format adapté pour le site correspondant
 
         if selected_website == "scantrad-vf":
-            page = 0 # Page de départ
-            lien_chapitre = str(f"https://scantrad-vf.co/manga/{manga_current_name}/{chapter_number}/?style=list")  # Lien du chapitre
-            response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
-
-            while True: # Téléchargement des images
-                xpath = f'//*[@id="image-{page}"]'
-                save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
-                response = scantrad_download(response_url, xpath, save_path, page)
-                if response == True:
-                    page += 1
-                else:
-                    print(f"\nTéléchargement {current_download} terminé.\n")                                    ##### Track activity
-                    break
+            if not os.path.exists(nom_chapitre):
+                os.makedirs(nom_chapitre)
+                page = 0 # Page de départ
+                lien_chapitre = str(f"https://scantrad-vf.co/manga/{manga_current_name}/{chapter_number}/?style=list")  # Lien du chapitre
+                try:
+                    response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
+                    while True: # Téléchargement des images
+                        xpath = f'//*[@id="image-{page}"]'
+                        save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
+                        response = scantrad_download(response_url, xpath, save_path, page)
+                        if response == True:
+                            page += 1
+                        else:
+                            print(f"\nTéléchargement {current_download} terminé.\n")                                    ##### Track activity
+                            break
+                except:
+                    print(f"REQUEST ERROR INFOS : {selected_website} | {manga_current_name} | {chapter_number}")              ##### Track activity
+            else:
+                print(f"Le {chapter_name} du manga : {manga_current_name} est déjà téléchargé !")  # ON NE TÉLÉCHARGE PLUS INUTILEMENT LES MANGAS DÉJÀ TÉLÉCHARGÉS
 
         elif selected_website == "lelscans.net":
-            page = 1 # Page de départ
+            if not os.path.exists(nom_chapitre):
+                os.makedirs(nom_chapitre)
+                page = 1 # Page de départ
 
-            while True: # Téléchargement des images
-                lien_chapitre = str(f"https://lelscans.net/scan-{manga_current_name}/{chapter_number}/{page}")  # Lien du chapitre
-                response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
-                save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
-                response = lelscans_download(response_url, save_path, page)
-                if response == True:
-                    page += 1
-                else:
-                    print(f"\nTéléchargement {current_download} terminé.\n")                                    ##### Track activity
-                    break
+                while True: # Téléchargement des images
+                    lien_chapitre = str(f"https://lelscans.net/scan-{manga_current_name}/{chapter_number}/{page}")  # Lien du chapitre
+                    try:
+                        response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
+                        save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
+                        response = lelscans_download(response_url, save_path, page)
+                        if response == True:
+                            page += 1
+                        else:
+                            print(f"\nTéléchargement {current_download} terminé.\n")                                    ##### Track activity
+                            break
+                    except:
+                        print(f"REQUEST ERROR INFOS : {selected_website} | {manga_current_name} | {chapter_number}")              ##### Track activity
+            else:
+                print(f"Le {chapter_name} du manga : {manga_current_name} est déjà téléchargé !")  # ON NE TÉLÉCHARGE PLUS INUTILEMENT LES MANGAS DÉJÀ TÉLÉCHARGÉS
         
+        elif selected_website == "fmteam.fr":
+    
+            if "." in chapter_number:
+                chapter_number_1, chapter_number_2 = chapter_number.split(".")
+                lien_chapitre = str(f"https://fmteam.fr/api/download/{manga_current_name}/fr/ch/{chapter_number_1}/sub/{chapter_number_2}")
+            else:
+                lien_chapitre = str(f"https://fmteam.fr/api/download/{manga_current_name}/fr/ch/{chapter_number}")
+            try:
+                response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
+                response = fmteam_download(response_url, nom_fichier)
+                if response == True:
+                    print(f"\nTéléchargement {current_download} terminé.\n")                                       ##### Track activity
+                else:
+                    print(f"\nTéléchargement {current_download} impossible OU dossier déjà existant.\n")                                    ##### Track activity
+            except:
+                print(f"REQUEST ERROR INFOS : {selected_website} | {manga_current_name} | {chapter_number}")              ##### Track activity
+
         else:
             None     ############ Add another method for another website here ###########
-            
+        
 
-    def perform_download():                                                                 # Modifier à la fin du programme pour le vrai téléchargement
+
+    def perform_download():
         global current_download
         global total_downloads
         global Download_state
@@ -299,13 +357,24 @@ def show_Download_info():
     
 # Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
 def select_all():
+    global chapitres
     global All_chapters_len
+    global chapters_current_selected
+    global manga_current_name
+    global total_downloads
 
     if select_all_var.get() == 1:
         chapters_box.select_set(0, tk.END)  # Sélectionner tous les éléments de la ListBox
+        chapters = chapitres[manga_current_name]
+        chapters_current_selected = chapters
+        print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
+        All_chapters_len = len(chapters_current_selected)
+        total_downloads = All_chapters_len
         canvas.itemconfigure(Chapter_selected, text=f'{All_chapters_len} selected')
     else:
         chapters_box.selection_clear(0, tk.END)  # Désélectionner tous les éléments de la ListBox
+        chapters_current_selected = [] # réinitialiser la sélection des chapitres
+        print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
         canvas.itemconfigure(Chapter_selected, text=f'0 selected')
 
 # Update les résultats de recherche de la SearchBar dans la Manga Name List
@@ -324,9 +393,7 @@ def on_mangas_select(event):
 
     selected_indices = result_box.curselection()  # Récupérer les indices des éléments sélectionnés
     selected_items = [result_box.get(index) for index in selected_indices]  # Récupérer les éléments sélectionnés
-    if not selected_items:
-        print("liste vide")                                                         ##### Track activity
-    else:
+    if selected_items:
         print(selected_items)                                                       ##### Track activity
         manga_name = selected_items[0]
         manga_current_name = manga_name
@@ -344,24 +411,21 @@ def on_mangas_select(event):
 def update_chapters(manga_name):
     global chapitres
     global All_chapters_len
-    global chapters_current_selected
 
     if manga_name in chapitres:
         chapters = chapitres[manga_name]
         chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
+        All_chapters_len = len(chapters) # Récupérer le nombre total de chapitres du manga sélectionné
         for chapter in chapters:
             chapters_box.insert(tk.END, chapter)  # Insérer chaque chapitre dans la liste déroulante
-        All_chapters_len = len(chapters) # Récupérer le nombre total de chapitres du manga sélectionné
         if select_all_var.get() == 1:
             select_all()
-            chapters_current_selected = chapters
 
 # Actions lorsque des chapitres sont sélectionnés
 def on_chapters_select(event):
-    global selected_chapters
     global total_downloads
     global chapters_current_selected
-
+    
     selected_chapters = chapters_box.curselection()  # Récupérer les indices des chapitres sélectionnés
     selected_items = [chapters_box.get(index) for index in selected_chapters]  # Récupérer les chapitres sélectionnés
     chapters_current_selected = selected_items
@@ -459,7 +523,8 @@ website_menu = OptionMenu(
     window,
     website_list_var,
     "scantrad-vf",
-    "lelscans.net"
+    "lelscans.net",
+    "fmteam.fr"
 )
 website_menu.place(
     x=440.0,
