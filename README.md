@@ -23,11 +23,11 @@ L'application automatise :
 - ✅ Correction de bugs :
 • Téléchargement de mangas impossible après sélection
 - ✅ Ajout de "fmteam.fr"
+- ✅ Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
 
 ## Roadmap 🚧
-- 🔲 Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres ) 
+- 🔲 Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres sur les sites ) 
 - 🔲 Allègement du code ( Scripts secondaires pour développement efficace et maintenable & suppression de méthodes inutiles )
-- 🔲 Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
 - 🔲 Mise à jour Docu
 - 🔲 Déploiement ( script .Exe , Docker )
     
