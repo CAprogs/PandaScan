@@ -6,6 +6,7 @@
   <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" />
 </a>
 
+
 Une Application créée pour télécharger des Scans de Mangas à partir de sites de lecture de manga en ligne.
 Il vous arrive souvent de ne pas avoir la possibilité de lire vos mangas préférés lorsque vous n'avez pas de connexion internet, raison pour laquelle les avoir à disposition directement sur votre PC/Mac serait un plus !
 
