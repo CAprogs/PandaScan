@@ -26,10 +26,10 @@ Il vous arrive souvent de ne pas avoir la possibilité de lire vos mangas préf�
 - ✅ Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
 
 ## Roadmap 🚧
-- 🔲 Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres sur les sites ) 
-- 🔲 Allègement du code ( Scripts secondaires pour développement efficace et maintenable & suppression de méthodes inutiles )
-- 🔲 Mise à jour Docu
-- 🔲 Déploiement ( script .Exe , Docker )
+- [ ] Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres sur les sites ) 
+- [ ] Allègement du code ( Scripts secondaires pour développement efficace et maintenable & suppression de méthodes inutiles )
+- [ ] Mise à jour Docu
+- [ ] Déploiement ( script .Exe , Docker )
     
 ##  Tools u need 🛠️
 
