@@ -2,24 +2,10 @@
 
 ![APP_LOGO](https://github.com/CAprogs/PandaScan/assets/104645407/37d0a0e8-0f19-4a9c-b2c3-34126dc71a21)
 
-<style>
-  /* Ajustez la largeur et la hauteur de la balise <a> selon vos besoins */
-  .buy-me-button {
-    display: inline-block;
-    width: 200px; /* Ajustez la largeur */
-    height: auto; /* Ajustez la hauteur ou utilisez une valeur fixe si nécessaire */
-  }
-
-  /* Ajustez la largeur et la hauteur de l'image à l'intérieur de la balise <img> */
-  .buy-me-button img {
-    max-width: 100%; /* La largeur de l'image s'adapte à la largeur de son conteneur */
-    height: auto; /* La hauteur s'ajuste automatiquement pour conserver les proportions */
-  }
-</style>
-
 <a href="https://www.buymeacoffee.com/CAprogs" class="buy-me-button">
   <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" />
 </a>
+
 Une Application créée pour télécharger des Scans de Mangas à partir de sites de lecture de manga en ligne.
 Il vous arrive souvent de ne pas avoir la possibilité de lire vos mangas préférés lorsque vous n'avez pas de connexion internet, raison pour laquelle les avoir à disposition directement sur votre PC/Mac serait un plus !
 
