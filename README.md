@@ -24,10 +24,12 @@ Il vous arrive souvent de ne pas avoir la possibilité de lire vos mangas préf�
 • Téléchargement de mangas impossible après sélection
 - ✅ Ajout de "fmteam.fr"
 - ✅ Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
+- ✅ Allègement du code ( Ajouts de Scripts secondaires pour développement efficace et maintenable + Suppression de méthodes inutiles )
+- ✅ Bouton Update des sites ( permettre aux utilisateurs de Mettre à jour les Données de chaque site ) 
 
 ## Roadmap 🚧
-- [ ] Bouton Update des sites ( dans le cas d'un ajout de mangas ou de chapitres sur les sites ) 
-- [ ] Allègement du code ( Scripts secondaires pour développement efficace et maintenable & suppression de méthodes inutiles )
+
+- [ ] Fichier App_Settings permettant de personnaliser l'tilisation de l'app
 - [ ] Mise à jour Docu
 - [ ] Déploiement ( script .Exe , Docker )
     
