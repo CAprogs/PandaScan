@@ -11,7 +11,7 @@ PandaScan 🐼 c'est le **Utorrent** favoris de ton **mangaka** favoris 🤩 !
 - Tkinter-Designer
 - Figma
 
-Retrouvez la liste des **packages / modules** utilisés [ici]()
+Retrouvez la liste des **packages / modules** utilisés [```ici```]()
 
 ## Features 🚀
 
@@ -20,7 +20,7 @@ Retrouvez la liste des **packages / modules** utilisés [ici]()
 - _**Mise à Jour**_ ( Manuelle / Automatique ) ♽: Un véritable tour de magie 🪄, restez à jour et à l'âffût des dernières sorties de vos scans !
 - _**Changelog**_ 🔗 : Restez informé des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤 
 
-[Démo]()
+[```Démo```]()
 
 ## Infos Update ♻️
 
@@ -54,7 +54,7 @@ Téléchargez PandaScan 🐼 :
 ``` git clone <URL_du_repository> ```
 
 ### _Vous n'y connaissez rien_ 🫥 
-Téléchargez PandaScan 🐼 sous forme de fichier .EXE [ici]()
+Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()
 
 ## Get Started 
 
@@ -82,7 +82,7 @@ _**Si vous avez les moyens de vous procurer ces oeuvres, Faites le, ne serait ce
 
 ## License 📝
 
-Ce projet utilise la [MIT License](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
+Ce projet utilise la [```MIT License```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
 
 ## Donation & Support ❤️
 
