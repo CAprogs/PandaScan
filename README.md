@@ -46,7 +46,7 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 ### _Vous maîtrisez Python_ 🤓
 
 Prérequis :
---> Git
+<br>--> Git</br>
 --> Python3
 
 Téléchargez PandaScan 🐼 :
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 
 Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujours en développement 🔨
 
-## Get Started 
+## Get Started 🧞‍♂️
 
 1. Ouvrez l'application PandaScan 🐼
 2. Cherchez votre Manga favoris 🔍
