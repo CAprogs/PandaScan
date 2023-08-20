@@ -5,7 +5,7 @@
 <br>Vous avez toujours eu l'envie de télécharger vos chapitres de mangas favoris et y accéder même Hors ligne 😵‍💫?</br>
 PandaScan 🐼 c'est le **Utorrent** favoris de ton **mangaka** favoris 🤩 !
 
-## Technologies 🧰
+## Technologies 📲
 
 - Python3
 - Tkinter-Designer
