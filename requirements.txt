@@ -1,1 +1,6 @@
-
+pandas==1.5.3
+pyyaml==6.0
+selenium==4.10.0
+requests==2.29.0
+lxml==4.9.2
+beautifulsoup4==4.12.2
