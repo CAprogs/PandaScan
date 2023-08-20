@@ -15,10 +15,10 @@ Retrouvez la liste des **packages / modules** utilisés [ici]()
 
 ## Features 🚀
 
-- Téléchargement ↧ : Téléchargez automatiquement et en un clic tous les scans que vous désirez !
-- Stockage 📚 : Les fichiers téléchargés 
-- Mise à Jour ( Manuelle / Automatique ) ♽: Un véritable tour de magie 🪄, restez à jour et à l'âffût des dernières sorties de vos scans !
-- Changelog 🔗 : Restez informé des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤 
+- _**Téléchargement**_ ↧ : Téléchargez automatiquement et en un clic tous les scans que vous désirez !
+- _**Stockage**_ 📚 : Les fichiers téléchargés 
+- _**Mise à Jour**_ ( Manuelle / Automatique ) ♽: Un véritable tour de magie 🪄, restez à jour et à l'âffût des dernières sorties de vos scans !
+- _**Changelog**_ 🔗 : Restez informé des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤 
 
 [Démo]()
 
@@ -43,7 +43,7 @@ Retrouvez la liste des **packages / modules** utilisés [ici]()
 
 ## Installation 🛠️
 
-### Vous maîtrisez Python 🤓
+### _Vous maîtrisez Python_ 🤓
 
 Prérequis :
 
@@ -53,7 +53,7 @@ Téléchargez PandaScan 🐼 :
 - Via le terminal
 ``` git clone <URL_du_repository> ```
 
-### Vous n'y connaissez rien 🫥 
+### _Vous n'y connaissez rien_ 🫥 
 Téléchargez PandaScan 🐼 sous forme de fichier .EXE [ici]()
 
 ## Get Started 
@@ -78,7 +78,7 @@ Téléchargez PandaScan 🐼 sous forme de fichier .EXE [ici]()
 2. Un téléchargement trop récurrent et souvent excessif peut entraîner le disfonctionnement d'un site Internet. Merci d'utiliser cet outil avec résilience pour le bien de tous.
 3. Si certains fichiers téléchargés sont vides, c'est tout à fait normal ! Les sites ne sont pas parfaits et le stockage des données peut être assez coûteux. 
 
-**Si vous avez les moyens de vous procurer ces oeuvres, Faites le, ne serait ce que pour soutenir les auteurs !**
+_**Si vous avez les moyens de vous procurer ces oeuvres, Faites le, ne serait ce que pour soutenir les auteurs !**_
 
 ## License 📝
 
