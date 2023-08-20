@@ -43,7 +43,7 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 
 ## Installation 🛠️
 
-### _Vous maîtrisez Python_ 🤓
+### I. _Vous maîtrisez Python_ 🤓
 
 Prérequis :
 <br>--> Git</br>
@@ -63,7 +63,7 @@ Ensuite :
 pip install -r requirements.txt
 ```
 
-### _Vous n'y connaissez rien_ 🫥 
+### II. _Vous n'y connaissez rien_ 🫥 
 
 Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujours en développement 🔨
 
