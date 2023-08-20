@@ -11,7 +11,7 @@ PandaScan 🐼 c'est le **Utorrent** favoris de ton **mangaka** favoris 🤩 !
 - Tkinter-Designer
 - Figma
 
-Retrouvez la liste des **packages / modules** utilisés [```ici```]()
+Retrouvez la liste des **packages / modules** utilisés [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
 
 ## Features 🚀
 
@@ -46,15 +46,26 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```]()
 ### _Vous maîtrisez Python_ 🤓
 
 Prérequis :
+--> Git
+--> Python3
 
 Téléchargez PandaScan 🐼 :
-- Manuellement
-  
+- Manuellement : Téléchargez le Zip File [```ici```](https://github.com/CAprogs/PandaScan/archive/refs/heads/main.zip)
+
 - Via le terminal
-``` git clone <URL_du_repository> ```
+<p>Exécutez :</p>
+
+```
+git clone https://github.com/CAprogs/PandaScan.git
+```
+Ensuite :
+```
+pip install -r requirements.txt
+```
 
 ### _Vous n'y connaissez rien_ 🫥 
-Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()
+
+Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujours en développement 🔨
 
 ## Get Started 
 
