@@ -37,8 +37,8 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 
 ## Roadmap 🚧
 
-- [ ] Fichier App_Settings permettant de personnaliser l'tilisation de l'app
-- [ ] Mise à jour Docu
+- [ ] Fichier App_Settings permettant de personnaliser l'utilisation de l'app
+- [ ] Mise à jour Docu ( Installation + Demo + Gif + App view )
 - [ ] Déploiement ( script .Exe , Docker )
 
 ## Installation 🛠️
