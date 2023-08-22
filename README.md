@@ -1,6 +1,14 @@
-# PandaScan | Download Mangas Scans with ease
 
+<div align="center">
+        
 ![APP_LOGO](https://github.com/CAprogs/PandaScan/assets/104645407/37d0a0e8-0f19-4a9c-b2c3-34126dc71a21)
+
+![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) ![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue) ![GitHub forks](https://img.shields.io/github/forks/CAprogs/PandaScan?color=green) ![GitHub watchers](https://img.shields.io/github/watchers/CAprogs/PandaScan?color=red)
+
+
+</div>
+
+---
 
 <br>Vous avez toujours eu l'envie de télécharger vos chapitres de mangas favoris et y accéder même Hors ligne 😵‍💫?</br>
 PandaScan 🐼 c'est le **Utorrent** favoris de ton **mangaka** favoris 🤩 !
