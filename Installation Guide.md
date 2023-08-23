@@ -15,7 +15,8 @@ Prerequise : Ensure that you have **Google Chrome** installed on your computer.
 - Download [**Chromewebdriver**](https://chromedriver.chromium.org/downloads) ( Select the **right version** for your architecture )
 -  Access this **URL** `chrome://version/` & **COPY** the path below ⬇️ 
 
-Photo 1
+<img width="1098" alt="Chrome profile path" src="https://github.com/CAprogs/PandaScan/assets/104645407/470abe42-a6c6-4b62-9646-ab7185c9c8cb">
+
 
 ---
 
