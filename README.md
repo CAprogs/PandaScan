@@ -42,34 +42,23 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - [x] Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
 - [x] Allègement du code ( Ajouts de Scripts secondaires pour développement efficace et maintenable + Suppression de méthodes inutiles )
 - [x] Bouton Update des sites ( permettre aux utilisateurs de Mettre à jour les Données de chaque site ) 
-
+- [x] Released the [Lightweight version](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
+- [x] Added the [Installation Guide](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+            
 ## Roadmap 🚧
 
-- [ ] Fichier App_Settings permettant de personnaliser l'utilisation de l'app
-- [ ] Mise à jour Docu ( Installation + Demo + Gif + App view )
-- [ ] Déploiement ( script .Exe , Docker )
+- [ ] Add the App_Settings permettant de personnaliser l'utilisation de l'app
+- [ ] Update Docu ( Installation + Demo + Gif + App view )
+- [ ] Deployment ( script .Exe , Docker )
 
 ## Installation 🛠️
 
 ### I. _Vous maîtrisez Python_ 🤓
 
 Prérequis :
-<br>--> Git</br>
---> Python3
+**Python3** or **Conda**
 
-Téléchargez PandaScan 🐼 :
-- Manuellement : Téléchargez le Zip File [```ici```](https://github.com/CAprogs/PandaScan/archive/refs/heads/main.zip)
-
-- Via le terminal
-<p>Exécutez :</p>
-
-```
-git clone https://github.com/CAprogs/PandaScan.git
-```
-Ensuite :
-```
-pip install -r requirements.txt
-```
+Follow this [Guide](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
 
 ### II. _Vous n'y connaissez rien_ 🫥 
 
