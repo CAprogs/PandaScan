@@ -10,14 +10,18 @@
 
 ---
 
-<br>Vous avez toujours eu l'envie de télécharger vos chapitres de mangas favoris et y accéder même Hors ligne 😵‍💫?</br>
-PandaScan 🐼 c'est le **Utorrent** favoris de ton **mangaka** favoris 🤩 !
+<br>Vous avez toujours eu l'envie de télécharger vos chapitres de mangas favoris sans limite 😵‍💫?</br>
+PandaScan 🐼 c'est le **Utorrent** de ton **manga** favoris 🤩 !
+
+## About ⛔️
+
+Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos suggestions de sites à travers le [Chat](). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**. 
 
 ## Technologies 📲
 
-- Python3
-- Tkinter-Designer
-- Figma
+- [Python](https://www.python.org/)
+- [Tkinter-Designer](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
+- [Figma](https://www.figma.com/login)
 
 Retrouvez la liste des **packages / modules** utilisés [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
 
