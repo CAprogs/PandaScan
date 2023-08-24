@@ -17,8 +17,8 @@ Tous les sites disponibles sur l'application sont des sites **Français**. N'hé
 
 ## Translations
 
-- [**Français**]()
-- [**English**]()
+- [**Français**]() (FR)
+- [**English**]() (EN)
 
 ## Technologies 📲
 
@@ -49,8 +49,8 @@ Retrouvez la liste des **packages / modules** utilisés [**```ici```**](https://
 - [x] Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
 - [x] Allègement du code ( Ajouts de Scripts secondaires pour développement efficace et maintenable + Suppression de méthodes inutiles )
 - [x] Bouton Update des sites ( permettre aux utilisateurs de Mettre à jour les Données de chaque site ) 
-- [x] Released the [Lightweight version](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
-- [x] Added the [Installation Guide](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+- [x] Released the [**Lightweight version**](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
+- [x] Added the [**Installation Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
             
 ## Roadmap 🚧
 
@@ -65,7 +65,7 @@ Retrouvez la liste des **packages / modules** utilisés [**```ici```**](https://
 Prérequis :
 **Python3** or **Conda**
 
-Follow this [Guide](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+Suivez ce [**Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
 
 ### II. _Vous n'y connaissez rien_ 🫥 
 
