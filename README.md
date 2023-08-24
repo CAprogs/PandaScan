@@ -3,25 +3,28 @@
         
 ![APP_LOGO](https://github.com/CAprogs/PandaScan/assets/104645407/37d0a0e8-0f19-4a9c-b2c3-34126dc71a21)
 
+# 
 ![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) ![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue) ![GitHub forks](https://img.shields.io/github/forks/CAprogs/PandaScan?color=green) ![GitHub watchers](https://img.shields.io/github/watchers/CAprogs/PandaScan?color=red)
 
-
+<br>Vous avez toujours eu l'envie de **télécharger vos chapitres de mangas favoris sans limite** ?</br>
+**PandaScan 🐼** c'est le _Utorrent de ton manga favoris_ 🤩 !
+        
 </div>
-
----
-
-<br>Vous avez toujours eu l'envie de télécharger vos chapitres de mangas favoris sans limite 😵‍💫?</br>
-PandaScan 🐼 c'est le **Utorrent** de ton **manga** favoris 🤩 !
 
 ## About ⛔️
 
-Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos suggestions de sites à travers le [Chat](). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**. 
+Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos suggestions de sites à travers le [**Chat**](). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**. 
+
+## Translations
+
+- [**Français**]()
+- [**English**]()
 
 ## Technologies 📲
 
-- [Python](https://www.python.org/)
-- [Tkinter-Designer](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
-- [Figma](https://www.figma.com/login)
+- [**Python**](https://www.python.org/)
+- [**Tkinter-Designer**](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
+- [**Figma**](https://www.figma.com/login)
 
 Retrouvez la liste des **packages / modules** utilisés [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
 
@@ -80,10 +83,6 @@ Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujo
 
 <img width="958" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
 
-## Author ✍️
-
-- [@CAprogs](https://github.com/CAprogs)
-  
 ## Disclaimer ⚠️
 
 1. Cette application a été créée dans le but de facilité le téléchargement et la lecture en région reculée ou en déplcement de vos mangas favoris. Ce projet n'est pas à but lucratif et se veut à utilisation personnelle.
@@ -91,6 +90,10 @@ Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujo
 3. Si certains fichiers téléchargés sont vides, c'est tout à fait normal ! Les sites ne sont pas parfaits et le stockage des données peut être assez coûteux. 
 
 _**Si vous avez les moyens de vous procurer ces oeuvres, Faites le, ne serait ce que pour soutenir les auteurs !**_
+
+## Author ✍️
+
+- [@CAprogs](https://github.com/CAprogs)
 
 ## License 📝
 
