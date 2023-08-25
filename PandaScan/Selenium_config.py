@@ -8,5 +8,3 @@ options.add_argument('--user-data-dir=' + chrome_profile_path)
 driver = webdriver.Chrome(options=options)
 driver.maximize_window() # Ouvrir le navigateur en full size
 # -----------------------------------------------------------
-
-    

@@ -10,11 +10,12 @@
 # ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan 🐼 | @2023 by CAprogs
 # This is a project that aims to download mangas scans from a website by selecting the manga and chapters wished.
-# scans are downloaded by a simple request.
+# Scans are downloaded by a simple request.
+# "Update" Feature requires Selenium and Chromium to work.
 # Ublock ( A Chrome Extension ) is recommend to use this Software.
 # The Download Time depends on the number of Chapters to download and their Number of pages.
-# Note 1 : Some websites may not provide accurate informations or may be empty.
-# Note 2 : In future version you'll be able to choose between Manually Update / At Launch automatic Update.
+# Note 1 : Some websites may not provide accurate informations or may be empty when you download chapters.
+# Note 2 : In future version you'll be able to choose between Manual / Auto-update ( At Launch ).
 # Credits: @Tkinter Designer by ParthJadhav 
 # ------------------------------------------------------------------------------------------------------------
 
@@ -36,7 +37,7 @@ from tkinter.font import Font
 from pathlib import Path
 from tkinter import messagebox
 from Download import chapter_transform, Initialize_Download
-"from datas.Update import Update"
+from Update import Update # Manual Update
 
 ################################ Variables Globales ############################################
 All_chapters_len = 0    #  stocker le nombre de chapitres total d'un manga sélectionné
@@ -52,10 +53,10 @@ selected_website = "scantrad-vf"
 # Obtenir le chemin absolu du répertoire contenant le script
 script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
 
-# chemin relatif vers le dossier "frame0"
-assets_directory = script_directory / "frame0"
-mangas_path = script_directory / f"datas/{selected_website}/mangas.csv"
-chapters_path = script_directory / f"datas/{selected_website}/mangas_chapters.yml"
+# chemins relatifs vers les dossiers / datas
+assets_directory = script_directory / "assets"
+mangas_path = script_directory / f"websites/{selected_website}/datas/mangas.csv"
+chapters_path = script_directory / f"websites/{selected_website}/datas/mangas_chapters.yml"
 
 # Chargement des datas ( par défaut )
 with open(chapters_path, 'r') as file:
@@ -103,8 +104,8 @@ def Switch_Website(*args):
     selected_website = selected_item
     print(f"\nWebsite sélectionné : {selected_item}")                                               ##### Track activity
     
-    mangas_path = script_directory / f"datas/{selected_website}/mangas.csv"
-    chapters_path = script_directory / f"datas/{selected_website}/mangas_chapters.yml"
+    mangas_path = script_directory / f"websites/{selected_website}/datas/mangas.csv"
+    chapters_path = script_directory / f"websites/{selected_website}/datas/mangas_chapters.yml"
 
     with open(chapters_path, 'r') as file:
         chapitres = yaml.safe_load(file)

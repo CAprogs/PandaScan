@@ -1,0 +1,15 @@
+{
+    "websites": {
+      "fmteam.fr": {
+        "enabled": true
+      },
+      "lelscans.net": {
+        "enabled": true
+      },
+      "scantrad-vf": {
+        "enabled": true
+      }
+    },
+    "mode": "manual"
+  }
+  
