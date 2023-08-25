@@ -51,21 +51,20 @@ Retrouvez la liste des **packages / modules** utilisés [**```ici```**](https://
 - [x] Bouton Update des sites ( permettre aux utilisateurs de Mettre à jour les Données de chaque site ) 
 - [x] Released the [**Lightweight version**](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
 - [x] Added the [**Installation Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
-            
+- [x] Re-organized files
+      
 ## Roadmap 🚧
 
-- [ ] Add the App_Settings permettant de personnaliser l'utilisation de l'app
-- [ ] Update Docu ( Installation + Demo + Gif + App view )
-- [ ] Deployment ( script .Exe , Docker )
+- [ ] Update the config.json file ( dark/light mode or another backroung idea ; redifine the saving area )
+- [ ] Update the Selenium function and the Guide to download the automated chromedriver
+- [ ] Update Docu ( doc file + Demo + Gif + App view )
+- [ ] Deployment ( script .Exe , Docker ? )
 
 ## Installation 🛠️
 
-### I. _Vous maîtrisez Python_ 🤓
+### I. _Vous maîtrisez Python_ 🤓 ( **Python3** ou **Conda** )
 
-Prérequis :
-**Python3** or **Conda**
-
-Suivez ce [**Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+Suivez ce [**```Guide```**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
 
 ### II. _Vous n'y connaissez rien_ 🫥 
 
