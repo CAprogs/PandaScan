@@ -1,15 +1,15 @@
 {
-    "websites": {
-      "fmteam.fr": {
-        "enabled": true
-      },
-      "lelscans.net": {
-        "enabled": true
-      },
-      "scantrad-vf": {
-        "enabled": true
-      }
+  "chromedriver_path": "/Users/charles-albert/Desktop/chromedriver-mac-arm64/chromedriver",
+  "websites": {
+    "fmteam.fr": {
+      "enabled": true
     },
-    "mode": "manual"
-  }
-  
+    "lelscans.net": {
+      "enabled": true
+    },
+    "scantrad-vf": {
+      "enabled": true
+    }
+  },
+  "mode": "manual"
+}
