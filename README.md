@@ -84,7 +84,7 @@ Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujo
 
 ## Disclaimer ⚠️
 
-1. Cette application a été créée dans le but de facilité le téléchargement et la lecture en région reculée ou en déplcement de vos mangas favoris. Ce projet n'est pas à but lucratif et se veut à utilisation personnelle.
+1. Cette application a été créée dans le but de faciliter le téléchargement et la lecture en région reculée ou en déplcement de vos mangas favoris. Ce projet n'est pas à but lucratif et se veut à utilisation personnelle.
 2. Un téléchargement trop récurrent et souvent excessif peut entraîner le disfonctionnement d'un site Internet. Merci d'utiliser cet outil avec résilience pour le bien de tous.
 3. Si certains fichiers téléchargés sont vides, c'est tout à fait normal ! Les sites ne sont pas parfaits et le stockage des données peut être assez coûteux. 
 
