@@ -13,7 +13,7 @@
 
 ## About ⛔️
 
-Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos **```suggestions de sites```** ou **```vos idées```** à travers le [**```Chat```**](https://github.com/CAprogs/PandaScan/discussions/2). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**. 
+Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos **```suggestions de sites```** ou **```vos idées```** à travers le [```Chat```](https://github.com/CAprogs/PandaScan/discussions/2). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**. 
 
 ## Translations
 
@@ -26,7 +26,7 @@ Tous les sites disponibles sur l'application sont des sites **Français**. N'hé
 - [**Tkinter-Designer**](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
 - [**Figma**](https://www.figma.com/login)
 
-Retrouvez la liste des **packages / modules** utilisés [**```ici```**](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
+Retrouvez la liste des **packages / modules** utilisés [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
 
 ## Features 🚀
 
