@@ -20,8 +20,6 @@ Cependant je me suis davantage plu à l'apprentissage de Python 🐍 qui est un 
 
 Dans ce document, nous plongerons dans le parcours de création de PandaScan 🐼, un projet qui me tient énormément à coeur, depuis son idée initiale jusqu'à sa mise en œuvre et au-delà. L'histoire qui va suivre a pour but de vous transmettre ma passion, vous faire connaître les défis que j'ai pu rencontrer et les enseignements qui ont façonné ce projet.
 
-#
-
 ## Idée 💡
 C'est en regardant des vidéos sur Tiktok que m'est venu l'idée ! Des comptes diffusaient des pages de scans de mes mangas favoris et je me suis demander comment ils le faisaient vu que la plupart si ce n'est tous les sites de lecture de manga en ligne qui ne nous permettent pas de télécharger ces pages automatiquement. Je me suis dit que si je voulais faire la même chose j'allais perdre un temps énorme à sélectionner chaque page de chapitres de manga pour les télécharger. Le besoin de créer une solution qui me permette de télécharger automatiquement les chapitres de manga que je voulais provient aussi du fait que ces derniers ne sont accessibles qu'à travers une connexion internet ce qui est dommage lorsque nous voulons y accéder même Hors ligne ou en région reculée, loin de tout. 
 
