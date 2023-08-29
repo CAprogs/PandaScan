@@ -6,7 +6,7 @@
 - [Défis ⛔️](https://github.com/CAprogs/PandaScan/blob/main/PandaScan/docs/FR/LEARN.fr.md#d%C3%A9fis-%EF%B8%8F)
 - [Développement 🏗️](https://github.com/CAprogs/PandaScan/blob/main/PandaScan/docs/FR/LEARN.fr.md#d%C3%A9veloppement-%EF%B8%8F)
 - [Leçons tirées ✍️](https://github.com/CAprogs/PandaScan/blob/main/PandaScan/docs/FR/LEARN.fr.md#le%C3%A7ons-tir%C3%A9es-%EF%B8%8F)
-- [Remerciements](#remerciements)
+- [Remerciements](https://github.com/CAprogs/PandaScan/blob/main/PandaScan/docs/FR/LEARN.fr.md#remerciements)
 
 #
 
