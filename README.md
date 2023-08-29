@@ -75,12 +75,18 @@ Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujo
 1. Ouvrez l'application PandaScan 🐼
 2. Cherchez votre Manga favoris 🔍
 3. Sélectionnez le Manga et les Chapitres de vos rêves 🤩
-4. Lancez le téléchargement, PandaScan se charge du reste 💨
+4. Lancez le téléchargement : PandaScan se charge du reste 💨
 5. Lisez sans modération 🤓
-    
-## App View 👁️
 
-<img width="958" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
+## Principe 🤔
+
+La figure ci dessous représente le fonctionnement de PandaScan 🐼. Les icônes 🟢 désignent la sélection de l'utilisateur. 
+
+<img width="700" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
+
+## Screenshots 👁️
+
+<img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
 
 ## Disclaimer ⚠️
 
