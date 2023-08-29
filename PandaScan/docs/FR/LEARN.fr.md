@@ -12,7 +12,7 @@
 
 ## **Introduction**
 
-Bonjour 👋, je m'appelle Charles, j'ai 22 ans et je suis en dernière année d'école d'ingénieur à ECAM-EPMI Cergy en 🇫🇷 🎉
+Bonjour 👋, je m'appelle Charles, j'ai 22 ans et je suis en dernière année d'école d'ingénieur à ECAM-EPMI Cergy en 🇫🇷 
 
 Depuis quelques années je suis passionné par l'informatique et la programmation en général ! Comme tout étudiant classique j'ai eu à apprendre de nombreux langages de programmation durant mon cursus comme HTML, CSS, JavaScript , C etc.. 
 
@@ -23,19 +23,32 @@ Dans ce document, nous plongerons dans le parcours de création de PandaScan �
 #
 
 ## Idée 💡
-Détaillez l'inspiration et la motivation derrière la création de PandaScan. Parlez du problème que vous vouliez résoudre ou du besoin que vous souhaitiez combler.
-
+C'est en regardant des vidéos sur Tiktok que m'est venu l'idée ! Des comptes diffusaient des pages de scans de mes mangas favoris et je me suis demander comment ils le faisaient vu que la plupart si ce n'est tous les sites de lecture de manga en ligne qui ne nous permettent pas de télécharger ces pages automatiquement. Je me suis dit que si je voulais faire la même chose j'allais perdre un temps énorme à sélectionner chaque page de chapitres de manga pour les télécharger. Le besoin de créer une solution qui me permette de télécharger automatiquement les chapitres de manga que je voulais provient aussi du fait que ces derniers ne sont accessibles qu'à travers une connexion internet ce qui est dommage lorsque nous voulons y accéder même Hors ligne ou en région reculée, loin de tout. 
 #
 
 ## Défis ⛔️
-Mettez en lumière les obstacles et les défis auxquels vous avez été confronté lors de la création de PandaScan. Cela peut inclure des défis techniques, de conception ou liés aux ressources.
+Comme tout projet et tout développeur qui se respecte, j'ai bien évidemment fais face à de nombreux problèmes ce qui m'a fallu de nombreux jours de debuggage. Les principaux défis auxquels j'ai fait face sont  principalement liés aux syntaxes obsolètes de certaines bibliothèques, la récupération des données pour les sites et la création d'une interface utilisateur simple et facile à prendre en main. J'ai passer beaucoup de temps à tester , débugger et fouiller. Savoir fouiller au bon endroit et trouver la solution à un problème spécifique procure énormément de satisfaction !
 
 #
 
 ## Développement 🏗️
-Racontez les étapes que vous avez suivies pour développer PandaScan. Décrivez les technologies, les outils et les méthodologies que vous avez utilisés. Présentez les principales étapes franchies lors du processus de développement.
+Avant de commencer mon projet, il fallait vérifier que le problème 'avait pas encore été résolu. À ma grande surprise il existait bel et bien des outils pour le faire mais qui ne prenaient pas en compte le côté francophone ! J'ai donc décider de me lancer dans l'aventure. Je savais qu'il me fallait un moyen d'**aller sur les sites de lecture de manga en ligne**, **récupérer les pages => du chapitre => d'un manga** que je voulais et le **stocker dans un dossier** sur mon ordinateur ! Sur le papier ça avait l'air simple à faire étant donné que j'avais déjà eu à faire au scraping web auparavant.
 
-#
+1. Le test
+Dans cette étape, il fallait tester l'accès au site et le téléchargement d'une page pour s'assurer qu'il était possible de réaliser le projet.
+L'accès était possible avec Request ou avec Selenium néanmoins j'avais besoin de voir ce qui se passait lorsque mon script s'exécutait, j'ai donc opter pour la combinaison Sélénium + Request. J'accédais à la page de mon manga et j'envoyais une requête pour télécharger le manga et le tour était joué. Trop simple, les développeurs du site avaient compliqué la tâche et avaient cacher l'adresse qui contenait l'image dans une autre page. J'ai pu rapidement contourner cette restriction mais le serveur refusait mes requêtes j'ai donc décider de chercher un autre moyen de récupérer l'image. Après quelques jours de réflexions il m'est venu à l'esprit l'idée de prendre tout simplement un screenshot de l'image en question ! C'était à ma grande surprise possible avec Sélénium. Le script n'était pas parfait mais il fonctionnait ! Par ailleurs je n'aimais pas les zones sombres que la capture d'écran téléchargait, je voulais l'image seule, propre , à la taille originale et qui prenait peu d'espace parce que oui, les captures d'écrans prenient de la place ( 3 Mo/capture en moyenne ). J'ai donc chercher un moyen de "crop" l'image après capture mais je me heurtait à un autre problème : les pages ne sont pas toutes de la même taille et ne sont pas toutes au même format ( certaines etaient verticales et d'autres à l'horizontale ). Après quelques nuits de test j'ai pu réaliser le script qui me permettait de "crop" l'image à la bonne taille et au bon format !  
+
+2. À l'action
+Dans cette étape il fallait automatiser le processus : accéder à la première page du manga, télécharger cette page et la stocker dans un dossier qui aurait "Le nom du manga" et qui contiendrait le "nom du chapitre en cours de téléchargement", puis il fallait accéder à la page suivante et ajouter cette dernière au sous-dossier créé. Il fallait le faire jusqu'à ce que tout le chapitre soit télécharger ! L'utilisation de boucles était indispensable, Il fallait trouver un "pattern" qui me permette d'accéder aux pages suivantes en incrémentant une valeur ce qui était assez facile car les sites suivaient tous la même architecture : " site/nom_du_manga/N°chapitre/page " je n'avais qu'à incrémenter "page" et le tour était joué. Le script fonctionnait à merveille ! Malheureusement celà ne suffisait pas ..
+
+3. Tout Automatiser
+Bien que tout fonctionnait parfaitement , Il était pénible de saisir à chaque fois l'adresse du manga dans mon script, trouver le pattern pour ensuite télécharger le manga. Il me fallait un moyen plus simple d'accéder au manga que je voulais, mais aussi au chapitre que je voulais ! D'où la nécessité de récupérer les données concernant tous les numéros de chapitre et tous les noms de mangas disponibles du site. Cette étape était pénible mais utile pour la suite.
+
+4. L'interface Graphique
+Pour permettre l'utilisation à d'autres de cet outil, il me fallait mettre à l'épreuve mes compétences de designer et de développeur. Je remercie "" Pour avoir développer le superbe outil qu'est [tkinter-designer]() qui m'a considérablement accélérer le processus de développement ! J'ai découvert le super outil qu'est Figma et l'application prenait enfin forme ..
+
+5. Le drame
+Mon script n'était basé que sur un seul site web à l'époque et ce que je redoutais arriva : CloudFlare ! L'énnemie juré des scrapeurs web, la barrière à l'automatisation de tâches était arrivée sur Japscan. J'ai passer énormément de temps à chercher un moyen de contourner cette restriction : Utilisation de proxys, changement de User Agent, undetected-chromedriver .. Rien dutout
 
 ## Leçons tirées ✍️
 Partagez les leçons précieuses que vous avez tirées de votre travail sur PandaScan. Réfléchissez à ce qui s'est bien passé et à ce qui aurait pu être fait différemment. Offrez des idées aux développeurs en herbe ou à ceux intéressés par des projets similaires.
