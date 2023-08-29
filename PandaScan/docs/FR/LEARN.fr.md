@@ -1,7 +1,7 @@
 # Derrière PandaScan 🐼 ( L'histoire )
 
 ## Table des Matières
-- [Introduction](#introduction)
+- [Introduction](https://github.com/CAprogs/PandaScan/blob/main/PandaScan/docs/FR/LEARN.fr.md#introduction)
 - [Idée 💡](https://github.com/CAprogs/PandaScan/blob/main/PandaScan/docs/FR/LEARN.fr.md#id%C3%A9e-)
 - [Défis ⛔️](#défis-⛔️)
 - [Développement 🏗️](#développement-🏗️)
