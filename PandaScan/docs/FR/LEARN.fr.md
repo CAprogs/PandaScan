@@ -24,12 +24,11 @@ Dans ce document, nous plongerons dans le parcours de création de PandaScan �
 
 ## Idée 💡
 C'est en regardant des vidéos sur Tiktok que m'est venu l'idée ! Des comptes diffusaient des pages de scans de mes mangas favoris et je me suis demander comment ils le faisaient vu que la plupart si ce n'est tous les sites de lecture de manga en ligne qui ne nous permettent pas de télécharger ces pages automatiquement. Je me suis dit que si je voulais faire la même chose j'allais perdre un temps énorme à sélectionner chaque page de chapitres de manga pour les télécharger. Le besoin de créer une solution qui me permette de télécharger automatiquement les chapitres de manga que je voulais provient aussi du fait que ces derniers ne sont accessibles qu'à travers une connexion internet ce qui est dommage lorsque nous voulons y accéder même Hors ligne ou en région reculée, loin de tout. 
-#
+
 
 ## Défis ⛔️
 Comme tout projet et tout développeur qui se respecte, j'ai bien évidemment fais face à de nombreux problèmes ce qui m'a fallu de nombreux jours de debuggage. Les principaux défis auxquels j'ai fait face sont  principalement liés aux syntaxes obsolètes de certaines bibliothèques, la récupération des données pour les sites et la création d'une interface utilisateur simple et facile à prendre en main. J'ai passer beaucoup de temps à tester , débugger et fouiller. Savoir fouiller au bon endroit et trouver la solution à un problème spécifique procure énormément de satisfaction !
 
-#
 
 ## Développement 🏗️
 Avant de commencer mon projet, il fallait vérifier que le problème 'avait pas encore été résolu. À ma grande surprise il existait bel et bien des outils pour le faire mais qui ne prenaient pas en compte le côté francophone ! J'ai donc décider de me lancer dans l'aventure. Je savais qu'il me fallait un moyen d'**aller sur les sites de lecture de manga en ligne**, **récupérer les pages => du chapitre => d'un manga** que je voulais et le **stocker dans un dossier** sur mon ordinateur ! Sur le papier ça avait l'air simple à faire étant donné que j'avais déjà eu à faire au scraping web auparavant.
@@ -70,7 +69,6 @@ Pour atteindre l'automatisation ultime, il me fallait un moyen de rendre les don
 ## Leçons tirées ✍️
 Partagez les leçons précieuses que vous avez tirées de votre travail sur PandaScan. Réfléchissez à ce qui s'est bien passé et à ce qui aurait pu être fait différemment. Offrez des idées aux développeurs en herbe ou à ceux intéressés par des projets similaires.
 
-#
 
 ## Remerciements
 Exprimez votre gratitude envers les individus, les communautés ou les ressources qui ont soutenu et contribué au projet PandaScan. Cela pourrait inclure des mentors, des bibliothèques open source ou des collaborateurs.
