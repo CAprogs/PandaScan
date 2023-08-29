@@ -62,14 +62,21 @@ Comme tout bon perfectionniste qui se respecte je ne pouvais pas m'arrêter à c
 
 9. **Une feature de luxe**
 
-Pour atteindre l'automatisation ultime, il me fallait un moyen de rendre les données à jour et éviter à l'utilisateur de lancer manuellement le script pour mettre à jour les mangas ou les chapitres disponibles au téléchargement. J'ai donc gérer l'exécution de ces scripts en créant un fichier JSON de configuration qui permette de coisir entre une mise à jour manuelle ou automatique au lancement de l'application. J'ai aussi mis en place un système qui permette de traquer chaque changement dans les données de chaque site : Les mangas et chapitres ajoutés ou supprimés, la date et l'heure de la mise à jour. 
+Pour atteindre l'automatisation ultime, il me fallait un moyen de rendre les données à jour et éviter à l'utilisateur de lancer manuellement le script pour mettre à jour les mangas ou les chapitres disponibles au téléchargement. J'ai donc gérer l'exécution de ces scripts en créant un fichier JSON de configuration qui permette de choisir entre une mise à jour manuelle ou automatique au lancement de l'application. J'ai aussi mis en place un système qui permette de traquer chaque changement dans les données de chaque site : Les mangas et chapitres ajoutés ou supprimés, la date et l'heure de la mise à jour. 
 
 ## Leçons tirées ✍️
-Partagez les leçons précieuses que vous avez tirées de votre travail sur PandaScan. Réfléchissez à ce qui s'est bien passé et à ce qui aurait pu être fait différemment. Offrez des idées aux développeurs en herbe ou à ceux intéressés par des projets similaires.
+
+En développat PandaScan 🐼, j'ai beaucoup appris de Github, j'ai même pu réaliser mon premier pull request sur le projet [MISST]() de [frikallo](). 
+J'ai aussi beaucoup appris en développement d'application et design d'interface graphique avec Python ! Les erreurs que j'ai rencontrés , la façon de développer , j'en ai appris beaucoup et je sais désormais comment entamer un projet de la sorte et le mener en toute autonomie. Néanmoins j'aurai aimer pouvoir travailler en équipe même si le feedback de mon entourage m'a beaucoup aider. Seul on va plus vite mais à plusieurs on va plus loin. Raison pour laquelle , si vous êtes intéressés à améliorer le projet, je vous invite à consulter la rubrique [CONTRIBUTION]() pour savoir comment apporter du nouveau à PandaScan 🐼 !
 
 
 ## Remerciements
-Exprimez votre gratitude envers les individus, les communautés ou les ressources qui ont soutenu et contribué au projet PandaScan. Cela pourrait inclure des mentors, des bibliothèques open source ou des collaborateurs.
+Je tiens à exprimer ma gratitude envers tous les acteurs proches ou lointains qui ont permis la réalisation de ce projet ! Ce projet n'aurait jamais vu le jour sans l'Open Source raison pour laquelle ce projet restera Libre d'accès à quiconque voudra en faire usage dans le respect des limites de son utilisation bien entendu ! 
+
+Merci encore de m'avoir lu et je vous retrouve dans de prochaines histoires encore plus passionnantes je l'espère 😋.
+
+
+Charles.
 
 ---
 
