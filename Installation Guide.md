@@ -4,7 +4,7 @@
 
 `The First following step is required for those who want the Full access to PandaScan 🐼 Features ( Download & Update Features ).`
 
-If you don't want the **Full version** you can rely on the [**lightweight version**](https://github.com/CAprogs/PandaScan/releases/download/v1.0.0/PandaScan.Lite.zip).
+If you don't want the **Full version** you can rely on the [**lightweight version**](https://github.com/CAprogs/PandaScan/releases/download/v1.0.0/PandaScan.Lite.zip) and directly go to the [Second step]().
 
 ---
 
