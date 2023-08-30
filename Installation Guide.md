@@ -12,11 +12,13 @@ If you don't want the **Full version** you can rely on the [**lightweight versio
 #
 Prerequise : Ensure that you have **Google Chrome** installed on your computer. 
 
-- Download [**Chromewebdriver**](https://chromedriver.chromium.org/downloads) ( Select the **right version** for your architecture )
--  Access this **URL** `chrome://version/` & **COPY** the path below ⬇️ 
+- Download [**Chromewebdriver**](https://chromedriver.chromium.org/downloads) ( Select the **right version** for your architecture in the table below )
 
-<img width="1098" alt="Chrome profile path" src="https://github.com/CAprogs/PandaScan/assets/104645407/470abe42-a6c6-4b62-9646-ab7185c9c8cb">
+<img width="1488" alt="Capture d’écran 2023-08-26 à 01 01 00" src="https://github.com/CAprogs/PandaScan/assets/104645407/26ab6c15-9f8c-4bde-9c31-134a56f40273">
 
+-  **COPY** the path to your `.EXE` in your chromedriver file & **Paste** it in the `config.json` file as below ⬇️
+
+GIF 1
 
 ---
 
@@ -74,7 +76,7 @@ conda run -n Pandavenv python path/to/App.py
 
 If you don't like the Terminal, you can **launch** the **PandaScan** app using **VScode** ⬇️
 
-Gif 1
+GIF 2
 
 ---
 **NB:**
