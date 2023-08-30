@@ -1,10 +1,10 @@
 # Get started with PandaScan 🐼
 
-## **v1.0.0** | _**23/08/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
+## **v1.0.0** | _**30/08/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
 
-`The First following step is required for those who want the Full access to PandaScan 🐼 Features ( Download & Update Features ).`
+`The [First step]() is required for those who want the Full access to PandaScan 🐼 Features ( Download & Update Features ).`
 
-If you don't want the **Full version** you can rely on the [**lightweight version**](https://github.com/CAprogs/PandaScan/releases/download/v1.0.0/PandaScan.Lite.zip) and directly go to the [Second step]().
+If you don't want the **Full version** you can rely on the [**lightweight version**](https://github.com/CAprogs/PandaScan/releases/download/v1.0.0/PandaScan.Lite.zip) and directly go to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
 
 ---
 
