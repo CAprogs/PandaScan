@@ -52,13 +52,18 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - [x] Released the [**Lightweight version**](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
 - [x] Added the [**Installation Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
 - [x] Re-organized files
-      
+- [x] Update the Selenium bug and the [**Installation Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+- [x] fix some Bugs and add updated features and App mechanics
+- [x] Update the config.json file ( dark/light mode or another backroung idea ; redifine the saving area )
+- [x] Update the LEARN file related to PandaScan 🐼 creation
+- [x] Update all websites files and Add a Path Management
+- [x] Users are now able to change the saving path , change manual to auto Update or just deactivate the Update feature
+
 ## Roadmap 🚧
 
-- [ ] Update the config.json file ( dark/light mode or another backroung idea ; redifine the saving area )
-- [ ] Update the Selenium function and the Guide to download the automated chromedriver
-- [ ] Update Docu ( doc file + Demo + Gif + App view )
-- [ ] Deployment ( script .Exe , Docker ? )
+- [ ] Clean and Optimize code
+- [ ] Update Docu ( doc files + Demo + Gifs + App view )
+- [ ] Deployment ( script .Exe , Docker , API ? )
 
 ## Installation 🛠️
 
