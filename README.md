@@ -1,4 +1,3 @@
-
 <div align="center">
         
 ![APP_LOGO](https://github.com/CAprogs/PandaScan/assets/104645407/37d0a0e8-0f19-4a9c-b2c3-34126dc71a21)
@@ -11,11 +10,11 @@
         
 </div>
 
-## About ⛔️
+## À Propos ⛔️
 
-Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos **```suggestions de sites```** ou **```vos idées```** à travers le [```Chat```](https://github.com/CAprogs/PandaScan/discussions/2). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**. 
+Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos **```suggestions de sites```** ou **```vos idées```** à travers le [```Chat```](https://github.com/CAprogs/PandaScan/discussions/2). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**.
 
-## Translations
+## Traductions
 
 - [**Français**]() (FR)
 - [**English**](docs/EN/README.en.md) (EN)
@@ -28,41 +27,41 @@ Tous les sites disponibles sur l'application sont des sites **Français**. N'hé
 
 Retrouvez la liste des **packages / modules** utilisés [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
 
-## Features 🚀
+## Fonctionnalités 🚀
 
 - _**Téléchargement**_ ↧ : Téléchargez automatiquement et en un clic tous les scans que vous désirez !
-- _**Stockage**_ 📚 : Les fichiers téléchargés sont stockés au bon endroit , au bon moment !
+- _**Stockage**_ 📚 : Les fichiers téléchargés sont stockés au bon endroit, au bon moment !
 - _**Mise à Jour**_ ( Manuelle / Automatique ) ♽: Un véritable tour de magie 🪄, restez à jour et à l'âffût des dernières sorties de vos scans !
 - _**Changelog**_ 🔗 : Restez informé des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤 
 
 [```Démo```]()
 
-## Infos Update ♻️
+## Infos Mises à Jour ♻️
 
-- [x] Update de l'interface graphique 
+- [x] Mise à jour de l'interface graphique
 - [x] Ajout de fonctionnalités et de mangas :
 <br>    • Lelscans.net ajouté</br>
-        • Switch de sites de Scrapping
+        • Changement de sites de Scraping
 - [x] Correction de bugs :
 <br>    • Téléchargement de mangas impossible après sélection</br>
 - [x] Ajout de "fmteam.fr"
-- [x] Improuvement du téléchargement ( Vérification préalable de l'existance / non du fichier avant téléchargement )
-- [x] Allègement du code ( Ajouts de Scripts secondaires pour développement efficace et maintenable + Suppression de méthodes inutiles )
-- [x] Bouton Update des sites ( permettre aux utilisateurs de Mettre à jour les Données de chaque site ) 
-- [x] Released the [**Lightweight version**](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
-- [x] Added the [**Installation Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
-- [x] Re-organized files
-- [x] Update the Selenium bug and the [**Installation Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
-- [x] fix some Bugs and add updated features and App mechanics
-- [x] Update the config.json file : Users are now able to change the saving path , change manual to auto Update or just deactivate the Update feature
-- [x] Update the LEARN file related to PandaScan 🐼 creation
-- [x] Update all websites files and Add a Path Management
+- [x] Amélioration du téléchargement ( Vérification préalable de l'existence / non-existence du fichier avant téléchargement )
+- [x] Allègement du code ( Ajouts de Scripts secondaires pour un développement efficace et maintenable + Suppression de méthodes inutiles )
+- [x] Bouton de Mise à Jour des sites ( permettre aux utilisateurs de Mettre à jour les Données de chaque site )
+- [x] Sortie de la [**version légère**](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
+- [x] Ajout du [**Guide d'Installation**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+- [x] Réorganisation des fichiers
+- [x] Mise à jour du bug Selenium et du [**Guide d'Installation**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+- [x] Correction de certains bugs et ajout de fonctionnalités mises à jour et de mécanismes d'application
+- [x] Mise à jour du fichier config.json : les utilisateurs peuvent désormais changer le chemin de sauvegarde, passer de la mise à jour manuelle à automatique ou simplement désactiver la fonction de mise à jour
+- [x] Mise à jour du fichier LEARN lié à la création de PandaScan 🐼
+- [x] Mise à jour de tous les fichiers de sites web et ajout de la gestion des chemins
 
-## Roadmap 🚧
+## Feuille de Route 🚧
 
-- [ ] Clean and Optimize code
-- [ ] Update Docu ( doc files + Demo + Gifs + App view )
-- [ ] Deployment ( script .Exe , Docker , API ? )
+- [ ] Nettoyer et Optimiser le code
+- [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
+- [ ] Déploiement ( script .Exe , Docker , API ? )
 
 ## Installation 🛠️
 
@@ -74,42 +73,42 @@ Suivez ce [**```Guide```**](https://github.com/CAprogs/PandaScan/blob/main/Insta
 
 Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujours en développement 🔨
 
-## Get Started 🧞‍♂️
+## Commencer 🧞‍♂️
 
 1. Ouvrez l'application PandaScan 🐼
-2. Cherchez votre Manga favoris 🔍
+2. Recherchez votre Manga favori 🔍
 3. Sélectionnez le Manga et les Chapitres de vos rêves 🤩
-4. Lancez le téléchargement : PandaScan se charge du reste 💨
+4. Lancez le téléchargement : PandaScan s'occupe du reste 💨
 5. Lisez sans modération 🤓
 
 ## Principe 🤔
 
-La figure ci dessous représente le fonctionnement de PandaScan 🐼. Les icônes 🟢 désignent la sélection de l'utilisateur. 
+La figure ci-dessous représente le fonctionnement de PandaScan 🐼. Les icônes 🟢 désignent la sélection de l'utilisateur.
 
-<img width="700" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
+<img width="700" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
 
-## Screenshots 👁️
+## Captures d'Écran 👁️
 
-<img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
+<img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
 
-## Disclaimer ⚠️
+## Avis de non-responsabilité ⚠️
 
-1. Cette application a été créée dans le but de faciliter le téléchargement et la lecture en région reculée ou en déplcement de vos mangas favoris. Ce projet n'est pas à but lucratif et se veut à utilisation personnelle.
-2. Un téléchargement trop récurrent et souvent excessif peut entraîner le disfonctionnement d'un site Internet. Merci d'utiliser cet outil avec résilience pour le bien de tous.
-3. Si certains fichiers téléchargés sont vides, c'est tout à fait normal ! Les sites ne sont pas parfaits et le stockage des données peut être assez coûteux. 
+1. Cette application a été créée pour faciliter le téléchargement et la lecture de vos mangas préférés dans les zones reculées ou en voyage. Ce projet n'est pas à but lucratif et est destiné à un usage personnel.
+2. Le téléchargement excessif et fréquent peut entraîner le dysfonctionnement d'un site web. Veuillez utiliser cet outil de manière responsable pour le bien de tous.
+3. Si certains fichiers téléchargés sont vides, c'est tout à fait normal ! Les sites ne sont pas parfaits et le stockage des données peut être coûteux.
 
-_**Si vous avez les moyens de vous procurer ces oeuvres, Faites le, ne serait ce que pour soutenir les auteurs !**_
+_**Si vous avez les moyens d'acheter ces œuvres, veuillez le faire, ne serait-ce que pour soutenir les auteurs !**_
 
-## Author ✍️
+## Auteur ✍️
 
 - [@CAprogs](https://github.com/CAprogs)
 
-## License 📝
+## Licence 📝
 
-Ce projet utilise la [```MIT License```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
+Ce projet utilise la [```Licence MIT```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
 
-## Donation & Support ❤️
+## Don & Soutien ❤️
 
-Si vous aimez ce projet n'hésitez pas à lui attribuer une 🌟 !
+Si vous aimez ce projet, n'hésitez pas à lui donner une 🌟 !
 
-<a href="https://www.buymeacoffee.com/CAprogs"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
+<a href="https://www.buymeacoffee.com/CAprogs"><img src="https://img.buymeacoffee.com/button-api/?text=Offrez-moi une pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
