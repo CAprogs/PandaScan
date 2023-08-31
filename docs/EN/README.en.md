@@ -1,105 +1,80 @@
-<div align="center">
-        
-![APP_LOGO](https://github.com/CAprogs/PandaScan/assets/104645407/37d0a0e8-0f19-4a9c-b2c3-34126dc71a21)
+# Behind PandaScan 🐼 (The Story)
 
-# 
-![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) ![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue) ![GitHub forks](https://img.shields.io/github/forks/CAprogs/PandaScan?color=green) ![GitHub watchers](https://img.shields.io/github/watchers/CAprogs/PandaScan?color=red)
+## Table of Contents
+- [Introduction](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#introduction)
+- [Idea 💡](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#idea-)
+- [Challenges ⛔️](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#challenges-%EF%B8%8F)
+- [Development 🏗️](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#development-%EF%B8%8F)
+- [Lessons Learned ✍️](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#lessons-learned-%EF%B8%8F)
+- [Acknowledgments](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#acknowledgments)
 
-<br>Have you always had the desire to **download your favorite manga chapters without any limits**?</br>
-**PandaScan 🐼** is the _Utorrent of your favorite manga_ 🤩!
-        
-</div>
+#
 
-## About ⛔️
+## **Introduction**
 
-All the sites available on the application are **French** sites. Feel free to add your suggestions for sites through the [**Chat**](). **English** scan reading sites will be **added very soon**.
+Hello 👋, my name is Charles, I'm 22 years old, and I'm in my final year of engineering school at ECAM-EPMI Cergy in 🇫🇷
 
-## Translations
+For a few years now, I've been passionate about computers and programming in general! Like any typical student, I had to learn numerous programming languages during my studies, such as HTML, CSS, JavaScript, C, etc.
 
-- [**Français**]()
-- [**English**]()
+However, I found a greater interest in learning Python 🐍, a language known for its simplicity and efficiency. Machine Learning, Automation, App Development, etc... The possibilities with this language are vast and diverse. So, I jumped into it, and for the past few years, I've been continuously learning new things, whether through personal projects, courses, or YouTube videos!
 
-## Technologies 📲
+In this document, we will delve into the journey of creating PandaScan 🐼, a project that means a lot to me, from its initial idea to its implementation and beyond. The upcoming story aims to convey my passion, acquaint you with the challenges I faced, and share the lessons that shaped this project.
 
-- [**Python**](https://www.python.org/)
-- [**Tkinter-Designer**](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
-- [**Figma**](https://www.figma.com/login)
+## Idea 💡
+The idea came to me while watching Tiktok videos! Accounts were sharing pages of scans from my favorite manga, and I wondered how they did it, as most, if not all, online manga reading sites don't allow us to download these pages automatically. I realized that if I wanted to do the same thing, I would waste a tremendous amount of time selecting each chapter page to download. The need to create a solution that would allow me to automatically download the manga chapters I wanted also arose from the fact that these chapters are only accessible through an internet connection, which is unfortunate when we want to access them offline or in remote areas, far from everything.
 
-Find the list of **packages / modules** used [```here```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
+## Challenges ⛔️
+Like any respectable project and developer, I certainly faced numerous problems, requiring many days of debugging. The main challenges I encountered were mainly related to outdated syntax of certain libraries, data retrieval from websites, and creating a user-friendly interface. I spent a lot of time testing, debugging, and researching. Knowing where to search and finding the solution to a specific problem brings a great deal of satisfaction!
 
-## Features 🚀
+## Development 🏗️
+Before starting my project, I needed to verify that the problem hadn't already been solved. To my great surprise, there were indeed tools to do this, but they didn't take the Francophone aspect into account! So, I decided to embark on this adventure. I knew I needed a way to **access online manga reading sites**, **retrieve the pages => of the chapter => of a manga** that I wanted, and **store it in a folder** on my computer! On paper, it seemed simple to do, given that I had already dealt with web scraping before.
 
-- _**Download**_ ↧: Automatically download all the scans you desire with just one click!
-- _**Storage**_ 📚: Downloaded files are stored in the right place, at the right time!
-- _**Update**_ (Manual / Automatic) ♽: Real magic 🪄, stay up to date with the latest releases of your scans!
-- _**Changelog**_ 🔗: Stay informed about changes in your data! All changes are recorded after an update 𝌤
+1. **Testing**
 
-[```Demo```]()
+In this step, I needed to test accessing the site and downloading a page to ensure the project was feasible. Access was possible with either Request or Selenium, but I needed to see what happened when my script ran. Therefore, I opted for the combination of Selenium + Request. I accessed the page of my manga and sent a request to download the manga, and it worked. Too simple! The site's developers had complicated things and hidden the address containing the image on another page. I was able to quickly bypass this restriction, but the server was rejecting my requests. So, I decided to find another way to retrieve the image. After a few days of reflection, the idea of simply taking a screenshot of the image came to mind! To my surprise, this was possible with Selenium. The script wasn't perfect, but it worked! Additionally, I didn't like the dark areas that the screenshot captured, I wanted the image alone, clean, at the original size, and taking up less space because, yes, screenshots take up space (an average of 3 MB per capture). So, I looked for a way to "crop" the image after capture, but I encountered another problem: the pages are not all the same size and not all in the same format (some were vertical and others horizontal). After a few nights of testing, I managed to create the script that allowed me to "crop" the image to the correct size and format!
 
-## Update Information ♻️
+3. **Taking Action**
 
-- [x] Updated graphical interface
-- [x] Added features and manga:
-<br>    • Added Lelscans.net</br>
-        • Switched scraping sites
-- [x] Fixed bugs:
-<br>    • Manga download not possible after selection</br>
-- [x] Added "fmteam.fr"
-- [x] Improved download process (Pre-check for file existence before download)
-- [x] Code optimization (Added secondary scripts for efficient and maintainable development + Removed unnecessary methods)
-- [x] Update buttons for sites (allow users to update data for each site)
-- [x] Released the [Lightweight version](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)
-- [x] Added the [Installation Guide](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+In this step, I needed to automate the process: access the first page of the manga, download this page, and store it in a folder named after the manga, which would contain the "name of the chapter being downloaded." Then, I needed to access the next page and add it to the created sub-folder. This had to be done until the entire chapter was downloaded! The use of loops was essential. I needed to find a "pattern" that allowed me to access the following pages by incrementing a value. This was quite easy since all the sites followed the same architecture: "site/manga_name/chapter_number/page." I just had to increment "page," and it was done. The script worked wonderfully! Unfortunately, this wasn't enough...
 
-## Roadmap 🚧
+4. **Full Automation**
 
-- [ ] Add the App_Settings to allow customization of app usage
-- [ ] Update Documentation (Installation + Demo + Gif + App view)
-- [ ] Deployment (executable script, Docker)
+Although everything was working perfectly, it was tiresome to enter the manga's address and find the pattern each time in my script before downloading the manga. I needed a simpler way to access the manga I wanted, as well as the chapter I wanted! Hence the need to retrieve data about all chapter numbers and all available manga names from the site. This step was painstaking but useful for the future.
 
-## Installation 🛠️
+5. **Graphic Interface**
 
-### I. _You're a Python expert_ 🤓
+To allow others to use this tool, I needed to put my design and development skills to the test. I thank "" for developing the amazing tool [tkinter-designer](), which significantly sped up the development process for me! I discovered the fantastic tool called Figma, and the application was finally taking shape...
 
-Prerequisites:
-**Python3** or **Conda**
+6. **The Drama**
 
-Follow this [Guide](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+At that time, my script was based on just one website, and what I feared happened: CloudFlare! The arch-nemesis of web scrapers, the barrier to task automation, had arrived on Japscan. I spent a lot of time searching for ways to bypass this restriction: using proxies, changing User Agents, Undetected-chromedriver... All without success. The simplest solution was to change the website and start the process again.
 
-### II. _You're not familiar with this_ 🫥
+7. **Survivor**
 
-Download PandaScan 🐼 as a .EXE file [```here```]()    # Still under development 🔨
+In my research, I found websites with a good structure, a fairly wide range of manga, and accessibility through simple requests! The scraper's holy grail. After spending a few sleepless nights developing scraping scripts for the relevant sites, I finally integrated them into my application!
 
-## Get Started 🧞‍♂️
+8. **Develop and Improve**
 
-1. Open the PandaScan 🐼 application
-2. Search for your favorite Manga 🔍
-3. Select the Manga and the Chapters of your dreams 🤩
-4. Start the download, PandaScan takes care of the rest 💨
-5. Read without moderation 🤓
+As any self-respecting perfectionist would do, I couldn't stop at this task. I absolutely had to make the script available, understandable, and organized. I'll spare you the details; I'm still racking my brains... Nevertheless, the test version is available [here]().
 
-## App View 👁️
+9. **A Luxury Feature**
 
-<img width="958" alt="Screenshot 2023-08-10 at 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
+To achieve ultimate automation, I needed a way to keep the data up to date and prevent the user from manually running the script to update available manga or chapters. So, I managed the execution of these scripts by creating a JSON configuration file that allowed users to choose between manual or automatic updates when launching the application. I also set up a system to track every change in the site's data: added or removed manga and chapters, update date and time.
 
-## Disclaimer ⚠️
+## Lessons Learned ✍️
 
-1. This application was created to facilitate the download and offline reading of your favorite mangas in remote areas or while traveling. This project is non-profit and intended for personal use.
-2. Excessive and frequent downloading can disrupt a website's functionality. Please use this tool responsibly for the benefit of all.
-3. If some downloaded files are empty, that's completely normal! Websites are not perfect and data storage can be costly.
+While developing PandaScan 🐼, I learned a lot from GitHub. I even managed to make my first pull request on the [MISST project](https://github.com/Frikallo/MISST).
 
-_**If you can afford to purchase these works, please do so, if only to support the authors!**_
+I also learned a lot about application development and graphical interface design with Python! The mistakes I encountered, the development process—I learned a lot, and now I know how to approach and carry out a project like this independently. Nevertheless, I would have liked to work in a team, even though the feedback from those around me was very helpful. Alone, we go faster, but together, we go further. That's why, if you're interested in improving the project, I invite you to check out the [CONTRIBUTION section]() to learn how to contribute to PandaScan 🐼!
 
-## Author ✍️
+## Acknowledgments
 
-- [@CAprogs](https://github.com/CAprogs)
+I would like to express my gratitude to all those who played a role, whether close or distant, in making this project a reality! This project would never have come to fruition without Open Source, which is why this project will remain freely accessible to anyone who wants to use it, within the limits of its use, of course!
 
-## License 📝
+Thank you again for reading, and I hope to see you in even more exciting stories in the future 😋.
 
-This project is licensed under the [```MIT License```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
+_Charles_
 
-## Donation & Support ❤️
+---
 
-If you like this project, feel free to give it a 🌟!
-
-<a href="https://www.buymeacoffee.com/CAprogs"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
+*This document aims to provide an in-depth account of the creation of PandaScan 🐼, capturing the dedication and passion invested in bringing this project to life.*
