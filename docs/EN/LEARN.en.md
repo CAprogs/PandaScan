@@ -1,7 +1,7 @@
 # Behind PandaScan 🐼 (The Story)
 
 ## Table of Contents
-- [Introduction](#introduction)
+- [Introduction](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#introduction)
 - [Idea 💡](#idea-💡)
 - [Challenges ⛔️](#challenges-⛔️)
 - [Development 🏗️](#development-🏗️)
