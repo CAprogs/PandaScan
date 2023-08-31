@@ -12,7 +12,7 @@ If you don't want the **Full version** you can rely on the [**lightweight versio
 #
 Prerequise : Ensure that you have **Google Chrome** installed on your computer. 
 
-- Download [**Chromewebdriver**](https://chromedriver.chromium.org/downloads) ( Select the **right version** for your architecture in the table below )
+- Download [**Chromewebdriver**](https://chromedriver.chromium.org/downloads) ( Select the **right version** for your architecture as in the table below )
 
 <img width="1488" alt="Capture d’écran 2023-08-26 à 01 01 00" src="https://github.com/CAprogs/PandaScan/assets/104645407/26ab6c15-9f8c-4bde-9c31-134a56f40273">
 
