@@ -3,7 +3,12 @@
 ![APP_LOGO](https://github.com/CAprogs/PandaScan/assets/104645407/37d0a0e8-0f19-4a9c-b2c3-34126dc71a21)
 
 # 
-![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) ![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue) ![GitHub forks](https://img.shields.io/github/forks/CAprogs/PandaScan?color=green) ![GitHub watchers](https://img.shields.io/github/watchers/CAprogs/PandaScan?color=red)
+![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) 
+![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue) 
+![GitHub forks](https://img.shields.io/github/forks/CAprogs/PandaScan?color=green) 
+![GitHub watchers](https://img.shields.io/github/watchers/CAprogs/PandaScan?color=red)
+![GitHub all releases](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
+
 
 <br>Vous avez toujours eu l'envie de **télécharger vos chapitres de mangas favoris sans limite** ?</br>
 **PandaScan 🐼** c'est le _Utorrent de ton manga favoris_ 🤩 !
