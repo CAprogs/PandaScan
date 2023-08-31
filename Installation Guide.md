@@ -16,9 +16,9 @@ Prerequise : Ensure that you have **Google Chrome** installed on your computer.
 
 <img width="1488" alt="Capture d’écran 2023-08-26 à 01 01 00" src="https://github.com/CAprogs/PandaScan/assets/104645407/26ab6c15-9f8c-4bde-9c31-134a56f40273">
 
--  **COPY** the path to your `.EXE` in your chromedriver file & **Paste** it in the `config.json` file as below ⬇️
+-  **COPY** the path to your `.EXE` file in your chromedriver directory & **Paste** it in the `config.json` file as below ⬇️
 
-GIF 1
+![Installation Guide](https://github.com/CAprogs/PandaScan/assets/104645407/bffd530c-a774-4a56-b875-6a0d2136354d)
 
 ---
 
