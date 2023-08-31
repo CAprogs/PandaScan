@@ -53,10 +53,9 @@ Find the list of used **packages / modules** [```here```](https://github.com/CAp
 - [x] Re-organized files
 - [x] Fixed Selenium bug and the [**Installation Guide**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
 - [x] Fixed some bugs, added updated features, and improved app mechanics
-- [x] Updated the config.json file (dark/light mode or another background idea; redefined the saving area)
+- [x] Updated the config.json file : Users can now change the saving path, change manual to auto Update, or just deactivate the Update feature
 - [x] Updated the LEARN file related to PandaScan 🐼 creation
 - [x] Updated all website files and added Path Management
-- [x] Users can now change the saving path, change manual to auto Update, or just deactivate the Update feature
 
 ## Roadmap 🚧
 
