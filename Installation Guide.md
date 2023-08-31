@@ -80,4 +80,4 @@ GIF 2
 
 ---
 **NB:**
-The Update changelog File are available in _**PandaScan > datas > "whatever website" > changelog.txt**_ when you launch the Update feature.
+The Update "change_report" File is available in _**PandaScan > datas > "whatever website" > change_report.txt**_ when you launch the Update feature.
