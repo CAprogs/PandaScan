@@ -1,6 +1,11 @@
+# ---------------------------------------------- Obligatoire pour accéder aux modules du dossier principal
+import sys
+from Path_to_fmteam import script_repo
+sys.path.insert(0, script_repo)
+# ----------------------------------------------
 import pandas as pd
-from Selenium_config import driver
 from selenium.webdriver.common.by import By
+from Selenium_config import driver
 
 def Scrap_Titles():
     links_list = []
@@ -37,7 +42,7 @@ def Scrap_Titles():
     datas = pd.DataFrame(data_to_add)
 
     print(f"\nSauvegarde des datas ...")
-    datas.to_csv(f'fmteam.fr/datas/mangas.csv', index=False)
+    datas.to_csv(f'{script_repo}/datas/mangas.csv', index=False)
 
     print(f"\nFin.")
 

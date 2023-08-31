@@ -1,16 +1,17 @@
 import yaml
 import os
 from datetime import datetime
+from Path_to_fmteam import script_repo
 
 def read_previous_state():
     try:
-        with open('fmteam.fr/datas/mangas_chapters.yml', 'r') as file:
+        with open(f'{script_repo}/datas/mangas_chapters.yml', 'r') as file:
             return yaml.safe_load(file)
     except FileNotFoundError:
         return {}
 
 def write_current_state(state):
-    with open('fmteam.fr/datas/mangas_chapters.yml', 'w') as file:
+    with open(f'{script_repo}/datas/mangas_chapters.yml', 'w') as file:
         yaml.dump(state, file)
 
 def read_update_number():
@@ -50,7 +51,7 @@ def generate_change_report(current_state, previous_state):
 
 def generate_changelog():
     # Load the temporary YAML file
-    with open('fmteam.fr/datas/mangas_chapters_temp.yml', 'r') as temp_file:
+    with open(f'{script_repo}/datas/mangas_chapters_temp.yml', 'r') as temp_file:
         current_state = yaml.safe_load(temp_file)
 
     previous_state = read_previous_state()
@@ -68,11 +69,11 @@ def generate_changelog():
 
     report = f"\nUpdate {update_number} : {update_time}\n{change_report}"
 
-    with open('fmteam.fr/change_report.txt', 'a') as file:
+    with open(f'{script_repo}/change_report.txt', 'a') as file:
         file.write(report)
 
     write_update_number(update_number)
     write_current_state(current_state)
 
     # Remove the temporary YAML file
-    os.remove('fmteam.fr/datas/mangas_chapters_temp.yml')
+    os.remove(f'{script_repo}/datas/mangas_chapters_temp.yml')

@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+from Path_to_lelscans import script_repo
 
 def Scrap_Titles():
     links_list = []
@@ -39,6 +40,6 @@ def Scrap_Titles():
     datas = pd.DataFrame(data_to_add)
 
     print(f"\nSauvegarde des datas ...")
-    datas.to_csv(f'lelscans.net/datas/mangas.csv', index=False)
+    datas.to_csv(f'{script_repo}/datas/mangas.csv', index=False)
 
     print(f"\nFin.")

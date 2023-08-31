@@ -1,14 +1,14 @@
 import requests
 import pandas as pd
 import yaml
-
 from bs4 import BeautifulSoup
+from Path_to_lelscans import script_repo
 
 
 def Scrap_Chapters():
     print("\n Importation et Creation des données ... \n")
     # Ouvrir le fichier csv : mangas
-    datas = pd.read_csv(f'lelscans/datas/mangas.csv') # Accès mangas et liens
+    datas = pd.read_csv(f'{script_repo}/datas/mangas.csv') # Accès mangas et liens
     manga_chapters_dict = {} # création du dictionnaire qui contiendra les chapitres respectifs de chaque manga
 
     print("\nDebut Scrapping ... ")
@@ -35,9 +35,9 @@ def Scrap_Chapters():
     yml_data = yaml.dump(manga_chapters_dict)
 
     print(f"\nSauvegarde des datas ...")
-    # Sauvegarde des datas
 
-    with open(f'lelscans.net/datas/mangas_chapters_temp.yml', 'w') as file:
+    # Sauvegarde des datas
+    with open(f'{script_repo}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
 
     print(f"\nFin Scrapping.")

@@ -1,7 +1,12 @@
+# ---------------------------------------------- Obligatoire pour accéder aux modules du dossier principal
+import sys
+from Path_to_scantrad import script_repo
+sys.path.insert(0, script_repo)
+# ----------------------------------------------
 import pandas as pd
 import re
-from Selenium_config import driver
 from selenium.webdriver.common.by import By
+from Selenium_config import driver
 
 def Scrap_Titles():
 
@@ -52,7 +57,7 @@ def Scrap_Titles():
 
     print(f"\nSauvegarde des datas ...")
     # Sauvegarde des datas
-    datas.to_csv(f'scantrad-vf/datas/mangas.csv', index=False)
+    datas.to_csv(f'{script_repo}/datas/mangas.csv', index=False)
 
     print(f"\nFermeture navigateur.")
     # Fermeture du navigateur

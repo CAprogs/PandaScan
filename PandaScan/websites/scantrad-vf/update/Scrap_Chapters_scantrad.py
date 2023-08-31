@@ -1,15 +1,20 @@
+# ---------------------------------------------- Obligatoire pour accéder aux modules du dossier principal
+import sys
+from Path_to_scantrad import script_repo
+sys.path.insert(0, script_repo)
+# ----------------------------------------------
 import pandas as pd
 import re
 import yaml
-from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from Selenium_config import driver
 
+
 def Scrap_Chapters():
 
-    print("\n Importation et Creation des données ... \n")
+    print("\n Importation et Création des données ... \n")
     # Ouvrir le fichier csv mangas
-    datas = pd.read_csv(f'scantrad-vf/datas/mangas.csv') # Parcourir les noms de mangas 
+    datas = pd.read_csv(f'{script_repo}/datas/mangas.csv') # Parcourir les noms de mangas 
     manga_chapters_dict = {} # création du dictionnaire qui contiendra les chapitres respectifs de chaque manga
 
     print("\nDebut Scrapping ... ")
@@ -18,13 +23,11 @@ def Scrap_Chapters():
         url_start = f'https://scantrad-vf.co/manga/{manga_name}/'
         # Accès à la page avec Selenium
         driver.get(url_start)
-        soup = BeautifulSoup(driver.page_source, 'html.parser') # Analyser toute la page html
         try:
             i = 1
             print(f"\nManga : {manga_name}") # Indique dans quel manga nous sommes pour le scrapping des chapitres
-            manga_chapters_dict[manga_name]=[] # Crée une clé de dictionnaire vide , avec le nom du manga qu'on explore.
-            # Attendre que la page soit complètement chargée (vous pouvez ajuster le délai selon vos besoins)
-            driver.implicitly_wait(2)
+            manga_chapters_dict[manga_name]=[] # Crée une clé de dictionnaire vide , avec le nom du manga qu'on explore.       
+            driver.implicitly_wait(2)   # Attendre que la page soit complètement chargée (vous pouvez ajuster le délai selon vos besoins)
             while True:
                 try:
                     balise = str(f'//*[@id="manga-chapters-holder"]/div[2]/div/ul/li/ul/li/ul/li[{i}]/a')  # Récupérer l'élément qui contient le dernier chapitre 
@@ -55,11 +58,11 @@ def Scrap_Chapters():
     # Convertir le dictionnaire en document YAML
     yml_data = yaml.dump(manga_chapters_dict)
 
-    print(f"\nSauvegarde des datas ...")
+    print("\nSauvegarde des datas ...")
     # Sauvegarde des datas
-    datas.to_csv(f'scantrad-vf/datas/mangas.csv', index=False)
+    datas.to_csv(f'{script_repo}/datas/mangas.csv', index=False)
 
-    with open(f'scantrad-vf/datas/mangas_chapters_temp.yml', 'w') as file:
+    with open(f'{script_repo}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
 
     print(f"\nFin Scrapping.")
