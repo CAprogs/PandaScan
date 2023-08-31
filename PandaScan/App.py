@@ -9,21 +9,20 @@
 #                                                                              
 # ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan 🐼 | @2023 by CAprogs
-# This is a project that aims to download mangas scans from a website by selecting the manga and chapters wished.
-# Scans are downloaded by a simple request.
-# "Update" Feature requires Selenium and Chromium to work.
-# Ublock ( A Chrome Extension ) is recommend to use this Software.
-# The Download Time depends on the number of Chapters to download and their Number of pages.
-# Note 1 : Some websites may not provide accurate informations or may be empty when you download chapters.
-# Note 2 : In future version you'll be able to choose between Manual / Auto-update ( At Launch ).
-# Credits: @Tkinter Designer by ParthJadhav 
+# This project aims to download mangas scans from a website by simply selecting the manga and chapters.
+# You are now able to choose between Manual / Auto-update ( At Launch ). Change 'mode' value in the config.json : 'manual' or 'auto'
+# You are now able to change the download path in config.json file. Change 'path' value in the config.json
+# "Update" Feature requires Chromedriver to work. Please follow the Installation Guide to install.
+# Please note that some websites may not provide empty chapters in their files.
+# If this project helped you, please consider giving it a ⭐️ on Github.🫶
+# Credits: @Tkinter-designer by ParthJadhav 
 # ------------------------------------------------------------------------------------------------------------
 
+# Roadmap:
 # Mettre à jour la docu 0/-||-
-# Mettre à jour le bouton Update 1/2
-# Migrer les dépendances de l'app dans des fichiers externes .py 1/-||-
-# Afficher le récapitulatif à la fin d'un téléchargement 1/2 # 
-
+# Trouver un meilleur moyen de changer les sites et les données ( bug de lenteur au niveau de scantrad-vf )
+# verifier si on ne peut pas ajouter ajouter le sys.path une seule fois dans un fichier
+# réécrire tous les commentaires en anglais + suppression des commentaires inutiles
 # feature prenium : Télécharger TOUS les mangas et TOUS les chapitres d'un site / bouton select all ?
 
 # Importation des bibliothèques utiles
@@ -36,8 +35,9 @@ from tkinter import Tk, Canvas, Entry, Button, PhotoImage, StringVar, OptionMenu
 from tkinter.font import Font
 from pathlib import Path
 from tkinter import messagebox
+import json
 from Download import chapter_transform, Initialize_Download
-from Update import Update # Manual Update
+from Update import Manual_Update,Auto_Update
 
 ################################ Variables Globales ############################################
 All_chapters_len = 0    #  stocker le nombre de chapitres total d'un manga sélectionné
@@ -47,7 +47,7 @@ manga_current_name = '' #  stocker le nom du manga sélectionné
 chapters_current_selected = [] # stocker la liste des chapitres sélectionnés
 Download_state = False # Etat du bouton Download
 nom_fichier = '' # Chemin vers le fichier du manga à télécharger
-selected_website = "scantrad-vf"
+selected_website = "scantrad-vf" # Site de scrapping par défaut
 #################################################################################################
 
 # Obtenir le chemin absolu du répertoire contenant le script
@@ -62,6 +62,10 @@ chapters_path = script_directory / f"websites/{selected_website}/datas/mangas_ch
 with open(chapters_path, 'r') as file:
         chapitres = yaml.safe_load(file)
 datas = pd.read_csv(mangas_path)
+
+# Charger le contenu du fichier config.json
+with open('config.json') as config_file:
+    config = json.load(config_file)
 
 #################################################################################################
 
@@ -207,48 +211,58 @@ def show_Download_info():
         Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier)
 
     def perform_download():
-        global current_download, Download_state
+        global current_download, Download_state, total_downloads
 
         Download()
         current_download += 1
-        progress = int((current_download / total_downloads) * 100)
-        progressbar["value"] = progress
-        percentage_label["text"] = f"{progress}%"
-        window.update_idletasks()
+        if total_downloads > 1:
+            progress = int((current_download / total_downloads) * 100)
+            progressbar["value"] = progress
+            percentage_label["text"] = f"{progress}%"
+            window.update_idletasks()
 
         if current_download < total_downloads:
             window.after(2000, perform_download)  # Passer au prochain téléchargement après 2 s
         else:
-            progressbar.place_forget()
-            percentage_label.place_forget()
+            if total_downloads > 1:
+                progressbar.place_forget()
+                percentage_label.place_forget()
             messagebox.showinfo("Information", "Successfull Pandaload 🐼")
             Hide_DownloadBox() # cacher la barre d'infos après 2 secondes
             button_1.configure(state="normal")  # Réactiver le bouton de téléchargement
             Download_state = False
-            
+       
     def Download_settings():
-        global Download_state
+        global Download_state, total_downloads
 
-        canvas.itemconfigure(image_1, state=tk.NORMAL)
         Download_state = True
         button_1.configure(state="disabled")  # Désactiver le bouton de téléchargement
-        progressbar.place(x=800.0, y=520.0) 
-        percentage_label.place(x=830.0, y=545.0) 
+        if total_downloads > 1: # Si plusieurs chapitres sont sélectionnés on affiche la barre de progression et le pourcentage sinon on ne l'affiche pas
+            canvas.itemconfigure(image_1, state=tk.NORMAL)   
+            progressbar.place(x=800.0, y=520.0) 
+            percentage_label.place(x=830.0, y=545.0) 
         perform_download()
+
+    # Gérer le chemin de destination des téléchargements
+    def Set_Download_Path():
+        global nom_fichier
+
+        if os.path.exists(config['Download']['path']):
+            nom_fichier = config['Download']['path'] / manga_current_name
+        else:
+            nom_fichier = script_directory / manga_current_name
+            if not os.path.exists(nom_fichier):
+                os.makedirs(nom_fichier)
+        Download_settings()
 
     if select_all_var.get() == 1 and All_chapters_len != 0:
         total_downloads = All_chapters_len
-        nom_fichier = script_directory / manga_current_name
-        if not os.path.exists(nom_fichier):
-            os.makedirs(nom_fichier)
-        Download_settings()
+        Set_Download_Path()
     elif total_downloads == 0:
-        print('Aucun élément sélectionné')                                              ##### Track activity
+        messagebox.showinfo("Information", "No Chapter Selected 🤕, Try again")
     else:
-        nom_fichier = script_directory / manga_current_name
-        if not os.path.exists(nom_fichier):
-            os.makedirs(nom_fichier)
-        Download_settings()
+        Set_Download_Path()
+
 
 #### Évènements lorsque la souris Entre/Sort d'un bouton ###
 def Download_enter(event):
@@ -334,7 +348,7 @@ canvas.create_text(
 website_list_var = StringVar(window)
 website_list_var.set(selected_website)  # Valeur par défaut
 
-# Langues par défaut ( possibilité d'ajouter d'autres langues )
+# Sites par défaut dans la liste déroulante
 website_menu = OptionMenu(
     window,
     website_list_var,
@@ -439,7 +453,7 @@ image_1 = canvas.create_image(
 )
 
 progressbar = ttk.Progressbar(window, mode="determinate")       # Création de la barre de progression
-percentage_label = tk.Label(window, text="0%", bg="white")                  # Création du label pour afficher le pourcentage
+percentage_label = tk.Label(window, text="0%", bg="white")      # Création du label pour afficher le pourcentage
 
 #########################################################################################################################
 
@@ -510,9 +524,8 @@ button_2 = Button(
     image=button_update_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_update clicked"),                                 ##### Track activity
     relief="flat",
-    cursor="hand2 "
+    cursor="hand2"
 )
 button_2.place(
     x=664.0,
@@ -520,8 +533,17 @@ button_2.place(
     width=41.0,
     height=44.0
 )
-button_2.bind("<Enter>", Update_enter)  # Lorsque la souris entre dans la zone du bouton
-button_2.bind("<Leave>", Update_leave)   # Lorsque la souris quitte la zone du bouton
+
+if config['Update']['mode'].lower() == "auto": # Si mode = auto, on lance l'Update au lancement de l'application
+    button_2.config(state=tk.DISABLED, cursor="arrow") # Désactiver le bouton
+    Auto_Update()
+elif config['Update']['mode'].lower() == "manual":
+    button_2.config(command=lambda: Manual_Update(selected_website)) # Associer le bouton à la fonction Manual_Update
+    button_2.bind("<Enter>", Update_enter)  # Lorsque la souris entre dans la zone du bouton
+    button_2.bind("<Leave>", Update_leave)  # Lorsque la souris quitte la zone du bouton
+else:
+    button_2.config(state=tk.DISABLED, cursor="arrow") # Action si le mode n'est pas reconnu
+    print("\n Update Button inactive [choose 'manual' or 'auto' in config.json] ")                                          ##### Track activity
 ######################################################################################################################################################################################
 
 # Action à exécuter lors de la fermeture de la fenêtre

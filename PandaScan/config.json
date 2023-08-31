@@ -1,5 +1,14 @@
 {
   "chromedriver_path": "/Users/charles-albert/Desktop/chromedriver-mac-arm64/chromedriver",
+
+  "driver": {
+    "headless": true
+  },
+
+  "Update": {
+    "mode": "manual"
+},
+
   "websites": {
     "fmteam.fr": {
       "enabled": true
@@ -11,5 +20,8 @@
       "enabled": true
     }
   },
-  "mode": "manual"
+
+  "Download": {
+    "path": ""
+  }
 }
