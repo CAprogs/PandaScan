@@ -18,7 +18,7 @@ Tous les sites disponibles sur l'application sont des sites **Français**. N'hé
 ## Translations
 
 - [**Français**]() (FR)
-- [**English**]() (EN)
+- [**English**](docs/EN/README.en.md) (EN)
 
 ## Technologies 📲
 
