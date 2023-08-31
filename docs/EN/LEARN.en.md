@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [Introduction](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#introduction)
-- [Idea 💡](#idea-💡)
+- [Idea 💡](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#idea-)
 - [Challenges ⛔️](#challenges-⛔️)
 - [Development 🏗️](#development-🏗️)
 - [Lessons Learned ✍️](#lessons-learned-✍️)
