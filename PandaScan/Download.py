@@ -5,6 +5,8 @@ import io
 from lxml import html
 from bs4 import BeautifulSoup
 
+# fmteam.fr and lelscans.net method fixed | 05/09/2023
+
 # Fonction pour attribuer le bon format au chapitre / volume
 def chapter_transform(chapter_name, selected_website):
 
@@ -90,7 +92,7 @@ def fmteam_download(response_url, nom_fichier):
                 # Obtenir le nom du premier fichier/dossier dans la liste
                 first_file = namelist[0]
                 file_name, useless = first_file.split("/")
-                file_name_path = nom_fichier / file_name
+                file_name_path = nom_fichier + '/' + file_name
                 if not os.path.exists(file_name_path):
                     zip_ref.extractall(nom_fichier)
                     return True
@@ -170,3 +172,16 @@ def Initialize_Download(selected_website, nom_chapitre, manga_current_name, chap
     # =============================================================  OTHER
     else:
         None     ############ Add another method for another website here ###########
+
+
+# Uncomment to Debug
+'''
+selected_website = 'lelscans.net' # fmteam.fr or lelscans.net or scantrad-v
+nom_chapitre = '/Users/charles-albert/Desktop/chapitre 341' # see manga datas corresponding to the website
+manga_current_name = 'the-seven-deadly-sins' # see datas corresponding to the website
+chapter_number = '341' 
+current_download = '0'
+chapter_name = 'chapitre 341'
+nom_fichier = ''
+Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier)
+'''

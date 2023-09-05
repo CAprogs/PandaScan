@@ -102,7 +102,7 @@ def on_closing():
     window.destroy() # Fermeture de la fenêtre tkinter
 
 def Switch_Website(*args):
-    global chapitres, datas
+    global chapitres, datas, selected_website
 
     selected_item = website_list_var.get()
     selected_website = selected_item
@@ -205,7 +205,7 @@ def show_Download_info():
         global selected_website
 
         chapter_name = chapters_current_selected[current_download]  # Nom du Chapitre
-        nom_chapitre = nom_fichier / chapter_name
+        nom_chapitre = nom_fichier + '/' + chapter_name
         # Création du Dossier du chapitre correspondant s'il n'existe pas
         chapter_number = chapter_transform(chapter_name, selected_website) # retourne le format adapté pour le site correspondant
         Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier)
@@ -248,7 +248,7 @@ def show_Download_info():
         global nom_fichier
 
         if os.path.exists(config['Download']['path']):
-            nom_fichier = config['Download']['path'] / manga_current_name
+            nom_fichier = config['Download']['path'] + '/' + manga_current_name
         else:
             nom_fichier = script_directory / manga_current_name
             if not os.path.exists(nom_fichier):
