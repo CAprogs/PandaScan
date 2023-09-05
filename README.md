@@ -86,7 +86,7 @@ Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujo
 4. Lancez le téléchargement : PandaScan s'occupe du reste 💨
 5. Lisez sans modération 🤓
 
-## Principe 🤔
+## Comment ça marche ? 🤔
 
 La figure ci-dessous représente le fonctionnement de PandaScan 🐼. Les icônes 🟢 désignent la sélection de l'utilisateur.
 
