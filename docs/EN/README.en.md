@@ -20,7 +20,7 @@ All the sites available on the application are **French** sites. Feel free to ad
 
 ## Translations
 
-- [**Français**]() (FR)
+- [**Français**](https://github.com/CAprogs/PandaScan/tree/main) (FR)
 - [**English**](docs/EN/README.en.md) (EN)
 
 ## Technologies 📲
