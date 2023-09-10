@@ -16,7 +16,7 @@ def write_current_state(state):
 
 def read_update_number():
     try:
-        with open('update_number.txt', 'r') as file:
+        with open(f'{script_repo}/update/update_number.txt', 'r') as file:
             return int(file.read())
     except FileNotFoundError:
         return 0
@@ -77,3 +77,8 @@ def generate_changelog():
 
     # Remove the temporary YAML file
     os.remove(f'{script_repo}/datas/mangas_chapters_temp.yml')
+
+
+# Uncomment to debug
+#if __name__ == "__main__":
+    #generate_changelog()

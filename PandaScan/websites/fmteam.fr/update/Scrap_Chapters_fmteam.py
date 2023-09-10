@@ -1,7 +1,8 @@
 # ---------------------------------------------- Obligatoire pour accéder aux modules du dossier principal
 import sys
-from Path_to_fmteam import script_repo
-sys.path.insert(0, script_repo)
+from Path_to_fmteam import script_repo,current_dir
+sys.path.append(script_repo)
+sys.path.append(current_dir)
 # ----------------------------------------------
 import pandas as pd
 import yaml
@@ -12,7 +13,6 @@ from Selenium_config import driver
 def Scrap_Chapters():
     
     print("\n Importation et Creation des données ... \n")
-    # Ouvrir le fichier csv : mangas
     datas = pd.read_csv(f'{script_repo}/datas/mangas.csv') # Accès mangas et liens
     manga_chapters_dict = {} # création du dictionnaire qui contiendra les chapitres respectifs de chaque manga
 
@@ -64,3 +64,8 @@ def Scrap_Chapters():
         file.write(yml_data)
 
     print(f"\nFin Scrapping.")
+
+
+# Uncomment to debug
+#if __name__ == "__main__":
+    #Scrap_Chapters()

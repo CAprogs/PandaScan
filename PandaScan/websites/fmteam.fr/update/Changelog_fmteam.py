@@ -16,13 +16,13 @@ def write_current_state(state):
 
 def read_update_number():
     try:
-        with open('update_number.txt', 'r') as file:
+        with open(f'{script_repo}/update/update_number.txt', 'r') as file:
             return int(file.read())
     except FileNotFoundError:
         return 0
 
 def write_update_number(number):
-    with open('update_number.txt', 'w') as file:
+    with open(f'{script_repo}/update/update_number.txt', 'w') as file:
         file.write(str(number))
 
 def generate_change_report(current_state, previous_state):
@@ -64,7 +64,7 @@ def generate_changelog():
     update_time = datetime.now().strftime("%d/%m/%Y | %H:%M:%S")
 
     update_number = read_update_number()  
-    if os.path.exists('update_number.txt'):
+    if os.path.exists(f'{script_repo}/update/update_number.txt'):
         update_number += 1 
 
     report = f"\nUpdate {update_number} : {update_time}\n{change_report}"
@@ -77,3 +77,9 @@ def generate_changelog():
 
     # Remove the temporary YAML file
     os.remove(f'{script_repo}/datas/mangas_chapters_temp.yml')
+
+
+
+# Uncomment to debug
+#if __name__ == "__main__":
+    #generate_changelog()

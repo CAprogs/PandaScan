@@ -1,7 +1,8 @@
 # ---------------------------------------------- Obligatoire pour accéder aux modules du dossier principal
 import sys
-from Path_to_scantrad import script_repo
-sys.path.insert(0, script_repo)
+from Path_to_scantrad import script_repo,current_dir
+sys.path.append(script_repo)
+sys.path.append(current_dir)
 # ----------------------------------------------
 import pandas as pd
 import re
@@ -29,22 +30,21 @@ def Scrap_Titles():
 
             print(f"\n Page {starting_page} :")
 
-            for row in range(1,7):
-                for column in range(1,3):
-                    balise = str(f'/html/body/div[1]/div/div[1]/div[2]/div/div/div/div[1]/div[1]/div/div[2]/div[2]/div/div/div[{row}]/div/div[{column}]/div/div[2]/div[1]/h3/a')
-                    element = driver.find_element(By.XPATH, balise) # chemin vers la balise du nom du 1er manga
-                    # Récupérer la valeur de l'attribut "href" de l'élément <a>
-                    valeur_href = element.get_attribute('href')
-                    # Utiliser une expression régulière pour extraire la valeur
-                    result = re.search(r'/manga/([^/]+)/', valeur_href) # on récupère uniquement le nom du manga  
-                    if result:
-                        manga_name = result.group(1)
-                        new_list.append({"name": manga_name})
-                        print(f"{manga_name} ajouté")
-
-                    else:
-                        print(f"Aucune valeur trouvée à row {row} / column {column}. Page N°{starting_page}")
-                        
+            # on récupère tous les éléments correspondant à la classe 'h5'
+            elements = driver.find_elements(By.CLASS_NAME, 'h5') 
+            # Parcourir la liste des éléments de la classe h5
+            for element in elements:
+                link = element.find_element(By.TAG_NAME, 'a')
+                # Récupérer la valeur de l'attribut "href" de l'élément <a>
+                valeur_href = link.get_attribute('href')
+                # Utiliser une expression régulière pour extraire uniquement le nom du manga 
+                result = re.search(r'/manga/([^/]+)/', valeur_href)
+                if result:
+                    manga_name = result.group(1)
+                    new_list.append({"name": manga_name})
+                    print(f"{manga_name} ajouté")
+                else:
+                    print(f"Aucune valeur trouvée pour {valeur_href}. Page N°{starting_page}")
             starting_page += 1
             page += 1
         except:
@@ -62,3 +62,10 @@ def Scrap_Titles():
     print(f"\nFermeture navigateur.")
     # Fermeture du navigateur
     driver.quit()
+
+
+# Uncomment to debug
+'''
+if __name__ == "__main__":
+    Scrap_Titles()
+'''
