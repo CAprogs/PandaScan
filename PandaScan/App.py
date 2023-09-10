@@ -20,10 +20,11 @@
 
 # Roadmap:
 # Mettre à jour la docu 0/-||-
+# Fermer le navigateur SI on est en automatique / sinon Fermer UNIQUEMENT a la fin de la session
 # Trouver un meilleur moyen de changer les sites et les données ( bug de lenteur au niveau de scantrad-vf )
-# verifier si on ne peut pas ajouter ajouter le sys.path une seule fois dans un fichier
 # réécrire tous les commentaires en anglais + suppression des commentaires inutiles
 # feature prenium : Télécharger TOUS les mangas et TOUS les chapitres d'un site / bouton select all ?
+
 
 # Importation des bibliothèques utiles
 import os
@@ -205,7 +206,10 @@ def show_Download_info():
         global selected_website
 
         chapter_name = chapters_current_selected[current_download]  # Nom du Chapitre
-        nom_chapitre = nom_fichier + '/' + chapter_name
+        if os.path.exists(config['Download']['path']): 
+            nom_chapitre = nom_fichier + '/' + chapter_name
+        else:
+            nom_chapitre = nom_fichier / chapter_name
         # Création du Dossier du chapitre correspondant s'il n'existe pas
         chapter_number = chapter_transform(chapter_name, selected_website) # retourne le format adapté pour le site correspondant
         Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier)
