@@ -61,6 +61,7 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - [x] Mise à jour du fichier config.json : les utilisateurs peuvent désormais changer le chemin de sauvegarde, passer de la mise à jour manuelle à automatique ou simplement désactiver la fonction de mise à jour
 - [x] Mise à jour du fichier LEARN lié à la création de PandaScan 🐼
 - [x] Mise à jour de tous les fichiers de sites web et ajout de la gestion des chemins
+- [x] Correction de Bugs ( Erreurs de syntaxes , Update method etc..)
 
 ## Feuille de Route 🚧
 
