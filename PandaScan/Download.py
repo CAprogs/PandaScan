@@ -9,6 +9,15 @@ from bs4 import BeautifulSoup
 
 # Fonction pour attribuer le bon format au chapitre / volume
 def chapter_transform(chapter_name, selected_website):
+    """Transform the chapter name to the right format.
+
+    Args:
+        chapter_name (_type_): _description_
+        selected_website (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """    
 
     if selected_website == "scantrad-vf":
         result = chapter_name.replace(' ','-')
@@ -22,6 +31,17 @@ def chapter_transform(chapter_name, selected_website):
 
 # ========================================================== Download Method ( SCANTRAD-VF ) 
 def scantrad_download(response_url, xpath, save_path, page):
+    """Download the images from the given URL.
+
+    Args:
+        response_url (_type_): _description_
+        xpath (_type_): _description_
+        save_path (_type_): _description_
+        page (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """    
 
     if response_url.status_code == 200:
         # Parser le contenu HTML
@@ -51,6 +71,16 @@ def scantrad_download(response_url, xpath, save_path, page):
 
 # ========================================================== Download Method ( LELSCANS.NET ) 
 def lelscans_download(response_url, save_path, page):
+    """Download the images from the given URL.
+
+    Args:
+        response_url (_type_): _description_
+        save_path (_type_): _description_
+        page (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """    
 
     if response_url.status_code == 200:
         # Parser le contenu HTML
@@ -81,6 +111,15 @@ def lelscans_download(response_url, save_path, page):
 
 # ========================================================== Download Method ( FMTEAM.FR ) 
 def fmteam_download(response_url, nom_fichier):
+    """Download the images from the given URL.
+
+    Args:
+        response_url (_type_): _description_
+        nom_fichier (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """    
 
     if response_url.status_code == 200:
         # Utiliser io.BytesIO pour créer un flux binaire à partir du contenu de la réponse
@@ -106,6 +145,17 @@ def fmteam_download(response_url, nom_fichier):
 # =========================================================================================================================================================
 
 def Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier):
+    """Initialize the download of the images from the given URL.
+
+    Args:
+        selected_website (_type_): _description_
+        nom_chapitre (_type_): _description_
+        manga_current_name (_type_): _description_
+        chapter_number (_type_): _description_
+        current_download (_type_): _description_
+        chapter_name (_type_): _description_
+        nom_fichier (_type_): _description_
+    """    
 
     # =============================================================  SCANTRAD-VF
     if selected_website == "scantrad-vf":

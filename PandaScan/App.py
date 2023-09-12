@@ -31,14 +31,15 @@ import os
 import pandas as pd
 import yaml
 import tkinter as tk
+import json
 from tkinter import ttk
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage, StringVar, OptionMenu
 from tkinter.font import Font
 from pathlib import Path
 from tkinter import messagebox
-import json
 from Download import chapter_transform, Initialize_Download
 from Update import Manual_Update,Auto_Update
+from Selenium_config import driver
 
 ################################ Variables Globales ############################################
 All_chapters_len = 0    #  stocker le nombre de chapitres total d'un manga sélectionné
@@ -96,13 +97,20 @@ bold_font = Font(family="Arial", size=10)
 ######################################################################   FONCTIONS  & CLASSES  ######################################################################
 # Importation des éléments graphique
 def relative_to_assets(path: str) -> Path:
+    """Get the relative path to the assets folder."""        
     return assets_directory / Path(path)
 
 # Action à effectuer à la fermeture de l'application
 def on_closing():
+    """Action à effectuer à la fermeture de l'application
+    """
+    if driver: # Si le navigateur est ouvert
+        driver.quit() # Fermer le navigateur
     window.destroy() # Fermeture de la fenêtre tkinter
 
 def Switch_Website(*args):
+    """Changer de site de scrapping
+    """    
     global chapitres, datas, selected_website
 
     selected_item = website_list_var.get()
@@ -121,6 +129,8 @@ def Switch_Website(*args):
 
 # Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
 def select_all():
+    """Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
+    """    
     global total_downloads
    
     if select_all_var.get() == 1:
@@ -138,7 +148,12 @@ def select_all():
         canvas.itemconfigure(Chapter_selected, text=f'0 selected')
 
 # Update les résultats de recherche de la SearchBar dans la Manga Name List
-def update_results(event): 
+def update_results(event):
+    """Update les résultats de recherche de la SearchBar dans la Manga Name List
+
+    Args:
+        event (_type_): L'événement qui déclenche la fonction
+    """    
 
     keyword = entry_1.get()
     cleaned_datas = datas['name'].fillna('')  # Remplacer les valeurs manquantes par une chaîne vide
@@ -150,6 +165,11 @@ def update_results(event):
 
 # Actions lorsqu'un manga est sélectionné
 def on_mangas_select(event):
+    """Actions lorsqu'un manga est sélectionné
+
+    Args:
+        event (_type_): L'événement qui déclenche la fonction
+    """    
     global manga_current_name
 
     selected_indices = result_box.curselection()  # Récupérer les indices des éléments sélectionnés
@@ -170,6 +190,11 @@ def on_mangas_select(event):
 
 # Update les résultats dans la Chapter List lorqu'un manga est sélectionné
 def update_chapters(manga_name):
+    """Update les résultats dans la Chapter List lorqu'un manga est sélectionné
+
+    Args:
+        manga_name (_type_): Le nom du manga sélectionné
+    """    
     global All_chapters_len
 
     if manga_name in chapitres:
@@ -183,6 +208,11 @@ def update_chapters(manga_name):
 
 # Actions lorsque des chapitres sont sélectionnés
 def on_chapters_select(event):
+    """Actions lorsque des chapitres sont sélectionnés
+
+    Args:
+        event (_type_): L'événement qui déclenche la fonction
+    """    
     global chapters_current_selected, total_downloads
     
     selected_chapters = chapters_box.curselection()  # Récupérer les indices des chapitres sélectionnés
@@ -194,15 +224,21 @@ def on_chapters_select(event):
 
 # Download ou non les éléments sélectionnés
 def show_Download_info():
+    """Download ou non les éléments sélectionnés
+    """    
     global current_download, total_downloads
 
     # Réinitialiser les variables du téléchargement
     current_download = 0
 
     def Hide_DownloadBox():
+        """Cacher la barre d'infos après 2 secondes
+        """        
         canvas.itemconfigure(image_1, state=tk.HIDDEN)
     
     def Download():
+        """Télécharger les chapitres sélectionnés
+        """        
         global selected_website
 
         chapter_name = chapters_current_selected[current_download]  # Nom du Chapitre
@@ -215,6 +251,8 @@ def show_Download_info():
         Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier)
 
     def perform_download():
+        """Télécharger les chapitres sélectionnés
+        """        
         global current_download, Download_state, total_downloads
 
         Download()
@@ -237,6 +275,8 @@ def show_Download_info():
             Download_state = False
        
     def Download_settings():
+        """Télécharger les chapitres sélectionnés
+        """        
         global Download_state, total_downloads
 
         Download_state = True
@@ -249,6 +289,8 @@ def show_Download_info():
 
     # Gérer le chemin de destination des téléchargements
     def Set_Download_Path():
+        """Télécharger les chapitres sélectionnés
+        """        
         global nom_fichier
 
         if os.path.exists(config['Download']['path']):
@@ -270,18 +312,38 @@ def show_Download_info():
 
 #### Évènements lorsque la souris Entre/Sort d'un bouton ###
 def Download_enter(event):
+    """Évènements lorsque la souris Entre/Sort d'un bouton
+
+    Args:
+        event (_type_): L'événement qui déclenche la fonction
+    """    
     if Download_state == True:
         None
     else:
         button_1.configure(image=button_download_2)
 
 def Download_leave(event):
+    """ Action lorsque la souris sort du bouton Download.
+
+    Args:
+        event (_type_): L'événement qui déclenche la fonction
+    """    
     button_1.configure(image=button_download_1)
 
 def Update_enter(event):
+    """Évènements lorsque la souris Entre/Sort d'un bouton
+
+    Args:
+        event (_type_): L'événement qui déclenche la fonction
+    """    
     button_2.configure(image=button_update_2)
 
 def Update_leave(event):
+    """ Action lorsque la souris sort du bouton Update.
+
+    Args:
+        event (_type_): L'événement qui déclenche la fonction
+    """    
     button_2.configure(image=button_update_1)
 ############################################################################################################################################################
 
@@ -547,6 +609,7 @@ elif config['Update']['mode'].lower() == "manual":
     button_2.bind("<Leave>", Update_leave)  # Lorsque la souris quitte la zone du bouton
 else:
     button_2.config(state=tk.DISABLED, cursor="arrow") # Action si le mode n'est pas reconnu
+    driver.quit() # Fermer le navigateur
     print("\n Update Button inactive [choose 'manual' or 'auto' in config.json] ")                                          ##### Track activity
 ######################################################################################################################################################################################
 

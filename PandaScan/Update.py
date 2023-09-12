@@ -17,14 +17,20 @@ from Update_fmteam import Update_fmteam
 from Update_lelscans import Update_lelscans
 from Update_scantrad import Update_scantrad
 from tkinter import messagebox
+from Selenium_config import driver
 import json
 
 def Manual_Update(website):
+    """Manually Update the mangas chapters.
+
+    Args:
+        website (_type_): _description_
+    """    
     with open("config.json", "r") as config_file:
         config = json.load(config_file)
 
     print("\n Update : Manual ... \n")                      ##### Track activity
-    if config["websites"][website]["enabled"]:  # check config.json to deactive website update
+    if config["websites"][website]["enabled"]:  # check config.json to deactivate website update
         if website == "fmteam.fr":
             Update_fmteam()
         elif website == "lelscans.net":
@@ -37,10 +43,12 @@ def Manual_Update(website):
         messagebox.showinfo("Unable to Update ❌", f"Please check {website} state in the \"config.json\" file.") # Si la méthode correspondante au site n'est pas activée  
 
 def Auto_Update():
+    """Automatically Update the mangas chapters.
+    """    
     print("\n Update : Automatic ... \n")               ##### Track activity
     Update_fmteam()
     Update_lelscans()
     Update_scantrad()
     print(" Update End !")                              ##### Track activity
     messagebox.showinfo("Update [ Auto ]", "PandaScan 🐼 is up-to-date ✅ ! Check the changelogs files ✍️")
-    print("\n Update : Automatic ... ( test )\n")
+    driver.quit()
