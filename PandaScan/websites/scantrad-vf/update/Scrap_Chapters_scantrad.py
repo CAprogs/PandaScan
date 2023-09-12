@@ -12,6 +12,10 @@ from Selenium_config import driver
 
 
 def Scrap_Chapters():
+    """
+    Fonction qui permet de récupérer les chapitres de chaque manga dans le fichier mangas.csv
+    et de les sauvegarder dans un fichier mangas_chapters_temp.yml
+    """    
 
     print("\n Importation et Création des données ... \n")
     # Ouvrir le fichier csv mangas
@@ -49,7 +53,7 @@ def Scrap_Chapters():
                 else:
                     print(f"Aucune valeur trouvée. | {manga_name} | result")     
         except:
-            print(f"Erreur | try")
+            print(f"Erreur | try | {manga_name}")
 
     # Réinitialiser les index du dataframe
     datas = datas.reset_index(drop=True)
@@ -64,11 +68,8 @@ def Scrap_Chapters():
         file.write(yml_data)
 
     print(f"\nFin Scrapping.")
-    driver.quit()
 
 
 # Uncomment to debug
-'''
-if __name__ == "__main__":
-    Scrap_Chapters()
-'''
+#if __name__ == "__main__":
+    #Scrap_Chapters()

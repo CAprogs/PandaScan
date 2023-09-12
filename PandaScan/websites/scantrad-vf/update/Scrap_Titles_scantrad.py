@@ -10,6 +10,10 @@ from selenium.webdriver.common.by import By
 from Selenium_config import driver
 
 def Scrap_Titles():
+    """
+    Fonction qui permet de récupérer les titres de chaque manga dans le fichier mangas.csv
+    et de les sauvegarder dans un fichier mangas.csv
+    """    
 
     starting_page = 1
     a = ""
@@ -19,19 +23,20 @@ def Scrap_Titles():
 
     print("\n Debut Scrapping ... \n")
     while True:
-        try:
-            if starting_page == 1:
-                url_start = f"https://scantrad-vf.co/manga/{a}?m_orderby=alphabet" # url page
-            else:
-                url_start = f"https://scantrad-vf.co/manga/page/{page}/?m_orderby=alphabet" # url page
+        
+        if starting_page == 1:
+            url_start = f"https://scantrad-vf.co/manga/{a}?m_orderby=alphabet" # url page
+        else:
+            url_start = f"https://scantrad-vf.co/manga/page/{page}/?m_orderby=alphabet" # url page
 
-            # Accès à la page avec Selenium
-            driver.get(url_start)
+        # Accès à la page avec Selenium
+        driver.get(url_start)
 
-            print(f"\n Page {starting_page} :")
-
-            # on récupère tous les éléments correspondant à la classe 'h5'
-            elements = driver.find_elements(By.CLASS_NAME, 'h5') 
+        print(f"\n Page {starting_page} :")
+              
+        # on récupère tous les éléments correspondant à la classe 'h5'
+        elements = driver.find_elements(By.CLASS_NAME, 'h5')
+        if elements != []:     
             # Parcourir la liste des éléments de la classe h5
             for element in elements:
                 link = element.find_element(By.TAG_NAME, 'a')
@@ -47,7 +52,7 @@ def Scrap_Titles():
                     print(f"Aucune valeur trouvée pour {valeur_href}. Page N°{starting_page}")
             starting_page += 1
             page += 1
-        except:
+        else:
             print("Fin Scrapping")
             break
             
@@ -58,10 +63,6 @@ def Scrap_Titles():
     print(f"\nSauvegarde des datas ...")
     # Sauvegarde des datas
     datas.to_csv(f'{script_repo}/datas/mangas.csv', index=False)
-
-    print(f"\nFermeture navigateur.")
-    # Fermeture du navigateur
-    driver.quit()
 
 
 # Uncomment to debug

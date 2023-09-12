@@ -6,6 +6,8 @@ from Path_to_lelscans import script_repo
 
 
 def Scrap_Chapters():
+    """Scrap the mangas chapters.
+    """    
     print("\n Importation et Creation des données ... \n")
     datas = pd.read_csv(f'{script_repo}/datas/mangas.csv') # Accès mangas et liens
     manga_chapters_dict = {} # création du dictionnaire qui contiendra les chapitres respectifs de chaque manga

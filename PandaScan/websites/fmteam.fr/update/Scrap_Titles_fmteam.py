@@ -9,6 +9,8 @@ from selenium.webdriver.common.by import By
 from Selenium_config import driver
 
 def Scrap_Titles():
+    """Scrap the mangas titles.
+    """    
     links_list = []
     manga_name_list = []
 
@@ -23,7 +25,7 @@ def Scrap_Titles():
         # Attendre que le contenu soit chargé et que le JavaScript s'exécute
         driver.implicitly_wait(10)  # Attente implicite
 
-        i = 1       # depart ( correpond au 1 er manga de la page )
+        i = 1       # depart ( correspond au 1 er manga de la page )
         while True:
             # récupérer les informations à partir du XPATH
             balise = str(f'//*[@id="app"]/main/div/div/div[2]/div[{i}]/div[2]/h5/a')
@@ -47,10 +49,6 @@ def Scrap_Titles():
         datas.to_csv(f'{script_repo}/datas/mangas.csv', index=False)
 
         print(f"\nFin.")
-
-        # Fermer le navigateur
-        driver.quit() 
-        ''' Fermer le navigateur SI on est en automatique / sinon Fermer UNIQUEMENT a la fin de la session '''
 
     except:
         print(f"An Error occurred ! Please Debug | {script_repo}")

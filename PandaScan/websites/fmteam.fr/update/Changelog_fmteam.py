@@ -4,6 +4,11 @@ from datetime import datetime
 from Path_to_fmteam import script_repo
 
 def read_previous_state():
+    """Read the previous state of the mangas chapters.
+
+    Returns:
+        _type_: dict
+    """
     try:
         with open(f'{script_repo}/datas/mangas_chapters.yml', 'r') as file:
             return yaml.safe_load(file)
@@ -11,21 +16,45 @@ def read_previous_state():
         return {}
 
 def write_current_state(state):
+    """Write the current state of the mangas chapters.
+
+    Args:
+        state (_type_): The current state of the mangas chapters.
+    """    
     with open(f'{script_repo}/datas/mangas_chapters.yml', 'w') as file:
         yaml.dump(state, file)
 
 def read_update_number():
+    """Read the update number.
+
+    Returns:
+        _type_: int
+    """    
     try:
-        with open(f'{script_repo}/update/update_number.txt', 'r') as file:
+        with open(f'{script_repo}/changelog/update_number.txt', 'r') as file:
             return int(file.read())
     except FileNotFoundError:
         return 0
 
 def write_update_number(number):
-    with open(f'{script_repo}/update/update_number.txt', 'w') as file:
+    """Write the update number.
+
+    Args:
+        number (_type_): The update number.
+    """    
+    with open(f'{script_repo}/changelog/update_number.txt', 'w') as file:
         file.write(str(number))
 
 def generate_change_report(current_state, previous_state):
+    """Generate the change report.
+
+    Args:
+        current_state (_type_): the current state of the mangas chapters.
+        previous_state (_type_): the previous state of the mangas chapters.
+
+    Returns:
+        _type_: str
+    """    
     change_report = []
 
     for key in current_state:
@@ -50,6 +79,8 @@ def generate_change_report(current_state, previous_state):
     return "".join(change_report)
 
 def generate_changelog():
+    """Generate the changelog.
+    """    
     # Load the temporary YAML file
     with open(f'{script_repo}/datas/mangas_chapters_temp.yml', 'r') as temp_file:
         current_state = yaml.safe_load(temp_file)
@@ -64,12 +95,12 @@ def generate_changelog():
     update_time = datetime.now().strftime("%d/%m/%Y | %H:%M:%S")
 
     update_number = read_update_number()  
-    if os.path.exists(f'{script_repo}/update/update_number.txt'):
+    if os.path.exists(f'{script_repo}/changelog/update_number.txt'):
         update_number += 1 
 
     report = f"\nUpdate {update_number} : {update_time}\n{change_report}"
 
-    with open(f'{script_repo}/change_report.txt', 'a') as file:
+    with open(f'{script_repo}/changelog/changelog.txt', 'a') as file:
         file.write(report)
 
     write_update_number(update_number)

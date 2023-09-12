@@ -11,6 +11,8 @@ from selenium.webdriver.common.by import By
 from Selenium_config import driver
 
 def Scrap_Chapters():
+    """Scrap the mangas chapters.
+    """    
     
     print("\n Importation et Creation des données ... \n")
     datas = pd.read_csv(f'{script_repo}/datas/mangas.csv') # Accès mangas et liens

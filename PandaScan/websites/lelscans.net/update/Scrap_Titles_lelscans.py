@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from Path_to_lelscans import script_repo
 
 def Scrap_Titles():
+    """Scrap the mangas titles.
+    """    
     links_list = []
     manga_name_list = []
 
