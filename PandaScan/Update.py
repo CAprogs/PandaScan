@@ -38,7 +38,7 @@ def Manual_Update(website):
         elif website == "scantrad-vf":
             Update_scantrad()
         print("\n Update End \n")                       ##### Track activity
-        messagebox.showinfo("Update [ Manual ]", f"PandaScan 🐼 is up-to-date ✅ ! Check the {website} changelog file ✍️")
+        messagebox.showinfo("Update [ Manual ]", f"{website} 🐼 is up-to-date ✅ ! < read the changelog file for more information >")
     else:
         messagebox.showinfo("Unable to Update ❌", f"Please check {website} state in the \"config.json\" file.") # Si la méthode correspondante au site n'est pas activée  
 
@@ -50,5 +50,5 @@ def Auto_Update():
     Update_lelscans()
     Update_scantrad()
     print(" Update End !")                              ##### Track activity
-    messagebox.showinfo("Update [ Auto ]", "PandaScan 🐼 is up-to-date ✅ ! Check the changelogs files ✍️")
+    messagebox.showinfo("Update [ Auto ]", "All sites 🐼 are up-to-date ✅ ! < read the changelog file for more information >")
     driver.quit()
