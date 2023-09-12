@@ -62,10 +62,11 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - [x] Mise à jour du fichier LEARN lié à la création de PandaScan 🐼
 - [x] Mise à jour de tous les fichiers de sites web et ajout de la gestion des chemins
 - [x] Correction de Bugs ( Erreurs de syntaxes , Update method etc..)
-
+- [x] Correction de Bugs ( Update method ) + Gestion d'évènements + Documentation Docstrings
+      
 ## Feuille de Route 🚧
 
-- [ ] Nettoyer et Optimiser le code
+- [ ] Nettoyer et Optimiser le code ( Commentaires inutiles , Lignes inutiles , Fautes , Mettre tous les commentaires en anglais )
 - [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
 - [ ] Déploiement ( script .Exe , Docker , API ? )
 
