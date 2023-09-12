@@ -54,7 +54,7 @@ def Scrap_Chapters():
                 print(f"{chapter} récupéré ")
                 i += 1
             except:
-                print(f"\nChapitre N°{int(chapter_number)-1} INEXISTANT | {manga_name}\n")
+                print(f"\nChapitre N°{float(chapter_number)-1} INEXISTANT | {manga_name}\n")
                 break
 
     # Convertir le dictionnaire en document YAML
