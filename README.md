@@ -63,6 +63,7 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - [x] Mise à jour de tous les fichiers de sites web et ajout de la gestion des chemins
 - [x] Correction de Bugs ( Erreurs de syntaxes , Update method etc..)
 - [x] Correction de Bugs ( Update method ) + Gestion d'évènements + Documentation Docstrings
+- [x] Ajout d'une méthode pour vérifier l'accès à Internet avant lancement de l'application
       
 ## Feuille de Route 🚧
 
