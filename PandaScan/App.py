@@ -24,7 +24,8 @@
 # Trouver un meilleur moyen de changer les sites et les données ( bug de lenteur au niveau de scantrad-vf )
 # réécrire tous les commentaires en anglais + suppression des commentaires inutiles
 # feature prenium : Télécharger TOUS les mangas et TOUS les chapitres d'un site / bouton select all ?
-
+# Etape 1 : Verification d'un accès à Internet ( Request : 200 )
+# Si aucune connexion internet est détectée afficher une fenêtre " 😵‍💫 Oups, no internet connexion detected " et Fermer le programme.
 
 # Importation des bibliothèques utiles
 import os
