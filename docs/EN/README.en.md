@@ -79,6 +79,8 @@ Download PandaScan 🐼 as a .EXE file [```here```]()    # Still in development 
 
 ## Get Started 🧞‍♂️
 
+_Make sure you are connected to the Internet!_
+
 1. Open the PandaScan 🐼 application
 2. Search for your favorite manga 🔍
 3. Select the Manga and Chapters of your dreams 🤩
