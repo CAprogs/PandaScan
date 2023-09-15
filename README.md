@@ -82,6 +82,8 @@ Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujo
 
 ## Commencer 🧞‍♂️
 
+_Assurez vous d'être connecter à Internet !_
+
 1. Ouvrez l'application PandaScan 🐼
 2. Recherchez votre Manga favori 🔍
 3. Sélectionnez le Manga et les Chapitres de vos rêves 🤩
