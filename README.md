@@ -103,7 +103,7 @@ La figure ci-dessous représente le fonctionnement de PandaScan 🐼. Les icône
 
 <img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
 
-## Avis de non-responsabilité ⚠️
+## Déclaration de non-responsabilité ⚠️
 
 1. Cette application a été créée pour faciliter le téléchargement et la lecture de vos mangas préférés dans les zones reculées ou en voyage. Ce projet n'est pas à but lucratif et est destiné à un usage personnel.
 2. Le téléchargement excessif et fréquent peut entraîner le dysfonctionnement d'un site web. Veuillez utiliser cet outil de manière responsable pour le bien de tous.
