@@ -67,7 +67,9 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
       
 ## Feuille de Route 🚧
 
+- [ ] Explorer l'utilisation de SQlite ( chargement et stockage des datas ) 
 - [ ] Nettoyer et Optimiser le code ( Commentaires inutiles , Lignes inutiles , Fautes , Mettre tous les commentaires en anglais )
+- [ ] Tests de performance (profilage Python : cProfile, line_profiler, memory_profiler, Pyflame)
 - [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
 - [ ] Déploiement ( script .Exe , Docker , API ? )
 
