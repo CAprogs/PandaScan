@@ -64,15 +64,15 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - [x] Correction de Bugs ( Erreurs de syntaxes , Update method etc..)
 - [x] Correction de Bugs ( Update method ) + Gestion d'évènements + Documentation Docstrings
 - [x] Ajout d'une méthode pour vérifier l'accès à Internet avant lancement de l'application
+- [x] Migration des datas vers une DB Sqlite ( Optimisation du chargement et stockage des datas )
       
 ## Feuille de Route 🚧
 
 - [ ] Donner la possibilité à l'utilisateur de choisir d'executer la MAJ auto ( case oui / non ) avant l'exécution du code update
-- [ ] Explorer l'utilisation de SQlite ( chargement et stockage des datas )
 - [ ] Nettoyer et Optimiser le code ( Commentaires inutiles , Lignes inutiles , Fautes , Mettre tous les commentaires en anglais )
 - [ ] Tests de performance (profilage Python : cProfile, line_profiler, memory_profiler, Pyflame)
 - [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
-- [ ] Déploiement ( script .Exe , Docker , API ? )
+- [ ] Déploiement ( script .Exe ?, Docker ?, API ? )
 
 ## Installation 🛠️
 
