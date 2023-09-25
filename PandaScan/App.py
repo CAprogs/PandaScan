@@ -19,18 +19,18 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Roadmap:
+# Retravailler le select all qui s'affiche mal + le nombre selectionné qui est incorrect + reinitialiser toutes les boxs ( select all, chapitres, manga, switch website)
+# tester les méthodes de téléchargement sur les 3 sites
 # Mettre à jour la docu 0/-||-
-# Trouver un meilleur moyen de changer les sites et les données ( bug de lenteur au niveau de scantrad-vf )
 # réécrire tous les commentaires en anglais + suppression des commentaires inutiles
 # feature prenium : Télécharger TOUS les mangas et TOUS les chapitres d'un site / bouton select all ?
 
 # Importation des bibliothèques utiles
 import os
-import pandas as pd
-import yaml
 import tkinter as tk
 import json
 import requests
+import sqlite3
 from tkinter import ttk
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage, StringVar, OptionMenu
 from pathlib import Path
@@ -53,17 +53,14 @@ selected_website = "scantrad-vf" # Site de scrapping par défaut
 # Obtenir le chemin absolu du répertoire contenant le script
 script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
 
-# chemins relatifs vers les dossiers / datas
+# chemin relatifs vers les assets de l'application
 assets_directory = script_directory / "assets"
-mangas_path = script_directory / f"websites/{selected_website}/datas/mangas.csv"
-chapters_path = script_directory / f"websites/{selected_website}/datas/mangas_chapters.yml"
 
-# Chargement des datas ( par défaut )
-with open(chapters_path, 'r') as file:
-        chapitres = yaml.safe_load(file)
-datas = pd.read_csv(mangas_path)
+# Récupérer les datas de la base de données SQLite
+conn = sqlite3.connect(f'{script_directory}/websites/Pan_datas.db')
+cursor = conn.cursor()
 
-# Charger le contenu du fichier config.json
+# Charger les paramètres de configuration de l'application
 with open('config.json') as config_file:
     config = json.load(config_file)
 
@@ -131,39 +128,35 @@ def main():
         """
         if driver: # Si le navigateur est ouvert
             driver.quit() # Fermer le navigateur
+        conn.close() # Arrêter la connexion à la base de données
         window.destroy() # Fermeture de la fenêtre tkinter
+        print("\n Fermeture de l'application. \n")  # Afficher le message de deconnexion      ##### Track activity
 
     def Switch_Website(*args):
         """Changer de site de scrapping
         """    
-        global chapitres, datas, selected_website
+        global selected_website
 
         selected_item = website_list_var.get()
         selected_website = selected_item
-        print(f"\nWebsite sélectionné : {selected_item}")                                               ##### Track activity
-        
-        mangas_path = script_directory / f"websites/{selected_website}/datas/mangas.csv"
-        chapters_path = script_directory / f"websites/{selected_website}/datas/mangas_chapters.yml"
-
-        with open(chapters_path, 'r') as file:
-            chapitres = yaml.safe_load(file)
-        datas = pd.read_csv(mangas_path)
-
+        print(f"\nWebsite : {selected_item}")                                               ##### Track activity
         result_box.delete(0, tk.END)  # Effacer le contenu précédent de la mangas list
         chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la chapters list
 
-    # Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
     def select_all():
         """Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
         """    
-        global total_downloads
+        global total_downloads,manga_current_name
     
         if select_all_var.get() == 1:
-            chapters_box.select_set(0, tk.END)  # Sélectionner tous les éléments de la ListBox
-            chapters = chapitres[manga_current_name]
-            chapters_current_selected = chapters
+            chapters_box.select_set(0, tk.END)  # Sélectionner tous les éléments de la ChapterBox
+            query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
+            cursor.execute(query, (selected_website, manga_current_name))
+            results = cursor.fetchall()
+            chapters_current_selected = results
+
             print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
-            All_chapters_len = len(chapters_current_selected)
+            All_chapters_len = cursor.rowcount
             total_downloads = All_chapters_len
             canvas.itemconfigure(Chapter_selected, text=f'{All_chapters_len} selected')
         else:
@@ -172,23 +165,23 @@ def main():
             print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
             canvas.itemconfigure(Chapter_selected, text=f'0 selected')
 
-    # Update les résultats de recherche de la SearchBar dans la Manga Name List
     def update_results(event):
         """Update les résultats de recherche de la SearchBar dans la Manga Name List
 
         Args:
             event (_type_): L'événement qui déclenche la fonction
         """    
+        global selected_website
 
         keyword = entry_1.get()
-        cleaned_datas = datas['name'].fillna('')  # Remplacer les valeurs manquantes par une chaîne vide
-        results = cleaned_datas[cleaned_datas.str.contains(keyword, case=False)]
-        result_list = results.tolist()  # Convertir les résultats en liste
+        query = f"SELECT NomManga FROM Mangas WHERE NomManga LIKE ? AND NomSite = '{selected_website}'"
+        cursor.execute(query, ('%' + keyword + '%',)) # Rechercher les mangas correspondant au mot-clé
+        results = cursor.fetchall() # Récupérez les Noms de Mangas correspondant au mot-clé
         result_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste
-        for result in result_list:
-            result_box.insert(tk.END, result)  # Insérer chaque résultat dans la liste
+        # Affichez les résultats dans la MangaBox
+        for result in results:
+            result_box.insert(tk.END, result[0])  # Insérer chaque MANGA dans la liste déroulante
 
-    # Actions lorsqu'un manga est sélectionné
     def on_mangas_select(event):
         """Actions lorsqu'un manga est sélectionné
 
@@ -213,7 +206,6 @@ def main():
             except:
                 print("aucun manga sélectionné")                                            ##### Track activity
 
-    # Update les résultats dans la Chapter List lorqu'un manga est sélectionné
     def update_chapters(manga_name):
         """Update les résultats dans la Chapter List lorqu'un manga est sélectionné
 
@@ -222,16 +214,18 @@ def main():
         """    
         global All_chapters_len
 
-        if manga_name in chapitres:
-            chapters = chapitres[manga_name]
-            chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
-            All_chapters_len = len(chapters) # Récupérer le nombre total de chapitres du manga sélectionné
-            for chapter in chapters:
-                chapters_box.insert(tk.END, chapter)  # Insérer chaque chapitre dans la liste déroulante
-            if select_all_var.get() == 1:
-                select_all()
+        # Rechercher tous les chapitres du manga sélectionné
+        query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
+        cursor.execute(query, (selected_website, manga_name))
+        results = cursor.fetchall()  # Récupérer tous les chapitres correspondant au manga sélectionné
+        chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
+        All_chapters_len = cursor.rowcount  # Récupérer le nombre total de chapitres du manga sélectionné
+        # Afficher les résultats dans la ChapterBox
+        for result in results:
+            chapters_box.insert(tk.END, result[0])  # Insérer chaque CHAPITRE dans la liste déroulante
+        if select_all_var.get() == 1:
+            select_all()
 
-    # Actions lorsque des chapitres sont sélectionnés
     def on_chapters_select(event):
         """Actions lorsque des chapitres sont sélectionnés
 
@@ -247,7 +241,6 @@ def main():
         total_downloads = len(selected_items)
         canvas.itemconfigure(Chapter_selected, text=f'{total_downloads} selected')
 
-    # Download ou non les éléments sélectionnés
     def show_Download_info():
         """Download ou non les éléments sélectionnés
         """    
@@ -335,7 +328,6 @@ def main():
             Set_Download_Path()
 
 
-    #### Évènements lorsque la souris Entre/Sort d'un bouton ###
     def Download_enter(event):
         """Évènements lorsque la souris Entre/Sort d'un bouton
 
