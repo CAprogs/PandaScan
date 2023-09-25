@@ -16,6 +16,7 @@ for path in new_paths:  # Insérer chaque chemin dans le path
 from Update_fmteam import Update_fmteam
 from Update_lelscans import Update_lelscans
 from Update_scantrad import Update_scantrad
+from Migrate import Migrate_datas
 from tkinter import messagebox
 from Selenium_config import driver
 import json
@@ -37,6 +38,7 @@ def Manual_Update(website):
             Update_lelscans()
         elif website == "scantrad-vf":
             Update_scantrad()
+        Migrate_datas()
         print("\n Update End \n")                       ##### Track activity
         messagebox.showinfo("Update [ Manual ]", f"{website} 🐼 is up-to-date ✅ ! < read the changelog file for more information >")
     else:
@@ -49,6 +51,7 @@ def Auto_Update():
     Update_fmteam()
     Update_lelscans()
     Update_scantrad()
+    Migrate_datas()
     print(" Update End !")                              ##### Track activity
     messagebox.showinfo("Update [ Auto ]", "All sites 🐼 are up-to-date ✅ ! < read the changelog file for more information >")
     driver.quit()
