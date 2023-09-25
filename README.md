@@ -37,7 +37,7 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - _**Téléchargement**_ ↧ : Téléchargez automatiquement et en un clic tous les scans que vous désirez !
 - _**Stockage**_ 📚 : Les fichiers téléchargés sont stockés au bon endroit, au bon moment !
 - _**Mise à Jour**_ ( Manuelle / Automatique ) ♽: Un véritable tour de magie 🪄, restez à jour et à l'âffût des dernières sorties de vos scans !
-- _**Changelog**_ 🔗 : Restez informé des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤 
+- _**Changelog**_ 🔗 : Restez informés des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤 
 
 [```Démo```]()
 
