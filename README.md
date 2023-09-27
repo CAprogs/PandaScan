@@ -17,9 +17,12 @@
 
 ## À Propos ⛔️
 
-Tous les sites disponibles sur l'application sont des sites **Français**. N'hésitez pas à ajouter vos **```suggestions de sites```** ou **```vos idées```** à travers le [```Chat```](https://github.com/CAprogs/PandaScan/discussions/2). Les sites **Anglais** de lecture de Scans seront **ajoutés très prochainement**.
+- Tous les sites disponibles sur l'application sont des sites **Français 🇫🇷**.
+- N'hésitez pas à ajouter vos **```suggestions de sites```** ou **```vos idées```** à travers le [```Chat```](https://github.com/CAprogs/PandaScan/discussions/2).
+- La [**`contribution`**]() au projet est vivement souhaitée 😊.
+- Les sites **Anglais 󠁧󠁢󠁥󠁮󠁧🇬🇧** de lecture de Scans seront **ajoutés ultérieurement**.
 
-## Traductions
+## Documentations 
 
 - [**Français**]() (FR)
 - [**English**](docs/EN/README.en.md) (EN)
@@ -27,22 +30,40 @@ Tous les sites disponibles sur l'application sont des sites **Français**. N'hé
 ## Technologies 📲
 
 - [**Python**](https://www.python.org/)
+- [**Sqlite**](https://www.sqlite.org/index.html)
 - [**Tkinter-Designer**](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
 - [**Figma**](https://www.figma.com/login)
 
-Retrouvez la liste des **packages / modules** utilisés [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
+Retrouvez la liste des **packages / modules** requis [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
 
 ## Fonctionnalités 🚀
 
 - _**Téléchargement**_ ↧ : Téléchargez automatiquement et en un clic tous les scans que vous désirez !
 - _**Stockage**_ 📚 : Les fichiers téléchargés sont stockés au bon endroit, au bon moment !
 - _**Mise à Jour**_ ( Manuelle / Automatique ) ♽: Un véritable tour de magie 🪄, restez à jour et à l'âffût des dernières sorties de vos scans !
-- _**Changelog**_ 🔗 : Restez informés des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤 
+- _**Changelog**_ 🔗 : Restez informés des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤
+- _**Configuration**_ ⚙️ : Configurez l'essentiel de l'application à votre guise, PandaScan 🐼 VOUS appartient 🫵
 
-[```Démo```]()
+[```Démo```]() # COMING SOON 🛠️
+
+## Versions ↧
+
+| Version  | Téléchargement | Mise à Jour | Configuration | Aperçu 👁️ |
+| :-------- | :-------       | :-------    | :-------      | :-------  |
+| `BÊTA`    | ✅             | ✅           |   ✅    |  <img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">         |
+| `LITE`    | ✅             | ❌          |   ❌     |  <img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">          |
+
+## Feuille de Route 🚧
+
+- [ ] Nettoyer et Optimiser le code ( Commentaires inutiles , Lignes inutiles , Fautes , Uniformiser les commentaires en anglais )
+- [ ] Tests de performance (profilage Python : cProfile, line_profiler, memory_profiler, Pyflame)
+- [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
+- [ ] Déploiement ( script .Exe ?, Docker ?, API ? )
 
 ## Infos Mises à Jour ♻️
-
+<details>
+  <summary> L'avancée de PandaScan 🐼 </summary>
+        
 - [x] Mise à jour de l'interface graphique
 - [x] Ajout de fonctionnalités et de mangas :
 <br>    • Lelscans.net ajouté</br>
@@ -65,15 +86,11 @@ Retrouvez la liste des **packages / modules** utilisés [```ici```](https://gith
 - [x] Correction de Bugs ( Update method ) + Gestion d'évènements + Documentation Docstrings
 - [x] Ajout d'une méthode pour vérifier l'accès à Internet avant lancement de l'application
 - [x] Migration des datas vers une DB Sqlite ( Optimisation du chargement et stockage des datas )
-- [x] L'utilisateur peut désormais valider/ non la mise à jour de l'application 
-      
-## Feuille de Route 🚧
+- [x] L'utilisateur peut désormais valider/ non la mise à jour de l'application
+- [x] Stabilisation et correction des bugs dans App.py
+- [x] Ajout de conditions initiales pour le bon fonctionnement de l'application / commentaires et changements mineurs sur le design du code ;)
 
-- [ ] Stabiliser et corriger les bugs dans App.py
-- [ ] Nettoyer et Optimiser le code ( Commentaires inutiles , Lignes inutiles , Fautes , Mettre tous les commentaires en anglais )
-- [ ] Tests de performance (profilage Python : cProfile, line_profiler, memory_profiler, Pyflame)
-- [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
-- [ ] Déploiement ( script .Exe ?, Docker ?, API ? )
+</details>
 
 ## Installation 🛠️
 
@@ -83,27 +100,33 @@ Suivez ce [**```Guide```**](https://github.com/CAprogs/PandaScan/blob/main/Insta
 
 ### II. _Vous n'y connaissez rien_ 🫥 
 
-Téléchargez PandaScan 🐼 sous forme de fichier .EXE [```ici```]()    # Toujours en développement 🔨
+Regardez le [**```tutoriel d'installation```**]()    # COMING SOON 🔨
 
-## Commencer 🧞‍♂️
+## C'est Simple 🧞‍♂️ 
 
-_Assurez vous d'être connecter à Internet !_
+_Assurez vous d'être connecté à Internet !_
 
-1. Ouvrez l'application PandaScan 🐼
+1. Lancez l'application PandaScan 🐼 ( App.py )
 2. Recherchez votre Manga favori 🔍
-3. Sélectionnez le Manga et les Chapitres de vos rêves 🤩
+3. Sélectionnez le Manga et les Chapitres de VOTRE choix 🤩
 4. Lancez le téléchargement : PandaScan s'occupe du reste 💨
 5. Lisez sans modération 🤓
+<details>
+        <summary> Optionel ⚙️ ( Version Bêta uniquement ) </summary>
+        
+- Configurez le **Chemin de destination** de vos téléchargements ( Répertoire de PandaScan par défaut )
+- Choisissez d'activer ou non la **Mise à Jour** de l'application ( Activé par défaut )
+  - Choisissez entre une MaJ **Manuelle** ou **Automatique** ( Manuelle par défaut )
+- Activez ou non la **Vue du Navigateur automatisé** ( Désactivé par défaut )
+      
+</details>
 
-## Comment ça marche ? 🤔
+## Principe de l'application 🪄
 
 La figure ci-dessous représente le fonctionnement de PandaScan 🐼. Les icônes 🟢 désignent la sélection de l'utilisateur.
 
 <img width="700" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
 
-## Captures d'Écran 👁️
-
-<img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">
 
 ## Déclaration de non-responsabilité ⚠️
 
@@ -111,7 +134,7 @@ La figure ci-dessous représente le fonctionnement de PandaScan 🐼. Les icône
 2. Le téléchargement excessif et fréquent peut entraîner le dysfonctionnement d'un site web. Veuillez utiliser cet outil de manière responsable pour le bien de tous.
 3. Si certains fichiers téléchargés sont vides, c'est tout à fait normal ! Les sites ne sont pas parfaits et le stockage des données peut être coûteux.
 
-_**Si vous avez les moyens d'acheter ces œuvres, veuillez le faire, ne serait-ce que pour soutenir les auteurs !**_
+_**Si vous avez les moyens d'acheter ces œuvres, veuillez le faire, ne serait-ce que pour soutenir les auteurs 🥰!**_
 
 ## Auteur ✍️
 
@@ -119,10 +142,10 @@ _**Si vous avez les moyens d'acheter ces œuvres, veuillez le faire, ne serait-c
 
 ## Licence 📝
 
-Ce projet utilise la [```Licence MIT```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
+Ce projet est sous [```Licence MIT```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
 
-## Don & Soutien ❤️
+## Dons & Soutien ❤️
 
-Si vous aimez ce projet, n'hésitez pas à lui donner une 🌟 !
+Si vous **aimez ce projet**, n'hésitez pas à lui **donner une 🌟** !
 
 <a href="https://www.buymeacoffee.com/CAprogs"><img src="https://img.buymeacoffee.com/button-api/?text=Offrez-moi une pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
