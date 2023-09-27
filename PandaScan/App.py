@@ -1,29 +1,29 @@
-# ------------------------------------------------------------------------------------------------------------
-# ____                     __               ____                               
-#/\  _`\                  /\ \             /\  _`\                             
-#\ \ \L\ \ __      ___    \_\ \     __     \ \,\L\_\    ___     __      ___    
-# \ \ ,__/'__`\  /' _ `\  /'_` \  /'__`\    \/_\__ \   /'___\ /'__`\  /' _ `\  
-#  \ \ \/\ \L\.\_/\ \/\ \/\ \L\ \/\ \L\.\_    /\ \L\ \/\ \__//\ \L\.\_/\ \/\ \ 
-#   \ \_\ \__/.\_\ \_\ \_\ \___,_\ \__/.\_\   \ `\____\ \____\ \__/.\_\ \_\ \_\
-#    \/_/\/__/\/_/\/_/\/_/\/__,_ /\/__/\/_/    \/_____/\/____/\/__/\/_/\/_/\/_/
-#                                                                              
+#------------------------------------------------------------------------------------------------------------
+'''
+██████╗  █████╗ ███╗   ██╗██████╗  █████╗     ███████╗ ██████╗ █████╗ ███╗   ██╗    
+██╔══██╗██╔══██╗████╗  ██║██╔══██╗██╔══██╗    ██╔════╝██╔════╝██╔══██╗████╗  ██║    
+██████╔╝███████║██╔██╗ ██║██║  ██║███████║    ███████╗██║     ███████║██╔██╗ ██║    
+██╔═══╝ ██╔══██║██║╚██╗██║██║  ██║██╔══██║    ╚════██║██║     ██╔══██║██║╚██╗██║    
+██║     ██║  ██║██║ ╚████║██████╔╝██║  ██║    ███████║╚██████╗██║  ██║██║ ╚████║    
+╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝ BETA                                                                                                           
+'''
 # ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan 🐼 | @2023 by CAprogs
 # This project aims to download mangas scans from a website by simply selecting the manga and chapters.
-# You are now able to choose between Manual / Auto-update ( At Launch ). Change 'mode' value in the config.json : 'manual' or 'auto'
-# You are now able to change the download path in config.json file. Change 'path' value in the config.json
-# "Update" Feature requires Chromedriver to work. Please follow the Installation Guide to install.
-# Please note that some websites may not provide empty chapters in their files.
+# You are now able to choose between Manual / Auto-update ( At Launch ). || Change 'mode' value in the config.json : 'manual' or 'auto'
+# You are now able to change the download path in config.json file. || Change 'path' value in the config.json
+# You are now able to Validate or Not the Update of your Datas. || If there were any changes in your Data you can check them in the changelog.txt file generated.
+# "Update" Feature requires Chromedriver to work. Please follow the Installation Guide to set up start.
+# Please note that some websites may provide empty chapters in their files.
 # If this project helped you, please consider giving it a ⭐️ on Github.🫶
 # Credits: @Tkinter-designer by ParthJadhav 
 # ------------------------------------------------------------------------------------------------------------
 
-# Roadmap:
-# Retravailler le select all qui s'affiche mal + le nombre selectionné qui est incorrect + reinitialiser toutes les boxs ( select all, chapitres, manga, switch website)
-# tester les méthodes de téléchargement sur les 3 sites
-# Mettre à jour la docu 0/-||-
-# réécrire tous les commentaires en anglais + suppression des commentaires inutiles
-# feature prenium : Télécharger TOUS les mangas et TOUS les chapitres d'un site / bouton select all ?
+# To-Do-List :
+# Rendre les paramètres de l'application réglables directement dans l'app.
+# Ajouter davantage de Gestion d'erreurs.
+# Mettre à jour la docu Github.
+# Réécrire tous les commentaires en anglais + suppression des commentaires inutiles.
 
 # Importation des bibliothèques utiles
 import os
@@ -57,8 +57,13 @@ script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
 assets_directory = script_directory / "assets"
 
 # Récupérer les datas de la base de données SQLite
-conn = sqlite3.connect(f'{script_directory}/websites/Pan_datas.db')
-cursor = conn.cursor()
+try:
+    conn = sqlite3.connect(f'{script_directory}/websites/Pan_datas.db')
+    cursor = conn.cursor()
+    print("\nDatas Loaded ✅")                                                                          ##### Track activity
+except:
+     messagebox.showinfo("Error","😵‍💫 Oups, There is an issue with your data. 🚨")                       ##### Track activity
+     exit()
 
 # Charger les paramètres de configuration de l'application
 with open('config.json') as config_file:
@@ -116,7 +121,7 @@ def main():
     )
     canvas.place(x = 0, y = 0)
 
-    ######################################################################   FONCTIONS  & CLASSES  ######################################################################
+    ####################################################################   FUNCTIONS  #############################################################################
     # Importation des éléments graphique
     def relative_to_assets(path: str) -> Path:
         """Get the relative path to the assets folder."""        
@@ -130,7 +135,19 @@ def main():
             driver.quit() # Fermer le navigateur
         conn.close() # Arrêter la connexion à la base de données
         window.destroy() # Fermeture de la fenêtre tkinter
-        print("\n Fermeture de l'application. \n")  # Afficher le message de deconnexion      ##### Track activity
+        print("\nFermeture de l'application. \n")  # Afficher le message de deconnexion      ##### Track activity
+
+    def Reinitialize_page():
+        """Reinitialise toute la page ( Searchbar, ChapterList, ChapterBox, MangaBox, MangaList, manga_current_name )
+        """
+        global manga_current_name
+
+        entry_1.delete(0, tk.END)  # Efface le contenu de la SearchBar                                              
+        canvas.itemconfigure(Chapter_selected, text='') # Effacer le contenu précédent de la ChapterBox
+        canvas.itemconfigure(Manga_selected, text='') # Effacer le contenu précédent de la MangaBox
+        manga_current_name = '' # Effacer le contenu précédent du manga sélectionné
+        result_box.delete(0, tk.END)  # Effacer le contenu précédent de la mangas list
+        chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la chapters list
 
     def Switch_Website(*args):
         """Changer de site de scrapping
@@ -139,24 +156,23 @@ def main():
 
         selected_item = website_list_var.get()
         selected_website = selected_item
-        print(f"\nWebsite : {selected_item}")                                               ##### Track activity
-        result_box.delete(0, tk.END)  # Effacer le contenu précédent de la mangas list
-        chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la chapters list
+        print(f"\nWebsite : {selected_item}")                                           ##### Track activity
+        Reinitialize_page()
 
     def select_all():
         """Sélectionner tous les chapitres / Volumes d'un manga en cliquant sur la CheckBox
         """    
-        global total_downloads,manga_current_name
+        global total_downloads,manga_current_name,chapters_current_selected
     
         if select_all_var.get() == 1:
             chapters_box.select_set(0, tk.END)  # Sélectionner tous les éléments de la ChapterBox
             query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
             cursor.execute(query, (selected_website, manga_current_name))
             results = cursor.fetchall()
-            chapters_current_selected = results
+            chapters_current_selected = [chapitre[0] for chapitre in results] # créer une liste composée des chapitres sélectionnés
 
             print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
-            All_chapters_len = cursor.rowcount
+            All_chapters_len = len(chapters_current_selected)
             total_downloads = All_chapters_len
             canvas.itemconfigure(Chapter_selected, text=f'{All_chapters_len} selected')
         else:
@@ -212,14 +228,12 @@ def main():
         Args:
             manga_name (_type_): Le nom du manga sélectionné
         """    
-        global All_chapters_len
 
         # Rechercher tous les chapitres du manga sélectionné
         query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
         cursor.execute(query, (selected_website, manga_name))
         results = cursor.fetchall()  # Récupérer tous les chapitres correspondant au manga sélectionné
         chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
-        All_chapters_len = cursor.rowcount  # Récupérer le nombre total de chapitres du manga sélectionné
         # Afficher les résultats dans la ChapterBox
         for result in results:
             chapters_box.insert(tk.END, result[0])  # Insérer chaque CHAPITRE dans la liste déroulante

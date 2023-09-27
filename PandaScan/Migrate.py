@@ -5,7 +5,6 @@ import os
 from pathlib import Path
 script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
 
-print("Connexion à la BDD .. \n")
 # Établir une connexion à la base de données SQLite
 conn = sqlite3.connect(f'{script_directory}/websites/Pan_datas.db')
 cursor = conn.cursor()
@@ -44,11 +43,12 @@ def DB_print_chapters(nom_manga,nom_site):
 
 # -------------------------------------------
 
-# ------------------------ Migration des données CSV et YAML ------------------------------
+# ------------------------ Migration des données CSV et YAML => DB Sqlite ------------------------------
 
 def Migrate_datas():
     """Migrate the CSV and YAML data to the database.
-    """    
+    """
+    print("\nInitialisation de la Migration ..\n")    
     sites_data = [
         {'NomSite': 'fmteam.fr'},
         {'NomSite': 'lelscans.net'},
@@ -61,13 +61,12 @@ def Migrate_datas():
     df_sites = pd.DataFrame(sites_data)
     df_sites.to_sql('SitesWeb', conn, if_exists='replace', index=False)
 
-    print("Vérifications et Nettoyage .. \n")
+    print("Vérifications et Nettoyage de la DB ..\n")
     for table in tables:
         Delete_table(table)
 
     print("Début de la Migration ..\n")
 
-    i = 1
     for websites in sites_data:
         
         # Charger le fichier CSV dans un DataFrame pandas
@@ -93,12 +92,10 @@ def Migrate_datas():
 
         # Enregistrer les modifications dans la base de données
         conn.commit()
-        print(f"Migration {i} terminée ..\n")
-        i += 1
+        print(f"Migration de {websites} terminée ✅")
 
-    print("Fin de la Migration.")
-    # Arrêter la connexion
-    conn.close()
+    print("\nFin de la Migration.")
+
 
 
 # Uncomment to test ( Print the chapters of a manga )
