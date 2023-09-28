@@ -1,16 +1,16 @@
 # Get started with PandaScan 🐼
 
-## **v1.0.0** | _**31/08/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
+## **v1.1.0** | _**28/09/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
 
-The [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required for those who want the Full access to PandaScan 🐼 Features ( Download & Update Features ).
+The [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required for those who want full access to PandaScan 🐼 Features.
 
-If you don't want the **Full version** you can rely on the [**lightweight version**](https://github.com/CAprogs/PandaScan/releases/download/v1.0.0/PandaScan.Lite.zip) and directly go to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
+If you don't want the **Full version** you can rely on the [**lightweight version**](https://github.com/CAprogs/PandaScan/releases/download/v1.0.0/PandaScan.Lite.zip) and jump to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
 
 ---
 
-### **I. First step**
+### **I. FIRST STEP**
 #
-Prerequise : Ensure that you have **Google Chrome** installed on your computer. 
+Prerequisite : Ensure that you have **Google Chrome** installed on your computer. 
 
 - Download [**Chromewebdriver**](https://chromedriver.chromium.org/downloads) ( Select the **right version** for your architecture as in the table below )
 
@@ -22,12 +22,14 @@ Prerequise : Ensure that you have **Google Chrome** installed on your computer.
 
 ---
 
-### **II. Second step**
+### **II. SECOND STEP**
 #
 I recommend using `conda` for this part. If you don't have **conda** you can install it using this [**link**](https://docs.conda.io/en/latest/miniconda.html). 
 
-**N.B:** _I'm currently using `miniconda3` with a `MacBook pro M1` chip. I downloaded the `.pkg` file from the latest release with `Python 3.10`. 
+Why ? : _I'm currently using `miniconda3` with a `MacBook pro M1` chip. I downloaded the `.pkg` file from the latest release with `Python 3.10`. 
 **Miniconda** is just a **lightweight distribution of Anaconda**._
+
+For **Windows Users**, pleaser consider downloading a [`Cygwin`](https://www.cygwin.com/install.html) or an equivalent.
 
 - Open your **Terminal**
 - Enter your **Miniconda** / **Anaconda** file with the following command ⬇️
@@ -61,7 +63,7 @@ Now you can install **manually** the dependencies using the following command �
 pip install -r path/to/requirements.txt
 ```
 #
-### **III. Third step**
+### **III. THIRD STEP**
 #
 - **Launch** the **PandaScan** app
 
@@ -71,13 +73,14 @@ conda run -n Pandavenv python path/to/App.py
 ```
 #
 
-### **IV. Fourth step ( Optional )**
+### **IV. FOURTH STEP ( Optional )**
 #
 
-If you don't like the Terminal, you can **launch** the **PandaScan** app using **VScode** ⬇️
+If you don't like the Terminal, you can launch **PandaScan** using [**VScode**](https://code.visualstudio.com/) ⬇️
 
-GIF 2
+GIF 2 # SOON 🛠️
 
 ---
-**NB:**
-The Update "change_report" File is available in _**PandaScan > datas > "whatever website" > change_report.txt**_ when you launch the Update feature.
+**Please Note:** (BETA version only)
+- The **`changelog`** File is generate in _**PandaScan > websites > "whatever website" > changelog > changelog.txt**_
+- The **`changelog`** File helps you visualize if data have been removed, added or if there's no change at all in a particular Website.
