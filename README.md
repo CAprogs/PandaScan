@@ -50,8 +50,8 @@ Retrouvez la liste des **packages / modules** requis [```ici```](https://github.
 
 | Version  | Téléchargement | Mise à Jour | Configuration | Aperçu 👁️ |
 | :-------- | :-------       | :-------    | :-------      | :-------  |
-| `BÊTA`    | ✅             | ✅           |   ✅    |  <img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">         |
-| [`LITE`](https://github.com/CAprogs/PandaScan/releases/tag/v1.0.0)    | ✅             | ❌          |   ❌     |  <img width="500" alt="Capture d’écran 2023-09-28 à 02 29 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/d781bb9e-3812-4a29-bf67-04d967ab369f">
+| [**BÊTA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.0/PandaScan.Beta.zip)    | ✅             | ✅           |   ✅    |  <img width="500" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/966cf744-b592-4fce-8ee5-d37e44f90abc">         |
+| [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.0/PandaScan.Lite.zip)    | ✅             | ❌          |   ❌     |  <img width="500" alt="Capture d’écran 2023-09-28 à 02 29 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/d781bb9e-3812-4a29-bf67-04d967ab369f">
 
 ## Feuille de Route 🚧
 
@@ -89,7 +89,8 @@ Retrouvez la liste des **packages / modules** requis [```ici```](https://github.
 - [x] L'utilisateur peut désormais valider/ non la mise à jour de l'application
 - [x] Stabilisation et correction des bugs dans App.py
 - [x] Ajout de conditions initiales pour le bon fonctionnement de l'application / commentaires et changements mineurs sur le design du code ;)
-
+- [x] Fixation de Bugs liés au téléchargement
+- [x] Déploiement des versions [**Bêta**](https://github.com/CAprogs/PandaScan/releases/tag/v2.1.0) et [**Lite**](https://github.com/CAprogs/PandaScan/releases/tag/v2.0.0) de PandaScan 🐼
 </details>
 
 ## Installation 🛠️
