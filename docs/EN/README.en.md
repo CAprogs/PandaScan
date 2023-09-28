@@ -24,8 +24,8 @@
 
 ## Documentation 
 
-- [**French**]() (FR)
-- [**English**](docs/EN/README.en.md) (EN)
+- [**French**](https://github.com/CAprogs/PandaScan/blob/main/README.md) (FR)
+- [**English**]() (EN)
 
 ## Technologies 📲
 
