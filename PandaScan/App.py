@@ -280,7 +280,7 @@ def main():
                 nom_chapitre = nom_fichier / chapter_name
             # Création du Dossier du chapitre correspondant s'il n'existe pas
             chapter_number = chapter_transform(chapter_name, selected_website) # retourne le format adapté pour le site correspondant
-            Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier)
+            Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier, config)
 
         def perform_download():
             """Télécharger les chapitres sélectionnés
@@ -319,9 +319,8 @@ def main():
                 percentage_label.place(x=830.0, y=545.0) 
             perform_download()
 
-        # Gérer le chemin de destination des téléchargements
         def Set_Download_Path():
-            """Télécharger les chapitres sélectionnés
+            """ Gérer le chemin de destination des téléchargements
             """        
             global nom_fichier
 

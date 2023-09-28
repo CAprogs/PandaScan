@@ -5,8 +5,6 @@ import io
 from lxml import html
 from bs4 import BeautifulSoup
 
-# fmteam.fr and lelscans.net method fixed | 05/09/2023
-
 # Fonction pour attribuer le bon format au chapitre / volume
 def chapter_transform(chapter_name, selected_website):
     """Transform the chapter name to the right format.
@@ -110,7 +108,7 @@ def lelscans_download(response_url, save_path, page):
         return False
 
 # ========================================================== Download Method ( FMTEAM.FR ) 
-def fmteam_download(response_url, nom_fichier):
+def fmteam_download(response_url, nom_fichier, config):
     """Download the images from the given URL.
 
     Args:
@@ -131,7 +129,11 @@ def fmteam_download(response_url, nom_fichier):
                 # Obtenir le nom du premier fichier/dossier dans la liste
                 first_file = namelist[0]
                 file_name, useless = first_file.split("/")
-                file_name_path = nom_fichier + '/' + file_name
+                if os.path.exists(config['Download']['path']): 
+                    file_name_path = nom_fichier + '/' + file_name
+                else:
+                    file_name_path = nom_fichier / file_name 
+                
                 if not os.path.exists(file_name_path):
                     zip_ref.extractall(nom_fichier)
                     return True
@@ -144,7 +146,7 @@ def fmteam_download(response_url, nom_fichier):
 # ############################################################# Initialize Download Methods ###############################################################
 # =========================================================================================================================================================
 
-def Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier):
+def Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier, config):
     """Initialize the download of the images from the given URL.
 
     Args:
@@ -211,7 +213,7 @@ def Initialize_Download(selected_website, nom_chapitre, manga_current_name, chap
             lien_chapitre = str(f"https://fmteam.fr/api/download/{manga_current_name}/fr/ch/{chapter_number}")
         try:
             response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
-            response = fmteam_download(response_url, nom_fichier)
+            response = fmteam_download(response_url, nom_fichier, config)
             if response == True:
                 print(f"\nTéléchargement {current_download} terminé.\n")                                       ##### Track activity
             else:
@@ -226,12 +228,12 @@ def Initialize_Download(selected_website, nom_chapitre, manga_current_name, chap
 
 # Uncomment to Debug
 '''
-selected_website = 'lelscans.net' # fmteam.fr or lelscans.net or scantrad-v
-nom_chapitre = '/Users/charles-albert/Desktop/chapitre 341' # see manga datas corresponding to the website
-manga_current_name = 'the-seven-deadly-sins' # see datas corresponding to the website
-chapter_number = '341' 
+selected_website = 'fmteam.fr' # fmteam.fr or lelscans.net or scantrad-v
+nom_chapitre = '/Users/charles-albert/Desktop/chapitre 372' # see manga datas corresponding to the website
+manga_current_name = 'berserk' # see datas corresponding to the website
+chapter_number = '372' 
 current_download = '0'
-chapter_name = 'chapitre 341'
-nom_fichier = ''
+chapter_name = 'chapitre 372'
+nom_fichier = 'berserk'
 Initialize_Download(selected_website, nom_chapitre, manga_current_name, chapter_number, current_download, chapter_name, nom_fichier)
 '''
