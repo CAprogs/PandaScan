@@ -91,6 +91,7 @@ Retrouvez la liste des **packages / modules** requis [```ici```](https://github.
 - [x] Ajout de conditions initiales pour le bon fonctionnement de l'application / commentaires et changements mineurs sur le design du code ;)
 - [x] Fixation de Bugs liés au téléchargement
 - [x] Déploiement des versions [**Bêta**](https://github.com/CAprogs/PandaScan/releases/tag/v2.1.0) et [**Lite**](https://github.com/CAprogs/PandaScan/releases/tag/v2.0.0) de PandaScan 🐼
+- [x] Correction mineure ( Version Bêta ) ajout de 'requirements.txt' et correction d'un bug qui empêchait l'Update automatique de PandaScan.
 </details>
 
 ## Installation 🛠️
