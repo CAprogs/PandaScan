@@ -84,7 +84,7 @@ conda run -n Pandavenv python path/to/App.py
 
 If you don't like the Terminal, you can launch **PandaScan** using [**VScode**](https://code.visualstudio.com/) ⬇️
 
-GIF 2 # SOON 🛠️
+![ezgif com-video-to-gif](https://github.com/CAprogs/PandaScan/assets/104645407/83a7d7db-f17d-4929-b0ff-01a603be0ea9)
 
 ---
 **Please Note:** (BETA version only)
