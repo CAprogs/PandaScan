@@ -34,7 +34,7 @@ I recommend using `conda` for this part. If you don't have **conda** you can ins
 Why ? : _I'm currently using `miniconda3` with a `MacBook pro M1` chip. I downloaded the `.pkg` file from the latest release with `Python 3.10`. 
 **Miniconda** is just a **lightweight distribution of Anaconda**._
 
-For **Windows Users**, pleaser consider downloading a [`Cygwin`](https://www.cygwin.com/install.html) or an equivalent.
+For **Windows Users**, pleaser consider downloading [`Cygwin`](https://www.cygwin.com/install.html) or an equivalent.
 
 - Open your **Terminal**
 - Enter your **Miniconda** / **Anaconda** file with the following command ⬇️
