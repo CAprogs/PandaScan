@@ -77,8 +77,7 @@ pip install -r path/to/requirements.txt
 cd path/to/PandaScan
 ```
 
-- **Launch** the **PandaScan** app
-  - Replace `path/to/App.py` with your **App.py** file path ⬇️
+- **Launch** the **PandaScan** app ⬇️
 ```
 conda run python App.py
 ```
