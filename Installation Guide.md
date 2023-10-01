@@ -71,11 +71,16 @@ pip install -r path/to/requirements.txt
 #
 ### **III. THIRD STEP**
 #
-- **Launch** the **PandaScan** app
-
-Replace `path/to/App.py` with your **App.py** file path ⬇️
+- Enter the PandaScan file ⬇️
+  - Replace `path/to/PandaScan` with your **PandaScan** file path ⬇️
 ```
-conda run -n Pandavenv python path/to/App.py
+cd path/to/PandaScan
+```
+
+- **Launch** the **PandaScan** app
+  - Replace `path/to/App.py` with your **App.py** file path ⬇️
+```
+conda run python App.py
 ```
 #
 
