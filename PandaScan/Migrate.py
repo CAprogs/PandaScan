@@ -1,17 +1,9 @@
 import pandas as pd
-import sqlite3
 import yaml
-import os
-from pathlib import Path
-script_directory = Path(os.path.dirname(os.path.realpath(__file__)))
 
-# Établir une connexion à la base de données SQLite
-conn = sqlite3.connect(f'{script_directory}/websites/Pan_datas.db')
-cursor = conn.cursor()
+# ========================= Functions =========================
 
-# ------------ Functions -------------------
-
-def Delete_table(table):
+def Delete_table(table,conn,cursor):
     """Delete the content of a table.
 
     Args:
@@ -26,9 +18,9 @@ def Delete_table(table):
         delete_query = f'DELETE FROM {table}'
         conn.execute(delete_query)
 
-def DB_print_chapters(nom_manga,nom_site):
-    """Print the chapters of a manga.
-
+def DB_print_chapters(nom_manga,nom_site,conn,cursor): # for test purpose
+    """Print the chapters of a specific manga.
+        
     Args:
         nom_manga (str): the manga name.
         nom_site (str): the website name.
@@ -40,16 +32,15 @@ def DB_print_chapters(nom_manga,nom_site):
     # Afficher les chapitres disponibles
     for chapitre in chapitres:
         print(chapitre[0])
+    conn.close()
 
-# -------------------------------------------
+# =========================  CSV & YAML => Sqlite DB =========================
 
-# ------------------------ Migration des données CSV et YAML => DB Sqlite ------------------------------
-
-def Migrate_datas():
+def Migrate_datas(script_directory,conn,cursor):
     """Migrate the CSV and YAML data to the database.
     """
     print("\nInitialisation de la Migration ..\n")    
-    sites_data = [
+    websites = [
         {'NomSite': 'fmteam.fr'},
         {'NomSite': 'lelscans.net'},
         {'NomSite': 'scantrad-vf'}
@@ -58,55 +49,40 @@ def Migrate_datas():
     tables = ["Mangas",
             "Chapitres"]
     
-    df_sites = pd.DataFrame(sites_data)
+    df_sites = pd.DataFrame(websites)
     df_sites.to_sql('SitesWeb', conn, if_exists='replace', index=False)
 
     print("Vérifications et Nettoyage de la DB ..\n")
     for table in tables:
-        Delete_table(table)
+        Delete_table(table,conn,cursor)
 
     print("Début de la Migration ..\n")
 
-    for websites in sites_data:
+    for website in websites:
         
         # Charger le fichier CSV dans un DataFrame pandas
-        websites = websites['NomSite']
-        df_mangas = pd.read_csv(f'{script_directory}/websites/{websites}/datas/mangas.csv')
+        website = website['NomSite']
+        df_mangas = pd.read_csv(f'{script_directory}/websites/{website}/datas/mangas.csv')
         df_mangas = df_mangas.rename(columns={'name': 'NomManga'})
         # Créer une nouvelle colonne "NomSite" contenant la valeur du nom du site
-        df_mangas['NomSite'] = websites
-
-        # Charger le fichier YAML dans un dictionnaire Python
-        with open(f'{script_directory}/websites/{websites}/datas/mangas_chapters.yml', 'r') as fichier_yaml:
-            contenu_yaml = yaml.load(fichier_yaml, Loader=yaml.FullLoader)
+        df_mangas['NomSite'] = website
 
         # Utiliser la méthode to_sql() pour insérer les données depuis le DataFrame dans la table Mangas
         df_mangas.to_sql('Mangas', conn, if_exists='append', index=False)
 
+        # Charger le fichier YAML dans un dictionnaire Python
+        with open(f'{script_directory}/websites/{website}/datas/mangas_chapters.yml', 'r') as fichier_yaml:
+            contenu_yaml = yaml.load(fichier_yaml, Loader=yaml.FullLoader)
+
         # Parcourir le dictionnaire YAML et insérer les données dans la table Chapitres
         for manga, chapitres in contenu_yaml.items():
             for chapitre in chapitres:
-                data = {'NomSite': websites, 'NomManga': manga, 'Chapitres': chapitre}
+                data = {'NomSite': website, 'NomManga': manga, 'Chapitres': chapitre}
                 df_chapitre = pd.DataFrame([data])
                 df_chapitre.to_sql('Chapitres', conn, if_exists='append', index=False)
 
         # Enregistrer les modifications dans la base de données
         conn.commit()
-        print(f"Migration de {websites} terminée ✅")
+        print(f"{website} migrated ✅")                 ##### Track activity
 
-    print("\nFin de la Migration.")
-
-
-
-# Uncomment to test ( Print the chapters of a manga )
-'''
-print('\nLes chapitres disponibles pour \"blue-lock\" sont : \n')
-# Afficher les chapitres d'un manga spécifique
-DB_print_chapters("blue-lock","scantrad-vf")
-conn.close()
-'''
-
-# Uncomment to Debug ( Migrate the CSV and YAML data to the database )
-'''
-Migrate_datas()
-'''
+    print("\nEnd of Migration.")                        ##### Track activity
