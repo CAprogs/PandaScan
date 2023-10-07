@@ -27,7 +27,7 @@ def Scrap_Chapters():
         driver.get(url)
 
         # Attendre que le contenu soit chargé et que le JavaScript s'exécute
-        driver.implicitly_wait(5)  # Attente implicite
+        driver.implicitly_wait(2)  # Attente implicite
         
         i = 2      # depart ( correpond au dernier chapitre de la page de téléchargement )
         print(f"\nManga : {manga_name}") # Indique dans quel manga nous sommes pour le scrapping des chapitres
@@ -49,7 +49,7 @@ def Scrap_Chapters():
                 else:
                     chapter_number = url_chapter_download.split("/")[-1]                        # récupérer le numero de chapitre 
 
-                chapter = "chapitre " + chapter_number                          # normaliser le chapitre
+                chapter = "chapitre " + chapter_number                          # Normaliser le chapitre
                 manga_chapters_dict[manga_name].append(chapter)                 # Ajouter le chapitre à 'manga_chapters_dict' avec sa clé correspondante
                 print(f"{chapter} récupéré ")
                 i += 1
@@ -60,7 +60,8 @@ def Scrap_Chapters():
                     break  
                 except:
                     print(f"\nChapitre N°{int(ch_number)-1} INEXISTANT | {manga_name}\n")
-                    break 
+                    break    
+                    
 
     # Convertir le dictionnaire en document YAML
     yml_data = yaml.dump(manga_chapters_dict)

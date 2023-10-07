@@ -1,0 +1,52 @@
+
+Update 0 : 13/09/2023 | 00:07:35
+Changes in black-clover:
+  • Added chapters: chapitre 368
+Changes in blue-lock:
+  • Added chapters: chapitre 232, chapitre 231, chapitre 230, chapitre 229
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1433, chapitre 1432
+Changes in kingdom:
+  • Added chapters: chapitre 769, chapitre 768, chapitre 767
+Changes in my-hero-academia:
+  • Added chapters: chapitre 399, chapitre 398, chapitre 397
+Changes in one-piece:
+  • Added chapters: chapitre 1091, chapitre 1090, chapitre 1089
+Changes in one-punch-man:
+  • Added chapters: chapitre 189, chapitre 188
+
+Update 1 : 14/09/2023 | 01:54:55
+Changes in kingdom:
+  • Added chapters: chapitre 770
+Changes in one-piece:
+  • Added chapters: chapitre 1092
+
+Update 2 : 29/09/2023 | 02:48:31
+Changes in blue-lock:
+  • Added chapters: chapitre 234, chapitre 233
+Changes in kingdom:
+  • Added chapters: chapitre 771
+Changes in my-hero-academia:
+  • Added chapters: chapitre 401, chapitre 400
+Changes in one-piece:
+  • Added chapters: chapitre 1093
+Changes in one-punch-man:
+  • Added chapters: chapitre 190
+
+Update 3 : 06/10/2023 | 21:31:12
+Changes in blue-lock:
+  • Added chapters: chapitre 235
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1435, chapitre 1434
+=> Added new entry 'jujutsu-kaisen' with chapters: chapitre 237, chapitre 236, chapitre 235, chapitre 234, chapitre 233, chapitre 232, chapitre 231, chapitre 230, chapitre 229, chapitre 228, chapitre 227, chapitre 226, chapitre 225, chapitre 224, chapitre 223, chapitre 222, chapitre 221, chapitre 220, chapitre 219, chapitre 218, chapitre 217, chapitre 216, chapitre 215, chapitre 214, chapitre 213, chapitre 212, chapitre 211, chapitre 210, chapitre 209, chapitre 208, chapitre 207, chapitre 206, chapitre 205, chapitre 204, chapitre 203, chapitre 202, chapitre 201, chapitre 200
+Changes in kingdom:
+  • Added chapters: chapitre 772
+Changes in my-hero-academia:
+  • Added chapters: chapitre 402
+Changes in one-piece:
+  • Added chapters: chapitre 1094
+Changes in one-punch-man:
+  • Added chapters: chapitre 191
+
+Update 4 : 06/10/2023 | 22:35:30
+No added / deprecated files !
