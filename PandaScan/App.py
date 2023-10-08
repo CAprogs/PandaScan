@@ -8,7 +8,7 @@
 ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝ BETA                                                                                                           
 '''
 # ------------------------------------------------------------------------------------------------------------
-# Welcome to PandaScan 🐼 | @2023 by CAprogs
+# Welcome to PandaScan ( BETA ) 🐼 | @2023 by CAprogs
 # This project aims to download mangas scans from a website by simply selecting the manga and chapters.
 # Chromedriver is required to use the app. Please follow the 'Installation Guide'.
 # You are now able to change Settings directly in App. ( Need to restart App )
@@ -262,7 +262,7 @@ def main():
         current_download = 0
 
         def Hide_DownloadBox():
-            """Cacher la barre d'infos après 2 secondes
+            """Cacher la barre d'infos
             """        
             canvas.itemconfigure(image_1, state=tk.HIDDEN)
         
@@ -299,8 +299,8 @@ def main():
                 if total_downloads > 1:
                     progressbar.place_forget()
                     percentage_label.place_forget()
-                messagebox.showinfo("Info [ℹ️]", "Successfull Pandaload ✅, Thanks for Using PandaScan 🐼")
-                Hide_DownloadBox() # cacher la barre d'infos après 2 secondes
+                messagebox.showinfo("Info [ℹ️]", "Successfull Pandaload ✅, Thanks for using PandaScan 🐼")
+                Hide_DownloadBox() # cacher la barre d'infos
                 button_1.configure(state="normal")  # Réactiver le bouton de téléchargement
                 Download_state = False
         
@@ -378,12 +378,12 @@ def main():
         image=SearchBar_background
     )
 
-    SearchBar_frontground = PhotoImage(
-        file=relative_to_assets("SearchBar_frontground.png"))                                      ### Frontground de la barre de recherche
+    SearchBar_foreground = PhotoImage(
+        file=relative_to_assets("SearchBar_foreground.png"))                                      ### Foreground de la barre de recherche
     image_8 = canvas.create_image(
         511.0,
         202.0,
-        image=SearchBar_frontground
+        image=SearchBar_foreground
     )
 
     # ============================================ Barre de Recherche des mangas ( SearchBar )
