@@ -473,8 +473,8 @@ def show_settings(window, config, settings_button):
         button_hover(button_4,save_button_1,save_button_2)  
         ##############################################################################################################
 
-        chromedriver_settings()                                          # Afficher les paramètres de la première page ( chromedriver par défaut )
-        # charger les éléments des pages update et download
+        # charger les éléments des pages
+        chromedriver_settings()
         update_settings()
         download_settings()
         # retourner à la page chromedriver par défaut
