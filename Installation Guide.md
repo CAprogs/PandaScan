@@ -54,8 +54,8 @@ I assume you've already downloaded the **PandaScan file**. If not, download the 
 
 | Version  | Release |
 | :-------- | :-------       |
-|  `V2.1.0` | [**BÊTA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.0/PandaScan.Beta.zip)  |
-|  `V2.0.0`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.0/PandaScan.Lite.zip)  |
+|  `V2.1.1` | [**BÊTA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)  |
+|  `V2.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)  |
 
 - Install `pip` in your `conda venv` using the following command ⬇️
 ```
