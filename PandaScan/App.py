@@ -23,12 +23,10 @@
 # To-Do-List :
 # Apres un update reload l'application
 # Apres une modif des settings reload l'application
-# Rendre les paramètres de l'application réglables directement dans l'app.
 # Améliorer la vitesse de téléchargement en utilisant des Threads cpu ou un processus de parallélisation des tâches
 # Traquer les progressions des téléchargements et des mises à jour ( fmteam, scantrad-vf, lelscans)
-# Changer la barre de progression avec le module tqdm ( tester son implémentation pour track le téléchargement dans le terminal )
 # Explorer le multiprocessing avec MPIRE ( Github )
-# Utisation d'assertions pour le debogage ( assert )
+# Utisation d'assertions pour le debogage ( assert ? gestion des erreurs avec Try/except ? )
 # Mettre à jour la docu Github.
 # Réécrire tous les commentaires en anglais + suppression des commentaires inutiles.
 
@@ -43,17 +41,26 @@ from pathlib import Path
 from tkinter import messagebox
 from Download import chapter_transform, Initialize_Download
 from Update import Manual_Update,Auto_Update,script_directory
+from Settings import show_settings
 from Selenium_config import driver,config
 
 ################################    Variables Globales   ############################################
-All_chapters_len = 0    #  stocker le nombre de chapitres total d'un manga sélectionné
-total_downloads = 0     #  stocker le nombre de téléchargements de Chapitres à effectuer
-current_download = 0    #  variable d'incrémentation du nombre de téléchargements
-manga_current_name = '' #  stocker le nom du manga sélectionné
-chapters_current_selected = [] # stocker la liste des chapitres sélectionnés
-Download_state = False # Etat du bouton Download
-nom_fichier = '' # Chemin vers le fichier du manga à télécharger
-selected_website = "scantrad-vf" # Site de scrapping par défaut
+All_chapters_len = 0                        #  stocker le nombre de chapitres total d'un manga sélectionné
+total_downloads = 0                         #  stocker le nombre de téléchargements de Chapitres à effectuer
+current_download = 0                        #  variable d'incrémentation du nombre de téléchargements
+manga_current_name = ''                     #  stocker le nom du manga sélectionné
+chapters_current_selected = []              # stocker la liste des chapitres sélectionnés
+Download_state = False                      # Etat du bouton Download
+nom_fichier = ''                            # Chemin vers le fichier du manga à télécharger
+websites = ["scantrad-vf", "lelscans.net", "fmteam.fr"] # Les sites disponibles
+selected_website = websites[0]                          # Site sélectionné par défaut
+inactive_cursor = "arrow"                               #  Curseur par défaut
+active_cursor = "hand2"                                 # Curseur lorsque la souris survole un bouton
+color_1 = "#FFFFFF"                                     # blanc
+color_2 = "#6B0000"                                     # bordeaux
+color_3 = "#000716"                                     # noir
+police_1 = ("Inter", 15 * -1)
+police_2 = ("Inter", 16 * -1)     
 #################################################################################################
 
 # chemin relatif vers les assets de l'application
@@ -109,10 +116,10 @@ def main():
 
     # Paramètres par défaut de la fenêtre
     window.geometry("962x686")
-    window.configure(bg = "#FFFFFF")
+    window.configure(bg = color_1)
     canvas = Canvas(
         window,
-        bg = "#FFFFFF",
+        bg = color_1,
         height = 686,
         width = 962,
         bd = 0,
@@ -301,7 +308,7 @@ def main():
                     percentage_label.place_forget()
                 messagebox.showinfo("Info [ℹ️]", "Successfull Pandaload ✅, Thanks for using PandaScan 🐼")
                 Hide_DownloadBox() # cacher la barre d'infos
-                button_1.configure(state="normal")  # Réactiver le bouton de téléchargement
+                download_button.configure(state="normal")  # Réactiver le bouton de téléchargement
                 Download_state = False
         
         def Download_settings():
@@ -310,7 +317,7 @@ def main():
             global Download_state, total_downloads
 
             Download_state = True
-            button_1.configure(state="disabled")  # Désactiver le bouton de téléchargement
+            download_button.configure(state="disabled")  # Désactiver le bouton de téléchargement
             if total_downloads > 1: # Si plusieurs chapitres sont sélectionnés on affiche la barre de progression et le pourcentage sinon on ne l'affiche pas
                 canvas.itemconfigure(image_1, state=tk.NORMAL)   
                 progressbar.place(x=800.0, y=520.0) 
@@ -337,17 +344,30 @@ def main():
             messagebox.showinfo("Info [ℹ️]", "No Chapter Selected 🤕, Try again")
         else:
             Set_Download_Path()
-    
-    def set_button_color(event,button,button_image):
+
+    def button_hover(button,button_image_1,button_image_2):
         """ Action lorsque la souris survole/sort du bouton.
 
         Args:
-            event (_type_): L'événement qui déclenche la fonction
+            button (Any): le bouton qui déclenche la fonction
+            button_image_1 (Any): l'image par defaut du bouton
+            button_image_2 (Any): l'image lorsque la souris survole le bouton
         """
-        if Download_state == True:
-            None
-        else:
-            button.configure(image=button_image)
+        def set_button_color(event,button,button_image):
+                """ Associer une image à un bouton
+
+                Args:
+                    event (Any): L'événement qui déclenche la fonction
+                """
+                global Download_state
+
+                if Download_state == True:
+                    None
+                else:
+                    button.configure(image=button_image)
+
+        button.bind("<Enter>", lambda event:set_button_color(event, button, button_image_2))
+        button.bind("<Leave>", lambda event:set_button_color(event, button, button_image_1))
 
     ############################################################################################################################################################
 
@@ -396,8 +416,8 @@ def main():
     )
     entry_1 = Entry(
         bd=0,
-        bg="#FFFFFF",
-        fg="#000716",
+        bg=color_1,
+        fg=color_3,
         highlightthickness=0
     )
     entry_1.place(
@@ -413,8 +433,8 @@ def main():
         152.0,
         anchor="nw",
         text="🌐",                                                                    ### 🌐
-        fill="#FFFFFF",
-        font=("Inter", 15 * -1)
+        fill=color_1,
+        font=police_1
     )
 
     # Liste déroulante pour le choix du site
@@ -425,16 +445,16 @@ def main():
     website_menu = OptionMenu(
         window,
         website_list_var,
-        "scantrad-vf",
-        "lelscans.net",
-        "fmteam.fr"
+        websites[0],
+        websites[1],
+        websites[2]
     )
     website_menu.place(
         x=440.0,
         y=150.0
     )
     website_menu.configure(
-        bg="#FFFFFF"
+        bg=color_1
     )
     # Associer la fonction au changement de site en utilisant trace_add()
     website_list_var.trace_add("write", Switch_Website)
@@ -464,8 +484,8 @@ def main():
         269.0,
         anchor="nw",
         text="Manga Name",                                                                          ### Manga Name (Text)
-        fill="#FFFFFF",
-        font=("Inter", 15 * -1)
+        fill=color_1,
+        font=police_1
     )
 
     # Créer une scrollbar pour la liste des noms de mangas
@@ -486,8 +506,8 @@ def main():
         269.0,
         anchor="nw",
         text="Chapter / Volume",                                                                    ### Chapter / Volume (Text)
-        fill="#FFFFFF",
-        font=("Inter", 15 * -1)
+        fill=color_1,
+        font=police_1
     )
 
     # Créer une scrollbar pour la liste des chapitres
@@ -547,8 +567,8 @@ def main():
         570.0,
         anchor="nw",
         text="",                                                                                 ### Nombre de Chapitres sélectionnés
-        fill="#6B0000",
-        font=("Inter", 16 * -1)
+        fill=color_2,
+        font=police_2
     )
 
     # ============================================ Zone d'infos sur le nom du manga sélectionné ( Manga_info Box )
@@ -565,8 +585,8 @@ def main():
         570.0,
         anchor="nw",
         text="",                                                                                 ### Manga Sélectionné
-        fill="#6B0000",
-        font=("Inter", 16 * -1)
+        fill=color_2,
+        font=police_2
     )
 
     #################################################################   BUTTONS   ############################################################################
@@ -574,54 +594,52 @@ def main():
     # ============================================  DOWNLOAD
     button_download_2 = PhotoImage(file=relative_to_assets("Download_2.png"))
     button_download_1 = PhotoImage(file=relative_to_assets("Download_1.png"))                  
-    button_1 = Button(
+    download_button = Button(
         image=button_download_1,
         borderwidth=0,
         highlightthickness=0,
         command=show_Download_info,
         relief="flat",
-        cursor="hand2"
+        cursor=active_cursor
     )
-    button_1.place(
+    download_button.place(
         x=801.0,
         y=584.0,
         width=95.0,
         height=93
     )
-    button_1.bind("<Enter>", lambda event:set_button_color(event, button_1, button_download_2))
-    button_1.bind("<Leave>", lambda event:set_button_color(event, button_1, button_download_1))
+    button_hover(download_button, button_download_1, button_download_2)
 
     # ============================================  SETTINGS
     button_settings_2 = PhotoImage(file=relative_to_assets("Settings_2.png"))
     button_settings_1 = PhotoImage(file=relative_to_assets("Settings_1.png"))                  
-    button_3 = Button(
+    settings_button = Button(
         image=button_settings_1,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda:print("settings clicked"),
+        command=lambda:show_settings(window, config, settings_button),
         relief="flat",
-        cursor="hand2"
+        cursor=active_cursor
     )
-    button_3.place(
+    settings_button.place(
         x=830.0,
         y=25.0,
         width=108.0,
         height=40
     )
-    button_3.bind("<Enter>", lambda event:set_button_color(event, button_3, button_settings_2))
-    button_3.bind("<Leave>", lambda event:set_button_color(event, button_3, button_settings_1))
+    button_hover(settings_button, button_settings_1, button_settings_2)
 
     # ============================================  UPDATE
     button_update_2 = PhotoImage(file=relative_to_assets("Update_2.png"))
     button_update_1 = PhotoImage(file=relative_to_assets("Update_1.png"))
-    button_2 = Button(
+    update_button = Button(
         image=button_update_1,
         borderwidth=0,
         highlightthickness=0,
         relief="flat",
-        cursor="hand2"
+        cursor=active_cursor
     )
-    button_2.place(
+    update_button.place(
         x=664.0,
         y=57.0,
         width=41.0,
@@ -630,15 +648,14 @@ def main():
 
     if config['Update']['mode'].lower() == "auto":                                                                  # Si mode = auto, on active l'auto update
         window.withdraw()  # Cacher l'application pendant la mise à jour automatique
-        button_2.config(state=tk.DISABLED, cursor="arrow")                                                          # On désactive le bouton Update
+        update_button.config(state=tk.DISABLED, cursor=inactive_cursor)                                                          # On désactive le bouton Update
         Auto_Update(script_directory,config,conn,cursor)
         window.deiconify()  # Réafficher l'application après la mise à jour automatique
     elif config['Update']['mode'].lower() == "manual":                                                              # Si mode = manual, on active l'update manuel
-        button_2.config(command=lambda: Manual_Update(script_directory,selected_website,config,conn,cursor))
-        button_2.bind("<Enter>", lambda event:set_button_color(event, button_2, button_update_2))
-        button_2.bind("<Leave>", lambda event:set_button_color(event, button_2, button_update_1))
+        update_button.config(command=lambda: Manual_Update(script_directory,selected_website,config,conn,cursor))
+        button_hover(update_button, button_update_1, button_update_2)
     else:
-        button_2.config(state=tk.DISABLED, cursor="arrow")                                                          # Action si le mode n'est pas reconnu
+        update_button.config(state=tk.DISABLED, cursor=inactive_cursor)                                                          # Action si le mode n'est pas reconnu
         driver.quit()                                                                                               # Fermer le navigateur
         print("\n Update Button inactive [set Update to 'manual' or 'auto' in settings] ")                                          ##### Track activity
     
