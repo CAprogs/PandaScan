@@ -6,7 +6,7 @@ from tkinter import Canvas, PhotoImage, messagebox
 from Update import script_directory
 
 # To-do-list :
-# integrer le code à App (fonction show_settings) et un code secondaire Settings et supprimer le code inutile ( importations etc )
+# Nettoyer le code
 
 ################################    Variables Globales   ############################################
 settings_window = None
