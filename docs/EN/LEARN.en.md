@@ -55,7 +55,7 @@ In my research, I found websites with a good structure, a fairly wide range of m
 
 8. **Develop and Improve**
 
-As any self-respecting perfectionist would do, I couldn't stop at this task. I absolutely had to make the script available, understandable, and organized. I'll spare you the details; I'm still racking my brains... Nevertheless, the test version is available [here]().
+As any self-respecting perfectionist would do, I couldn't stop at this task. I absolutely had to make the script available, understandable, and organized. I'll spare you the details; I'm still racking my brains... Nevertheless, the test version is available [here](https://github.com/CAprogs/PandaScan/releases).
 
 9. **A Luxury Feature**
 
@@ -65,7 +65,7 @@ To achieve ultimate automation, I needed a way to keep the data up to date and p
 
 While developing PandaScan 🐼, I learned a lot from GitHub. I even managed to make my first pull request on the [MISST project](https://github.com/Frikallo/MISST).
 
-I also learned a lot about application development and graphical interface design with Python! The mistakes I encountered, the development process—I learned a lot, and now I know how to approach and carry out a project like this independently. Nevertheless, I would have liked to work in a team, even though the feedback from those around me was very helpful. Alone, we go faster, but together, we go further. That's why, if you're interested in improving the project, I invite you to check out the [CONTRIBUTION section]() to learn how to contribute to PandaScan 🐼!
+I also learned a lot about application development and graphical interface design with Python! The mistakes I encountered, the development process—I learned a lot, and now I know how to approach and carry out a project like this independently. Nevertheless, I would have liked to work in a team, even though the feedback from those around me was very helpful. Alone, we go faster, but together, we go further. That's why, if you're interested in improving the project, I invite you to check out the [CONTRIBUTION]() section to learn how to contribute to PandaScan 🐼!
 
 ## Acknowledgments
 
