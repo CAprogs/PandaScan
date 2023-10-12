@@ -111,7 +111,7 @@ La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.
 
 ### I. _Vous maîtrisez Python_ 🤓 ( **Python3** ou **Conda** )
 
-Suivez ce [**```Guide```**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+Suivez le [**```Guide d'installation```**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
 
 ### II. _Vous n'y connaissez rien_ 🫥 
 
