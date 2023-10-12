@@ -55,11 +55,11 @@ J'ai pu trouver dans mes recherches des sites ayant une bonne structure, un cata
 
 8. **Développer et améliorer**
 
-Comme tout bon perfectionniste qui se respecte, je ne pouvais pas m'arrêter à cette tâche, il me fallait absolument rendre le script disponible, compréhensible et organisé. Je vous passe les détails, je suis encore en train de me casser la tête... Néanmoins, la version de test est disponible [ici]().
+Comme tout bon perfectionniste qui se respecte, je ne pouvais pas m'arrêter à cette tâche, il me fallait absolument rendre le script disponible, compréhensible et organisé. Je vous passe les détails, je suis encore en train de me casser la tête... Néanmoins, la version de test est disponible [ici](https://github.com/CAprogs/PandaScan/releases).
 
 9. **Une feature de luxe**
 
-Pour atteindre l'automatisation ultime, il me fallait un moyen de rendre les données à jour et d'éviter à l'utilisateur de lancer manuellement le script pour mettre à jour les mangas ou les chapitres disponibles au téléchargement. J'ai donc géré l'exécution de ces scripts en créant un fichier JSON de configuration qui permette de choisir entre une mise à jour manuelle ou automatique au lancement de l'application. J'ai aussi mis en place un système qui permette de traquer chaque changement dans les données de chaque site : les mangas et chapitres ajoutés ou supprimés, la date et l'heure de la mise à jour.
+Pour atteindre l'automatisation ultime, il me fallait un moyen de rendre les données à jour et d'éviter à l'utilisateur de lancer manuellement les scripts pour mettre à jour les mangas ou les chapitres disponibles au téléchargement. J'ai donc géré l'exécution de ces scripts en créant un fichier JSON de configuration qui permette de choisir entre une mise à jour manuelle ou automatique au lancement de l'application. J'ai aussi mis en place un système qui permette de traquer chaque changement dans les données de chaque site : les mangas et chapitres ajoutés ou supprimés, la date et l'heure de la mise à jour.
 
 ## Leçons tirées ✍️
 
