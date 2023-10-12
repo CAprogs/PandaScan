@@ -2,9 +2,16 @@
 
 ## Version **V2.x.x** | _**12/10/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
 
-- The [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required for those who want full access to PandaScan 🐼 Features.
+I assume you've already downloaded **PandaScan 🐼**. If not, download the **latest release** below ⬇️.
 
-- If you don't want the [**Full version**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) you can rely on the [**lightweight version**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip) and jump to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
+| Version  | Release |
+| :-------- | :-------       |
+|  `V2.1.1` | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)  |
+|  `V2.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)  |
+
+`BETA` : [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required for those who want full access to PandaScan 🐼 recent Features.
+
+`LITE` : If you don't want full access to PandaScan 🐼 recent Features, jump to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
 
 ---
 
@@ -15,9 +22,9 @@
 
 <img width="1493" alt="Capture d’écran 2023-09-28 à 18 14 57" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
 
-**Note:**
-`You can now skip the part below. The chromedriver path will be asked directly when you start the app using CLI 😁 or an IDE ( VScode ).`
+**Note:** `You can skip the part below if you want.` A **Chromedriver path** will be asked directly when you start the app using CLI 😁 or an IDE ( VScode ).
 
+---
 - **COPY** the path to your `.EXE` file in your chromedriver directory & **Paste** it in the `config.json` file as below ⬇️
 
 ![Installation Guide](https://github.com/CAprogs/PandaScan/assets/104645407/bffd530c-a774-4a56-b875-6a0d2136354d)
@@ -52,13 +59,6 @@ conda create --name Pandavenv
 ```
 conda activate Pandavenv
 ```
-
-I assume you've already downloaded the **PandaScan file**. If not, download the **latest release** below ⬇️.
-
-| Version  | Release |
-| :-------- | :-------       |
-|  `V2.1.1` | [**BÊTA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)  |
-|  `V2.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)  |
 
 - Install `pip` in your `conda venv` using the following command ⬇️
 ```
