@@ -48,7 +48,7 @@ Retrouvez la liste des **packages / modules** requis [```ici```](https://github.
 
 ## Big News 🎉
 
-La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) (V2.1.1) permet de changer directement les paramètres de l'application sur l'interface ;)
+La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) (v2.1.1) permet de changer directement les paramètres de l'application sur l'interface ;)
 | Fenêtre 1  | Fenêtre 2 | Fenêtre 3 |
 | :-------- | :-------       | :-------    |
 | <img width="500" alt="Capture d’écran 2023-10-12 à 02 51 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/f7a37e10-d97e-46fa-9166-c3ad002ee10c"> |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 51 59" src="https://github.com/CAprogs/PandaScan/assets/104645407/bf53d42b-2f30-4716-95af-b72eac069a39"> |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 52 02" src="https://github.com/CAprogs/PandaScan/assets/104645407/bafc2e16-13fc-4fad-86c3-b4232596d3d3">
@@ -67,7 +67,7 @@ La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.
 - [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
 - [ ] Déploiement ( script .Exe ?, Docker ?, API ? )
 
-## Infos Mises à Jour ♻️
+## Infos Mise à Jour ♻️
 <details>
   <summary> L'avancée de PandaScan 🐼 </summary>
         
@@ -123,11 +123,11 @@ _Assurez vous d'être connecté à Internet !_
 
 1. Lancez l'application PandaScan 🐼 ( App.py )
 2. Recherchez votre Manga favori 🔍
-3. Sélectionnez le Manga et les Chapitres de VOTRE choix 🤩
+3. Sélectionnez le Manga et les Chapitres à télécharger 🤩
 4. Lancez le téléchargement : PandaScan s'occupe du reste 💨
 5. Lisez sans modération 🤓
 <details>
-        <summary> Optionel ⚙️ ( Version Bêta uniquement ) </summary>
+        <summary> Optionel ⚙️ ( BETA uniquement ) </summary>
         
 - Configurez le **Chemin de destination** de vos téléchargements ( Répertoire de PandaScan par défaut )
 - Choisissez d'activer ou non la **Mise à Jour** de l'application ( Activé par défaut )
