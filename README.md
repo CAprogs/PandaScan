@@ -157,7 +157,7 @@ _**Si vous avez les moyens d'acheter ces œuvres, veuillez le faire, ne serait-c
 
 ## Licence 📝
 
-Ce projet est sous [```Licence MIT```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
+PandaScan 🐼 est sous [```Licence MIT```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
 
 ## Dons & Soutien ❤️
 
