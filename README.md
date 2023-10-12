@@ -46,11 +46,18 @@ Retrouvez la liste des **packages / modules** requis [```ici```](https://github.
 
 [```Démo```]() # COMING SOON 🛠️
 
+## Big News 🎉
+
+La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) (V2.1.1) permet de changer directement les paramètres de l'application sur l'interface ;)
+| Fenêtre 1  | Fenêtre 2 | Fenêtre 3 |
+| :-------- | :-------       | :-------    |
+| <img width="500" alt="Capture d’écran 2023-10-12 à 02 51 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/f7a37e10-d97e-46fa-9166-c3ad002ee10c"> |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 51 59" src="https://github.com/CAprogs/PandaScan/assets/104645407/bf53d42b-2f30-4716-95af-b72eac069a39"> |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 52 02" src="https://github.com/CAprogs/PandaScan/assets/104645407/bafc2e16-13fc-4fad-86c3-b4232596d3d3">
+
 ## Versions ↧
 
 | Version  | Téléchargement | Mise à Jour | Configuration | Aperçu 👁️ |
 | :-------- | :-------       | :-------    | :-------      | :-------  |
-| [**BÊTA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)    | ✅             | ✅           |   ✅    |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">  |
+| [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)    | ✅             | ✅           |   ✅    |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">  |
 | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)    | ✅             | ❌          |   ❌     |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 50 54" src="https://github.com/CAprogs/PandaScan/assets/104645407/c11dccc7-f0e8-4462-9525-6cf46eebc949">
 
 ## Feuille de Route 🚧
@@ -94,7 +101,10 @@ Retrouvez la liste des **packages / modules** requis [```ici```](https://github.
 - [x] Correction mineure ( Version Bêta ) ajout de 'requirements.txt' et correction d'un bug qui empêchait l'Update automatique de PandaScan.
 - [x] Amélioration de la clarté du code, suppression d'importations inutiles
 - [x] Adaptation de la méthode Download de fmteam pour les mangas à Tomes
-- [x] Update de la base de données et release de [**PandaScan Lite**](https://github.com/CAprogs/PandaScan/releases/tag/v2.0.1) (V2.0.1)  
+- [x] Update de la base de données et release de [**PandaScan Lite**](https://github.com/CAprogs/PandaScan/releases/tag/v2.0.1) (V2.0.1)
+- [x] Révision majeur du code, ajout d'une nouvelle fonctionalité ( bouton settings ).
+- [x] Release de [**PandaScan Beta**](https://github.com/CAprogs/PandaScan/releases/tag/v2.1.1) (V2.1.1)
+- [X] Révision de [**PandaScan Lite**](https://github.com/CAprogs/PandaScan/releases/tag/v2.0.1) (V2.0.1) et changements mineurs du code.
 </details>
 
 ## Installation 🛠️
