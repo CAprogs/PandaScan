@@ -10,7 +10,7 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
 
 <br>You've always wanted to **download your favorite manga chapters without limits**, haven't you?</br>
-**PandaScan 🐼** is the _uTorrent for your favorite manga_ 🤩!
+**PandaScan 🐼** is the uTorrent for your favorite manga 🤩!
 
 </div>
 
@@ -19,7 +19,7 @@
 - All the sites available on the application are **French 🇫🇷** sites.
 - Feel free to add your **```site suggestions```** or **```your ideas```** through the [```Chat```](https://github.com/CAprogs/PandaScan/discussions/2).
 - [**`Contribution`**]() to the project is highly encouraged 😊.
-- English 󠁧󠁢󠁥󠁮󠁧🇬🇧 manga reading sites will be **added later**.
+- English 󠁧󠁢󠁥󠁮󠁧🇬🇧 manga reading sites will be **added later**. 
 
 ## Documentation 
 
@@ -33,7 +33,7 @@
 - [**Tkinter-Designer**](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
 - [**Figma**](https://www.figma.com/login)
 
-Find the list of required **packages/modules** [```here```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt)
+Find the list of required **packages/modules** [```here```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt) ( BETA only )
 
 ## Features 🚀
 
@@ -71,10 +71,12 @@ The following compatibilities are based on my personal tests. If you find a way 
 
 ## Roadmap 🚧
 
-- [ ] Clean and Optimize the code (Unnecessary comments, Unused lines, Typos, Standardize comments in English)
+- [ ] Optimize the code (speed, reduce `print()` statements, use logging, use SVG images instead of PNG)
+- [ ] Clean up the code (comments, unnecessary code, typos, standardize comments in English)
 - [ ] Performance testing (Python profiling: cProfile, line_profiler, memory_profiler, Pyflame)
-- [ ] Update Documentation (doc files + Demo + Gifs + Application view)
-- [ ] Deployment (Exe script?, Docker?, API?)
+- [ ] Unit tests (Pytest)
+- [ ] Update the documentation (doc files + demos + GIFs + application view)
+- [ ] Deployment (Docker?, API?, Telegram channel?)
 
 ## Update Info ♻️
 <details>
