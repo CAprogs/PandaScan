@@ -47,7 +47,7 @@ Find the list of required **packages/modules** [```here```](https://github.com/C
 
 ## Big News 🎉
 
-The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (V2.1.1) allows you to change the application settings directly on the interface ;)
+The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (V2.1.1) allows you to change the application settings directly on the interface ;) You may need to reload the app to apply changes.
 | Window 1  | Window 2 | Window 3 |
 | :-------- | :-------       | :-------    |
 | <img width="500" alt="Screenshot 2023-10-12 at 02 51 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/f7a37e10-d97e-46fa-9166-c3ad002ee10c"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 51 59" src="https://github.com/CAprogs/PandaScan/assets/104645407/bf53d42b-2f30-4716-95af-b72eac069a39"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 52 02" src="https://github.com/CAprogs/PandaScan/assets/104645407/bafc2e16-13fc-4fad-86c3-b4232596d3d3">
