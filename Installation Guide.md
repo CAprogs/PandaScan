@@ -1,11 +1,14 @@
 # Get started with PandaScan 🐼
 
-## Version **V2.x.x** | _**12/10/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
+## Version **V2.x.x** | _**15/10/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
+
+- Please note that PandaScan may look different on other OS ( Windows, Linux ..) See Supported ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#os-compatibility-).
+- If you encounter any issue please let me know through the [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
 I assume you've already downloaded **PandaScan 🐼**. If not, download the **latest release** below ⬇️.
 
 | Version  | Release |
-| :-------- | :-------       |
+| :-------- | :-------  |
 |  `V2.1.1` | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)  |
 |  `V2.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)  |
 
@@ -22,7 +25,8 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 <img width="1493" alt="Capture d’écran 2023-09-28 à 18 14 57" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
 
-**Note:** `You can skip the part below if you want.` A **Chromedriver path** will be asked directly when you start the app using CLI 😁 or an IDE ( VScode ).
+**Notes:** Paths looking different on OS.
+- On **Windows** if you have a path like this : `User\Desktop\file_name` you can't use it and should redefine it as `User\\Desktop\\file_name`.
 
 ---
 - **COPY** the path to your `.EXE` file in your chromedriver directory & **Paste** it in the `config.json` file as below ⬇️
@@ -44,7 +48,7 @@ I recommend using `conda` for this part. If you don't have **conda** you can ins
 Why ? : _I'm currently using `miniconda3` with a `MacBook pro M1` chip. I downloaded the `.pkg` file from the latest release with `Python 3.10`. 
 **Miniconda** is just a **lightweight distribution of Anaconda**._
 
-For **Windows Users**, pleaser consider downloading [`Cygwin`](https://www.cygwin.com/install.html) or an equivalent.
+For **Windows Users**, while downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and then launch PandaScan.
 
 - Open your **Terminal**
 - Enter your **Miniconda** / **Anaconda** file with the following command ⬇️
