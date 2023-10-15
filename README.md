@@ -11,7 +11,7 @@
 
 
 <br>Vous avez toujours eu l'envie de **télécharger vos chapitres de mangas favoris sans limite** ?</br>
-**PandaScan 🐼** c'est le _Utorrent de ton manga favoris_ 🤩 !
+**PandaScan 🐼** c'est le Utorrent de ton manga favoris 🤩 !
         
 </div>
 
