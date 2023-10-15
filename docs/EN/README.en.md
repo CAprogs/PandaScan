@@ -59,6 +59,16 @@ The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/Pan
 | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)    | ✅             | ✅           |   ✅    |  <img width="500" alt="Screenshot 2023-10-12 at 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">  |
 | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)    | ✅             | ❌          |   ❌     |  <img width="500" alt="Screenshot 2023-10-12 at 02 50 54" src="https://github.com/CAprogs/PandaScan/assets/104645407/c11dccc7-f0e8-4462-9525-6cf46eebc949">
 
+## OS Compatibility 🪢
+
+The following compatibilities are based on my personal tests. If you find a way to make PandaScan work on a different OS or have solutions for versions that I haven't been able to get to work, please provide feedback in the [`Chat`](https://github.com/CAprogs/PandaScan/discussions/2)
+
+| Operating system          | BETA Support | LITE Support | Preview 👁️ |
+| :------------------------ | :----------- | :----------- | :----------- |
+| MacOS (Apple Silicon)     | ✅           | ✅           | <img width="500" alt="Screenshot 2023-10-12 at 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15"> |
+| Windows (x64)            | ✅           | ✅           | <div align="center"> <img width="450" alt="Screenshot 2023-10-13 at 20 01 12" src="https://github.com/CAprogs/PandaScan/assets/104645407/e75cad2b-80a0-4f28-bb77-10210272d14a"> </div> |
+| Linux (Ubuntu ARM64)      | ❌           | ✅           | <div align="center"> <img width="450" alt="Screenshot 2023-10-13 at 20 01 12" src="https://github.com/CAprogs/PandaScan/assets/104645407/74d5fc4b-3cbd-442a-b56e-146cef868a45"> </div>
+
 ## Roadmap 🚧
 
 - [ ] Clean and Optimize the code (Unnecessary comments, Unused lines, Typos, Standardize comments in English)
