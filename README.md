@@ -46,7 +46,7 @@ Retrouvez la liste des **packages / modules** requis [```ici```](https://github.
 
 [```Démo```]() # COMING SOON 🛠️
 
-## Big News 🎉
+## Nouveautés 🎉
 
 La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) (v2.1.1) permet de changer directement les paramètres de l'application sur l'interface ;)
 | Fenêtre 1  | Fenêtre 2 | Fenêtre 3 |
@@ -59,6 +59,17 @@ La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.
 | :-------- | :-------       | :-------    | :-------      | :-------  |
 | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)    | ✅             | ✅           |   ✅    |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">  |
 | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)    | ✅             | ❌          |   ❌     |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 50 54" src="https://github.com/CAprogs/PandaScan/assets/104645407/c11dccc7-f0e8-4462-9525-6cf46eebc949">
+
+## Compatibilité des OS 🪢
+
+Les Compatibilités suivantes sont basées sur mes tests personnels. Si vous trouvez un moyen de faire fonctionner PandaScan sur un autre OS ou des solutions aux versions que je n'ai pas réussi à faire fonctionner faites un retour dans le [`Chat`](
+https://github.com/CAprogs/PandaScan/discussions/2)
+|   Operating system  | BETA Support | LITE Support | Aperçu 👁️
+| :-------- | :-------       | :-------    |:-------    |
+| MacOS ( Apple Silicon ) |  ✅  | ✅ | <img width="500" alt="Capture d’écran 2023-10-12 à 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">
+| Windows ( x64 ) |  ✅ | ✅ | <div align="center"> <img width="450" alt="Capture d’écran 2023-10-13 à 20 01 12" src="https://github.com/CAprogs/PandaScan/assets/104645407/e75cad2b-80a0-4f28-bb77-10210272d14a"> </div>
+| Linux ( Ubuntu ARM64) |  ❌ |  ✅ | <div align="center"> <img width="450" alt="Capture d’écran 2023-10-13 à 20 01 12" src="https://github.com/CAprogs/PandaScan/assets/104645407/74d5fc4b-3cbd-442a-b56e-146cef868a45"> </div>
+
 
 ## Feuille de Route 🚧
 
