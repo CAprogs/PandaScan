@@ -34,7 +34,7 @@
 - [**Tkinter-Designer**](https://github.com/ParthJadhav/Tkinter-Designer/tree/master)
 - [**Figma**](https://www.figma.com/login)
 
-Retrouvez la liste des **packages / modules** requis [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt) ( BETA only )
+Retrouvez la liste des **packages / modules** requis [```ici```](https://github.com/CAprogs/PandaScan/blob/main/requirements.txt) ( BETA uniquement )
 
 ## Fonctionnalités 🚀
 
