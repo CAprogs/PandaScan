@@ -73,9 +73,10 @@ https://github.com/CAprogs/PandaScan/discussions/2)
 
 ## Feuille de Route 🚧
 
-- [ ] Optimiser le code ( rapidité réduction des print() , utilisation des log, utilisation d'images SVG au lieu de png )
-- [ ] Nettoyer le code  ( Commentaires , code inutiles , Fautes , Uniformiser les commentaires en anglais )
-- [ ] Tests de performance (profilage Python : cProfile, line_profiler, memory_profiler, Pyflame)
+- [ ] Optimiser le code ( réduction des print() , utilisation des log à la place )
+- [ ] Nettoyer le code  ( Commentaires , code inutile , Fautes , Uniformiser les commentaires en anglais )
+- [ ] Multiprocessing ? ( Augmenter la vitesse de téléchargement : parallélisation des téléchargements )
+- [ ] Tests de performance ( profilage Python : cProfile, line_profiler, memory_profiler, Pyflame ? )
 - [ ] Test unitaires ( Pytest )
 - [ ] Mettre à jour la Documentation ( fichiers doc + Démo + Gifs + Vue de l'application )
 - [ ] Déploiement ( Docker ?, API ?, Canal telegram ? )
