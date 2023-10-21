@@ -4,14 +4,15 @@ from Path_to_fmteam import script_repo,current_dir
 sys.path.append(script_repo)
 sys.path.append(current_dir)
 # ----------------------------------------------
-import pandas as pd
-import re
-from selenium.webdriver.common.by import By
-from Selenium_config import driver
 
 def Scrap_Titles():
     """Scrap the mangas titles.
     """
+    import pandas as pd
+    import re
+    from selenium.webdriver.common.by import By
+    from Selenium_config import driver
+    
     manga_name_list = []    
     links_list = []
     has_tome_list = []

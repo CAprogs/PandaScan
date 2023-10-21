@@ -11,7 +11,7 @@
 # Welcome to PandaScan ( BETA ) 🐼 | @2023 by CAprogs
 # This project aims to download mangas scans from a website by simply selecting the manga and chapters.
 # Chromedriver is required to use the app. Please follow the 'Installation Guide'.
-# You are now able to change Settings directly in App. ( Need to restart App )
+# You are now able to change Settings directly in App. ( you may need to restart App to apply changes )
 #    ° Select your Update mode || Choose 'manual', 'auto' or anything else ( desable the Update Function ) 
 #    ° Select where to save your files after a download 
 #    ° If you recently Updated your DB, check changes in the changelog.txt file generated. || websites > choose a website > changelog > changelog.txt
@@ -21,28 +21,22 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # To-Do-List :
+# Implémenter un journal d'application
+# Message d'erreur lorqu'un téléchargeemnt est interrompu ou se passe mal
+# Nettoyer le code et les importations inutiles ( fichiers __init__.py )
 # Apres un update reload l'application
 # Apres une modif des settings reload l'application
 # Améliorer la vitesse de téléchargement en utilisant des Threads cpu ou un processus de parallélisation des tâches
-# Traquer les progressions des téléchargements et des mises à jour ( fmteam, scantrad-vf, lelscans)
+# Traquer le temps des téléchargements et des mises à jour
 # Explorer le multiprocessing avec MPIRE ( Github )
 # Utisation d'assertions pour le debogage ( assert ? gestion des erreurs avec Try/except ? )
 # Mettre à jour la docu Github.
 # Réécrire tous les commentaires en anglais + suppression des commentaires inutiles.
 
-# Importation des bibliothèques utiles
-import os
-import tkinter as tk
 import requests
 import sqlite3
-from tkinter import ttk
-from tkinter import Tk, Canvas, Entry, Button, PhotoImage, StringVar, OptionMenu
-from pathlib import Path
 from tkinter import messagebox
-from Download import chapter_transform, Initialize_Download
-from Update import Manual_Update,Auto_Update,script_directory
-from Settings import show_settings
-from Selenium_config import driver,config
+from Update import script_directory
 
 ################################    Variables Globales   ############################################
 All_chapters_len = 0                        #  stocker le nombre de chapitres total d'un manga sélectionné
@@ -54,8 +48,6 @@ Download_state = False                      # Etat du bouton Download
 nom_fichier = ''                            # Chemin vers le fichier du manga à télécharger
 websites = ["scantrad-vf", "lelscans.net", "fmteam.fr"] # Les sites disponibles
 selected_website = websites[0]                          # Site sélectionné par défaut
-inactive_cursor = "arrow"                               #  Curseur par défaut
-active_cursor = "hand2"                                 # Curseur lorsque la souris survole un bouton
 color_1 = "#FFFFFF"                                     # blanc
 color_2 = "#6B0000"                                     # bordeaux
 color_3 = "#000716"                                     # noir
@@ -94,7 +86,7 @@ def check_internet_connection():
             return False
     except requests.ConnectionError:
         return False
-    except Exception as e:
+    except Exception:
         return False
 
 ########################################################    MAIN FUNCTION    ############################################################
@@ -103,11 +95,23 @@ def main():
 
     Returns:
         _type_: None
-    """    
+    """ 
+    import os
+    import tkinter as tk
+    from tkinter import ttk
+    from tkinter import Tk, Canvas, Button, PhotoImage, StringVar, OptionMenu
+    from pathlib import Path
+    from Download import chapter_transform, Initialize_Download
+    from Update import Manual_Update,Auto_Update
+    from Settings import show_settings,inactive_cursor,active_cursor
+    from Selenium_config import driver,config
+       
     if not check_internet_connection():
         messagebox.showinfo("Error [🛜]","😵‍💫 Oups, no internet connection detected ❗️")
-        return
-    
+        return print("Exiting App ..\n")                                                                 ##### Track activity
+
+    print("App successfully launched ✅\n")                                                              ##### Track activity
+
     # Initialiser la fenêtre Tkinter
     window = Tk()
 
@@ -147,10 +151,11 @@ def main():
         """
         global manga_current_name
 
+        manga_current_name = '' # Effacer le contenu précédent du manga sélectionné
+
         entry_1.delete(0, tk.END)  # Efface le contenu de la SearchBar                                              
         canvas.itemconfigure(Chapter_selected, text='') # Effacer le contenu précédent de la ChapterBox
         canvas.itemconfigure(Manga_selected, text='') # Effacer le contenu précédent de la MangaBox
-        manga_current_name = '' # Effacer le contenu précédent du manga sélectionné
         result_box.delete(0, tk.END)  # Effacer le contenu précédent de la mangas list
         chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la chapters list
 
@@ -176,14 +181,14 @@ def main():
             results = cursor.fetchall()
             chapters_current_selected = [chapitre[0] for chapitre in results] # créer une liste composée des chapitres sélectionnés
 
-            print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
+            #print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
             All_chapters_len = len(chapters_current_selected)
             total_downloads = All_chapters_len
             canvas.itemconfigure(Chapter_selected, text=f'{All_chapters_len} selected')
         else:
             chapters_box.selection_clear(0, tk.END)  # Désélectionner tous les éléments de la ListBox
             chapters_current_selected = [] # réinitialiser la sélection des chapitres
-            print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
+            #print(chapters_current_selected)    # Afficher tous les chapitres sélectionnés               ##### Track activity
             canvas.itemconfigure(Chapter_selected, text=f'0 selected')
 
     def update_results(event):
@@ -194,14 +199,13 @@ def main():
         """    
         global selected_website
 
-        keyword = entry_1.get()
-        query = f"SELECT NomManga FROM Mangas WHERE NomManga LIKE ? AND NomSite = '{selected_website}'"
-        cursor.execute(query, ('%' + keyword + '%',)) # Rechercher les mangas correspondant au mot-clé
-        results = cursor.fetchall() # Récupérez les Noms de Mangas correspondant au mot-clé
-        result_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste
-        # Affichez les résultats dans la MangaBox
-        for result in results:
-            result_box.insert(tk.END, result[0])  # Insérer chaque MANGA dans la liste déroulante
+        keyword = entry_1.get() # Récupérer l'entrée de la searchbar
+        keyword = '%' + keyword + '%' 
+        query = f"SELECT NomManga FROM Mangas WHERE NomManga LIKE ? AND NomSite = ?" # Requête SQL
+        cursor.execute(query, (keyword, selected_website)) # Chercher les correspondances dans la DB
+        results = [row[0] for row in cursor.fetchall()] # récupérer les correspondances 
+        result_box.delete(0, tk.END)   # Supprimer les anciens résultats s'il y'en avaient
+        result_box.insert(tk.END, *results)  # Insérer les nouveaux résultats dans la Manga_list box
 
     def on_mangas_select(event):
         """Actions lorsqu'un manga est sélectionné
@@ -211,37 +215,34 @@ def main():
         """    
         global manga_current_name
 
-        selected_indices = result_box.curselection()  # Récupérer les indices des éléments sélectionnés
-        selected_items = [result_box.get(index) for index in selected_indices]  # Récupérer les éléments sélectionnés
-        if selected_items:
-            print(selected_items)                                                       ##### Track activity
-            manga_name = selected_items[0]
+        selected_indices = result_box.curselection() # récupérer l'indice de l'élément sélectionné
+        if selected_indices:
+            manga_name = result_box.get(selected_indices[0])    # récupérer le nom du manga
             manga_current_name = manga_name
             try:
                 update_chapters(manga_name)
-                if len(manga_name) > 15:
-                    truncated_text = manga_name[:15] + "..."
-                    canvas.itemconfigure(Manga_selected, text=truncated_text)
-                else:
-                    canvas.itemconfigure(Manga_selected, text=manga_name)
-            except:
-                print("aucun manga sélectionné")                                            ##### Track activity
+                truncated_text = manga_name[:15] + "..." if len(manga_name) > 15 else manga_name
+                canvas.itemconfigure(Manga_selected, text=truncated_text)
+            except Exception as e:
+                print(f"Erreur lors de la sélection du manga : {e}")
 
     def update_chapters(manga_name):
         """Update les résultats dans la Chapter List lorqu'un manga est sélectionné
 
         Args:
             manga_name (_type_): Le nom du manga sélectionné
-        """    
+        """
+        global selected_website
 
         # Rechercher tous les chapitres du manga sélectionné
         query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
         cursor.execute(query, (selected_website, manga_name))
-        results = cursor.fetchall()  # Récupérer tous les chapitres correspondant au manga sélectionné
+        results = [result[0] for result in cursor.fetchall()]  # Utilisation d'indices
         chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
+
         # Afficher les résultats dans la ChapterBox
-        for result in results:
-            chapters_box.insert(tk.END, result[0])  # Insérer chaque CHAPITRE dans la liste déroulante
+        chapters_box.insert(tk.END, *results)  # Utilisation de l'opérateur * pour insérer tous les chapitres
+
         if select_all_var.get() == 1:
             select_all()
 
@@ -253,11 +254,9 @@ def main():
         """    
         global chapters_current_selected, total_downloads
         
-        selected_chapters = chapters_box.curselection()  # Récupérer les indices des chapitres sélectionnés
-        selected_items = [chapters_box.get(index) for index in selected_chapters]  # Récupérer les chapitres sélectionnés
-        chapters_current_selected = selected_items
-        print(selected_items)                                                                       ##### Track activity
-        total_downloads = len(selected_items)
+        selected_chapters = chapters_box.curselection()     # récupérer les indices des chapitres sélectionnés
+        chapters_current_selected = [chapters_box.get(index) for index in selected_chapters]  # récupérer les chapitres sélectionnés
+        total_downloads = len(chapters_current_selected)
         canvas.itemconfigure(Chapter_selected, text=f'{total_downloads} selected')
 
     def show_Download_info():
@@ -374,7 +373,7 @@ def main():
     #########################################################     ELEMENTS    #########################################################
 
     # ============================================ Éléments Graphiques principaux de l'App
-    Name_App = PhotoImage(
+    Name_App = tk.PhotoImage(
         file=relative_to_assets("Name_App.png"))                                                   ### logo du nom de l'appli
     image_9 = canvas.create_image(
         481.0,
@@ -382,7 +381,7 @@ def main():
         image=Name_App
     )
 
-    Logo_App = PhotoImage(
+    Logo_App = tk.PhotoImage(
         file=relative_to_assets("Logo_App.png"))                                                   ### logo d'appli 🐼
     image_10 = canvas.create_image(
         85.0,
@@ -390,7 +389,7 @@ def main():
         image=Logo_App
     )
 
-    SearchBar_background = PhotoImage(
+    SearchBar_background = tk.PhotoImage(
         file=relative_to_assets("SearchBar_background.png"))                                       ### Background de la barre de recherche
     image_7 = canvas.create_image(
         495.0,
@@ -398,7 +397,7 @@ def main():
         image=SearchBar_background
     )
 
-    SearchBar_foreground = PhotoImage(
+    SearchBar_foreground = tk.PhotoImage(
         file=relative_to_assets("SearchBar_foreground.png"))                                      ### Foreground de la barre de recherche
     image_8 = canvas.create_image(
         511.0,
@@ -407,14 +406,15 @@ def main():
     )
 
     # ============================================ Barre de Recherche des mangas ( SearchBar )
-    entry_image_1 = PhotoImage(
+    entry_image_1 = tk.PhotoImage(
         file=relative_to_assets("entry_1.png"))   # Défini le rectangle d'entrée de la SearchBar
     entry_bg_1 = canvas.create_image(
         510.5,
         204.0,
         image=entry_image_1
     )
-    entry_1 = Entry(
+    entry_1 = tk.Entry(
+        window,
         bd=0,
         bg=color_1,
         fg=color_3,
@@ -445,9 +445,9 @@ def main():
     website_menu = OptionMenu(
         window,
         website_list_var,
-        websites[0],
-        websites[1],
-        websites[2]
+        "scantrad-vf",
+        "lelscans.net",
+        "fmteam.fr"
     )
     website_menu.place(
         x=440.0,
@@ -595,6 +595,7 @@ def main():
     button_download_2 = PhotoImage(file=relative_to_assets("Download_2.png"))
     button_download_1 = PhotoImage(file=relative_to_assets("Download_1.png"))                  
     download_button = Button(
+        window,
         image=button_download_1,
         borderwidth=0,
         highlightthickness=0,
@@ -614,6 +615,7 @@ def main():
     button_settings_2 = PhotoImage(file=relative_to_assets("Settings_2.png"))
     button_settings_1 = PhotoImage(file=relative_to_assets("Settings_1.png"))                  
     settings_button = Button(
+        window,
         image=button_settings_1,
         borderwidth=0,
         highlightthickness=0,
@@ -633,6 +635,7 @@ def main():
     button_update_2 = PhotoImage(file=relative_to_assets("Update_2.png"))
     button_update_1 = PhotoImage(file=relative_to_assets("Update_1.png"))
     update_button = Button(
+        window,
         image=button_update_1,
         borderwidth=0,
         highlightthickness=0,
@@ -649,7 +652,7 @@ def main():
     if config['Update']['mode'].lower() == "auto":                                                                  # Si mode = auto, on active l'auto update
         window.withdraw()  # Cacher l'application pendant la mise à jour automatique
         update_button.config(state=tk.DISABLED, cursor=inactive_cursor)                                                          # On désactive le bouton Update
-        Auto_Update(script_directory,config,conn,cursor)
+        Auto_Update(script_directory,websites,config,conn,cursor)
         window.deiconify()  # Réafficher l'application après la mise à jour automatique
     elif config['Update']['mode'].lower() == "manual":                                                              # Si mode = manual, on active l'update manuel
         update_button.config(command=lambda: Manual_Update(script_directory,selected_website,config,conn,cursor))

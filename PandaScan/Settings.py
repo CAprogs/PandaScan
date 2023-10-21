@@ -1,14 +1,6 @@
-from pathlib import Path
-import tkinter.filedialog as filedialog
-import json
-import tkinter as tk
-from tkinter import Canvas, PhotoImage, messagebox
 from Update import script_directory
 
-# To-do-list :
-# Nettoyer le code
-
-################################    Variables Globales   ############################################
+ ################################    Variables Globales   ############################################
 settings_window = None
 Chromedriver_window = False                     # Désactivé par défaut ( on ne peut plus cliquer dessus )
 Update_window = True                            # Activé par défaut ( on peut cliquer dessus )
@@ -35,11 +27,17 @@ assets_directory = script_directory / "assets"
 def show_settings(window, config, settings_button):
     """Afficher la fênetre Settings.
     """
+    import tkinter.filedialog as filedialog
+    import json
+    import tkinter as tk
+    from tkinter import Canvas, PhotoImage, messagebox
+    from pathlib import Path
+
     global settings_window, update_entry
-
+    
     if settings_window is None:
-
         print("\nSettings opened ⚙️")
+        
         settings_window = tk.Toplevel(window)
         settings_button.config(state="disabled")  # Désactiver le bouton settings
 
@@ -361,7 +359,7 @@ def show_settings(window, config, settings_button):
             choose_directory_path.place(x=340.0, y=70.0, width=50.0, height=25.0)
             # [ TEXT ]   Info path
             download_path_info = canvas.create_text(55.0, 100.0, anchor="nw", text="The directory path where you want your files to be stored. ( Default : PandaScan 🐼 directory )", fill=current_color, font=info_police)
-        
+
         def save_settings():
             """ Actions lorsque le bouton save est cliqué.
             """

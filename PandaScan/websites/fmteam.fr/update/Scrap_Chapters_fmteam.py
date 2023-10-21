@@ -1,18 +1,18 @@
-# ---------------------------------------------- Obligatoire pour accéder aux modules du dossier principal
+# ---------------------------------------------- Accéder aux modules du dossier principal
 import sys
 from Path_to_fmteam import script_repo,current_dir
 sys.path.append(script_repo)
 sys.path.append(current_dir)
 # ----------------------------------------------
-import pandas as pd
-import yaml
-import re
-from selenium.webdriver.common.by import By
-from Selenium_config import driver
 
 def Scrap_Chapters():
     """Scrap the mangas chapters.
-    """    
+    """
+    import pandas as pd
+    import yaml
+    import re
+    from selenium.webdriver.common.by import By
+    from Selenium_config import driver
     
     print("\n Importation et Creation des données ... \n")
     datas = pd.read_csv(f'{script_repo}/datas/mangas.csv') # Accès mangas et liens

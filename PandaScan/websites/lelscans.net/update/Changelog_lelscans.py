@@ -1,6 +1,4 @@
 import yaml
-import os
-from datetime import datetime
 from Path_to_lelscans import script_repo
 
 def read_previous_state():
@@ -80,7 +78,10 @@ def generate_change_report(current_state, previous_state):
 
 def generate_changelog(): 
     """Generate the changelog.
-    """    
+    """
+    import os
+    from datetime import datetime
+
     # Load the temporary YAML file
     with open(f'{script_repo}/datas/mangas_chapters_temp.yml', 'r') as temp_file:
         current_state = yaml.safe_load(temp_file)

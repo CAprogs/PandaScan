@@ -891,3 +891,168 @@ Changes in yankee-jk-kuzuhana-chan:
 
 Update 3 : 06/10/2023 | 22:47:03
 No added / deprecated files !
+
+Update 4 : 21/10/2023 | 18:38:05
+Changes in academys-genius-swordmaster:
+  • Added chapters: chapitre 16, chapitre 15
+Changes in amagami-san-chi-no-enmusubi:
+  • Added chapters: chapitre 110, chapitre 109
+Changes in ao-no-hako:
+  • Added chapters: chapitre 120, chapitre 119
+Changes in bad-boy:
+  • Added chapters: chapitre 117, chapitre 116
+Changes in bai-lian-cheng-shen:
+  • Added chapters: chapitre 661, chapitre 660
+Changes in batuque:
+  • Added chapters: chapitre 118
+Changes in blue-lock:
+  • Added chapters: chapitre 238, chapitre 237, chapitre 236
+=> Added new entry 'boruto-two-blue-vortex' with chapters: chapitre 3, chapitre 2, chapitre 1
+Changes in boys-abyss:
+  • Added chapters: chapitre 151, chapitre 150
+Changes in burning-kabaddi:
+  • Added chapters: chapitre 21
+Changes in captain-tsubasa-rising-sun:
+  • Added chapters: chapitre 136
+Changes in catastrophic-necromancer:
+  • Added chapters: chapitre 27, chapitre 26, chapitre 25
+Changes in chainsaw-man:
+  • Added chapters: chapitre 145, chapitre 144
+Changes in choujin-x:
+  • Added chapters: chapitre 41.5
+Changes in cultivator-from-the-future:
+  • Added chapters: chapitre 144, chapitre 143, chapitre 142, chapitre 141, chapitre 135
+Changes in da-zhu-zai:
+  • Added chapters: chapitre 283, chapitre 282
+Changes in damn-reincarnation:
+  • Added chapters: chapitre 72, chapitre 71
+Changes in dandadan:
+  • Added chapters: chapitre 125, chapitre 124
+Changes in divine-spirit-martial-emperor:
+  • Added chapters: chapitre 154, chapitre 153, chapitre 150
+Changes in doctors-player:
+  • Added chapters: chapitre 56
+Changes in dragon-ball-super:
+  • Added chapters: chapitre 98
+Changes in dragon-raising-manual:
+  • Added chapters: chapitre 63
+Changes in dreaming-freedom:
+  • Added chapters: chapitre 39
+Changes in edens-zero:
+  • Added chapters: chapitre 261, chapitre 260, chapitre 259
+Changes in eleceed:
+  • Added chapters: chapitre 262, chapitre 261, chapitre 260
+Changes in fairy-tail-100-years-quest:
+  • Added chapters: chapitre 144
+Changes in finding-camellia:
+  • Added chapters: chapitre 88
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 124
+Changes in gachi-akuta:
+  • Added chapters: chapitre 72
+Changes in giant-killing:
+  • Added chapters: chapitre 450
+Changes in global-martial-arts:
+  • Added chapters: chapitre 96, chapitre 95, chapitre 93
+Changes in goddess-cafe-terrace:
+  • Added chapters: chapitre 100, chapitre 99
+Changes in heavenly-grand-archives-young-master:
+  • Added chapters: chapitre 14, chapitre 13
+Changes in i-became-a-doting-father:
+  • Added chapters: chapitre 56, chapitre 55
+=> Added new entry 'i-became-the-tyrant-of-a-defense-game' with chapters: chapitre 36, chapitre 35, chapitre 34, chapitre 33, chapitre 32, chapitre 31, chapitre 30, chapitre 29, chapitre 28, chapitre 27, chapitre 26, chapitre 25, chapitre 24, chapitre 23, chapitre 22, chapitre 21, chapitre 20, chapitre 19, chapitre 18
+Changes in im-the-great-immortal:
+  • Added chapters: chapitre 330, chapitre 329
+Changes in im-the-max-level-newbie:
+  • Added chapters: chapitre 122, chapitre 121
+Changes in infinite-leveling-murim:
+  • Added chapters: chapitre 82
+Changes in infinite-mage:
+  • Added chapters: chapitre 52
+Changes in into-the-light-once-again:
+  • Added chapters: chapitre 79, chapitre 78
+Changes in isekai-kenkokuki:
+  • Added chapters: chapitre 39.2, chapitre 39.1
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 239
+Changes in juujika-no-rokunin:
+  • Added chapters: chapitre 146
+Changes in kingdom:
+  • Added chapters: chapitre 774
+Changes in leveling-up-with-a-sword:
+  • Added chapters: chapitre 50, chapitre 49
+Changes in library-of-heavens-path:
+  • Added chapters: chapitre 213, chapitre 212
+Changes in lightning-degree:
+  • Added chapters: chapitre 80
+Changes in magic-emperor:
+  • Added chapters: chapitre 426, chapitre 425
+Changes in martial-peak:
+  • Added chapters: chapitre 1235, chapitre 1234
+Changes in meccha-shoukan-sareta-ken:
+  • Added chapters: chapitre 31
+Changes in mission-yozakura-family:
+  • Added chapters: chapitre 198, chapitre 197
+Changes in murim-login:
+  • Added chapters: chapitre 58, chapitre 57
+Changes in my-disciples-are-all-big-villains:
+  • Added chapters: chapitre 37, chapitre 36
+Changes in my-hero-academia:
+  • Added chapters: chapitre 403
+Changes in my-wife-is-a-demon-queen:
+  • Added chapters: chapitre 398
+Changes in oh-be-patient-my-lady:
+  • Added chapters: chapitre 54
+Changes in one-piece:
+  • Added chapters: chapitre 1095
+Changes in one-punch-man:
+  • Added chapters: chapitre 252
+Changes in peerless-battle-spirit:
+  • Added chapters: chapitre 261, chapitre 260
+Changes in pick-me-up:
+  • Added chapters: chapitre 62
+Changes in player:
+  • Added chapters: chapitre 148, chapitre 147
+Changes in record-of-return:
+  • Added chapters: chapitre 54, chapitre 53
+Changes in return-of-the-female-knight:
+  • Added chapters: chapitre 92, chapitre 91
+Changes in return-of-the-mount-hua-sect:
+  • Added chapters: chapitre 90
+Changes in return-of-the-sss-class-ranker:
+  • Added chapters: chapitre 59, chapitre 58
+Changes in sakamoto-days:
+  • Added chapters: chapitre 139, chapitre 138
+Changes in sss-class-gacha-hunter:
+  • Added chapters: chapitre 72, chapitre 71, chapitre 63
+Changes in sss-class-suicide-hunter:
+  • Added chapters: chapitre 97, chapitre 96
+Changes in star-martial-god-technique:
+  • Added chapters: chapitre 601, chapitre 600
+Changes in strongest-leveling:
+  • Added chapters: chapitre 45, chapitre 44
+Changes in stuck-in-the-tower:
+  • Added chapters: chapitre 21, chapitre 20
+Changes in super-cube:
+  • Added chapters: chapitre 112, chapitre 111
+Changes in swordmasters-youngest-son:
+  • Added chapters: chapitre 93
+Changes in tales-of-demons-and-gods-v2a:
+  • Added chapters: chapitre 449.5
+Changes in the-dark-mages-return-to-enlistment:
+  • Added chapters: chapitre 29, chapitre 28
+Changes in the-elusive-samurai:
+  • Added chapters: chapitre 129, chapitre 128, chapitre 127
+Changes in the-gamer:
+  • Added chapters: chapitre 450
+=> Added new entry 'the-knight-king-who-returned-with-a-god' with chapters: chapitre 27, chapitre 26, chapitre 25, chapitre 24, chapitre 23, chapitre 22, chapitre 21, chapitre 20, chapitre 19, chapitre 18, chapitre 17, chapitre 16, chapitre 15, chapitre 14, chapitre 13, chapitre 12, chapitre 11, chapitre 10, chapitre 9, chapitre 8, chapitre 7, chapitre 6
+Changes in the-lazy-swordmaster:
+  • Added chapters: chapitre 31, chapitre 30, chapitre 26, chapitre 25, chapitre 24
+Changes in the-max-level-hero-has-returned:
+  • Added chapters: chapitre 130, chapitre 129, chapitre 128
+Changes in the-newbie-is-too-strong:
+  • Added chapters: chapitre 61, chapitre 54
+Changes in undead-unluck:
+  • Added chapters: chapitre 178
+Changes in yofukashi-no-uta:
+  • Added chapters: chapitre 186

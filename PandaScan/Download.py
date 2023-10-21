@@ -236,44 +236,44 @@ def Initialize_Download(selected_website, nom_chapitre, manga_current_name, chap
             os.makedirs(nom_chapitre)
             page = 1 # Page de départ
 
-            while True: # Téléchargement des images
-                lien_chapitre = str(f"https://lelscans.net/scan-{manga_current_name}/{chapter_number}/{page}")  # Lien du chapitre
+            while True:                                                                                                       # Téléchargement des images
+                lien_chapitre = str(f"https://lelscans.net/scan-{manga_current_name}/{chapter_number}/{page}")                # Lien du chapitre
                 try:
-                    response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
-                    save_path = f"{nom_chapitre}/{page}.jpg"  # Chemin où sauvegarder les images
+                    response_url = requests.get(lien_chapitre)                                                                # Effectuer une requête HTTP sur l'URL donnée
+                    save_path = f"{nom_chapitre}/{page}.jpg"                                                                  # Chemin où sauvegarder les images
                     response = lelscans_download(response_url, save_path, page)
                     if response == True:
                         page += 1
                     else:
-                        print(f"\nTéléchargement {current_download} terminé.\n")                                    ##### Track activity
+                        print(f"\nTéléchargement {current_download} terminé.\n")                                              ##### Track activity
                         break
                 except:
                     print(f"REQUEST ERROR INFOS : {selected_website} | {manga_current_name} | {chapter_number}")              ##### Track activity
         else:
-            print(f"Le {chapter_name} du manga : {manga_current_name} est déjà téléchargé !")  # ON NE TÉLÉCHARGE PLUS INUTILEMENT LES MANGAS DÉJÀ TÉLÉCHARGÉS
+            print(f"Le {chapter_name} du manga : {manga_current_name} est déjà téléchargé !")
     
     # =============================================================  FMTEAM.FR
     elif selected_website == "fmteam.fr":
-        pattern = "https://fmteam.fr/api/download/"  # Pattern pour les téléchargements depuis fmteam.fr
-        check, tome = check_tome(manga_current_name, selected_website, cursor)  # verifier si le manga sélectionné comprend des tomes
-        if check == True and tome != None: # Si le manga comprend des tomes
-            lien_chapitre = check_url(pattern, tome, manga_current_name, chapter_number) # Chercher un lien valide pour le manga sélectionné
-            if lien_chapitre == None: # Si aucun lien valide n'est trouvé
+        pattern = "https://fmteam.fr/api/download/"                                         # Pattern pour les téléchargements depuis fmteam.fr
+        check, tome = check_tome(manga_current_name, selected_website, cursor)              # verifier si le manga sélectionné comprend des tomes
+        if check == True and tome != None:                                                  # Si le manga comprend des tomes
+            lien_chapitre = check_url(pattern, tome, manga_current_name, chapter_number)    # Chercher un lien valide pour le manga sélectionné
+            if lien_chapitre == None:                                                       # Si aucun lien valide n'est trouvé
                 return "No valid url found. ⚠️ | fmteam.fr | " + manga_current_name + " | chapitre" + chapter_number
-        elif "." in chapter_number: # Si le numéro du chapitre comprend un point
+        elif "." in chapter_number:                                                         # Si le numéro du chapitre comprend un point
             chapter_number_1, chapter_number_2 = chapter_number.split(".")
             lien_chapitre = str(f"{pattern}{manga_current_name}/fr/ch/{chapter_number_1}/sub/{chapter_number_2}")
         else:
             lien_chapitre = str(f"{pattern}{manga_current_name}/fr/ch/{chapter_number}")
         try:
-            response_url = requests.get(lien_chapitre) # Effectuer une requête HTTP sur l'URL donnée
+            response_url = requests.get(lien_chapitre)                                      # Effectuer une requête HTTP sur l'URL donnée
             response = fmteam_download(response_url, nom_fichier, config)
             if response == True:
-                print(f"\nTéléchargement {current_download} terminé. ✅\n")                                       ##### Track activity         
+                print(f"\nTéléchargement {current_download} terminé. ✅\n")                                                                   ##### Track activity         
             else:
                 print(f"\nTéléchargement {current_download} impossible ❌ OU dossier déjà existant. 🤔\n")                                    ##### Track activity
         except:
-            print(f"REQUEST ERROR INFOS : {selected_website} | {manga_current_name} | {chapter_number}")              ##### Track activity
+            print(f"REQUEST ERROR INFOS : {selected_website} | {manga_current_name} | {chapter_number}")                                     ##### Track activity
 
     # =============================================================  OTHER
     else:

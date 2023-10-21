@@ -4,16 +4,16 @@ from Path_to_scantrad import script_repo,current_dir
 sys.path.append(script_repo)
 sys.path.append(current_dir)
 # ----------------------------------------------
-import pandas as pd
-import re
-from selenium.webdriver.common.by import By
-from Selenium_config import driver
 
 def Scrap_Titles():
     """
     Fonction qui permet de récupérer les titres de chaque manga dans le fichier mangas.csv
     et de les sauvegarder dans un fichier mangas.csv
-    """    
+    """
+    import pandas as pd
+    import re
+    from selenium.webdriver.common.by import By
+    from Selenium_config import driver    
 
     starting_page = 1
     a = ""

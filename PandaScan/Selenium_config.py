@@ -24,13 +24,17 @@ def check_driver(driver_path):
 
     Args:
         driver_path (str): chemin vers l'exécutable du driver
-    """ 
-    if not driver_path or not os.path.exists(driver_path): 
-        messagebox.showerror("Error [🤖❓]", "Incorrect or missing Chromedriver path. ⚠️ | Check 'Installation Guide'.")
-        print("\nExiting ..\n")                      ##### Track activity                                                       ##################### Au lieu d'exit , demander dans une barre le chemin jusqu'à en avoir un valide
-        exit()  # Sortir du script
-    else:
-        print("\nChromeDriver found ✅")            ##### Track activity
+    """     
+    while not "/chromedriver" in driver_path or not os.path.exists(driver_path):
+
+        print("\nIncorrect path found ❌\n")            ##### Track activity
+        print("\n⬇️ ⬇️ ⬇️ ChromeDriver path is required to run PandaScan. ⚠️, Please insert path below ⬇️ ⬇️ ⬇️")
+        driver_path = input("""\n             ChromeDriver path =>  """)
+
+    config['chromedriver_path'] = driver_path
+    with open('config.json', 'w') as json_file:
+        json.dump(config, json_file, indent=4)
+    print("\nChromeDriver found ✅")            ##### Track activity
 
 # ============================ Selenium configuration to use ChromeDriver ============================
 
@@ -46,9 +50,16 @@ ublock_path = f'{script_directory}/extensions/ublock.crx'
 adguard_path = f'{script_directory}/extensions/adguard.crx'
 check_extensions(ublock_path,adguard_path)
 
+# Vérifier si le chemin vers Chromedriver est valide.
 check_driver(config['chromedriver_path'])
-# Récupérer le chemin vers le Chromedriver
-chromedriver_path = Service(config['chromedriver_path'])
+
+try:
+    # Récupérer le chemin vers le Chromedriver
+    chromedriver_path = Service(config['chromedriver_path'])
+except:
+    messagebox.showerror("Error [😥]", "Chromedriver not found. ⚠️ | Check 'config.json' file.")
+    print("\nExiting ..\n")                     ##### Track activity
+    exit()
 
 options = webdriver.ChromeOptions()
 if config['driver']['headless']:

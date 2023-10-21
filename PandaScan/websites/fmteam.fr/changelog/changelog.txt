@@ -102,3 +102,29 @@ No added / deprecated files !
 Update 5 : 06/10/2023 | 22:35:21
 Changes in blue-lock:
   • Added chapters: chapitre 236
+
+Update 6 : 21/10/2023 | 18:39:07
+Changes in batuque:
+  • Added chapters: chapitre 118
+Changes in berserk:
+  • Removed chapters: chapitre 374, chapitre 373, chapitre 372
+Changes in blue-lock:
+  • Added chapters: chapitre 237
+  • Removed chapters: chapitre 234, chapitre 233
+Changes in choujin-x:
+  • Added chapters: chapitre 42, chapitre 41.5
+  • Removed chapters: chapitre 41.3, chapitre 41.2
+Changes in dai-dark:
+  • Added chapters: chapitre 42
+  • Removed chapters: chapitre 39
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1436
+  • Removed chapters: chapitre 1433, chapitre 1432
+Changes in kingdom:
+  • Added chapters: chapitre 774
+  • Removed chapters: chapitre 771
+Changes in one-punch-man:
+  • Added chapters: chapitre 192
+  • Removed chapters: chapitre 189
+Changes in out:
+  • Added chapters: chapitre 159, chapitre 158

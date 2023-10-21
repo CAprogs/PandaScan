@@ -1,6 +1,3 @@
-import pandas as pd
-import yaml
-
 # ========================= Functions =========================
 
 def Delete_table(table,conn,cursor):
@@ -39,6 +36,9 @@ def DB_print_chapters(nom_manga,nom_site,conn,cursor): # for test purpose
 def Migrate_datas(script_directory,conn,cursor):
     """Migrate the CSV and YAML data to the database.
     """
+    import pandas as pd
+    import yaml
+
     print("\nInitialisation de la Migration ..\n")    
     websites = [
         {'NomSite': 'fmteam.fr'},

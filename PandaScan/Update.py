@@ -13,12 +13,6 @@ new_paths = [
 for path in new_paths:  # Insérer chaque chemin dans le path
     sys.path.append(path)
 # ----------------------------------------------
-from Update_fmteam import Update_fmteam
-from Update_lelscans import Update_lelscans
-from Update_scantrad import Update_scantrad
-from Migrate import Migrate_datas
-from tkinter import messagebox
-import time
 
 ####################################################   FUNCTIONS   ####################################################
 
@@ -27,7 +21,9 @@ def confirm_update(mode):
 
     Returns:
         _type_: bool
-    """    
+    """
+    from tkinter import messagebox
+    
     result = messagebox.askquestion(f"Confirmation Check : {mode}", f"Proceed {mode}-Update ❓")
     if not result == "yes":
         return False
@@ -59,14 +55,17 @@ def check_and_migrate(script_directory,i,conn,cursor):
 
     Returns:
         _type_: bool
-    """    
+    """
+    from Migrate import Migrate_datas
+    from tkinter import messagebox
+
     if i >= 1:
         Migrate_datas(script_directory,conn,cursor)
         print("\nUpdate & Migration completed ✅\n")                                                                    ##### Track activity
         messagebox.showinfo("Update Info ℹ️", f"Update & Migration End ✅ ! Explore the changelog file 🔎")
     else:
         print("Update Canceled ❌, can't migrate datas due to settings.")                                       ##### Track activity
-        messagebox.showinfo("Update Info ℹ️", f"Update & Migration End ✅ ! Explore the changelog file 🔎")
+        messagebox.showinfo("Update Info ℹ️", f"Update Canceled ❌, can't migrate datas due to settings.")
 
 def track_update(i,website):
     """Incrémente i si une mise à jour a été effectuée et indique quel site a été mis à jour.
@@ -89,7 +88,11 @@ def check_and_perform_update(website,config,i):
         website (str): le site à mettre à jour
         config (Any): les informations du fichier config.json
         i (int): variable qui permet de savoir si un site à été mis à jour.
-    """    
+    """
+    from Update_lelscans import Update_lelscans
+    from Update_fmteam import Update_fmteam
+    from Update_scantrad import Update_scantrad
+    
     if check_website_settings(website,config):  
         if website == "fmteam.fr":
             Update_fmteam()
@@ -116,6 +119,8 @@ def Manual_Update(script_directory,website,config,conn,cursor):
         conn (Any): la connexion à la DB
         cursor (Any): le curseur de la DB
     """    
+    import time
+
     i = 0
     mode = "Manual"
     if confirm_update(mode):
@@ -133,7 +138,7 @@ def Manual_Update(script_directory,website,config,conn,cursor):
         
 # ===================================================================   Auto Update
 
-def Auto_Update(script_directory,config,conn,cursor):
+def Auto_Update(script_directory,websites,config,conn,cursor):
     """Automatically Update a website if his setting is set to "True".
 
     Args:
@@ -141,12 +146,8 @@ def Auto_Update(script_directory,config,conn,cursor):
         config (Any): les informations du fichier config.json
         conn (Any): la connexion à la DB
         cursor (Any): le curseur de la DB
-    """    
-    websites = [
-    "fmteam.fr",
-    "lelscans.net",
-    "scantrad-vf"
-    ]
+    """
+    import time
 
     i = 0
     mode = "Auto"
@@ -156,8 +157,8 @@ def Auto_Update(script_directory,config,conn,cursor):
 
             start_time = time.time()                    # lancer le timer
             i = check_and_perform_update(website,config,i)
-            end_time = time.time()                      # lancer le timer
-            elapsed_time = end_time - start_time        # calculer le temps écoulé           
+            end_time = time.time()                      # arrêter le timer
+            elapsed_time = end_time - start_time        # temps écoulé           
             print(f"\n{mode}-Update took: {elapsed_time:.2f} seconds\n")            ##### Track activity
 
         check_and_migrate(script_directory,i,conn,cursor)

@@ -1,13 +1,12 @@
-import requests
-import pandas as pd
-import yaml
-from bs4 import BeautifulSoup
-from Path_to_lelscans import script_repo
-
-
 def Scrap_Chapters():
     """Scrap the mangas chapters.
-    """    
+    """
+    import requests
+    import pandas as pd
+    import yaml
+    from bs4 import BeautifulSoup
+    from Path_to_lelscans import script_repo
+
     print("\n Importation et Creation des données ... \n")
     datas = pd.read_csv(f'{script_repo}/datas/mangas.csv') # Accès mangas et liens
     manga_chapters_dict = {} # création du dictionnaire qui contiendra les chapitres respectifs de chaque manga
@@ -48,7 +47,6 @@ def Scrap_Chapters():
         file.write(yml_data)
 
     print(f"\nFin Scrapping.")
-    
 
 
 # Uncomment to debug

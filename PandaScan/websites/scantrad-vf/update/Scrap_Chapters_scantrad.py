@@ -4,18 +4,18 @@ from Path_to_scantrad import script_repo,current_dir
 sys.path.append(script_repo)
 sys.path.append(current_dir)
 # ----------------------------------------------
-import pandas as pd
-import re
-import yaml
-from selenium.webdriver.common.by import By
-from Selenium_config import driver
 
 
 def Scrap_Chapters():
     """
     Fonction qui permet de récupérer les chapitres de chaque manga dans le fichier mangas.csv
     et de les sauvegarder dans un fichier mangas_chapters_temp.yml
-    """    
+    """   
+    import pandas as pd
+    import re
+    import yaml
+    from selenium.webdriver.common.by import By
+    from Selenium_config import driver 
 
     print("\n Importation et Création des données ... \n")
     # Ouvrir le fichier csv mangas

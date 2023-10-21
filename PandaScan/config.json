@@ -1,27 +1,23 @@
 {
-  "chromedriver_path": "",
-
-  "driver": {
-    "headless": true
-  },
-
-  "Update": {
-    "mode": "manual"
-},
-
-  "websites": {
-    "fmteam.fr": {
-      "enabled": true
+    "chromedriver_path": "",
+    "driver": {
+        "headless": true
     },
-    "lelscans.net": {
-      "enabled": true
+    "Update": {
+        "mode": "manual"
     },
-    "scantrad-vf": {
-      "enabled": true
+    "websites": {
+        "fmteam.fr": {
+            "enabled": true
+        },
+        "lelscans.net": {
+            "enabled": true
+        },
+        "scantrad-vf": {
+            "enabled": true
+        }
+    },
+    "Download": {
+        "path": ""
     }
-  },
-
-  "Download": {
-    "path": ""
-  }
 }
