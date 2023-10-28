@@ -128,3 +128,20 @@ Changes in one-punch-man:
   • Removed chapters: chapitre 189
 Changes in out:
   • Added chapters: chapitre 159, chapitre 158
+
+Update 7 : 28/10/2023 | 06:29:01
+Changes in berserk:
+  • Added chapters: chapitre 374, chapitre 373, chapitre 372
+Changes in blue-lock:
+  • Added chapters: chapitre 238
+  • Removed chapters: chapitre 235
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1437
+  • Removed chapters: chapitre 1434
+Changes in kingdom:
+  • Added chapters: chapitre 775
+  • Removed chapters: chapitre 772
+Changes in out:
+  • Added chapters: chapitre 160
+Changes in yomotsuhegui:
+  • Added chapters: chapitre 15
