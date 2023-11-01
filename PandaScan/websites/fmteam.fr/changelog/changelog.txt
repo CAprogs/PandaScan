@@ -145,3 +145,7 @@ Changes in out:
   • Added chapters: chapitre 160
 Changes in yomotsuhegui:
   • Added chapters: chapitre 15
+
+Update 8 : 29/10/2023 | 22:27:23
+Changes in batuque:
+  • Added chapters: chapitre 119
