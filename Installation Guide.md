@@ -25,12 +25,10 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 <img width="1493" alt="Capture d’écran 2023-09-28 à 18 14 57" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
 
-**Notes:** Paths looking different on OS.
-- On **Windows** if you have a path like this : `User\Desktop\file_name` you can't use it and should redefine it as `User\\Desktop\\file_name`.
-
 ---
 - **COPY** the path to your `.EXE` file in your chromedriver directory & **Paste** it in the `config.json` file as below ⬇️
-
+  -  On **Windows** your path will look like : `User\Desktop\file_name`. You should redefine it as `User\\Desktop\\file_name` by adding extra '\'.
+  
 ![Installation Guide](https://github.com/CAprogs/PandaScan/assets/104645407/bffd530c-a774-4a56-b875-6a0d2136354d)
 
 **Please Note:** (BETA version only)
@@ -43,10 +41,10 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 ### **II. SECOND STEP**
 #
+
 I recommend using `conda` for this part. If you don't have **conda** you can install it using this [**link**](https://docs.conda.io/en/latest/miniconda.html). 
 
-Why ? : _I'm currently using `miniconda3` with a `MacBook pro M1` chip. I downloaded the `.pkg` file from the latest release with `Python 3.10`. 
-**Miniconda** is just a **lightweight distribution of Anaconda**._
+Why ? : Anaconda packages come directly with Python and is commonly used in Data Science domain. I recommend installing **Miniconda**. It's a **lightweight distribution of Anaconda** ( Doesn't include any graphical interface or extra modules. )
 
 For **Windows Users**, while downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and then launch PandaScan.
 
