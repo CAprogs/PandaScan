@@ -1,7 +1,7 @@
 # Guide de Contribution pour PandaScan 🐼
 
 Merci de votre intérêt pour contribuer au projet PandaScan 🐼 ! Vos contributions sont grandement appréciées et permettent d'améliorer le projet pour tous.
-Vous pouvez par Contribuer à PandaScan en :
+Vous pouvez contribuer à PandaScan en :
 - Ajoutant des méthodes de scraping de sites de lecture de mangas
 - Optimisant le temps de téléchargement
 - Améliorant les syntaxes et les nomanclatures du code
