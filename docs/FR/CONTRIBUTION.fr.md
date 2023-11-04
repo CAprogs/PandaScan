@@ -1,6 +1,11 @@
 # Guide de Contribution pour PandaScan 🐼
 
-Merci de votre intérêt pour contribuer au projet PandaScan 🐼 ! Vos contributions sont grandement appréciées et contribuent à améliorer le projet pour tous.
+Merci de votre intérêt pour contribuer au projet PandaScan 🐼 ! Vos contributions sont grandement appréciées et permettent d'améliorer le projet pour tous.
+Vous pouvez par Contribuer à PandaScan en :
+- Ajoutant des méthodes de scraping de sites de lecture de mangas
+- Optimisant le temps de téléchargement
+- Améliorant les syntaxes et les nomanclatures du code
+- etc ..
 
 #
 
@@ -15,11 +20,8 @@ Merci de votre intérêt pour contribuer au projet PandaScan 🐼 ! Vos contribu
 2. Clonez votre dépôt forké sur votre machine locale en utilisant la commande suivante :
 
 ```
-git clone https://github.com/VotreNomUtilisateur/PandaScan.git
+git clone https://github.com/CAprogs/PandaScan.git
 ```
-
-
-Remplacez `VotreNomUtilisateur` par votre nom d'utilisateur GitHub.
 
 ### Créez une Nouvelle Branche
 
@@ -40,7 +42,7 @@ Choisissez un nom qui représente votre contribution.
 5. Faites un commit de vos changements avec un message clair et concis :
 
 ```
-git commit -m "Ajouter nouvelle fonctionnalité : description des changements"
+git commit -m "Ajout nouveau site : <description des changements>"
 ```
 
 ### Poussez les Changements
@@ -73,7 +75,7 @@ Une fois que vous avez soumis une pull request, je vais examiner vos changements
 
 ## **Merci 🎉**
 
-Merci d'avoir pris le temps de contribuer à PandaScan 🐼 ! Vos contributions contribuent à rendre le projet meilleur et plus utile pour tous les utilisateurs.
+Merci d'avoir pris le temps de contribuer à PandaScan 🐼 ! Vos contributions permettent rendre le projet meilleur et plus utile pour tous les utilisateurs.
 
 
 
