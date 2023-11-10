@@ -42,9 +42,9 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 ### **II. SECOND STEP**
 #
 
-I recommend using `conda` for this part. If you don't have **conda** you can install it using this [**link**](https://docs.conda.io/en/latest/miniconda.html). 
+I recommend using `conda` for this part but you can also use a default `python venv`. If you don't have **conda** you can install it using this [**link**](https://docs.conda.io/en/latest/miniconda.html). 
 
-Why ? : Anaconda packages come directly with Python and is commonly used in Data Science domain. I recommend installing **Miniconda**. It's a **lightweight distribution of Anaconda** ( Doesn't include any graphical interface or extra modules. )
+Why ? : Anaconda packages come directly with Python and is commonly used in Data Science. I recommend installing **Miniconda**. It's a **lightweight distribution of Anaconda** ( Doesn't include any graphical interface or extra modules. )
 
 For **Windows Users**, while downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and then launch PandaScan.
 
@@ -91,7 +91,7 @@ conda run python App.py
 ### **IV. FOURTH STEP ( Optional )**
 #
 
-If you don't want to use CLI, you can start **PandaScan** using [**VScode**](https://code.visualstudio.com/) ⬇️
+If you don't want to use CLI, you can run **PandaScan** using [**VScode**](https://code.visualstudio.com/) ⬇️
 
 ![ezgif com-video-to-gif](https://github.com/CAprogs/PandaScan/assets/104645407/83a7d7db-f17d-4929-b0ff-01a603be0ea9)
 
