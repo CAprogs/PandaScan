@@ -1,8 +1,10 @@
 # Get started with PandaScan 🐼
 
-## Version **V2.x.x** | _**15/10/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
+## Version **V2.x.x** | _**13/11/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
 
-- Please note that PandaScan may look different on other OS ( Windows, Linux ..) See Supported ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#os-compatibility-).
+A new release will be available soon. Stay tuned !
+
+- Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#os-compatibility-).
 - If you encounter any issue please let me know through the [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
 I assume you've already downloaded **PandaScan 🐼**. If not, download the **latest release** below ⬇️.
@@ -20,14 +22,14 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 ### **I. FIRST STEP**
 #
-
+- Download and install [**Vscode**](https://code.visualstudio.com/) 
 - Download [**Chromewebdriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable) ( Select the **right version** for your architecture as below )
 
 <img width="1493" alt="Capture d’écran 2023-09-28 à 18 14 57" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
 
 ---
 - **COPY** the path to your `.EXE` file in your chromedriver directory & **Paste** it in the `config.json` file as below ⬇️
-  -  On **Windows** your path will look like : `User\Desktop\file_name`. You should redefine it as `User\\Desktop\\file_name` by adding extra '\'.
+  -  On **Windows** your path will look like : `User\Desktop\file_name` | You should redefine it as `User\\Desktop\\file_name`
   
 ![Installation Guide](https://github.com/CAprogs/PandaScan/assets/104645407/bffd530c-a774-4a56-b875-6a0d2136354d)
 
@@ -42,53 +44,92 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 ### **II. SECOND STEP**
 #
 
-I recommend using `conda` for this part but you can also use a default `python venv`. If you don't have **conda** you can install it using this [**link**](https://docs.conda.io/en/latest/miniconda.html). 
+## MAC users 
 
-Why ? : Anaconda packages come directly with Python and is commonly used in Data Science. I recommend installing **Miniconda**. It's a **lightweight distribution of Anaconda** ( Doesn't include any graphical interface or extra modules. )
+- Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )
 
-For **Windows Users**, while downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and then launch PandaScan.
+Avoid using `conda`. It may cause some issues.
 
 - Open your **Terminal**
-- Enter your **Miniconda** / **Anaconda** file with the following command ⬇️
+  - Upgrade **pip** ⬇️
+```
+pip install --upgrade pip
+```
+- Enter your **PandaScan file** ⬇️
+  - Replace `path/to/PandaScan` with your **PandaScan** file path
+```
+cd path/to/PandaScan
+```
+- Create a **python venv** named pandavenv ⬇️
+```
+python3 -m venv pandavenv
+```
+- Activate the **venv** ⬇️
+```
+source pandavenv/bin/activate
+```
+- Then install **requirements** ⬇️
+```
+pip install -r requirements.txt
+```
+
+- Run **PandaScan** ⬇️
+```
+python3 App.py
+```
+## WINDOWS users
+
+You can use a `python venv` or `miniconda` to run PandaScan.
+
+Here's how to use **Miniconda** ⬇️
+
+- Download and install [**miniconda3**](https://docs.conda.io/projects/miniconda/en/latest/)
+
+While downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and then launch PandaScan.
+
+- Open your **Terminal**
+- Enter your **Miniconda** file with the following command ⬇️
 ```
 cd miniconda3
 ```
 - Create a **Conda Virtual environnement** named **Pandavenv** ⬇️
 ```
-conda create --name Pandavenv
+conda create --name pandavenv
 ```
 - Activate the **Venv** ⬇️
 ```
 conda activate Pandavenv
 ```
+- Verify if `pip` is installed in your venv using the following command ⬇️
 
-- Install `pip` in your `conda venv` using the following command ⬇️
+```
+pip --version
+```
+- If `pip` is not installed in your venv, install it using the following command ⬇️
+
 ```
 conda install pip
 ```
 
 - Install the **requirements** using the following command ⬇️
-  - _Replace `path/to/requirements.txt` with your **requirements.txt** file path_
+  - Replace `path\to\requirements.txt` with your **requirements.txt** file path
 ```
-pip install -r path/to/requirements.txt
+pip install -r path\to\requirements.txt
 ```
 
-#
-### **III. THIRD STEP**
-#
 - Enter the PandaScan file ⬇️
-  - Replace `path/to/PandaScan` with your **PandaScan** file path ⬇️
+  - Replace `path\to\PandaScan` with your **PandaScan** file path ⬇️
 ```
-cd path/to/PandaScan
+cd path\to\PandaScan
 ```
 
-- **Launch** the **PandaScan** app ⬇️
+- Run **PandaScan** ⬇️
 ```
 conda run python App.py
 ```
 #
 
-### **IV. FOURTH STEP ( Optional )**
+### **IV. THIRD STEP ( Optional )**
 #
 
 If you don't want to use CLI, you can run **PandaScan** using [**VScode**](https://code.visualstudio.com/) ⬇️
