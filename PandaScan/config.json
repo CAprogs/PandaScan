@@ -7,17 +7,28 @@
         "mode": "manual"
     },
     "websites": {
-        "fmteam.fr": {
-            "enabled": true
+        "fmteam": {
+            "enabled": true,
+            "n_update": 9
         },
-        "lelscans.net": {
-            "enabled": true
+        "lelscans": {
+            "enabled": true,
+            "n_update": 8
         },
-        "scantrad-vf": {
-            "enabled": true
+        "scantrad": {
+            "enabled": true,
+            "n_update": 7
         }
     },
     "Download": {
         "path": ""
+    },
+    "logger": {
+        "enabled": true,
+        "level": "INFO"
+    },
+    "progressbar": {
+        "enabled": true,
+        "theme": "="
     }
 }
