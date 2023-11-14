@@ -45,15 +45,15 @@
 - _**Changelog**_ 🔗 : Restez informés des changements dans vos données ! Tous les changements sont enregistrés après une mise à jour 𝌤
 - _**Paramétrage**_ ⚙️ : Configurez l'essentiel de l'application à votre guise, PandaScan 🐼 VOUS appartient 🫵
 
+## Installation
+
+Lisez le [**GUIDE D'INSTALLATION**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
+
 ## Principe 🪄
 
 La figure ci-dessous représente le fonctionnement de PandaScan 🐼. Les icônes 🟢 désignent la sélection de l'utilisateur.
 
 <img width="700" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
-
-## Installation 🛠️
-
-Lisez le [**GUIDE D'INSTALLATION**](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md)
 
 ## Nouveautés 🎉
 
@@ -69,7 +69,7 @@ La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.
 | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)    | ✅             | ✅           |   ✅    |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">  |
 | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)    | ✅             | ❌          |   ❌     |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 50 54" src="https://github.com/CAprogs/PandaScan/assets/104645407/c11dccc7-f0e8-4462-9525-6cf46eebc949">
 
-## Compatibilité des OS 🪢
+## Compatibilités 🪢
 
 Les Compatibilités suivantes sont basées sur des tests personnels.
 |   Operating system  | BETA Support | LITE Support | Aperçu 👁️
