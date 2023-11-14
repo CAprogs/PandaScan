@@ -1,15 +1,16 @@
-# Guide de Contribution pour PandaScan 🐼
+# Guide de Contribution  🐼
 
-Merci de votre intérêt pour contribuer au projet PandaScan 🐼 ! Vos contributions sont grandement appréciées et permettent d'améliorer le projet pour tous.
+La contribution est grandement appréciées et permet d'améliorer le projet pour tous. 😊
+
 Vous pouvez contribuer à PandaScan en :
 - Ajoutant des méthodes de scraping de sites de lecture de mangas
 - Optimisant le temps de téléchargement
-- Améliorant les syntaxes et les nomanclatures du code
+- Améliorant les syntaxes et les nomenclatures du code
 - etc ..
 
 #
 
-## **Comment Contribuer ?**
+## **Contribuer 🤔**
 
 ### Forkez le Dépôt
 
@@ -17,7 +18,7 @@ Vous pouvez contribuer à PandaScan en :
 
 ### Clonez le Fork
 
-2. Clonez votre dépôt forké sur votre machine locale en utilisant la commande suivante :
+2. Clonez votre dépôt forké sur votre machine locale en utilisant ⬇️
 
 ```
 git clone https://github.com/CAprogs/PandaScan.git
@@ -69,13 +70,16 @@ git push origin feature/nouvelle-fonctionnalité
 
 ## **Revue de Code et Fusion**
 
-Une fois que vous avez soumis une pull request, je vais examiner vos changements. Je peux fournir des commentaires ou demander des modifications supplémentaires. Une fois que votre pull request est approuvée, elle sera fusionnée dans le projet principal.
+Une fois que vous avez soumis une pull request, elle sera examinée. ✍️
+
+Des commentaires ou ajustements pourront être demandés. 
+
+Une fois que votre pull request est approuvée, elle sera fusionnée dans le projet principal et vous serez ajouté à la liste des contributeurs 😊
 
 #
 
 ## **Merci 🎉**
 
-Merci d'avoir pris le temps de contribuer à PandaScan 🐼 ! Vos contributions permettent rendre le projet meilleur et plus utile pour tous les utilisateurs.
+Merci d'avoir pris le temps de contribuer à PandaScan 🐼 ! 
 
-
-
+Vos contributions permettent de rendre le projet meilleur pour tous. 🫶

@@ -138,5 +138,5 @@ If you don't want to use CLI, you can run **PandaScan** using [**VScode**](https
 
 ---
 **Please Note:** (BETA version only)
-- The **`changelog`** File is generate in _**PandaScan > websites > "whatever website" > changelog > changelog.txt**_
+- The **`changelog`** File is generate in _**PandaScan > changelog > websites > "select a website"**_
 - The **`changelog`** File helps you visualize if data have been removed, added or if there's no change at all in a particular Website.
