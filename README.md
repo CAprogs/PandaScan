@@ -71,7 +71,7 @@ La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.
 
 ## Compatibilités 🪢
 
-Les Compatibilités suivantes sont basées sur des tests personnels.
+Les compatibilités suivantes sont basées sur des tests personnels.
 |   Operating system  | BETA Support | LITE Support | Aperçu 👁️
 | :-------- | :-------       | :-------    |:-------    |
 | MacOS ( Apple Silicon ) |  ✅  | ✅ | <img width="500" alt="Capture d’écran 2023-10-12 à 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">
