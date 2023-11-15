@@ -275,7 +275,7 @@ def main():
 
             Manage_DownloadBox()
 
-        if nb_of_manga_chapters == 0:
+        if nb_of_manga_chapters == 0 or selected_manga_chapters == []:
             messagebox.showinfo("Info [ℹ️]", "No Chapter Selected 🤕, Try again")
         else:
             os.system("clear")
