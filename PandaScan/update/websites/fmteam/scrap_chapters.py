@@ -44,7 +44,7 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
                     else:
                         LOG.debug("ERREUR, AUCUN MATCH")
                 else:
-                    chapter_number = url_chapter_download.split("/")[-1]        # récupérer le numero de chapitre 
+                    chapter_number = url_chapter_download.split("/")[-1]        # récupérer le numero de chapitre
 
                 chapter = "chapitre " + chapter_number                          # Normaliser le chapitre
                 manga_chapters_dict[manga_name].append(chapter)                 # Ajouter le chapitre à 'manga_chapters_dict' avec sa clé correspondante

@@ -401,7 +401,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                     json.dump(SETTINGS, json_file, indent=4)
 
                 save_clicks += 1
-                
+
                 return LOG.debug("Settings saved ✅")
 
             else:

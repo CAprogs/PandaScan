@@ -18,7 +18,7 @@ def set_driver_config(MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
     adguard_path = f'{MAIN_DIRECTORY}/foundation/selenium/extensions/adguard.crx'
     check_extensions(ublock_path, adguard_path)
 
-    check_driver(SETTINGS['chromedriver_path'],PATH_TO_CONFIG, SETTINGS)
+    check_driver(SETTINGS['chromedriver_path'], PATH_TO_CONFIG, SETTINGS)
 
     try:
         # Instancier le service Chromedriver

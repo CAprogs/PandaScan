@@ -14,7 +14,7 @@
 #    ° Choose between "manual" or "auto" update.
 #    ° Select where to save your scans after a download.
 #    ° Updating PandaScan generates changelogs files | Ckeck changelogs in 'changelog > choose a website > changelog.txt'
-# Please note that some websites may provide empty docs when downloading (especially scantrad)
+# Please note that some websites may provide empty folders when downloading (especially scantrad)
 # If you like this project, please consider giving it a ⭐️ on Github.🫶
 # Credits: @Tkinter-designer by ParthJadhav
 # ------------------------------------------------------------------------------------------------------------
@@ -319,7 +319,7 @@ def main():
     website_menu.place(x=440.0, y=150.0)
     website_menu.configure(bg=CURRENT_COLOR)
 
-    # Associer la fonction au changement de site
+    # Associer le widget menu au changement de site
     website_list_var.trace_add("write", Switch_Website)
 
     # === Zone d'affichage des Chapitres ( ChapterBox : Image )

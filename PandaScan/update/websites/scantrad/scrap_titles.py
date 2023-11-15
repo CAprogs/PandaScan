@@ -53,9 +53,9 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
             break
 
     LOG.debug(f"{len(new_list)} mangas récupérés.")
-    
+
     # ajouter le contenu de 'new_list' au dataframe 'datas'
     datas = pd.concat([datas, pd.DataFrame(new_list)], ignore_index=True)
     datas.to_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv', index=False)
-    
+
     LOG.debug("Fin Scrapping")

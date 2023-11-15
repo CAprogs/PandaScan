@@ -14,9 +14,9 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 |  `V2.1.1` | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)  |
 |  `V2.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)  |
 
-`BETA` : [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required for those who want full access to PandaScan 🐼 recent Features.
+`BETA` : [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required for those who want access to all recent features.
 
-`LITE` : If you don't want full access to PandaScan 🐼 recent Features, jump to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
+`LITE` : If you just want to have a taste, jump to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
 
 ---
 
@@ -28,7 +28,7 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 <img width="1493" alt="Capture d’écran 2023-09-28 à 18 14 57" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
 
 ---
-- **COPY** the path to your `.EXE` file in your chromedriver directory & **Paste** it in the `config.json` file as below ⬇️
+- **COPY** the path to your `.EXE` file in your chromedriver folder & **Paste** it in the `config.json` file as below ⬇️
   -  On **Windows** your path will look like : `User\Desktop\file_name` | You should redefine it as `User\\Desktop\\file_name`
   
 ![Installation Guide](https://github.com/CAprogs/PandaScan/assets/104645407/bffd530c-a774-4a56-b875-6a0d2136354d)
@@ -48,21 +48,23 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 - Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )
 
-Avoid using `conda`. It may cause some issues.
+Avoid using `conda`. It may cause some issues and bugs.
 
 - Open your **Terminal**
-  - Upgrade **pip** ⬇️
-```
-pip install --upgrade pip
-```
-- Enter your **PandaScan file** ⬇️
-  - Replace `path/to/PandaScan` with your **PandaScan** file path
+  
+- Enter your **PandaScan folder** ⬇️
+  - Replace `path/to/PandaScan` with the path to your **PandaScan** folder
+  - If you downloaded the `LITE version`, then use the **PandaScan.Lite** folder
 ```
 cd path/to/PandaScan
 ```
 - Create a **python venv** named pandavenv ⬇️
 ```
 python3 -m venv pandavenv
+```
+- Upgrade **pip** ⬇️
+```
+pip install --upgrade pip
 ```
 - Activate the **venv** ⬇️
 ```
@@ -79,16 +81,16 @@ python3 App.py
 ```
 ## WINDOWS users
 
-You can use a `python venv` or `miniconda` to run PandaScan.
+You can either use a `python venv` or `miniconda` to run PandaScan.
 
-Here's how to use **Miniconda** ⬇️
+### Here's how to use **Miniconda** ⬇️
 
 - Download and install [**miniconda3**](https://docs.conda.io/projects/miniconda/en/latest/)
 
-While downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and then launch PandaScan.
+While downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and run PandaScan.
 
 - Open your **Terminal**
-- Enter your **Miniconda** file with the following command ⬇️
+- Enter your **Miniconda** folder with the following command ⬇️
 ```
 cd miniconda3
 ```
@@ -98,7 +100,7 @@ conda create --name pandavenv
 ```
 - Activate the **Venv** ⬇️
 ```
-conda activate Pandavenv
+conda activate pandavenv
 ```
 - Verify if `pip` is installed in your venv using the following command ⬇️
 
@@ -118,7 +120,8 @@ pip install -r path\to\requirements.txt
 ```
 
 - Enter the PandaScan file ⬇️
-  - Replace `path\to\PandaScan` with your **PandaScan** file path ⬇️
+  - Replace `path\to\PandaScan` with your **PandaScan** folder path ⬇️
+  - If you downloaded the `LITE version`, then replace it with your **PandaScan.Lite** folder
 ```
 cd path\to\PandaScan
 ```
