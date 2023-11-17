@@ -90,7 +90,7 @@ You can either use a `python venv` or `miniconda` to run PandaScan.
 While downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and run PandaScan.
 
 - Open your **Terminal**
-- Enter your **Miniconda** folder with the following command ⬇️
+- Enter your **Miniconda** folder  ⬇️
 ```
 cd miniconda3
 ```
@@ -102,18 +102,18 @@ conda create --name pandavenv
 ```
 conda activate pandavenv
 ```
-- Verify if `pip` is installed in your venv using the following command ⬇️
+- Verify if `pip` is installed in your venv  ⬇️
 
 ```
 pip --version
 ```
-- If `pip` is not installed in your venv, install it using the following command ⬇️
+- If `pip` is not installed in your venv, install it using ⬇️
 
 ```
 conda install pip
 ```
 
-- Install the **requirements** using the following command ⬇️
+- Install the **requirements** ⬇️
   - Replace `path\to\requirements.txt` with your **requirements.txt** file path
 ```
 pip install -r path\to\requirements.txt
