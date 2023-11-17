@@ -22,7 +22,7 @@
 
 import os
 import tkinter as tk
-from tkinter import Tk, ttk, Canvas, Entry, Listbox
+from tkinter import Tk, ttk, Canvas, Entry, Listbox, IntVar
 from tkinter import Scrollbar, Button, Checkbutton, Label
 from tkinter import PhotoImage, StringVar, OptionMenu, messagebox
 from download.manage import download
@@ -36,6 +36,7 @@ from foundation.core.essentials import WEBSITES, MAIN_DIRECTORY, DRIVER, SETTING
 
 POLICE_1 = ("Inter", 15 * -1)
 POLICE_2 = ("Inter", 16 * -1)
+POLICE_3 = ("Inter", 12 * -1)
 CURRENT_COLOR = "#FFFFFF"                     # dominant text color
 ALT_COLOR = "#6B0000"                         # -||- info text color
 ENTRY_TEXT_COLOR = "#000716"                  # -||- entry text color
@@ -46,13 +47,15 @@ nb_of_chapters_to_download = 0                # number of chapters to download
 download_id = 0                               # id of the current download
 selected_manga_name = ''                      # name of the selected manga
 selected_manga_chapters = []                  # list that contains the selected chapters
+start_index = ""                              # index associé au premier chapitre d'un range
+end_index = ""                                # index associé au dernier chapitre d'un range
 download_button_state = False                 # state of the download button
 manga_file_path = ''                          # path to the manga folder
 
 TEXT_1 = "🌐"
 TEXT_2 = "Manga name"
 TEXT_3 = "Chapter / Volume"
-TEXT_4 = "Select All"
+TEXT_4 = "-"
 
 
 def main():
@@ -93,6 +96,18 @@ def main():
         main_window.destroy()
         print("\nApp closed 👋.\n")
 
+    def Clear_range_menus():
+        """Vider et réinitialiser les menus déroulants de sélection de range
+        """
+        min_chapter_menu['menu'].delete(0, 'end')
+        max_chapter_menu['menu'].delete(0, 'end')
+        Check_box_var.set(0)
+        min_chapter_var.set(" ")
+        max_chapter_var.set(" ")
+        min_chapter_menu.configure(state="disabled")
+        max_chapter_menu.configure(state="disabled")
+        Check_box.configure(state="disabled")
+
     def Reload_page():
         """Reinitialise les widgets de l'application.
         """
@@ -105,8 +120,9 @@ def main():
         canvas.itemconfigure(Manga_selected, text='')
         result_box.delete(0, tk.END)
         chapters_box.delete(0, tk.END)
+        Clear_range_menus()
 
-    def Switch_Website(*args):
+    def Switch_website(*args):
         """Changer de site de scrapping.
         """
         global default_website
@@ -115,27 +131,6 @@ def main():
         default_website = selected_item
         LOG.debug(f"Website : {selected_item}")
         Reload_page()
-
-    def select_all():
-        """Sélectionner tous les chapitres d'un manga en cliquant sur la CheckBox.
-        """
-        global nb_of_manga_chapters, selected_manga_name, selected_manga_chapters
-
-        if select_all_var.get() == 1:
-            chapters_box.select_set(0, tk.END)  # sélectionner tous les éléments de la ChapterBox
-            query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
-            SELECTOR.execute(query, (default_website, selected_manga_name))
-            results = SELECTOR.fetchall()
-            selected_manga_chapters = [chapitre[0] for chapitre in results]  # créer une liste composée des chapitres sélectionnés
-
-            LOG.debug(selected_manga_chapters)
-            nb_of_manga_chapters = len(selected_manga_chapters)
-            canvas.itemconfigure(Chapter_selected, text=f'{nb_of_manga_chapters} selected')
-        else:
-            chapters_box.selection_clear(0, tk.END)  # désélectionner tous les éléments de la ListBox
-            selected_manga_chapters = []  # réinitialiser la sélection des chapitres
-            LOG.debug(selected_manga_chapters)
-            canvas.itemconfigure(Chapter_selected, text='0 selected')
 
     def update_results(event):
         """Update les résultats dans la liste des mangas
@@ -150,8 +145,8 @@ def main():
         query = "SELECT NomManga FROM Mangas WHERE NomManga LIKE ? AND NomSite = ?"
         SELECTOR.execute(query, (keyword, default_website))  # Chercher les correspondances dans la DB
         results = [row[0] for row in SELECTOR.fetchall()]  # Récupérer les correspondances
-        result_box.delete(0, tk.END)   # Supprimer les anciens résultats s'il y'en avaient
-        result_box.insert(tk.END, *results)  # Insérer les nouveaux résultats dans la Manga_list box
+        result_box.delete(0, tk.END)
+        result_box.insert(tk.END, *results)  # Insérer les nouveaux résultats
 
     def on_mangas_select(event):
         """Actions lorsqu'un manga est sélectionné
@@ -163,31 +158,100 @@ def main():
 
         selected_indices = result_box.curselection()  # récupérer l'indice de l'élément sélectionné
         if selected_indices:
-            manga_name = result_box.get(selected_indices[0])    # récupérer le nom du manga
-            selected_manga_name = manga_name
-            update_chapters(manga_name)
-            truncated_text = manga_name[:15] + "..." if len(manga_name) > 15 else manga_name
+            selected_manga_name = result_box.get(selected_indices[0])
+            update_chapters(selected_manga_name)
+            truncated_text = selected_manga_name[:15] + "..." if len(selected_manga_name) > 15 else selected_manga_name
             canvas.itemconfigure(Manga_selected, text=truncated_text)
 
-    def update_chapters(manga_name):
+            result = chapters_box.get(tk.END)
+
+            min_chapter_menu['menu'].delete(0, 'end')
+            max_chapter_menu['menu'].delete(0, 'end')
+
+            if result != "":
+                fetch_chapters_in_menu()
+            else:
+                min_chapter_var.set(" ")
+                max_chapter_var.set(" ")
+                Check_box_var.set(0)
+                min_chapter_menu.configure(state="disabled")
+                max_chapter_menu.configure(state="disabled")
+                Check_box.configure(state="disabled")
+
+    def on_menu_select(*args):
+        """Gérer la resélection du range des chapitres
+        """
+        global start_index, end_index
+
+        if Check_box_var.get() == 1:
+            chapters_box.selection_clear(0, tk.END)
+            select_range()
+
+    def fetch_chapters_in_menu():
+        """Remplir la liste des chapitres dans les menus déroulants de sélection de range
+        """
+        num_chapters = [chapitre.replace("chapitre ", "") for chapitre in chapters_box.get(0, tk.END)]
+        for chapter in num_chapters:
+            min_chapter_menu['menu'].add_command(label=chapter, command=tk._setit(min_chapter_var, chapter))
+            max_chapter_menu['menu'].add_command(label=chapter, command=tk._setit(max_chapter_var, chapter))
+        min_chapter_var.set(num_chapters[-1])
+        max_chapter_var.set(num_chapters[0])
+        min_chapter_menu.configure(state="normal")
+        max_chapter_menu.configure(state="normal")
+        Check_box.configure(state="normal")
+
+    def select_range(*args):
+        """Sélectionner un range de chapitres en fonction des menus déroulants de sélection de range
+        """
+        global nb_of_manga_chapters, selected_manga_chapters, start_index, end_index
+
+        if Check_box_var.get() == 1:
+
+            min_var = min_chapter_var.get()
+            max_var = max_chapter_var.get()
+            start_chapter = "chapitre " + min_var
+            end_chapter = "chapitre " + max_var
+
+            all_chapters = chapters_box.get(0, tk.END)
+            start_index = all_chapters.index(start_chapter)
+            end_index = all_chapters.index(end_chapter)
+
+            if float(max_var) < float(min_var):
+                selected_range = chapters_box.get(start_index, end_index)
+                LOG.debug(f"Selected range : from {start_chapter} to {end_chapter}")
+            elif float(max_var) > float(min_var):
+                selected_range = chapters_box.get(end_index, start_index)
+                LOG.debug(f"Selected range : from {end_chapter} to {start_chapter}")
+            else:
+                selected_range = chapters_box.get(start_index, start_index)
+                LOG.debug(f"You selected one chapter : {start_chapter}")
+
+            chapters_box.select_set(start_index, end_index)
+            selected_manga_chapters = selected_range
+            nb_of_manga_chapters = len(selected_manga_chapters)
+            canvas.itemconfigure(Chapter_selected, text=f'{nb_of_manga_chapters} selected')
+
+        else:
+            chapters_box.selection_clear(0, tk.END)
+            selected_manga_chapters = []
+            canvas.itemconfigure(Chapter_selected, text='0 selected')
+
+    def update_chapters(selected_manga_name):
         """Update les résultats dans la Chapter List lorsqu'un manga est sélectionné
 
         Args:
-            manga_name (str): Le nom du manga sélectionné
+            selected_manga_name (str): Le nom du manga sélectionné
         """
         global default_website
 
-        # Rechercher tous les chapitres du manga sélectionné
         query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
-        SELECTOR.execute(query, (default_website, manga_name))
-        results = [result[0] for result in SELECTOR.fetchall()]  # Utilisation d'indices
-        chapters_box.delete(0, tk.END)  # Effacer le contenu précédent de la liste déroulante
-
-        # Afficher les résultats dans la ChapterBox
-        chapters_box.insert(tk.END, *results)  # Utilisation de l'opérateur * pour insérer tous les chapitres
-
-        if select_all_var.get() == 1:
-            select_all()
+        SELECTOR.execute(query, (default_website, selected_manga_name))
+        results = [result[0] for result in SELECTOR.fetchall()]
+        chapters_box.delete(0, tk.END)
+        chapters_box.insert(tk.END, *results)
+        result = chapters_box.get(tk.END)
+        if Check_box_var.get() == 1 or result != "":
+            Clear_range_menus()
 
     def on_chapters_select(event):
         """Actions lorsque des chapitres sont sélectionnés
@@ -197,8 +261,8 @@ def main():
         """
         global selected_manga_chapters, nb_of_manga_chapters
 
-        selected_chapters = chapters_box.curselection()  # récupérer les indices des chapitres sélectionnés
-        selected_manga_chapters = [chapters_box.get(index) for index in selected_chapters]  # récupérer les chapitres sélectionnés
+        selected_chapters = chapters_box.curselection()
+        selected_manga_chapters = [chapters_box.get(index) for index in selected_chapters]
         nb_of_manga_chapters = len(selected_manga_chapters)
         canvas.itemconfigure(Chapter_selected, text=f'{nb_of_manga_chapters} selected')
 
@@ -241,7 +305,7 @@ def main():
                 if nb_of_manga_chapters > 1:
                     progressbar.place_forget()
                     percentage_label.place_forget()
-                messagebox.showinfo("Info [ℹ️]", "Successfull Download ✅\n Thanks for using PandaScan 🐼")
+                messagebox.showinfo("Info [ℹ️]", "Download completed ✅\n Thanks for using PandaScan 🐼")
                 Hide_DownloadBox()
                 download_button.configure(state="normal")  # Réactiver le bouton de téléchargement
                 download_button_state = False
@@ -254,7 +318,7 @@ def main():
 
             download_button_state = True
             download_button.configure(state="disabled")
-            if nb_of_manga_chapters > 1:  # afficher la barre de progression si plus d'un chapitre est sélectionné
+            if nb_of_manga_chapters > 1:  # Afficher la barre de progression si plus d'un chapitre est sélectionné
                 canvas.itemconfigure(image_1, state=tk.NORMAL)
                 progressbar.place(x=800.0, y=520.0)
                 percentage_label.place(x=830.0, y=545.0)
@@ -308,7 +372,7 @@ def main():
 
     canvas.create_text(413.0, 152.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=POLICE_1)
     website_list_var = StringVar(main_window)
-    website_list_var.set(default_website)  # Default website
+    website_list_var.set(default_website)
     website_menu = OptionMenu(
         main_window,
         website_list_var,
@@ -319,8 +383,8 @@ def main():
     website_menu.place(x=440.0, y=150.0)
     website_menu.configure(bg=CURRENT_COLOR)
 
-    # Associer le widget menu au changement de site
-    website_list_var.trace_add("write", Switch_Website)
+    # Associer l'évènement de choix de site web à la fonction 'Switch_website'
+    website_list_var.trace_add("write", Switch_website)
 
     # === Zone d'affichage des Chapitres ( ChapterBox : Image )
 
@@ -380,11 +444,31 @@ def main():
     # Pourcentage de progression
     percentage_label = Label(main_window, text="0%", bg="white")
 
-    # === Select all ( Checkbox )
+    # === Select a range of chapters ( Menus + Checkbox )
 
-    select_all_var = tk.IntVar()
-    Check_box = Checkbutton(main_window, text=TEXT_4, variable=select_all_var, command=select_all, bg="white")
-    Check_box.place(x=547.0, y=525.0)
+    # 1st chapter menu
+    min_chapter_var = StringVar(main_window)
+    min_chapter_var.set(" ")
+    min_chapter_menu = OptionMenu(main_window, min_chapter_var, "")
+    min_chapter_menu.place(x=520.0, y=526.0, width=50.0, height=18.0)
+    min_chapter_menu.configure(bg=CURRENT_COLOR, state="disabled")
+    min_chapter_var.trace_add("write", lambda *args: on_menu_select())
+
+    # "-" text
+    canvas.create_text(580.0, 527.0, anchor="nw", text=TEXT_4, fill=ALT_COLOR, font=POLICE_3)
+
+    # 2nd chapter menu
+    max_chapter_var = StringVar(main_window)
+    max_chapter_var.set(" ")
+    max_chapter_menu = OptionMenu(main_window, max_chapter_var, "")
+    max_chapter_menu.place(x=598.0, y=526.0, width=50.0, height=18.0)
+    max_chapter_menu.configure(bg=CURRENT_COLOR, state="disabled")
+    max_chapter_var.trace_add("write", lambda *args: on_menu_select())
+
+    # validation checkbox
+    Check_box_var = IntVar(main_window)
+    Check_box = Checkbutton(main_window, variable=Check_box_var, command=select_range, bg="white", state="disabled")
+    Check_box.place(x=655.0, y=524.0)
 
     # === nombre de chapitres sélectionnés ( Chapters_info Box )
 

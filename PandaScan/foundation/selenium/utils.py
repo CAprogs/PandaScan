@@ -27,7 +27,7 @@ def check_driver(driver_path, PATH_TO_CONFIG, SETTINGS):
     os_name = platform.system()
 
     while "chromedriver" not in driver_path or not os.path.exists(driver_path):
-        
+
         os.system("clear")
         print("""\nChromeDriver is required to run PandaScan. ⚠️ (Refer to the 'README' file for help)
               \n° On Windows : replace all '\\' with '\\\\'
@@ -39,8 +39,9 @@ def check_driver(driver_path, PATH_TO_CONFIG, SETTINGS):
         driver_path = driver_path.replace("\\", "\\\\")
 
     SETTINGS["chromedriver_path"] = driver_path
-    
+
     with open(PATH_TO_CONFIG, 'w') as json_file:
         json.dump(SETTINGS, json_file, indent=4)
 
+    os.system("clear")
     print("\nChromeDriver found ✅")
