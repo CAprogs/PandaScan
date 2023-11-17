@@ -17,8 +17,6 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG):
     has_tome_list = []
     last_tome_list = []
 
-    LOG.debug("Début Scrapping ...")
-
     # Ouvrir la page contenant tous les mangas
     url = "https://fmteam.fr/comics"
 
@@ -58,8 +56,6 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG):
         data_to_add = [{"name": name, "links": links, "has_tome": has_tome, "last_tome": last_tome} for name, links, has_tome, last_tome in zip(manga_name_list, links_list, has_tome_list, last_tome_list)]
         datas = pd.DataFrame(data_to_add)
         datas.to_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv', index=False)
-
-        LOG.debug("Fin scrapping")
 
     except Exception as e:
         LOG.debug(f"Error : {e} | Fmteam titles scrapping")

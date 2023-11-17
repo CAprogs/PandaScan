@@ -9,5 +9,6 @@ def Update_lelscans(PATH_TO_LELSCANS, LOG):
         LOG (Any): logger d'affichage
     """
 
+    LOG.info("Scraping lelscans ..")
     scrap_titles.Scrap_titles(PATH_TO_LELSCANS, LOG)
     scrap_chapters.Scrap_chapters(PATH_TO_LELSCANS, LOG)

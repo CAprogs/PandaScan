@@ -21,14 +21,14 @@ def set_driver_config(MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
     check_driver(SETTINGS['chromedriver_path'], PATH_TO_CONFIG, SETTINGS)
 
     try:
-        # Instancier le service Chromedriver
+        # Instanciate chromedriver service
         chromedriver_path = Service(SETTINGS['chromedriver_path'])
     except Service.ServiceException as e:
         messagebox.showerror("Error [😥]", f"Chromedriver not found. ⚠️ | Follow the README file\nError: {str(e)}")
         print("\nPandaScan exited. 🚪")
         exit()
 
-    # Instancier les options du navigateur
+    # Instanciate chrome options
     options = webdriver.ChromeOptions()
     if SETTINGS['driver']['headless']:
         options.add_argument("--headless")
@@ -40,7 +40,7 @@ def set_driver_config(MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
     options.add_extension(ublock_path)
     options.add_extension(adguard_path)
 
-    # Instancier le driver
+    # Instanciate driver
     driver = webdriver.Chrome(service=chromedriver_path, options=options)
     driver.maximize_window()
 

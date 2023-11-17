@@ -21,10 +21,10 @@ def download(selected_website, chapter_name_path, selected_manga_name, download_
     chapter_number = chapter_transform(chapter_name, selected_website)
 
     if selected_website == "scantrad":
-        scantrad.init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_name, chapter_number)
+        scantrad.init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_number)
 
     elif selected_website == "lelscans":
-        lelscans.init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_name, chapter_number)
+        lelscans.init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_number)
 
     elif selected_website == "fmteam":
         fmteam.init_download(selected_website, selected_manga_name, download_id, manga_file_path, SETTINGS, SELECTOR, chapter_number)

@@ -28,10 +28,10 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
         end_time = time.time()
         elapsed_time = end_time - start_time
         if i != 0:
-            LOG.info(f"{mode}-Update took: {elapsed_time:.2f} s")
+            LOG.info(f"Took: {elapsed_time:.2f} s")
 
             Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
-            messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelog files 🔎")
+            messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelogs 🔎")
 
     else:
         LOG.info(f"{mode} Update Canceled")
@@ -62,11 +62,11 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
             end_time = time.time()
             elapsed_time = end_time - start_time
             if i != 0:
-                LOG.info(f"{mode}-Update took: {elapsed_time:.2f} s")
+                LOG.info(f"Took: {elapsed_time:.2f} s")
 
         if i != 0:
             Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
-            messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelog files 🔎")
+            messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelogs 🔎")
 
     else:
         LOG.info(f"{mode} Update Canceled")

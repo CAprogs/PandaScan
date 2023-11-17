@@ -14,9 +14,8 @@ def Scrap_titles(PATH_TO_LELSCANS, LOG):
     links_list = []
     manga_name_list = []
 
-    url = "https://lelscans.net/scan-hunter-x-hunter/400/1"  # starting page
+    url = "https://lelscans.net/scan-hunter-x-hunter/400/1"
 
-    LOG.debug("Début Scrapping ...")
     try:
         response = requests.get(url)
         html_content = response.text
@@ -43,7 +42,6 @@ def Scrap_titles(PATH_TO_LELSCANS, LOG):
             data_to_add = [{"name": name, "links": links} for name, links in zip(manga_name_list, links_list)]
             datas = pd.DataFrame(data_to_add)
             datas.to_csv(f'{PATH_TO_LELSCANS}/datas/mangas.csv', index=False)
-            LOG.debug("Fin Scrapping")
 
         else:
             LOG.debug("Error: no manga added | Lelscans titles scrapping")

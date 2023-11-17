@@ -16,8 +16,6 @@ def Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG):
     datas = pd.read_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv')
     manga_chapters_dict = {}
 
-    LOG.debug("Debut Scrapping ...")
-
     for manga_name in datas['name']:
         url_start = f'https://scantrad-vf.co/manga/{manga_name}/'
 
@@ -59,5 +57,3 @@ def Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG):
 
     with open(f'{PATH_TO_SCANTRAD}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
-
-    LOG.debug("Fin Scrapping")

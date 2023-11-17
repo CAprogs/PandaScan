@@ -10,5 +10,6 @@ def Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG):
         LOG (Any): logger d'affichage
     """
 
+    LOG.info("Scraping scantrad ..")
     scrap_titles.Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG)
     scrap_chapters.Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG)

@@ -56,6 +56,9 @@ def check_url(pattern, tome, selected_manga_name, chapter_number):
         tome (str): dernier tome du manga
         selected_manga_name (str): nom du manga sélectionné
         chapter_number (int): numéro du chapitre
+
+    Returns:
+        str: l'url valide
     """
     for i in range(int(float(tome)), -1, -1):
         if "." in chapter_number:

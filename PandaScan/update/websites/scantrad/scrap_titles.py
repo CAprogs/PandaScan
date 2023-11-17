@@ -18,7 +18,6 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
     datas = pd.DataFrame(columns=["name"])  # on crée un dataframe d'une colonne
     new_list = []  # création d'une liste vide
 
-    LOG.debug("Debut Scrapping ...")
     while True:
 
         if starting_page == 1:
@@ -57,5 +56,3 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
     # ajouter le contenu de 'new_list' au dataframe 'datas'
     datas = pd.concat([datas, pd.DataFrame(new_list)], ignore_index=True)
     datas.to_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv', index=False)
-
-    LOG.debug("Fin Scrapping")

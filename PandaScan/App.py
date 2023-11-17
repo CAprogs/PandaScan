@@ -66,9 +66,12 @@ def main():
         messagebox.showinfo("Error [🛜]", "😵‍💫 Oups, no internet connection detected ❗️")
         return print("\nPandascan exited 🚪\n")
 
-    print("Pandascan launched ✅\n")
+    print("Pandascan is running ✅\n")
 
     main_window = Tk()
+
+    logo = PhotoImage(file=relative_to_assets("pandacon.gif"))
+    main_window.call('wm', 'iconphoto', main_window._w, logo)
 
     main_window.title("PandaScan 🐼")
 
@@ -140,13 +143,13 @@ def main():
         """
         global default_website
 
-        keyword = entry_1.get()  # Récupérer l'entrée de la searchbar
+        keyword = entry_1.get()
         keyword = '%' + keyword + '%'
         query = "SELECT NomManga FROM Mangas WHERE NomManga LIKE ? AND NomSite = ?"
-        SELECTOR.execute(query, (keyword, default_website))  # Chercher les correspondances dans la DB
-        results = [row[0] for row in SELECTOR.fetchall()]  # Récupérer les correspondances
+        SELECTOR.execute(query, (keyword, default_website))
+        results = [row[0] for row in SELECTOR.fetchall()]
         result_box.delete(0, tk.END)
-        result_box.insert(tk.END, *results)  # Insérer les nouveaux résultats
+        result_box.insert(tk.END, *results)
 
     def on_mangas_select(event):
         """Actions lorsqu'un manga est sélectionné
@@ -156,7 +159,7 @@ def main():
         """
         global selected_manga_name
 
-        selected_indices = result_box.curselection()  # récupérer l'indice de l'élément sélectionné
+        selected_indices = result_box.curselection()
         if selected_indices:
             selected_manga_name = result_box.get(selected_indices[0])
             update_chapters(selected_manga_name)
@@ -271,7 +274,6 @@ def main():
         """
         global download_id
 
-        # Réinitialiser l'id de téléchargement
         download_id = 0
 
         def Hide_DownloadBox():
@@ -307,7 +309,7 @@ def main():
                     percentage_label.place_forget()
                 messagebox.showinfo("Info [ℹ️]", "Download completed ✅\n Thanks for using PandaScan 🐼")
                 Hide_DownloadBox()
-                download_button.configure(state="normal")  # Réactiver le bouton de téléchargement
+                download_button.configure(state="normal")
                 download_button_state = False
                 LOG.info(f"Download completed ✅\n\nStored at : {manga_file_path}")
 
@@ -318,7 +320,7 @@ def main():
 
             download_button_state = True
             download_button.configure(state="disabled")
-            if nb_of_manga_chapters > 1:  # Afficher la barre de progression si plus d'un chapitre est sélectionné
+            if nb_of_manga_chapters > 1:
                 canvas.itemconfigure(image_1, state=tk.NORMAL)
                 progressbar.place(x=800.0, y=520.0)
                 percentage_label.place(x=830.0, y=545.0)

@@ -16,8 +16,6 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
     datas = pd.read_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv')
     manga_chapters_dict = {}
 
-    LOG.debug("Début Scrapping ...")
-
     pattern = r'/ch/(\d+)/sub/(\d+)'  # pattern pour la recherche
 
     for index, manga_name in enumerate(datas['name']):
@@ -64,5 +62,3 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
 
     with open(f'{PATH_TO_FMTEAM}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
-
-    LOG.debug("Fin Scrapping.")

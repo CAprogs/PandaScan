@@ -84,7 +84,7 @@ def show_settings(main_window, SETTINGS, settings_button):
         lelscans_checkbox_var = BooleanVar(value=SETTINGS["websites"]["lelscans"]["enabled"])
         scantrad_checkbox_var = BooleanVar(value=SETTINGS["websites"]["scantrad"]["enabled"])
 
-        # Initialiser des dictionnaires vides [widgets + labels]
+        # Initialiser des dictionnaires [widgets + labels]
         widgets_to_manage = {}
         labels_to_manage = {}
 

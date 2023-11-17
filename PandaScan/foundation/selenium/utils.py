@@ -34,7 +34,6 @@ def check_driver(driver_path, PATH_TO_CONFIG, SETTINGS):
               \n° On Linux with arm64 (VM) : consider downloading the Lite version instead""")
         driver_path = input("""\n             Insert your ChromeDriver path here => """)
 
-    # On Windows, replace '\' with '\\'
     if os_name == "Windows":
         driver_path = driver_path.replace("\\", "\\\\")
 

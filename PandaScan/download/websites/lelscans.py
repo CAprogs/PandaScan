@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from foundation.core.essentials import LOG
 
 
-def init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_name, chapter_number):
+def init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_number):
     """initialiser le téléchargement à partir de lelscans.
 
     Args:
@@ -12,7 +12,6 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
         chapter_name_path (str): chemin de sauvegarde des images
         selected_manga_name (str): nom du manga sélectionné
         download_id (int): numéro du téléchargement en cours
-        chapter_name (str): nom du chapitre
         chapter_number (str): numéro du chapitre à télecharger
     """
 
@@ -29,12 +28,12 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                 if response is True:
                     page += 1
                 else:
-                    LOG.debug(f"Téléchargement {download_id} terminé.")
+                    LOG.info(f"Download {download_id} completed ✅")
                     break
             except requests.ConnectionError as e:
-                LOG.debug(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+                LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
     else:
-        LOG.debug(f"Le {chapter_name} de {selected_manga_name} est déjà téléchargé !")
+        LOG.info(f"Download {download_id} skipped !\n folder already present at : {chapter_name_path}")
 
 
 def lelscans(http_response, save_path, page):

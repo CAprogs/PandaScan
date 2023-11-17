@@ -27,7 +27,7 @@ ASSETS_DIRECTORY = MAIN_DIRECTORY / "gui/assets"
 # Path to config file
 PATH_TO_CONFIG = MAIN_DIRECTORY / "config.json"
 
-# chemins vers les fichiers de sites ( Update )
+# paths to websites file ( Update )
 PATH_TO_SCANTRAD = MAIN_DIRECTORY / f"update/websites/{WEBSITES[0]}"
 PATH_TO_LELSCANS = MAIN_DIRECTORY / f"update/websites/{WEBSITES[1]}"
 PATH_TO_FMTEAM = MAIN_DIRECTORY / f"update/websites/{WEBSITES[2]}"
@@ -36,7 +36,7 @@ PATH_TO_FMTEAM = MAIN_DIRECTORY / f"update/websites/{WEBSITES[2]}"
 with open(PATH_TO_CONFIG) as json_file:
     SETTINGS = json.load(json_file)
 
-# Instancier le Logger
+# Instanciate logger
 if SETTINGS["logger"]["enabled"] is False:
     None
 elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == LEVELS[0]:
@@ -66,7 +66,6 @@ def check_connection():
 
     try:
         response = requests.get("https://www.google.com")
-        # Si la réponse est valide (code 200)
         if response.status_code == 200:
             print("\nConnected to Internet ✅\n")
             return True

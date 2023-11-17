@@ -1,5 +1,5 @@
 {
-    "chromedriver_path": "",
+    "chromedriver_path": "/Users/charles-albert/Desktop/chromedriver-mac-arm64/chromedriver",
     "driver": {
         "headless": true
     },

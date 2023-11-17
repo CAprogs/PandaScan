@@ -15,7 +15,6 @@ def Scrap_chapters(PATH_TO_LELSCANS, LOG):
     datas = pd.read_csv(f'{PATH_TO_LELSCANS}/datas/mangas.csv')  # Accès mangas et liens
     manga_chapters_dict = {}  # création du dictionnaire qui contiendra les chapitres respectifs de chaque manga
 
-    LOG.debug("Debut Scrapping ...")
     for index, manga_name in enumerate(datas['name']):
         url = datas['links'][index]
         try:
@@ -46,5 +45,3 @@ def Scrap_chapters(PATH_TO_LELSCANS, LOG):
 
     with open(f'{PATH_TO_LELSCANS}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
-
-    LOG.debug("Fin Scrapping.")

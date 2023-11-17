@@ -18,9 +18,6 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
         SETTINGS (Any): fichier de configuration json
         SELECTOR (Any): curseur de la DB
         chapter_number (str): numéro du chapitre à télecharger
-
-    Returns:
-        str: (Error message) if the method has failed.
     """
 
     pattern = "https://fmteam.fr/api/download/"
@@ -38,11 +35,13 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
         http_response = requests.get(chapter_link)
         response = fmteam(http_response, manga_file_path, SETTINGS)
         if response is True:
-            LOG.debug(f"Téléchargement {download_id} terminé. ✅\n")
+            LOG.info(f"Download {download_id} completed ✅")
+        elif response is False:
+            LOG.info(f"Download {download_id} aborted ❌, request failed.")
         else:
-            LOG.debug(f"Téléchargement {download_id} impossible ❌ OU dossier déjà existant. 🤔")
+            LOG.info(f"Download {download_id} skipped !\n folder already present at : {response}")
     except requests.ConnectionError as e:
-        LOG.debug(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+        LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
 
 
 def fmteam(http_response, manga_file_path, SETTINGS):
@@ -76,6 +75,7 @@ def fmteam(http_response, manga_file_path, SETTINGS):
                     zip_ref.extractall(manga_file_path)
                     return True
                 else:
-                    return False
+                    return file_name_path
     else:
         LOG.debug("Échec du téléchargement. | fmteam.fr")
+        return False
