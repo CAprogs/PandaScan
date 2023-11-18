@@ -39,7 +39,7 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
         elif response is False:
             LOG.info(f"Download {download_id} aborted ❌, request failed.")
         else:
-            LOG.info(f"Download {download_id} skipped !\n folder already present at : {response}")
+            LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {response}")
     except requests.ConnectionError as e:
         LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
 

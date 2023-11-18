@@ -311,7 +311,7 @@ def main():
                 Hide_DownloadBox()
                 download_button.configure(state="normal")
                 download_button_state = False
-                LOG.info(f"Download completed ✅\n\nStored at : {manga_file_path}")
+                LOG.info(f"Manga stored at : {manga_file_path}")
 
         def Manage_DownloadBox():
             """Désactiver le bouton de téléchargement et gérer la barre d'infos des téléchargements

@@ -33,7 +33,7 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
         except requests.ConnectionError as e:
             LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
     else:
-        LOG.info(f"Download {download_id} skipped !\n folder already present at : {chapter_name_path}")
+        LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {chapter_name_path}")
 
 
 def scantrad(http_response, xpath, save_path, page):
