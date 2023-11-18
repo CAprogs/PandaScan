@@ -195,3 +195,7 @@ Changes in kingdom:
 Changes in one-punch-man:
   • Added chapters: chapitre 194
   • Removed chapters: chapitre 191
+
+Update 11 : 18/11/2023 | 14:35:13
+Changes in out:
+  • Added chapters: chapitre 163

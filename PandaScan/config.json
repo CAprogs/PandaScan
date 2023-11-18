@@ -1,5 +1,5 @@
 {
-    "chromedriver_path": "/Users/charles-albert/Desktop/chromedriver-mac-arm64/chromedriver",
+    "chromedriver_path": "",
     "driver": {
         "headless": true
     },
@@ -9,15 +9,15 @@
     "websites": {
         "fmteam": {
             "enabled": true,
-            "n_update": 10
+            "n_update": 11
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 9
+            "n_update": 10
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 8
+            "n_update": 9
         }
     },
     "Download": {
