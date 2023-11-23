@@ -9,15 +9,15 @@
     "websites": {
         "fmteam": {
             "enabled": true,
-            "n_update": 11
+            "n_update": 12
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 10
+            "n_update": 11
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 9
+            "n_update": 10
         },
         "animesama": {
             "enabled": true,

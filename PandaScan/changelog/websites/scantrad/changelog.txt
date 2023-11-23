@@ -1427,3 +1427,38 @@ Changes in detective-conan:
   • Removed chapters: chapitre 1076
 Changes in solo-leveling-a:
   • Removed chapters: chapitre 14, chapitre 11, chapitre 6
+
+Update 10 : 23/11/2023 | 02:38:14
+Changes in burning-kabaddi:
+  • Added chapters: chapitre 25.5, chapitre 25
+Changes in divine-spirit-martial-emperor:
+  • Added chapters: chapitre 163, chapitre 162
+Changes in edens-zero:
+  • Added chapters: chapitre 265, chapitre 264
+Changes in f-class-destiny-hunter:
+  • Added chapters: chapitre 48
+Changes in global-martial-arts:
+  • Added chapters: chapitre 110, chapitre 109
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1441, chapitre 1440
+Changes in hyper-luck:
+  • Added chapters: chapitre 38, chapitre 37
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 243
+Changes in magic-emperor:
+  • Added chapters: chapitre 433
+Changes in martial-peak:
+  • Added chapters: chapitre 1277, chapitre 1276
+Changes in one-piece:
+  • Added chapters: chapitre 1099
+Changes in resetting-lady:
+  • Added chapters: chapitre 51, chapitre 50
+=> Added new entry 'skeleton-soldier' with chapters: chapitre 255, chapitre 254
+Changes in standard-of-reincarnation:
+  • Added chapters: chapitre 75, chapitre 74
+Changes in the-breaker-3-eternal-force:
+  • Added chapters: chapitre 68, chapitre 67
+Changes in versatile-mage:
+  • Added chapters: chapitre 746, chapitre 745
+Changes in yancha-gal-no-anjou-san:
+  • Added chapters: chapitre 158, chapitre 157

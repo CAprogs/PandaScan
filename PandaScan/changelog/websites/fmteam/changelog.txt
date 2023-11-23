@@ -199,3 +199,16 @@ Changes in one-punch-man:
 Update 11 : 18/11/2023 | 14:35:13
 Changes in out:
   • Added chapters: chapitre 163
+
+Update 12 : 23/11/2023 | 02:38:52
+Changes in blue-lock:
+  • Added chapters: chapitre 241
+  • Removed chapters: chapitre 238
+Changes in dai-dark:
+  • Added chapters: chapitre 43
+  • Removed chapters: chapitre 40
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1441
+Changes in kingdom:
+  • Added chapters: chapitre 779
+  • Removed chapters: chapitre 776.2, chapitre 776.1
