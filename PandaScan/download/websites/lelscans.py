@@ -23,13 +23,16 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
             chapter_link = str(f"https://lelscans.net/scan-{selected_manga_name}/{chapter_number}/{page}")
             try:
                 http_response = requests.get(chapter_link)
-                save_path = f"{chapter_name_path}/{page}.jpg"
-                response = lelscans(http_response, save_path, page)
-                if response is True:
-                    page += 1
+                if http_response.status_code == 200:
+                    save_path = f"{chapter_name_path}/{page}.jpg"
+                    response = lelscans(http_response, save_path, page)
+                    if response is True:
+                        page += 1
+                    else:
+                        LOG.info(f"Download {download_id} completed ✅")
+                        break
                 else:
-                    LOG.info(f"Download {download_id} completed ✅")
-                    break
+                    return LOG.info(f"Échec du téléchargement.| Code d'état : {http_response.status_code}")
             except requests.ConnectionError as e:
                 LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
     else:
@@ -48,29 +51,20 @@ def lelscans(http_response, save_path, page):
         bool: True(téléchargement réussi), False(téléchargement raté)
     """
 
-    if http_response.status_code == 200:
-        # Parser le contenu HTML
-        soup = BeautifulSoup(http_response.content, "html.parser")
+    soup = BeautifulSoup(http_response.content, "html.parser")
 
-        image_element = soup.find("img", src=True)
-        if image_element:
-            image_url = image_element["src"]
-
-            # Télécharger l'image
-            image_response = requests.get('https://lelscans.net/'+image_url)
-
-            if image_response.status_code == 200:
-                # Sauvegarder l'image dans le fichier spécifié
-                with open(save_path, 'wb') as f:
-                    f.write(image_response.content)
-                LOG.debug(f"Image {page} téléchargée.")
-                return True
-            else:
-                LOG.debug(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")
-                return False
+    image_element = soup.find("img", src=True)
+    if image_element:
+        image_url = image_element["src"]
+        image_response = requests.get('https://lelscans.net/'+image_url)
+        if image_response.status_code == 200:
+            with open(save_path, 'wb') as f:
+                f.write(image_response.content)
+            LOG.debug(f"Image {page} téléchargée.")
+            return True
         else:
-            LOG.debug("Aucun élément trouvé.")
+            LOG.debug(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")
             return False
     else:
-        LOG.debug(f"Échec du téléchargement.| Code d'état : {http_response.status_code}")
+        LOG.debug("Aucun élément trouvé.")
         return False

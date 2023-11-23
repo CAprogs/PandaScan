@@ -17,13 +17,18 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
     LOG.info("Initialisation de la Migration ..")
     websites = [{'NomSite': WEBSITES[0]},
                 {'NomSite': WEBSITES[1]},
-                {'NomSite': WEBSITES[2]}
+                {'NomSite': WEBSITES[2]},
+                {'NomSite': WEBSITES[3]}
                 ]
 
     tables = ["Mangas", "Chapitres"]
 
     df_sites = pd.DataFrame(websites)
     df_sites.to_sql('SitesWeb', CONN, if_exists='replace', index=False)
+
+    # Charger le fichier CSV [chapters_links.csv] dans un DataFrame pandas ( uniquement pour le site anime-sama )
+    df_chapters_links = pd.read_csv(f'{MAIN_DIRECTORY}/update/websites/animesama/datas/chapters_links.csv')
+    df_chapters_links.to_sql('ChapterLink', CONN, if_exists='replace', index=False)
 
     LOG.info("Vérifications et Nettoyage de la DB ..")
 
@@ -32,7 +37,7 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
 
     for website in websites:
 
-        # Charger le fichier CSV dans un DataFrame pandas
+        # Charger le fichier CSV [mangas.csv] dans un DataFrame pandas
         website = website['NomSite']
         df_mangas = pd.read_csv(f'{MAIN_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
         df_mangas = df_mangas.rename(columns={'name': 'NomManga'})

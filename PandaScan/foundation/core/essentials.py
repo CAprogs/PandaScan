@@ -14,7 +14,8 @@ ACTIVE_CURSOR = "hand2"
 # Available websites
 WEBSITES = ["scantrad",
             "lelscans",
-            "fmteam"]
+            "fmteam",
+            "animesama"]
 
 LEVELS = ["DEBUG", "INFO"]
 
@@ -31,6 +32,7 @@ PATH_TO_CONFIG = MAIN_DIRECTORY / "config.json"
 PATH_TO_SCANTRAD = MAIN_DIRECTORY / f"update/websites/{WEBSITES[0]}"
 PATH_TO_LELSCANS = MAIN_DIRECTORY / f"update/websites/{WEBSITES[1]}"
 PATH_TO_FMTEAM = MAIN_DIRECTORY / f"update/websites/{WEBSITES[2]}"
+PATH_TO_ANIMESAMA = MAIN_DIRECTORY / f"update/websites/{WEBSITES[3]}"
 
 # load config file
 with open(PATH_TO_CONFIG) as json_file:

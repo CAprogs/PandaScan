@@ -380,7 +380,8 @@ def main():
         website_list_var,
         WEBSITES[0],
         WEBSITES[1],
-        WEBSITES[2]
+        WEBSITES[2],
+        WEBSITES[3]
     )
     website_menu.place(x=440.0, y=150.0)
     website_menu.configure(bg=CURRENT_COLOR)

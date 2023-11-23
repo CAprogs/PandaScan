@@ -16,7 +16,7 @@ def chapter_transform(chapter_name, selected_website):
     if selected_website == "scantrad":
         result = chapter_name.replace(' ', '-')
         return result
-    elif selected_website == "lelscans" or selected_website == "fmteam":
+    else:
         result = chapter_name.replace('chapitre ', '')
         return result
 

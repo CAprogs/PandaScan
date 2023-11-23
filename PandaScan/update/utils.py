@@ -4,6 +4,7 @@ from foundation.core.essentials import DRIVER
 from foundation.core.essentials import PATH_TO_FMTEAM
 from foundation.core.essentials import PATH_TO_LELSCANS
 from foundation.core.essentials import PATH_TO_SCANTRAD
+from foundation.core.essentials import PATH_TO_ANIMESAMA
 
 
 def confirm_update(mode):
@@ -38,6 +39,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         from update.websites.scantrad.update_datas import Update_scantrad
         from update.websites.lelscans.update_datas import Update_lelscans
         from update.websites.fmteam.update_datas import Update_fmteam
+        from update.websites.animesama.update_datas import Update_animesama
 
         LOG.info(f"Updating {selected_website} 🔄..")
 
@@ -50,6 +52,9 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         elif selected_website == "fmteam":
             Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG)
             generate_changelog(PATH_TO_FMTEAM, selected_website)
+        elif selected_website == "animesama":
+            Update_animesama(PATH_TO_ANIMESAMA, LOG)
+            generate_changelog(PATH_TO_ANIMESAMA, selected_website)
 
         i += 1
         LOG.info(f"{selected_website} is Up-to-date ✅")

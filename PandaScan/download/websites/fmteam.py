@@ -33,13 +33,16 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
         chapter_link = str(f"{pattern}{selected_manga_name}/fr/ch/{chapter_number}")
     try:
         http_response = requests.get(chapter_link)
-        response = fmteam(http_response, manga_file_path, SETTINGS)
-        if response is True:
-            LOG.info(f"Download {download_id} completed ✅")
-        elif response is False:
-            LOG.info(f"Download {download_id} aborted ❌, request failed.")
+        if http_response.status_code == 200:
+            response = fmteam(http_response, manga_file_path, SETTINGS)
+            if response is True:
+                LOG.info(f"Download {download_id} completed ✅")
+            elif response is False:
+                LOG.info(f"Download {download_id} aborted ❌, request failed.")
+            else:
+                LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {response}")
         else:
-            LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {response}")
+            return LOG.info(f"Requests failed : {selected_website} | {selected_manga_name}")
     except requests.ConnectionError as e:
         LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
 
@@ -56,26 +59,24 @@ def fmteam(http_response, manga_file_path, SETTINGS):
         bool: True(téléchargement réussi), False(téléchargement raté)
     """
 
-    if http_response.status_code == 200:
-        # Utiliser io.BytesIO pour créer un flux binaire à partir du contenu de la réponse
-        zip_stream = io.BytesIO(http_response.content)
-        # Créer un objet zipfile.ZipFile à partir du flux binaire
-        with zipfile.ZipFile(zip_stream, "r") as zip_ref:
-            namelist = zip_ref.namelist()
-            if namelist:
-                # Obtenir le nom du premier fichier/dossier dans la liste
-                first_file = namelist[0]
-                file_name, _ = first_file.split("/")
-                if os.path.exists(SETTINGS['Download']['path']):
-                    file_name_path = manga_file_path + '/' + file_name
-                else:
-                    file_name_path = manga_file_path / file_name
+    # Créer un flux binaire avec io.BytesIO à partir du contenu de la réponse
+    zip_stream = io.BytesIO(http_response.content)
+    # Créer un objet zipfile.ZipFile à partir du flux binaire
+    with zipfile.ZipFile(zip_stream, "r") as zip_ref:
+        namelist = zip_ref.namelist()
+        if namelist:
+            # Obtenir le nom du premier fichier/dossier dans la liste
+            first_file = namelist[0]
+            file_name, _ = first_file.split("/")
+            if os.path.exists(SETTINGS['Download']['path']):
+                file_name_path = manga_file_path + '/' + file_name
+            else:
+                file_name_path = manga_file_path / file_name
 
-                if not os.path.exists(file_name_path):
-                    zip_ref.extractall(manga_file_path)
-                    return True
-                else:
-                    return file_name_path
-    else:
-        LOG.debug("Échec du téléchargement. | fmteam.fr")
-        return False
+            if not os.path.exists(file_name_path):
+                zip_ref.extractall(manga_file_path)
+                return True
+            else:
+                return file_name_path
+        else:
+            return False

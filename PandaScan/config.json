@@ -18,6 +18,10 @@
         "scantrad": {
             "enabled": true,
             "n_update": 9
+        },
+        "animesama": {
+            "enabled": true,
+            "n_update": -1
         }
     },
     "Download": {

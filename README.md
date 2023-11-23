@@ -38,11 +38,11 @@
 
 ### À Venir 📅
 
-- Un site **Anglais 󠁧󠁢󠁥󠁮󠁧🇬🇧** sera ajouté.
-- Un autre site **Français 󠁧󠁢󠁥󠁮󠁧🇫🇷** sera également ajouté.
+- Ajout du site [anime-sama.me](https://anime-sama.me/) (🇫🇷)
+- Ajout d'un site **Anglais 󠁧󠁢󠁥󠁮󠁧🇬🇧**
 - La release des versions **3.x.x** est prévue très prochainement.
 
-Faites des **suggestions** à travers le [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
+Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
 ## Fonctionnalités 🚀
 

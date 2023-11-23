@@ -16,23 +16,23 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
     datas = pd.read_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv')
     manga_chapters_dict = {}
 
-    pattern = r'/ch/(\d+)/sub/(\d+)'  # pattern pour la recherche
+    pattern = r'/ch/(\d+)/sub/(\d+)'
 
     for index, manga_name in enumerate(datas['name']):
         url = datas['links'][index]
         DRIVER.get(url)
 
-        DRIVER.implicitly_wait(1)  # Attente implicite
+        DRIVER.implicitly_wait(1)
 
-        i = 2      # départ ( correpond au dernier chapitre de la page de téléchargement )
-        LOG.debug(f"Manga : {manga_name}")  # Indique dans quel manga nous sommes pour le scrapping des chapitres
-        manga_chapters_dict[manga_name] = []  # Crée une clé de dictionnaire vide , avec le nom du manga qu'on explore.
+        i = 2      # dernier chapitre de la page de téléchargement
+        LOG.debug(f"Manga : {manga_name}")
+        manga_chapters_dict[manga_name] = []
+
         while True:
-            # récupérer les informations à partir du XPATH
             balise = str(f'//*[@id="comic"]/div[3]/div[2]/div[{i}]/div[1]/a[1]')
             try:
-                element = DRIVER.find_element(By.XPATH, balise)                  # récupérer l'élément correspondant au XPATH
-                url_chapter_download = element.get_attribute('href')             # récupérer le lien du chapitre
+                element = DRIVER.find_element(By.XPATH, balise)
+                url_chapter_download = element.get_attribute('href')
                 if "sub" in url_chapter_download:
                     matches = re.search(pattern, url_chapter_download)
                     if matches:
@@ -42,10 +42,10 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
                     else:
                         LOG.debug("ERREUR, AUCUN MATCH")
                 else:
-                    chapter_number = url_chapter_download.split("/")[-1]        # récupérer le numero de chapitre
+                    chapter_number = url_chapter_download.split("/")[-1]
 
-                chapter = "chapitre " + chapter_number                          # Normaliser le chapitre
-                manga_chapters_dict[manga_name].append(chapter)                 # Ajouter le chapitre à 'manga_chapters_dict' avec sa clé correspondante
+                chapter = "chapitre " + chapter_number
+                manga_chapters_dict[manga_name].append(chapter)
                 LOG.debug(f"{chapter} récupéré ")
                 i += 1
             except Exception as e:
@@ -57,7 +57,6 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
                     LOG.debug(f"Chapitre N°{int(ch_number)-1} INEXISTANT | {manga_name}\n Error : {e}")
                     break
 
-    # Convertir le dictionnaire en document YAML
     yml_data = yaml.dump(manga_chapters_dict)
 
     with open(f'{PATH_TO_FMTEAM}/datas/mangas_chapters_temp.yml', 'w') as file:

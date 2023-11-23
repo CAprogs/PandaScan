@@ -1,6 +1,7 @@
 from download.websites import scantrad
 from download.websites import lelscans
 from download.websites import fmteam
+from PandaScan.download.websites import animesama
 from download.utils import chapter_transform
 
 
@@ -28,3 +29,6 @@ def download(selected_website, chapter_name_path, selected_manga_name, download_
 
     elif selected_website == "fmteam":
         fmteam.init_download(selected_website, selected_manga_name, download_id, manga_file_path, SETTINGS, SELECTOR, chapter_number)
+
+    elif selected_website == "animesama":
+        animesama.init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_name)

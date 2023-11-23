@@ -17,15 +17,14 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG):
     has_tome_list = []
     last_tome_list = []
 
-    # Ouvrir la page contenant tous les mangas
     url = "https://fmteam.fr/comics"
 
     try:
         DRIVER.get(url)
 
-        DRIVER.implicitly_wait(2)  # Attendre que le contenu soit chargé et que le JavaScript s'exécute
+        DRIVER.implicitly_wait(1)
 
-        i = 1       # départ ( correspond au 1 er manga de la page )
+        i = 1       # correspond au 1 er manga de la page
         while True:
             balise_1 = str(f'//*[@id="app"]/main/div/div/div[2]/div[{i}]/div[2]/h5/a')  # Balise du nom du manga
             balise_2 = str(f'//*[@id="app"]/main/div/div/div[2]/div[{i}]/ul/li[4]/a')   # Balise du nom du Tome ou Chapitre
