@@ -67,7 +67,7 @@ def animesama(img_link, save_path, page):
     if image_response.status_code == 200:
         with open(save_path, 'wb') as f:
             f.write(image_response.content)
-        LOG.info(f"Image {page} téléchargée.")
+        LOG.debug(f"Image {page} téléchargée.")
         return True
     else:
         LOG.info(f"Échec du téléchargement de l'image {page}. Code d'état : {image_response.status_code}")
