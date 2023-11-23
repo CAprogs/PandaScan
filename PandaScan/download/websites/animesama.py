@@ -19,7 +19,7 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
     if not os.path.exists(chapter_name_path):
         os.makedirs(chapter_name_path)
         page = 0
-        query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga LIKE ? AND NomSite = ? AND Chapitres = ?"
+        query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
         SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
         chapter_link = SELECTOR.fetchone()[0]
         try:
@@ -31,6 +31,9 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
 
                 soup_2 = BeautifulSoup(img_elements.text, "html.parser")
                 img_list = soup_2.find_all('img', {'data-src': True})
+                if img_list == []:
+                    img_elements = img_elements.contents
+                    img_list = [element for element in img_elements if '<img' in str(element)]
 
                 for img in img_list:
                     img_link = img['data-src']
@@ -39,11 +42,11 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                     if response is False:
                         return LOG.info(f"Download {download_id} aborted ❌, request failed.")
                     page += 1
-                LOG.debug(f"Download {download_id} completed ✅")
+                LOG.info(f"Download {download_id} completed ✅")
             else:
-                LOG.debug(f"Échec de la requête HTTP.| Code d'état : {http_response.status_code}")
+                LOG.info(f"Échec de la requête HTTP.| Code d'état : {http_response.status_code}")
         except requests.ConnectionError as e:
-            LOG.debug(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+            LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
     else:
         LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {chapter_name_path}")
 
@@ -64,8 +67,8 @@ def animesama(img_link, save_path, page):
     if image_response.status_code == 200:
         with open(save_path, 'wb') as f:
             f.write(image_response.content)
-        LOG.debug(f"Image {page} téléchargée.")
+        LOG.info(f"Image {page} téléchargée.")
         return True
     else:
-        LOG.debug(f"Échec du téléchargement de l'image {page}. Code d'état : {image_response.status_code}")
+        LOG.info(f"Échec du téléchargement de l'image {page}. Code d'état : {image_response.status_code}")
         return False

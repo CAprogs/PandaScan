@@ -21,7 +21,7 @@
         },
         "animesama": {
             "enabled": true,
-            "n_update": -1
+            "n_update": 0
         }
     },
     "Download": {
