@@ -1,7 +1,7 @@
 from download.websites import scantrad
 from download.websites import lelscans
 from download.websites import fmteam
-from PandaScan.download.websites import animesama
+from download.websites import animesama
 from download.utils import chapter_transform
 
 
