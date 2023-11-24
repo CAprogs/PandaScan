@@ -39,8 +39,8 @@
 ### À Venir 📅
 
 - Ajout du site [anime-sama.me](https://anime-sama.me/) (🇫🇷)
-- Ajout d'un site **Anglais 󠁧󠁢󠁥󠁮󠁧🇬🇧**
-- La release des versions **3.x.x** est prévue très prochainement.
+- Ajout du site [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
+- La release des versions **3.x.x** est prévue pour le 01/12/2023.
 
 Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 

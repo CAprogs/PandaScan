@@ -22,19 +22,19 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 ### **I. FIRST STEP**
 #
-- Download and install [**Vscode**](https://code.visualstudio.com/) 
+
 - Download [**Chromewebdriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable) ( Select the **right version** for your architecture as below )
 
 <img width="1493" alt="Capture d’écran 2023-09-28 à 18 14 57" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
 
 ---
-- **COPY** the path to your `.EXE` file in your chromedriver folder & **Paste** it in the `config.json` file as below ⬇️
-  -  On **Windows** your path will look like : `User\Desktop\file_name` | You should redefine it as `User\\Desktop\\file_name`
+- **COPY** the path to your `.exe` file in your chromedriver folder & **Paste** it in the `config.json` file as below ⬇️
+  -  On **Windows** your path may look like : `User\Desktop\file_name` | You should redefine it as `User\\Desktop\\file_name`
   
 ![Installation Guide](https://github.com/CAprogs/PandaScan/assets/104645407/bffd530c-a774-4a56-b875-6a0d2136354d)
 
 **Please Note:** (BETA version only)
-- The **`chromedriver.EXE`** file may be blocked by your computer. ( especially for **Mac users** )
+- The **`chromedriver.exe`** file may be blocked by your computer. ( especially for **Mac users** )
 - Just follow these steps ⬇️.
 
 ![ezgif com-optimize](https://github.com/CAprogs/PandaScan/assets/104645407/e629332b-3ab2-494f-a50e-88d6a9990eb1)
@@ -54,7 +54,6 @@ Avoid using `conda`. It may cause some issues and bugs.
   
 - Enter your **PandaScan folder** ⬇️
   - Replace `path/to/PandaScan` with the path to your **PandaScan** folder
-  - If you downloaded the `LITE version`, then use the **PandaScan.Lite** folder
 ```
 cd path/to/PandaScan
 ```
@@ -87,9 +86,9 @@ You can either use a `python venv` or `miniconda` to run PandaScan.
 
 - Download and install [**miniconda3**](https://docs.conda.io/projects/miniconda/en/latest/)
 
-While downloading and installing Miniconda you should use the **Conda Powershell** to create and install your venv and run PandaScan.
+Miniconda on Windows comes with the **Anaconda Prompt** that helps you to create and install your venv.
 
-- Open your **Terminal**
+- Search and Open **Anaconda Prompt**
 - Enter your **Miniconda** folder  ⬇️
 ```
 cd miniconda3
@@ -121,7 +120,6 @@ pip install -r path\to\requirements.txt
 
 - Enter the PandaScan file ⬇️
   - Replace `path\to\PandaScan` with your **PandaScan** folder path ⬇️
-  - If you downloaded the `LITE version`, then replace it with your **PandaScan.Lite** folder
 ```
 cd path\to\PandaScan
 ```
@@ -136,6 +134,14 @@ conda run python App.py
 #
 
 If you don't want to use CLI, you can run **PandaScan** using [**VScode**](https://code.visualstudio.com/) ⬇️
+
+- Download and install [**Vscode**](https://code.visualstudio.com/)
+- Open **Vscode**
+- Click on **File** > **Open Folder**
+- Select your **PandaScan** folder
+- Select the **App.py** file
+- Select your **venv** ( **pandavenv** ) as interpreter
+- Click on **Run** > **Run without debugging**
 
 ![ezgif com-video-to-gif](https://github.com/CAprogs/PandaScan/assets/104645407/83a7d7db-f17d-4929-b0ff-01a603be0ea9)
 
