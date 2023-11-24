@@ -18,22 +18,19 @@ def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
     columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
 
     for index, manga_name in enumerate(datas['name']):
-
         url = datas['links'][index]
 
         try:
             response = requests.get(url)
             html_content = response.text
             soup_1 = BeautifulSoup(html_content, "html.parser")
-
             select_element = soup_1.select_one('#chapterlist')
             if not select_element:
-                LOG.debug(f"Error : No chapters found | {url}")
-                exit()
+                LOG.debug(f"Error : No chapters found | {url} | animesama")
+                return
 
             LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = []
-
             options = select_element.find("ul").contents
 
             for option in options:
@@ -43,15 +40,14 @@ def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
                 # extract the chapter and his link
                 chapter = "chapitre " + li_element['data-num']
                 chapter_link = a_element['href']
-
                 manga_chapters_dict[manga_name].append(chapter)
                 chapters_and_links.append(["animesama", manga_name, chapter, chapter_link])
                 LOG.debug(f"{chapter} added | link : {chapter_link}")
 
-            LOG.debug(f"\n{len(manga_chapters_dict[manga_name])} chapters added")
+            LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
 
         except Exception as e:
-            LOG.debug(f"Error : {e} | animesama chapters scraping | {url}")
+            LOG.debug(f"Error : {e} | {url} | animesama")
             return
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)

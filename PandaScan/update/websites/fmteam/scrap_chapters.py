@@ -9,7 +9,7 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
 
     Args:
         DRIVER (Any): the chromedriver
-        PATH_TO_FMTEAM (str): path to fmteam directory
+        PATH_TO_FMTEAM (str): path to fmteam folder
         LOG (Any): logger d'affichage
     """
 
@@ -18,7 +18,7 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
 
     pattern = r'/ch/(\d+)/sub/(\d+)'
 
-    for index, manga_name in enumerate(datas['name']):
+    for index, manga_name in enumerate(datas['NomManga']):
         url = datas['links'][index]
         DRIVER.get(url)
 
@@ -40,21 +40,22 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
                         sub_number = matches.group(2)
                         chapter_number = ch_number + "." + sub_number
                     else:
-                        LOG.debug("ERREUR, AUCUN MATCH")
+                        LOG.debug("Error: NO MATCH | Fmteam")
                 else:
                     chapter_number = url_chapter_download.split("/")[-1]
 
                 chapter = "chapitre " + chapter_number
                 manga_chapters_dict[manga_name].append(chapter)
-                LOG.debug(f"{chapter} récupéré ")
+                LOG.debug(f"{chapter} added")
                 i += 1
             except Exception as e:
+                LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
                 try:
                     int(chapter_number)
-                    LOG.debug(f"Chapitre N°{int(chapter_number)-1} INEXISTANT | {manga_name}\n Error : {e}")
+                    LOG.debug(f"Chapter N°{int(chapter_number)-1} doesn't exist | {manga_name}\n {e}")
                     break
                 except Exception as e:
-                    LOG.debug(f"Chapitre N°{int(ch_number)-1} INEXISTANT | {manga_name}\n Error : {e}")
+                    LOG.debug(f"Chapter N°{int(ch_number)-1} doesn't exist | {manga_name}\n {e}")
                     break
 
     yml_data = yaml.dump(manga_chapters_dict)

@@ -41,7 +41,7 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
     """Launch auto update of websites.
 
     Args:
-        MAIN_DIRECTORY (str): chemin d'accès au dossier PandaScan
+        MAIN_DIRECTORY (str): chemin d'accès au dossier Pandascan
         WEBSITES (dict): liste des sites disponibles
         SETTINGS (Any): fichier de configuration json
         CONN (Any): connexion à la DB
@@ -62,7 +62,7 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
             end_time = time.time()
             elapsed_time = end_time - start_time
             if i != 0:
-                LOG.info(f"Took: {elapsed_time:.2f} s")
+                LOG.info(f"Update lasted: {elapsed_time:.2f} s")
 
         if i != 0:
             Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)

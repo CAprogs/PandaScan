@@ -307,7 +307,11 @@ def main():
                 if nb_of_manga_chapters > 1:
                     progressbar.place_forget()
                     percentage_label.place_forget()
-                messagebox.showinfo("Info [ℹ️]", "Download completed ✅\n Thanks for using PandaScan 🐼")
+                messagebox.showinfo("Download info [ℹ️]", f"""Resume :
+                                    \n manga : {selected_manga_name} 
+                                    \n{nb_of_manga_chapters} chapters downloaded ✅
+                                    \nStored in :  {manga_file_path}
+                                    \n\nThanks for using PandaScan 🐼""")
                 Hide_DownloadBox()
                 download_button.configure(state="normal")
                 download_button_state = False

@@ -14,7 +14,7 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
         LOG (Any): logger d'affichage
     """
 
-    LOG.info("Initialisation de la Migration ..")
+    LOG.info("Migration des datas ..")
     websites = [{'NomSite': WEBSITES[0]},
                 {'NomSite': WEBSITES[1]},
                 {'NomSite': WEBSITES[2]},
@@ -40,25 +40,21 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
         # Charger le fichier CSV [mangas.csv] dans un DataFrame pandas
         website = website['NomSite']
         df_mangas = pd.read_csv(f'{MAIN_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
-        df_mangas = df_mangas.rename(columns={'name': 'NomManga'})
-        # Créer une nouvelle colonne "NomSite" contenant le nom du site
         df_mangas['NomSite'] = website
-
-        # Insérer les données du DataFrame dans la table "Mangas"
         df_mangas.to_sql('Mangas', CONN, if_exists='append', index=False)
 
-        # Charger le fichier YAML dans un dictionnaire
-        with open(f'{MAIN_DIRECTORY}/update/websites/{website}/datas/mangas_chapters.yml', 'r') as fichier_yaml:
-            contenu_yaml = yaml.load(fichier_yaml, Loader=yaml.FullLoader)
+        # Charger le fichier YAML [mangas_chapters.yml] dans un dictionnaire
+        with open(f'{MAIN_DIRECTORY}/update/websites/{website}/datas/mangas_chapters.yml', 'r') as file:
+            yaml_content = yaml.load(file, Loader=yaml.FullLoader)
 
-        # Parcourir le dictionnaire YAML et insérer les données dans la table "Chapitres"
-        for manga, chapitres in contenu_yaml.items():
+        # Parcourir le dictionnaire et insérer les données dans la table "Chapitres"
+        for manga, chapitres in yaml_content.items():
             for chapitre in chapitres:
                 data = {'NomSite': website, 'NomManga': manga, 'Chapitres': chapitre}
                 df_chapitre = pd.DataFrame([data])
                 df_chapitre.to_sql('Chapitres', CONN, if_exists='append', index=False)
 
-        # Enregistrer les modifications dans la base de données
+        # Enregistrer les modifications dans la DB
         CONN.commit()
         LOG.info(f"{website} migrated ✅")
 

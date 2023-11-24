@@ -8,14 +8,14 @@ def Scrap_chapters(PATH_TO_LELSCANS, LOG):
     """Scrap the mangas chapters from lelscans.
 
     Args:
-        PATH_TO_LELSCANS (str): path to lelscans directory ( update )
+        PATH_TO_LELSCANS (str): path to lelscans folder
         LOG (Any): logger d'affichage
     """
 
     datas = pd.read_csv(f'{PATH_TO_LELSCANS}/datas/mangas.csv')
     manga_chapters_dict = {}
 
-    for index, manga_name in enumerate(datas['name']):
+    for index, manga_name in enumerate(datas['NomManga']):
         url = datas['links'][index]
         try:
             response = requests.get(url)
@@ -31,10 +31,11 @@ def Scrap_chapters(PATH_TO_LELSCANS, LOG):
                     desired_part = option["value"].split("/")[-1]
                     chapter = "chapitre " + desired_part
                     manga_chapters_dict[manga_name].append(chapter)
-                    LOG.debug(f"{chapter} ajouté")
+                    LOG.debug(f"{chapter} added")
+                LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
 
             else:
-                LOG.debug(f"Erreur, aucun chapitre trouvé | {manga_name}")
+                LOG.debug(f"Error, No chapter found | {manga_name}")
 
         except Exception as e:
             LOG.debug(f"Error : {e} | {PATH_TO_LELSCANS}")

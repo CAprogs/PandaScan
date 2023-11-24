@@ -7,7 +7,7 @@ def Scrap_titles(PATH_TO_LELSCANS, LOG):
     """Scrap mangas titles from lelscans.
 
     Args:
-        PATH_TO_LELSCANS (str): path to lelscans directory ( update )
+        PATH_TO_LELSCANS (str): path to lelscans folder
         LOG (Any): logger d'affichage
     """
 
@@ -30,21 +30,21 @@ def Scrap_titles(PATH_TO_LELSCANS, LOG):
                 desired_part = url_manga.split("/")[-1]
                 if "lecture-ligne-" in desired_part:
                     manga_name = desired_part.replace("lecture-ligne-", "").replace(".php", "")
-                    LOG.debug(f"{manga_name} ajouté")
+                    LOG.debug(f"{manga_name} added")
                     manga_name_list.append(manga_name)
                 else:
                     manga_name = desired_part.replace("lecture-en-ligne-", "").replace(".php", "")
-                    LOG.debug(f"{manga_name} ajouté")
+                    LOG.debug(f"{manga_name} added")
                     manga_name_list.append(manga_name)
 
-            LOG.debug(f"{len(manga_name_list)} mangas récupérés")
+            LOG.info(f"{len(manga_name_list)} mangas fetched")
 
-            data_to_add = [{"name": name, "links": links} for name, links in zip(manga_name_list, links_list)]
+            data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
             datas = pd.DataFrame(data_to_add)
             datas.to_csv(f'{PATH_TO_LELSCANS}/datas/mangas.csv', index=False)
 
         else:
-            LOG.debug("Error: no manga added | Lelscans titles scrapping")
+            LOG.debug("Error: no manga added | Lelscans")
 
     except Exception as e:
-        LOG.debug(f"Error : {e} | Lelscans titles scrapping")
+        LOG.debug(f"Error : {e} | Lelscans")
