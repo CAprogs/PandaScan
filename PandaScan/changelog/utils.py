@@ -22,7 +22,7 @@ def write_current_state(state, PATH_TO_WEBSITE):
 
     Args:
         state (Any): the current yaml file
-        PATH_TO_WEBSITE (str): the path to the website directory (update)
+        PATH_TO_WEBSITE (str): path to the website folder
     """
     with open(f'{PATH_TO_WEBSITE}/datas/mangas_chapters.yml', 'w') as file:
         yaml.dump(state, file)

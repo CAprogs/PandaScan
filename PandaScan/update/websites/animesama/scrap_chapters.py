@@ -17,7 +17,7 @@ def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
     chapters_and_links = []
     columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
 
-    for index, manga_name in enumerate(datas['name']):
+    for index, manga_name in enumerate(datas['NomManga']):
         url = datas['links'][index]
 
         try:

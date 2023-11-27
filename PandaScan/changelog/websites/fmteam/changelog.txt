@@ -212,3 +212,14 @@ Changes in hajime-no-ippo:
 Changes in kingdom:
   • Added chapters: chapitre 779
   • Removed chapters: chapitre 776.2, chapitre 776.1
+
+Update 13 : 27/11/2023 | 14:04:39
+Changes in blue-lock:
+  • Added chapters: chapitre 242.1
+Changes in choujin-x:
+  • Added chapters: chapitre 44
+Changes in out:
+  • Added chapters: chapitre 164
+Changes in vinland-saga:
+  • Added chapters: chapitre 207
+  • Removed chapters: chapitre 204

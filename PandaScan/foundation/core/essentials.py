@@ -12,10 +12,11 @@ INACTIVE_CURSOR = "arrow"
 ACTIVE_CURSOR = "hand2"
 
 # Available websites
-WEBSITES = ["scantrad",
+WEBSITES = ["fmteam",
             "lelscans",
-            "fmteam",
-            "animesama"]
+            "animesama",
+            "scantrad"
+            ]
 
 LEVELS = ["DEBUG", "INFO"]
 
@@ -29,10 +30,10 @@ ASSETS_DIRECTORY = MAIN_DIRECTORY / "gui/assets"
 PATH_TO_CONFIG = MAIN_DIRECTORY / "config.json"
 
 # paths to websites file ( Update )
-PATH_TO_SCANTRAD = MAIN_DIRECTORY / f"update/websites/{WEBSITES[0]}"
-PATH_TO_LELSCANS = MAIN_DIRECTORY / f"update/websites/{WEBSITES[1]}"
-PATH_TO_FMTEAM = MAIN_DIRECTORY / f"update/websites/{WEBSITES[2]}"
-PATH_TO_ANIMESAMA = MAIN_DIRECTORY / f"update/websites/{WEBSITES[3]}"
+PATH_TO_SCANTRAD = MAIN_DIRECTORY / "update/websites/scantrad"
+PATH_TO_LELSCANS = MAIN_DIRECTORY / "update/websites/lelscans"
+PATH_TO_FMTEAM = MAIN_DIRECTORY / "update/websites/fmteam"
+PATH_TO_ANIMESAMA = MAIN_DIRECTORY / "update/websites/animesama"
 
 # load config file
 with open(PATH_TO_CONFIG) as json_file:
