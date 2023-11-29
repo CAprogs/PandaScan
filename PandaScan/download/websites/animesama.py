@@ -33,6 +33,9 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                 img_list = soup_2.find_all('img', {'data-src': True})
                 if img_list == []:
                     img_elements = img_elements.contents
+                    if img_elements == []:
+                        separator_list = select_element.find_all(class_='separator')
+                        img_elements = [element.contents[0] for element in separator_list]
                     img_list = [element for element in img_elements if '<img' in str(element)]
 
                 for img in img_list:
@@ -42,7 +45,7 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                     if response is False:
                         return LOG.info(f"Download {download_id} aborted ❌, request failed.")
                     page += 1
-                LOG.info(f"Download {download_id} completed ✅")
+                LOG.info(f"{chapter_name} downloaded ✅")
             else:
                 LOG.info(f"Échec de la requête HTTP.| Code d'état : {http_response.status_code}")
         except requests.ConnectionError as e:

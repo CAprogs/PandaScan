@@ -57,7 +57,6 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
             generate_changelog(PATH_TO_ANIMESAMA, selected_website)
 
         i += 1
-        LOG.info(f"{selected_website} is Up-to-date ✅")
         return i
 
     else:

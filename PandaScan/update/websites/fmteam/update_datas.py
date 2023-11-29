@@ -10,6 +10,5 @@ def Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG):
         LOG (Any): logger d'affichage
     """
 
-    LOG.info("Scraping fmteam ..")
     scrap_titles.Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG)
     scrap_chapters.Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG)

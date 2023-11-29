@@ -97,7 +97,7 @@ def main():
             DRIVER.quit()
         CONN.close()
         main_window.destroy()
-        print("\nApp closed 👋.\n")
+        print("\nApp closed 👋\n")
 
     def Clear_range_menus():
         """Vider et réinitialiser les menus déroulants de sélection de range
@@ -308,7 +308,7 @@ def main():
                     progressbar.place_forget()
                     percentage_label.place_forget()
                 messagebox.showinfo("Download info [ℹ️]", f"""Resume :
-                                    \n manga : {selected_manga_name} 
+                                    \nManga : {selected_manga_name} 
                                     \n{nb_of_manga_chapters} chapters downloaded ✅
                                     \nStored in :  {manga_file_path}
                                     \n\nThanks for using PandaScan 🐼""")
@@ -456,18 +456,18 @@ def main():
     min_chapter_var = StringVar(main_window)
     min_chapter_var.set(" ")
     min_chapter_menu = OptionMenu(main_window, min_chapter_var, "")
-    min_chapter_menu.place(x=520.0, y=526.0, width=50.0, height=18.0)
+    min_chapter_menu.place(x=520.0, y=526.0, width=60.0, height=18.0)
     min_chapter_menu.configure(bg=CURRENT_COLOR, state="disabled")
     min_chapter_var.trace_add("write", lambda *args: on_menu_select())
 
     # "-" text
-    canvas.create_text(580.0, 527.0, anchor="nw", text=TEXT_4, fill=ALT_COLOR, font=POLICE_3)
+    canvas.create_text(585.0, 527.0, anchor="nw", text=TEXT_4, fill=ALT_COLOR, font=POLICE_3)
 
     # 2nd chapter menu
     max_chapter_var = StringVar(main_window)
     max_chapter_var.set(" ")
     max_chapter_menu = OptionMenu(main_window, max_chapter_var, "")
-    max_chapter_menu.place(x=598.0, y=526.0, width=50.0, height=18.0)
+    max_chapter_menu.place(x=595.0, y=526.0, width=60.0, height=18.0)
     max_chapter_menu.configure(bg=CURRENT_COLOR, state="disabled")
     max_chapter_var.trace_add("write", lambda *args: on_menu_select())
 

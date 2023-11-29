@@ -36,7 +36,7 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
         if http_response.status_code == 200:
             response = fmteam(http_response, manga_file_path, SETTINGS)
             if response is True:
-                LOG.info(f"Download {download_id} completed ✅")
+                LOG.info(f"chapitre {chapter_number} downloaded ✅")
             elif response is False:
                 LOG.info(f"Download {download_id} aborted ❌, request failed.")
             else:

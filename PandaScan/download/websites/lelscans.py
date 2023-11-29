@@ -29,7 +29,7 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                     if response is True:
                         page += 1
                     else:
-                        LOG.info(f"Download {download_id} completed ✅")
+                        LOG.info(f"chapitre {chapter_number} downloaded ✅")
                         break
                 else:
                     return LOG.info(f"Échec du téléchargement.| Code d'état : {http_response.status_code}")
