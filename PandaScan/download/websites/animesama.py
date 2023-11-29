@@ -46,12 +46,16 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                         return LOG.info(f"Download {download_id} aborted ❌, request failed.")
                     page += 1
                 LOG.info(f"{chapter_name} downloaded ✅")
+                return "success"
             else:
-                LOG.info(f"Échec de la requête HTTP.| Code d'état : {http_response.status_code}")
+                LOG.info(f"HTTP request failed | Status code : {http_response.status_code}")
+                return "failed"
         except requests.ConnectionError as e:
             LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+            return "failed"
     else:
         LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {chapter_name_path}")
+        return "skipped"
 
 
 def animesama(img_link, save_path, page):
@@ -70,8 +74,8 @@ def animesama(img_link, save_path, page):
     if image_response.status_code == 200:
         with open(save_path, 'wb') as f:
             f.write(image_response.content)
-        LOG.debug(f"Image {page} téléchargée.")
+        LOG.debug(f"Image {page} downloaded")
         return True
     else:
-        LOG.info(f"Échec du téléchargement de l'image {page}. Code d'état : {image_response.status_code}")
+        LOG.info(f"Failed downloading Image {page}. Status code : {image_response.status_code}")
         return False

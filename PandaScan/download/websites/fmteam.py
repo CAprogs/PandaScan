@@ -37,14 +37,19 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
             response = fmteam(http_response, manga_file_path, SETTINGS)
             if response is True:
                 LOG.info(f"chapitre {chapter_number} downloaded ✅")
+                return "success"
             elif response is False:
                 LOG.info(f"Download {download_id} aborted ❌, request failed.")
+                return "failed"
             else:
                 LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {response}")
+                return "skipped"
         else:
-            return LOG.info(f"Requests failed : {selected_website} | {selected_manga_name}")
+            LOG.info(f"Requests failed : {selected_website} | {selected_manga_name}")
+            return "failed"
     except requests.ConnectionError as e:
         LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+        return "failed"
 
 
 def fmteam(http_response, manga_file_path, SETTINGS):

@@ -45,6 +45,9 @@ default_website = WEBSITES[0]                 # website selected
 nb_of_manga_chapters = 0                      # number of chapters from a manga (total)
 nb_of_chapters_to_download = 0                # number of chapters to download
 download_id = 0                               # id of the current download
+downloads_succeeded = 0                       # number of succeeded downloads
+downloads_failed = 0                          # number of failed downloads
+downloads_skipped = 0                         # number of skipped downloads
 selected_manga_name = ''                      # name of the selected manga
 selected_manga_chapters = []                  # list that contains the selected chapters
 start_index = ""                              # index associé au premier chapitre d'un range
@@ -272,9 +275,12 @@ def main():
     def Set_download():
         """Gérer les téléchargements des chapitres sélectionnés
         """
-        global download_id
+        global download_id, downloads_succeeded, downloads_failed, downloads_skipped
 
         download_id = 0
+        downloads_succeeded = 0
+        downloads_failed = 0
+        downloads_skipped = 0
 
         def Hide_DownloadBox():
             """Cacher la barre d'infos des téléchargement
@@ -284,7 +290,7 @@ def main():
         def Start_download():
             """Lancer le téléchargement d'un chapitre
             """
-            global download_id, download_button_state
+            global download_id, download_button_state, downloads_succeeded, downloads_failed, downloads_skipped
 
             chapter_name = selected_manga_chapters[download_id]
             if os.path.exists(SETTINGS['Download']['path']):
@@ -292,7 +298,13 @@ def main():
             else:
                 chapter_name_path = manga_file_path / chapter_name
 
-            download(default_website, chapter_name_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR)
+            status = download(default_website, chapter_name_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR)
+            if status == "success":
+                downloads_succeeded += 1
+            elif status == "failed":
+                downloads_failed += 1
+            elif status == "skipped":
+                downloads_skipped += 1
 
             download_id += 1
             if nb_of_manga_chapters > 1:
@@ -307,10 +319,14 @@ def main():
                 if nb_of_manga_chapters > 1:
                     progressbar.place_forget()
                     percentage_label.place_forget()
-                messagebox.showinfo("Download info [ℹ️]", f"""Resume :
-                                    \nManga : {selected_manga_name} 
-                                    \n{nb_of_manga_chapters} chapters downloaded ✅
-                                    \nStored in :  {manga_file_path}
+                messagebox.showinfo("Download info [ℹ️]", f"""
+                                    \nManga : {selected_manga_name}
+
+                                    \nsucceeded ✅ : {downloads_succeeded}/{nb_of_manga_chapters}
+                                    failed ❌ : {downloads_failed}
+                                    skipped ( duplicate ) 🍃 : {downloads_skipped}
+
+                                    \nStored in : {manga_file_path}
                                     \n\nThanks for using PandaScan 🐼""")
                 Hide_DownloadBox()
                 download_button.configure(state="normal")

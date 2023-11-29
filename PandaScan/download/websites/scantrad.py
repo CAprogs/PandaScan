@@ -29,14 +29,17 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                     if response is True:
                         page += 1
                     else:
-                        LOG.info(f"chapitre {chapter_number} downloaded ✅")
-                        break
+                        LOG.info(f"{chapter_number} downloaded ✅")
+                        return "success"
             else:
-                return LOG.info(f"Download {download_id} aborted ❌, Status code : {http_response.status_code}")
+                LOG.info(f"Download {download_id} aborted ❌, Status code : {http_response.status_code}")
+                return "failed"
         except requests.ConnectionError as e:
             LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+            return "failed"
     else:
         LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {chapter_name_path}")
+        return "skipped"
 
 
 def scantrad(http_response, xpath, save_path, page):
@@ -63,8 +66,8 @@ def scantrad(http_response, xpath, save_path, page):
             LOG.debug(f"Image {page} téléchargée.")
             return True
         else:
-            LOG.debug(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")
+            LOG.debug(f"Failed downloading Image {page}. Statut Code : {image_response.status_code}")
             return False
     else:
-        LOG.debug("Aucun élément trouvé pour le xpath donné.")
+        LOG.debug("No element found for the xpath | scantrad")
         return False

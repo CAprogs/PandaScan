@@ -30,13 +30,16 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
                         page += 1
                     else:
                         LOG.info(f"chapitre {chapter_number} downloaded ✅")
-                        break
+                        return "success"
                 else:
-                    return LOG.info(f"Échec du téléchargement.| Code d'état : {http_response.status_code}")
+                    LOG.info(f"Request failed | Status code : {http_response.status_code}")
+                    return "failed"
             except requests.ConnectionError as e:
                 LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+                return "failed"
     else:
         LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {chapter_name_path}")
+        return "skipped"
 
 
 def lelscans(http_response, save_path, page):
@@ -60,11 +63,11 @@ def lelscans(http_response, save_path, page):
         if image_response.status_code == 200:
             with open(save_path, 'wb') as f:
                 f.write(image_response.content)
-            LOG.debug(f"Image {page} téléchargée.")
+            LOG.debug(f"Image {page} downloaded")
             return True
         else:
-            LOG.debug(f"Échec du téléchargement de l'image. Code d'état : {image_response.status_code}")
+            LOG.debug(f"Failed downloading Image {page}. Status code : {image_response.status_code}")
             return False
     else:
-        LOG.debug("Aucun élément trouvé.")
+        LOG.debug("No element found | lelscans")
         return False
