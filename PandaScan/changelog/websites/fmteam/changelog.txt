@@ -223,3 +223,14 @@ Changes in out:
 Changes in vinland-saga:
   • Added chapters: chapitre 207
   • Removed chapters: chapitre 204
+
+Update 14 : 29/11/2023 | 02:34:45
+Changes in blue-lock:
+  • Added chapters: chapitre 242
+  • Removed chapters: chapitre 242.1, chapitre 239
+=> Added new entry 'catechism' with chapters: chapitre 2, chapitre 1, chapitre 0
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1442
+  • Removed chapters: chapitre 1439
+Changes in kingdom:
+  • Added chapters: chapitre 780
