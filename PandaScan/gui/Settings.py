@@ -336,8 +336,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_checkbox_1: (125.0, 158.0, 14.0, 12.0),
                 update_checkbox_2: (125.0, 176.0, 14.0, 12.0),
                 update_checkbox_3: (125.0, 196.0, 14.0, 12.0),
-                update_checkbox_4: (125.0, 216.0, 14.0, 12.0)
-                }
+                update_checkbox_4: (125.0, 216.0, 14.0, 12.0)}
             # Les labels à gérer
             labels_to_manage[button_2] = {
                 update_mode: (49.0, 75.0),
@@ -348,8 +347,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_scantrad: (65.0, 158.0),
                 update_lelscan: (65.0, 176.0),
                 update_fmteam: (65.0, 196.0),
-                update_animesama: (65.0, 216.0)
-                }
+                update_animesama: (65.0, 216.0)}
 
             check_previous_deactivate_button(button_2)
 
@@ -367,7 +365,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 return
 
             # [ TEXT ]   Path
-            download_path = canvas.create_text(55.0, 75.0, anchor="nw", text=TEXT_15,  fill=CURRENT_COLOR, font=TITLE_POLICE)
+            download_path = canvas.create_text(55.0, 75.0, anchor="nw", text=TEXT_15, fill=CURRENT_COLOR, font=TITLE_POLICE)
             # [ WIDGET ] Entry
             download_entry = Entry(settings_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0)
             download_entry.insert(0, SETTINGS["Download"]["path"])
@@ -382,13 +380,11 @@ def show_settings(main_window, SETTINGS, settings_button):
             # Les widgets à gérer
             widgets_to_manage[button_3] = {
                 download_entry: (92.0, 76.0, 228.0, 13.0),
-                choose_directory_path: (340.0, 70.0, 50.0, 25.0)
-                }
+                choose_directory_path: (340.0, 70.0, 50.0, 25.0)}
             # Les labels à gérer
             labels_to_manage[button_3] = {
                 download_path: (55.0, 75.0),
-                download_path_info: (55.0, 100.0)
-                }
+                download_path_info: (55.0, 100.0)}
 
             check_previous_deactivate_button(button_3)
 

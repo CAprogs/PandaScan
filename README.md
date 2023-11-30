@@ -38,9 +38,11 @@
 
 ### À Venir 📅
 
-- Ajout du site [anime-sama.me](https://anime-sama.me/) (🇫🇷)
-- Ajout du site [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
-- La release des versions **3.x.x** est prévue pour le 01/12/2023.
+- Ajout du site [anime-sama.me](https://anime-sama.me/) (🇫🇷) - dans les versions **3.x.x**
+- Ajout du site [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
+- Ajout du site [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
+- Ajout du site [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
+- La release des versions **3.x.x** est repoussée au 05/12/2023
 
 Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 

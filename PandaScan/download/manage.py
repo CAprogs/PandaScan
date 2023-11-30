@@ -2,7 +2,7 @@ from download.websites import scantrad
 from download.websites import lelscans
 from download.websites import fmteam
 from download.websites import animesama
-from download.utils import chapter_transform
+from download.utils import chapter_transform, check_manga_path
 
 
 def download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR):
@@ -18,6 +18,9 @@ def download(selected_website, chapter_name_path, selected_manga_name, download_
         SETTINGS (Any): fichier de configuration json
         SELECTOR (Any): curseur de la DB
     """
+
+    if check_manga_path(chapter_name_path, download_id):  # don't apply to fmteam
+        return "skipped"
 
     chapter_number = chapter_transform(chapter_name, selected_website)
 

@@ -234,3 +234,12 @@ Changes in hajime-no-ippo:
   • Removed chapters: chapitre 1439
 Changes in kingdom:
   • Added chapters: chapitre 780
+
+Update 15 : 30/11/2023 | 01:08:35
+Changes in choujin-x:
+  • Removed chapters: chapitre 41.5
+Changes in kingdom:
+  • Removed chapters: chapitre 777.2, chapitre 777.1
+Changes in one-punch-man:
+  • Added chapters: chapitre 195
+  • Removed chapters: chapitre 192

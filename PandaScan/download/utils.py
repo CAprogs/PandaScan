@@ -1,4 +1,5 @@
 import requests
+import os
 from foundation.core.essentials import LOG
 
 
@@ -77,3 +78,21 @@ def check_url(pattern, tome, selected_manga_name, chapter_number):
             return url
     else:
         return None
+
+
+def check_manga_path(chapter_name_path, download_id):
+    """Check if the manga path exists.
+
+    Args:
+        chapter_name_path (str): chemin de sauvegarde des images
+        download_id (int): numéro du téléchargement en cours
+
+    Returns:
+        bool: True(le manga existe déjà), False(le manga n'existe pas)
+    """
+    if not os.path.exists(chapter_name_path):
+        os.makedirs(chapter_name_path)
+        return False
+    else:
+        LOG.debug(f"Download {download_id} skipped !\n\nChapter found in : {chapter_name_path}")
+        return True

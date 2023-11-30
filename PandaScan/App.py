@@ -13,7 +13,7 @@
 # You are now able to change Settings directly in App.
 #    ° Choose between "manual" or "auto" update.
 #    ° Select where to save your scans after a download.
-#    ° Updating PandaScan generates changelogs files | Ckeck changelogs in 'changelog > choose a website > changelog.txt'
+#    ° Updating PandaScan generates changelog files | Check changelogs in 'changelog > choose a website > changelog.txt'.
 # Please note that some websites may provide empty folders when downloading (especially scantrad)
 # If you like this project, please consider giving it a ⭐️ on Github.🫶
 # Credits: @Tkinter-designer by ParthJadhav
@@ -22,9 +22,10 @@
 
 import os
 import tkinter as tk
-from tkinter import Tk, ttk, Canvas, Entry, Listbox, IntVar
-from tkinter import Scrollbar, Button, Checkbutton, Label
+from tkinter import Tk, Canvas, Entry, Listbox, IntVar
+from tkinter import Scrollbar, Button, Checkbutton
 from tkinter import PhotoImage, StringVar, OptionMenu, messagebox
+from foundation.tracker.progessbar import ProgressBar
 from download.manage import download
 from update.manage import manual_update, auto_update
 from gui.Settings import show_settings
@@ -100,6 +101,7 @@ def main():
             DRIVER.quit()
         CONN.close()
         main_window.destroy()
+        os.system("clear")
         print("\nApp closed 👋\n")
 
     def Clear_range_menus():
@@ -282,13 +284,11 @@ def main():
         downloads_failed = 0
         downloads_skipped = 0
 
-        def Hide_DownloadBox():
-            """Cacher la barre d'infos des téléchargement
-            """
-            canvas.itemconfigure(image_1, state=tk.HIDDEN)
-
-        def Start_download():
+        def Start_download(progress_bar):
             """Lancer le téléchargement d'un chapitre
+
+            Args:
+                progress_bar (Any): barre de progression
             """
             global download_id, download_button_state, downloads_succeeded, downloads_failed, downloads_skipped
 
@@ -307,44 +307,35 @@ def main():
                 downloads_skipped += 1
 
             download_id += 1
-            if nb_of_manga_chapters > 1:
-                progress = int((download_id / nb_of_manga_chapters) * 100)
-                progressbar["value"] = progress
-                percentage_label["text"] = f"{progress}%"
-                main_window.update_idletasks()
+            progress_bar.update(download_id)
+            progress_bar.display(prefix='Download', suffix=f'[{status}]')
 
             if download_id < nb_of_manga_chapters:
-                main_window.after(1000, Start_download)
+                main_window.after(100, Start_download(progress_bar))
             else:
-                if nb_of_manga_chapters > 1:
-                    progressbar.place_forget()
-                    percentage_label.place_forget()
                 messagebox.showinfo("Download info [ℹ️]", f"""
                                     \nManga : {selected_manga_name}
-
-                                    \nsucceeded ✅ : {downloads_succeeded}/{nb_of_manga_chapters}
-                                    failed ❌ : {downloads_failed}
-                                    skipped ( duplicate ) 🍃 : {downloads_skipped}
+                                    \nsucceeded : {downloads_succeeded}/{nb_of_manga_chapters} ✅
+                                    failed : {downloads_failed} ❌
+                                    skipped : {downloads_skipped} ⏩️
 
                                     \nStored in : {manga_file_path}
                                     \n\nThanks for using PandaScan 🐼""")
-                Hide_DownloadBox()
                 download_button.configure(state="normal")
                 download_button_state = False
 
-        def Manage_DownloadBox():
-            """Désactiver le bouton de téléchargement et gérer la barre d'infos des téléchargements
+        def Manage_download():
+            """
+            - Désactiver le bouton de téléchargement
+            - Instancier une barre de progression
+            - Lancer le téléchargement des chapitres sélectionnés
             """
             global download_button_state
 
             download_button_state = True
             download_button.configure(state="disabled")
-            if nb_of_manga_chapters > 1:
-                canvas.itemconfigure(image_1, state=tk.NORMAL)
-                progressbar.place(x=800.0, y=520.0)
-                percentage_label.place(x=830.0, y=545.0)
-
-            Start_download()
+            progress_bar = ProgressBar(nb_of_manga_chapters)
+            Start_download(progress_bar)
 
         def Set_download_directory():
             """Gérer le chemin de destination des téléchargements
@@ -357,8 +348,7 @@ def main():
                 manga_file_path = MAIN_DIRECTORY / selected_manga_name
                 if not os.path.exists(manga_file_path):
                     os.makedirs(manga_file_path)
-
-            Manage_DownloadBox()
+            Manage_download()
 
         if nb_of_manga_chapters == 0 or selected_manga_chapters == []:
             messagebox.showinfo("Info [ℹ️]", "No Chapter Selected 🤕, Try again")
@@ -456,15 +446,6 @@ def main():
     result_box.bind('<<ListboxSelect>>', on_mangas_select)
     # Sélection des chapitres + affichage du nombre de chapitres sélectionnés
     chapters_box.bind('<<ListboxSelect>>', on_chapters_select)
-
-    # === Informations au cours d'un téléchargement
-
-    Info_download = PhotoImage(file=relative_to_assets("Info_download.png"))
-    image_1 = canvas.create_image(843.0, 575.0, image=Info_download, state=tk.HIDDEN)  # Cacher l'image au lancement de l'application
-    # Barre de progression
-    progressbar = ttk.Progressbar(main_window, mode="determinate")
-    # Pourcentage de progression
-    percentage_label = Label(main_window, text="0%", bg="white")
 
     # === Select a range of chapters ( Menus + Checkbox )
 

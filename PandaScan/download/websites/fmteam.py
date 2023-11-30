@@ -36,19 +36,19 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
         if http_response.status_code == 200:
             response = fmteam(http_response, manga_file_path, SETTINGS)
             if response is True:
-                LOG.info(f"chapitre {chapter_number} downloaded ✅")
+                LOG.debug(f"chapitre {chapter_number} downloaded ✅")
                 return "success"
             elif response is False:
-                LOG.info(f"Download {download_id} aborted ❌, request failed.")
+                LOG.debug(f"Download {download_id} aborted ❌, request failed.")
                 return "failed"
             else:
-                LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {response}")
+                LOG.debug(f"Download {download_id} skipped !\n\nChapter found in : {response}")
                 return "skipped"
         else:
-            LOG.info(f"Requests failed : {selected_website} | {selected_manga_name}")
+            LOG.debug(f"Request failed : {selected_website} | {selected_manga_name}")
             return "failed"
     except requests.ConnectionError as e:
-        LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
         return "failed"
 
 

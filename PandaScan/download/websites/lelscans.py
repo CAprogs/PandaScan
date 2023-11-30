@@ -1,5 +1,4 @@
 import requests
-import os
 from bs4 import BeautifulSoup
 from foundation.core.essentials import LOG
 
@@ -15,31 +14,26 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
         chapter_number (str): numéro du chapitre à télecharger
     """
 
-    if not os.path.exists(chapter_name_path):
-        os.makedirs(chapter_name_path)
-        page = 1
+    page = 1
 
-        while True:
-            chapter_link = str(f"https://lelscans.net/scan-{selected_manga_name}/{chapter_number}/{page}")
-            try:
-                http_response = requests.get(chapter_link)
-                if http_response.status_code == 200:
-                    save_path = f"{chapter_name_path}/{page}.jpg"
-                    response = lelscans(http_response, save_path, page)
-                    if response is True:
-                        page += 1
-                    else:
-                        LOG.info(f"chapitre {chapter_number} downloaded ✅")
-                        return "success"
+    while True:
+        chapter_link = str(f"https://lelscans.net/scan-{selected_manga_name}/{chapter_number}/{page}")
+        try:
+            http_response = requests.get(chapter_link)
+            if http_response.status_code == 200:
+                save_path = f"{chapter_name_path}/{page}.jpg"
+                response = lelscans(http_response, save_path, page)
+                if response is True:
+                    page += 1
                 else:
-                    LOG.info(f"Request failed | Status code : {http_response.status_code}")
-                    return "failed"
-            except requests.ConnectionError as e:
-                LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+                    LOG.debug(f"chapitre {chapter_number} downloaded ✅")
+                    return "success"
+            else:
+                LOG.debug(f"Request failed | Status code : {http_response.status_code}")
                 return "failed"
-    else:
-        LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {chapter_name_path}")
-        return "skipped"
+        except requests.ConnectionError as e:
+            LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+            return "failed"
 
 
 def lelscans(http_response, save_path, page):
@@ -59,7 +53,7 @@ def lelscans(http_response, save_path, page):
     image_element = soup.find("img", src=True)
     if image_element:
         image_url = image_element["src"]
-        image_response = requests.get('https://lelscans.net/'+image_url)
+        image_response = requests.get('https://lelscans.net/' + image_url)
         if image_response.status_code == 200:
             with open(save_path, 'wb') as f:
                 f.write(image_response.content)

@@ -1,5 +1,4 @@
 import requests
-import os
 from lxml import html
 from foundation.core.essentials import LOG
 
@@ -15,31 +14,26 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
         chapter_number (str): numéro du chapitre à télecharger
     """
 
-    if not os.path.exists(chapter_name_path):
-        os.makedirs(chapter_name_path)
-        page = 0
-        chapter_link = str(f"https://scantrad-vf.co/manga/{selected_manga_name}/{chapter_number}/?style=list")
-        try:
-            http_response = requests.get(chapter_link)
-            if http_response.status_code == 200:
-                while True:
-                    xpath = f'//*[@id="image-{page}"]'
-                    save_path = f"{chapter_name_path}/{page}.jpg"
-                    response = scantrad(http_response, xpath, save_path, page)
-                    if response is True:
-                        page += 1
-                    else:
-                        LOG.info(f"{chapter_number} downloaded ✅")
-                        return "success"
-            else:
-                LOG.info(f"Download {download_id} aborted ❌, Status code : {http_response.status_code}")
-                return "failed"
-        except requests.ConnectionError as e:
-            LOG.info(f"Requests failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+    page = 0
+    chapter_link = str(f"https://scantrad-vf.co/manga/{selected_manga_name}/{chapter_number}/?style=list")
+    try:
+        http_response = requests.get(chapter_link)
+        if http_response.status_code == 200:
+            while True:
+                xpath = f'//*[@id="image-{page}"]'
+                save_path = f"{chapter_name_path}/{page}.jpg"
+                response = scantrad(http_response, xpath, save_path, page)
+                if response is True:
+                    page += 1
+                else:
+                    LOG.debug(f"{chapter_number} downloaded ✅")
+                    return "success"
+        else:
+            LOG.debug(f"Download {download_id} aborted ❌, Status code : {http_response.status_code}")
             return "failed"
-    else:
-        LOG.info(f"Download {download_id} skipped !\n\nChapter found at : {chapter_name_path}")
-        return "skipped"
+    except requests.ConnectionError as e:
+        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+        return "failed"
 
 
 def scantrad(http_response, xpath, save_path, page):
