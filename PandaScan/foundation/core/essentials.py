@@ -61,10 +61,10 @@ except sql.Error as e:
 
 
 def check_connection():
-    """Vérifier si une connexion à Internet est établie.
+    """Check if an internet connection is established.
 
     Returns:
-        bool: True (connecté à Internet), False (sinon)
+        bool: True (connected to the internet), False (otherwise)
     """
 
     try:

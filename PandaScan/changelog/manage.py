@@ -12,8 +12,8 @@ def generate_changelog(PATH_TO_WEBSITE, website):
     """Generate a changelog for a specific website.
 
     Args:
-        PATH_TO_WEBSITE (str): the path to the website directory (update)
-        website (str): the name of the website
+        PATH_TO_WEBSITE (str): path to the website folder (update module)
+        website (str): name of the website
     """
 
     with open(f'{PATH_TO_WEBSITE}/datas/mangas_chapters_temp.yml', 'r') as temp_file:

@@ -6,7 +6,7 @@ class CustomLogger:
         self.logger = logging.getLogger()
         self.logger.setLevel(level)
 
-        # Ajoute un gestionnaire de logs à la console
+        # Add a logging handler to the console
         stream_handler = logging.StreamHandler()
         stream_handler.setFormatter(logging.Formatter(format))
         self.logger.addHandler(stream_handler)

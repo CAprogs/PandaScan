@@ -8,16 +8,19 @@ from foundation.core.essentials import LOG
 
 
 def init_download(selected_website, selected_manga_name, download_id, manga_file_path, SETTINGS, SELECTOR, chapter_number):
-    """initialiser le téléchargement à partir de fmteam.
+    """Initialize the download from fmteam.
 
     Args:
-        selected_website (str): site web sélectionné
-        selected_manga_name (str): nom du manga sélectionné
-        download_id (int): numéro du téléchargement en cours
-        manga_file_path (str): nom du dossier du manga
-        SETTINGS (Any): fichier de configuration json
-        SELECTOR (Any): curseur de la DB
-        chapter_number (str): numéro du chapitre à télecharger
+        selected_website (str): selected website
+        selected_manga_name (str): selected manga name
+        download_id (int): current download number
+        manga_file_path (str): path of the folder to save chapters
+        SETTINGS (Any): json configuration file
+        SELECTOR (Any): DB cursor
+        chapter_number (str): chapter number to download
+
+    Returns:
+        str: download status (success, skipped or failed)
     """
 
     pattern = "https://fmteam.fr/api/download/"
@@ -56,12 +59,12 @@ def fmteam(http_response, manga_file_path, SETTINGS):
     """Download images from fmteam with the given URL.
 
     Args:
-        http_response (int): réponse de la requête HTTP
-        manga_file_path (str): nom du dossier du manga
-        SETTINGS (Any): fichier de configuration json
+        http_response (int): HTTP response code
+        manga_file_path (str): path of the folder to save chapters
+        SETTINGS (Any): json configuration file
 
     Returns:
-        bool: True(téléchargement réussi), False(téléchargement raté)
+        bool: True(download successful), False(otherwise)
     """
 
     # Créer un flux binaire avec io.BytesIO à partir du contenu de la réponse

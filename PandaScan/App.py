@@ -294,11 +294,11 @@ def main():
 
             chapter_name = selected_manga_chapters[download_id]
             if os.path.exists(SETTINGS['Download']['path']):
-                chapter_name_path = manga_file_path + '/' + chapter_name
+                chapter_file_path = manga_file_path + '/' + chapter_name
             else:
-                chapter_name_path = manga_file_path / chapter_name
+                chapter_file_path = manga_file_path / chapter_name
 
-            status = download(default_website, chapter_name_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR)
+            status = download(default_website, chapter_file_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR)
             if status == "success":
                 downloads_succeeded += 1
             elif status == "failed":
@@ -307,8 +307,9 @@ def main():
                 downloads_skipped += 1
 
             download_id += 1
-            progress_bar.update(download_id)
-            progress_bar.display(prefix='Download', suffix=f'[{status}]')
+            if progress_bar is not None:
+                progress_bar.update(download_id)
+                progress_bar.display(prefix='Download', suffix=f'[{status}]')
 
             if download_id < nb_of_manga_chapters:
                 main_window.after(100, Start_download(progress_bar))
@@ -327,14 +328,17 @@ def main():
         def Manage_download():
             """
             - Désactiver le bouton de téléchargement
-            - Instancier une barre de progression
+            - Instancier une barre de progression (mode INFO uniquement)
             - Lancer le téléchargement des chapitres sélectionnés
             """
             global download_button_state
 
             download_button_state = True
             download_button.configure(state="disabled")
-            progress_bar = ProgressBar(nb_of_manga_chapters)
+            if SETTINGS['logger']['level'] == "INFO":
+                progress_bar = ProgressBar(nb_of_manga_chapters)
+            else:
+                progress_bar = None
             Start_download(progress_bar)
 
         def Set_download_directory():

@@ -9,13 +9,13 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
     """Launch manual update of a website.
 
     Args:
-        MAIN_DIRECTORY (str): chemin d'accès au dossier PandaScan
-        selected_website (str): le site à mettre à jour
-        SETTINGS (Any): fichier de configuration json
-        CONN (Any): connexion à la DB
-        SELECTOR (Any): curseur de la DB
-        WEBSITES (dict): liste des sites disponibles
-        LOG (Any): logger d'affichage
+        MAIN_DIRECTORY (str): path to the working directory
+        selected_website (str): name of the website to update
+        SETTINGS (Any): .json configuration file
+        CONN (Any): DB connection
+        SELECTOR (Any): DB cursor
+        WEBSITES (dict): list of available websites
+        LOG (Any): the logger
     """
 
     i = 0
@@ -43,12 +43,12 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
     """Launch auto update of websites.
 
     Args:
-        MAIN_DIRECTORY (str): chemin d'accès au dossier Pandascan
-        WEBSITES (dict): liste des sites disponibles
-        SETTINGS (Any): fichier de configuration json
-        CONN (Any): connexion à la DB
-        SELECTOR (Any): curseur de la DB
-        LOG (Any): logger d'affichage
+        MAIN_DIRECTORY (str): path to the working directory
+        WEBSITES (dict): list of available websites
+        SETTINGS (Any): .json configuration file
+        CONN (Any): DB connection
+        SELECTOR (Any): DB cursor
+        LOG (Any): the logger
     """
 
     i = 0

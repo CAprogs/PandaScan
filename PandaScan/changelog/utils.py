@@ -5,7 +5,7 @@ def read_previous_state(PATH_TO_WEBSITE):
     """Read the previous state of the mangas chapters.
 
     Args:
-        PATH_TO_WEBSITE (str): the path to the website directory (update)
+        PATH_TO_WEBSITE (str): path to the website folder (update module)
 
     Returns:
         A yaml file or an empty dict
@@ -22,14 +22,14 @@ def write_current_state(state, PATH_TO_WEBSITE):
 
     Args:
         state (Any): the current yaml file
-        PATH_TO_WEBSITE (str): path to the website folder
+        PATH_TO_WEBSITE (str): path to the website folder (update module)
     """
     with open(f'{PATH_TO_WEBSITE}/datas/mangas_chapters.yml', 'w') as file:
         yaml.dump(state, file)
 
 
 def generate_report(current_state, previous_state):
-    """Generate the changelog comparing the current state and the previous state.
+    """Generate the changelog comparing the differences beetween current and previous state.
 
     Args:
         current_state (Any): the current state of the yaml file. (chapters per manga)

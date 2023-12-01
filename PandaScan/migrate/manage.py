@@ -7,14 +7,14 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
     """Migrate the CSV and YAML data to the database.
 
     Args:
-        MAIN_DIRECTORY (str): chemin d'accès au dossier PandaScan
-        CONN (Any): connexion à la DB
-        SELECTOR (Any): curseur de la DB
-        WEBSITES (list): liste de sites disponibles
-        LOG (Any): logger d'affichage
+        MAIN_DIRECTORY (str): path to the working directory
+        CONN (Any): DB connection
+        SELECTOR (Any): DB cursor
+        WEBSITES (list): list of available websites
+        LOG (Any): the logger
     """
 
-    LOG.info("Migration des datas ..")
+    LOG.info("Datas migration ..")
     websites = [{'NomSite': WEBSITES[0]},
                 {'NomSite': WEBSITES[1]},
                 {'NomSite': WEBSITES[2]},
@@ -30,7 +30,7 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
     df_chapters_links = pd.read_csv(f'{MAIN_DIRECTORY}/update/websites/animesama/datas/chapters_links.csv')
     df_chapters_links.to_sql('ChapterLink', CONN, if_exists='replace', index=False)
 
-    LOG.info("Vérifications et Nettoyage de la DB ..")
+    LOG.info("Database Checks and Cleanup ..")
 
     for table in tables:
         Delete_table(table, CONN, SELECTOR)

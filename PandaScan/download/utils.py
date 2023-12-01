@@ -7,11 +7,11 @@ def chapter_transform(chapter_name, selected_website):
     """Transform the chapter name to the right format.
 
     Args:
-        chapter_name (str): nom du chapitre
-        selected_website (str): site web sélectionné
+        chapter_name (str): chapter name
+        selected_website (str): selected website
 
     Returns:
-        str: numéro du chapitre
+        str: chapter name in the right format
     """
 
     if selected_website == "scantrad":
@@ -23,16 +23,16 @@ def chapter_transform(chapter_name, selected_website):
 
 
 def check_tome(selected_manga_name, selected_website, CURSOR):
-    """Check if the manga contains tomes.
+    """Check if the manga contains "tomes".
 
     Args:
-        selected_manga_name (str): nom du manga sélectionné
-        conn (Any): connexion à la DB
-        CURSOR (Any): curseur de la DB
+        selected_manga_name (str): selected manga name
+        conn (Any): DB connection
+        CURSOR (Any): DB cursor
 
     Returns:
-        bool: True(le manga comprend des tomes), False(le manga ne comprend pas de tomes)
-        str: le dernier tome du manga
+        bool: True(the manga includes "tomes"), False(otherwise)
+        str: the last "tome" of the manga
     """
     CURSOR.execute("SELECT has_tome FROM Mangas WHERE NomManga = ? AND NomSite = ?", (selected_manga_name, selected_website))
     try:
@@ -53,13 +53,14 @@ def check_url(pattern, tome, selected_manga_name, chapter_number):
     """Search a valid url for a specific manga.
 
     Args:
-        pattern (str): prefixe utilisé pour les téléchargements
-        tome (str): dernier tome du manga
-        selected_manga_name (str): nom du manga sélectionné
-        chapter_number (int): numéro du chapitre
+        pattern (str): used prefix for donwloads
+        tome (str): the last "tome" of the manga
+        selected_manga_name (str): selected manga name
+        chapter_number (int): chapter number
 
     Returns:
-        str: l'url valide
+        str: the valid url
+        None: if no valid url is found
     """
     for i in range(int(float(tome)), -1, -1):
         if "." in chapter_number:
@@ -80,19 +81,19 @@ def check_url(pattern, tome, selected_manga_name, chapter_number):
         return None
 
 
-def check_manga_path(chapter_name_path, download_id):
+def check_manga_path(chapter_file_path, download_id):
     """Check if the manga path exists.
 
     Args:
-        chapter_name_path (str): chemin de sauvegarde des images
-        download_id (int): numéro du téléchargement en cours
+        chapter_file_path (str): path of the folder to save images
+        download_id (int): current download number
 
     Returns:
-        bool: True(le manga existe déjà), False(le manga n'existe pas)
+        bool: True(manga already exists), False(otherwise)
     """
-    if not os.path.exists(chapter_name_path):
-        os.makedirs(chapter_name_path)
+    if not os.path.exists(chapter_file_path):
+        os.makedirs(chapter_file_path)
         return False
     else:
-        LOG.debug(f"Download {download_id} skipped !\n\nChapter found in : {chapter_name_path}")
+        LOG.debug(f"Download {download_id} skipped !\n\nChapter found in : {chapter_file_path}")
         return True

@@ -11,10 +11,10 @@ def confirm_update(mode):
     """Update check.
 
     Args:
-        mode (str): mode de mise à jour
+        mode (str): "Manual" or "Auto"
 
     Returns:
-        bool: True = validée, False = refusée
+        bool: True(validate), False(otherwise)
     """
 
     result = messagebox.askquestion(f"Confirmation Check : {mode}", f"Proceed {mode}-Update ❓")
@@ -27,13 +27,13 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
     """Check if a website can be updated and perform the update.
 
     Args:
-        selected_website (str): site à mettre à jour
-        SETTINGS (Any): fichier de configuration json
-        i (int): variable de suivi de mis à jour
-        LOG (Any): logger d'affichage
+        selected_website (str): name of the website to update
+        SETTINGS (Any): .json configuration file
+        i (int): counter
+        LOG (Any): the logger
 
     Returns:
-        int: i (+1 si mis à jour, +0 sinon)
+        int: i (+1 if update, +0 otherwise)
     """
     if SETTINGS["websites"][selected_website]["enabled"]:
         from update.websites.scantrad.update_datas import Update_scantrad

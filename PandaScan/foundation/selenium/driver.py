@@ -1,17 +1,20 @@
+import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from tkinter import messagebox
 from .utils import check_driver, check_extensions
 
 
 def set_driver_config(MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
-    """Instancier les élémnents du navigateur.
+    """Instantiate the browser elements.
 
     Args:
-        MAIN_DIRECTORY (str): chemin vers le working directory
-        PATH_TO_CONFIG (str): chemin vers le fichier .json
-        SETTINGS (Any): fichier de configuration .json
-        LOG (Any): logger d'affichage
+        MAIN_DIRECTORY (str): path to the working directory
+        PATH_TO_CONFIG (str): path to the .json file
+        SETTINGS (Any): .json configuration file
+        LOG (Any): the logger
+
+    Returns:
+        Any: the webdriver
     """
 
     ublock_path = f'{MAIN_DIRECTORY}/foundation/selenium/extensions/ublock.crx'
@@ -20,15 +23,10 @@ def set_driver_config(MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
 
     check_driver(SETTINGS['chromedriver_path'], PATH_TO_CONFIG, SETTINGS)
 
-    try:
-        # Instanciate chromedriver service
-        chromedriver_path = Service(SETTINGS['chromedriver_path'])
-    except Service.ServiceException as e:
-        messagebox.showerror("Error [😥]", f"Chromedriver not found. ⚠️ | Follow the README file\nError: {str(e)}")
-        print("\nPandaScan exited. 🚪")
-        exit()
+    # Instantiate chromedriver service
+    chromedriver_path = Service(SETTINGS['chromedriver_path'])
 
-    # Instanciate chrome options
+    # Instantiate chrome options
     options = webdriver.ChromeOptions()
     if SETTINGS['driver']['headless']:
         options.add_argument("--headless")
@@ -40,8 +38,19 @@ def set_driver_config(MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
     options.add_extension(ublock_path)
     options.add_extension(adguard_path)
 
-    # Instanciate driver
-    driver = webdriver.Chrome(service=chromedriver_path, options=options)
+    # Instantiate the driver
+    try:
+        driver = webdriver.Chrome(service=chromedriver_path, options=options)
+    except Exception as e:
+        LOG.info("The path provided isn't the 'chromedriver.exe' file ⚠️ \n\nPlease refer to the 'README' file to provide the correct path.")
+        LOG.debug({str(e)})
+        SETTINGS["chromedriver_path"] = ""
+        with open(PATH_TO_CONFIG, 'w') as json_file:
+            json.dump(SETTINGS, json_file, indent=4)
+        print("PandaScan exited. 🚪\n")
+        exit()
+
     driver.maximize_window()
+    print("\nChromeDriver found ✅")
 
     return driver

@@ -4,15 +4,18 @@ from foundation.core.essentials import SELECTOR
 from foundation.core.essentials import LOG
 
 
-def init_download(selected_website, chapter_name_path, selected_manga_name, download_id, chapter_name):
-    """Initialiser le téléchargement à partir de animesama.
+def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_name):
+    """Initialize the download from animesama.
 
     Args:
-        selected_website (str): site web sélectionné
-        chapter_name_path (str): chemin de sauvegarde des images
-        selected_manga_name (str): nom du manga sélectionné
-        download_id (int): numéro du téléchargement en cours
-        chapter_name (str): nom du chapitre
+        selected_website (str): selected website
+        chapter_file_path (str): path of the folder to save images
+        selected_manga_name (str): selected manga name
+        download_id (int): current download number
+        chapter_name (str): chapter name
+
+    Returns:
+        str: download status (success or failed)
     """
 
     page = 0
@@ -37,7 +40,7 @@ def init_download(selected_website, chapter_name_path, selected_manga_name, down
 
             for img in img_list:
                 img_link = img['data-src']
-                save_path = f"{chapter_name_path}/{page}.jpg"
+                save_path = f"{chapter_file_path}/{page}.jpg"
                 response = animesama(img_link, save_path, page)
                 if response is False:
                     LOG.debug(f"Download {download_id} aborted ❌, request failed.")
@@ -57,12 +60,12 @@ def animesama(img_link, save_path, page):
     """Download images from animesama with the given URL.
 
     Args:
-        img_link (str): lien de téléchargement de l'image
-        save_path (str): chemin de sauvegarde des images
-        page (int): numéro de la page à télécharger
+        img_link (str): image download link
+        save_path (str): path to save images
+        page (int): page number to download
 
     Returns:
-        bool: True(téléchargement réussi), False(téléchargement raté)
+        bool: True(download successful), False(otherwise)
     """
 
     image_response = requests.get(img_link)
