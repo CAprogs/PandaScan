@@ -9,19 +9,19 @@
     "websites": {
         "fmteam": {
             "enabled": true,
-            "n_update": 15
+            "n_update": 16
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 14
+            "n_update": 15
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 13
+            "n_update": 14
         },
         "animesama": {
             "enabled": true,
-            "n_update": 3
+            "n_update": 4
         }
     },
     "Download": {

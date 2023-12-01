@@ -22,8 +22,9 @@ def download(selected_website, chapter_file_path, selected_manga_name, download_
         str: download status (success, skipped, or failed)
     """
 
-    if check_manga_path(chapter_file_path, download_id):  # don't affect fmteam
-        return "skipped"
+    if selected_website != "fmteam":
+        if check_manga_path(chapter_file_path, download_id):
+            return "skipped"
 
     chapter_number = chapter_transform(chapter_name, selected_website)
 

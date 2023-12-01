@@ -7,8 +7,8 @@ def Scrap_titles(PATH_TO_ANIMESAMA, LOG):
     """Scrap mangas titles from animesama.
 
     Args:
-        PATH_TO_ANIMESAMA (str): path to animesama folder
-        LOG (Any): logger d'affichage
+        PATH_TO_ANIMESAMA (str): path to animesama directory (update)
+        LOG (Any): the logger
     """
 
     links_list = []

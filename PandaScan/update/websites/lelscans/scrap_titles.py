@@ -7,8 +7,8 @@ def Scrap_titles(PATH_TO_LELSCANS, LOG):
     """Scrap mangas titles from lelscans.
 
     Args:
-        PATH_TO_LELSCANS (str): path to lelscans folder
-        LOG (Any): logger d'affichage
+        PATH_TO_LELSCANS (str): path to lelscans directory (update)
+        LOG (Any): the logger
     """
 
     links_list = []

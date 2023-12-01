@@ -33,7 +33,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
             img_list = soup_2.find_all('img', {'data-src': True})
             if img_list == []:
                 img_elements = img_elements.contents
-                if img_elements == []:
+                if img_elements == [] or '<img' not in str(img_elements):
                     separator_list = select_element.find_all(class_='separator')
                     img_elements = [element.contents[0] for element in separator_list]
                 img_list = [element for element in img_elements if '<img' in str(element)]

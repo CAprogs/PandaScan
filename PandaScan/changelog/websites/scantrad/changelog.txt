@@ -1955,3 +1955,7 @@ No added / deprecated files !
 
 Update 13 : 30/11/2023 | 01:29:14
 No added / deprecated files !
+
+Update 14 : 01/12/2023 | 17:48:55
+Changes in the-monster-dukes-daughter:
+  • Removed chapters: chapitre 102, chapitre 101, chapitre 100, chapitre 98, chapitre 97, chapitre 74, chapitre 73, chapitre 66, chapitre 65, chapitre 62, chapitre 61, chapitre 60, chapitre 54, chapitre 53, chapitre 50, chapitre 49, chapitre 43, chapitre 42

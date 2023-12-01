@@ -5,8 +5,8 @@ def Update_lelscans(PATH_TO_LELSCANS, LOG):
     """Update lelscans datas.
 
     Args:
-        PATH_TO_LELSCANS (str): path to lelscans directory
-        LOG (Any): logger d'affichage
+        PATH_TO_LELSCANS (str): path to lelscans directory (update)
+        LOG (Any): the logger
     """
 
     scrap_titles.Scrap_titles(PATH_TO_LELSCANS, LOG)

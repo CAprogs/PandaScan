@@ -6,8 +6,8 @@ def Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG):
 
     Args:
         DRIVER (Any): the chromedriver
-        PATH_TO_FMTEAM (str): path to fmteam directory
-        LOG (Any): logger d'affichage
+        PATH_TO_FMTEAM (str): path to fmteam directory (update)
+        LOG (Any): the logger
     """
 
     scrap_titles.Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG)

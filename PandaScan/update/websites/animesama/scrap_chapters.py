@@ -5,11 +5,11 @@ from bs4 import BeautifulSoup
 
 
 def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
-    """Scrap the mangas chapters from lelscans.
+    """Scrap the mangas chapters from animesama.
 
     Args:
-        PATH_TO_ANIMESAMA (str): path to lelscans directory ( update )
-        LOG (Any): logger d'affichage
+        PATH_TO_ANIMESAMA (str): path to animesama directory (update)
+        LOG (Any): the logger
     """
 
     datas = pd.read_csv(f'{PATH_TO_ANIMESAMA}/datas/mangas.csv')

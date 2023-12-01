@@ -8,8 +8,8 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG):
 
     Args:
         DRIVER (Any): the chromedriver
-        PATH_TO_FMTEAM (str): path to fmteam folder
-        LOG (Any): logger d'affichage
+        PATH_TO_FMTEAM (str): path to fmteam directory (update)
+        LOG (Any): the logger
     """
 
     manga_name_list = []

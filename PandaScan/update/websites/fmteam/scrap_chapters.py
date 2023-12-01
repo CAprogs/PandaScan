@@ -9,8 +9,8 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
 
     Args:
         DRIVER (Any): the chromedriver
-        PATH_TO_FMTEAM (str): path to fmteam folder
-        LOG (Any): logger d'affichage
+        PATH_TO_FMTEAM (str): path to fmteam directory (update)
+        LOG (Any): the logger
     """
 
     datas = pd.read_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv')
@@ -52,10 +52,10 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
                 LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
                 try:
                     int(chapter_number)
-                    LOG.debug(f"Chapter N°{int(chapter_number)-1} doesn't exist | {manga_name}\n {e}")
+                    LOG.debug(f"Chapter N°{int(chapter_number) - 1} doesn't exist | {manga_name}\n {e}")
                     break
                 except Exception as e:
-                    LOG.debug(f"Chapter N°{int(ch_number)-1} doesn't exist | {manga_name}\n {e}")
+                    LOG.debug(f"Chapter N°{int(ch_number) - 1} doesn't exist | {manga_name}\n {e}")
                     break
 
     yml_data = yaml.dump(manga_chapters_dict)

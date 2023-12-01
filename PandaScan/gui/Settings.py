@@ -10,22 +10,22 @@ from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
 from foundation.core.essentials import PATH_TO_CONFIG, LOG
 
 
-INFO_POLICE = ("Inter", 8 * -1)          # Police des INFOS
-TITLE_POLICE = ("Inter Bold", 12 * -1)   # -||- des TITRES
-CORPUS_POLICE = ("Inter Bold", 10 * -1)  # -||- alternative des TITRES
-CURRENT_COLOR = "#FFFFFF"                # Couleur dominante du texte
-ALT_COLOR = "#FFC700"                    # -||- alternative des INFOS
-ENTRY_TEXT_COLOR = "#000716"             # -||- des entrées de texte
-BACKGROUND_BUTTON_COLOR = "red"          # -||- d'arrière plan de bouton
+INFO_POLICE = ("Inter", 8 * -1)          # INFOS font
+TITLE_POLICE = ("Inter Bold", 12 * -1)   # TITLES -||-
+CORPUS_POLICE = ("Inter Bold", 10 * -1)  # Alternative titles -||-
+CURRENT_COLOR = "#FFFFFF"                # Dominant color (white)
+ALT_COLOR = "#FFC700"                    # Alternative INFOS -||-
+ENTRY_TEXT_COLOR = "#000716"             # Text entry -||-
+BACKGROUND_BUTTON_COLOR = "red"          # Background buttons -||-
 
-settings_window = None                # État de la fenêtre
-chromedriver_button_state = False       # État du bouton CHROMEDRIVER
-update_button_state = True              # -||- UPDATE
-download_button_state = True            # -||- DOWNLOAD
-chromedriver_clicks = 0                 # nombre de clics sur (CHROMEDRIVER)
-update_clicks = 0                       # -||- UPDATE
-download_clicks = 0                     # -||- DOWNLOAD
-save_clicks = 0                         # -||- SAVE
+settings_window = None                  # State of the SETTINGS window
+chromedriver_button_state = False       # State of the CHROMEDRIVER button
+update_button_state = True              # -||- UPDATE button
+download_button_state = True            # -||- DOWNLOAD button
+chromedriver_clicks = 0                 # Number of clicks on the CHROMEDRIVER button
+update_clicks = 0                       # -||- UPDATE button
+download_clicks = 0                     # -||- DOWNLOAD button
+save_clicks = 0                         # -||- SAVE button
 
 # CHROMEDRIVER_PAGE
 TEXT_1 = "Path*"
@@ -49,12 +49,12 @@ TEXT_16 = "The folder where your scans'll be stored. ( Default : PandaScan 🐼 
 
 
 def show_settings(main_window, SETTINGS, settings_button):
-    """Afficher la fênetre Settings.
+    """Display the SETTINGS window.
 
     Args:
         main_window (Any): master window
-        SETTINGS (Any): fichier de configuration json
-        settings_button (Any): bouton attaché à la fonction
+        SETTINGS (Any): .json file
+        settings_button (Any): attached button
     """
 
     global settings_window, update_mode_menu
@@ -80,23 +80,22 @@ def show_settings(main_window, SETTINGS, settings_button):
         )
         canvas.place(x=0, y=0)
 
-        # Stocker l'état des checkbox
+        # Store checkboxes states
         chromedriver_mode_var = BooleanVar(value=SETTINGS["driver"]["headless"])
         fmteam_checkbox_var = BooleanVar(value=SETTINGS["websites"]["fmteam"]["enabled"])
         lelscans_checkbox_var = BooleanVar(value=SETTINGS["websites"]["lelscans"]["enabled"])
         scantrad_checkbox_var = BooleanVar(value=SETTINGS["websites"]["scantrad"]["enabled"])
         animesama_checkbox_var = BooleanVar(value=SETTINGS["websites"]["animesama"]["enabled"])
 
-        # Initialiser des dictionnaires [widgets + labels]
+        # Initialize dictionaries [widgets + labels]
         widgets_to_manage = {}
         labels_to_manage = {}
 
         # === FUNCTIONS
 
         def on_closing():
-            """Actions à effectuer à la fermeture de la fenêtre.
+            """Tasks to perform when closing the window.
             """
-            global save_clicks
 
             settings_button.config(state="normal")
 
@@ -110,68 +109,68 @@ def show_settings(main_window, SETTINGS, settings_button):
             settings_window.withdraw()
 
         def choose_directory(entry):
-            """Choisir un emplacement de dossier.
+            """Choose a folder location.
 
             Args:
-                entry (Any): entrée d'insertion du chemin choisi
+                entry (Any): Input for entering the chosen path.
             """
             directory = filedialog.askdirectory()
-            entry.delete(0, tk.END)     # Effacer le contenu de l'entrée
-            entry.insert(0, directory)  # Insérer le chemin du dossier choisi
+            entry.delete(0, tk.END)
+            entry.insert(0, directory)
 
         def choose_file(entry):
-            """Choisir un emplacement de fichier
+            """Choose a file location.
 
             Args:
-                entry (Any): entrée d'insertion du chemin choisi
+                entry (Any): Input for entering the chosen path.
             """
             file = filedialog.askopenfilename(title="select the chromedriver file")
             if file:
-                entry.delete(0, tk.END)  # Effacer le contenu de l'entrée
-                entry.insert(0, file)    # Insérer le chemin du fichier choisi
+                entry.delete(0, tk.END)
+                entry.insert(0, file)
 
         def mask_elements(button):
-            """Masquer un ou plusieurs widgets
+            """Hide one or more widgets.
 
             Args:
-                button: bouton de référence
+                button: the widget button
             """
             for element in widgets_to_manage[button].keys():
                 element.place_forget()
 
         def hide_text(button):
-            """Masquer un ou plusieurs elements textuels
+            """Hide one or more textual elements.
 
             Args:
-                button (Any): bouton de référence
+                button (Any): the widget button
             """
             for element in labels_to_manage[button].keys():
                 canvas.itemconfig(element, state="hidden")
 
         def show_text(button):
-            """Afficher un ou plusieurs elements textuels
+            """Display one or more textual elements.
 
             Args:
-                button (Any): bouton de référence
+                button (Any): the widget button
             """
             for element in labels_to_manage[button].keys():
                 canvas.itemconfig(element, state="normal")
 
         def show_elements(button):
-            """Afficher les widgets cachés.
+            """Display the hidden widgets.
 
             Args:
-                button (Any): bouton de référence
+                button (Any): the widget button
             """
             for element, (x, y, width, height) in widgets_to_manage[button].items():
                 element.place(x=x, y=y, width=width, height=height)
             settings_window.update()
 
         def check_previous_deactivate_button(button):
-            """Vérifier quel bouton était désactivé avant de désactiver le bouton actuel.
+            """Check which button was disabled before disabling the current button.
 
             Args:
-                button (Any): bouton de référence
+                button (Any): the widget button
             """
             global chromedriver_clicks, chromedriver_button_state, update_clicks, update_button_state, download_clicks, download_button_state
 
@@ -179,13 +178,13 @@ def show_settings(main_window, SETTINGS, settings_button):
                 """Masquer les éléments de la page correspondante
 
                 Args:
-                    button (Any): bouton de référence
-                    button_image_1 (Any): image par défaut
-                    button_image_2 (Any): image alternative
-                    window_state (Any): état de la fenêtre
+                    button (Any): the widget button
+                    button_image_1 (Any): default image
+                    button_image_2 (Any): alternative image
+                    window_state (Any): window state
 
                 Returns:
-                    bool: état de la fenêtre
+                    bool: True(window is inactive) , False(otherwise)
                 """
                 activate_button(button, button_image_1, button_image_2)
                 hide_text(button)
@@ -220,17 +219,17 @@ def show_settings(main_window, SETTINGS, settings_button):
                     update_button_state = manage_page_deactivation(button_2, update_page_1, update_page_2, update_button_state)
 
         def manage_window(button):
-            """Gérer l'affichage d'une page
+            """Manage the display of a page.
 
             Args:
-                button (Any): bouton de référence
+                button (Any): the widget button
             """
             check_previous_deactivate_button(button)
             show_elements(button)
             show_text(button)
 
         def chromedriver_settings():
-            """Charger les éléments de la page Chromedriver
+            """Load the elements of the Chromedriver page.
             """
             global chromedriver_button_state, chromedriver_clicks
             global chromedriver_entry, choose_file_path, chromedriver_checkbox
@@ -263,13 +262,13 @@ def show_settings(main_window, SETTINGS, settings_button):
             chromedriver_checkbox_info_1 = canvas.create_text(93.0, 130.0, anchor="nw", text=TEXT_4, fill=CURRENT_COLOR, font=INFO_POLICE)
             chromedriver_checkbox_info_2 = canvas.create_text(93.0, 142.0, anchor="nw", text=TEXT_5, fill=ALT_COLOR, font=INFO_POLICE)
 
-            # Les widgets à gérer
+            # Widgets to manage
             widgets_to_manage[button_1] = {
                 chromedriver_entry: (92.0, 76.0, 228.0, 13.0),
                 choose_file_path: (340.0, 70.0, 50.0, 25.0),
                 chromedriver_checkbox: (93.0, 113.0, 14.0, 12.0)
             }
-            # Les labels à gérer
+            # Labels to manage
             labels_to_manage[button_1] = {
                 chromedriver_path: (49.0, 75.0),
                 chromedriver_path_info: (93.0, 95.0),
@@ -281,7 +280,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             chromedriver_clicks = 1
 
         def update_settings():
-            """Charger les éléments de la page update
+            """Load the elements of the Update page.
             """
             global update_button_state, update_clicks
             global update_mode_menu, update_checkbox_1, update_checkbox_2, update_checkbox_3
@@ -330,14 +329,14 @@ def show_settings(main_window, SETTINGS, settings_button):
             update_checkbox_4 = Checkbutton(settings_window, variable=animesama_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_4.place(x=125.0, y=216.0, width=14.0, height=12.0)
 
-            # Les widgets à gérer
+            # Widgets to manage
             widgets_to_manage[button_2] = {
                 update_mode_menu: (92.0, 76.0, 80, 15.0),
                 update_checkbox_1: (125.0, 158.0, 14.0, 12.0),
                 update_checkbox_2: (125.0, 176.0, 14.0, 12.0),
                 update_checkbox_3: (125.0, 196.0, 14.0, 12.0),
                 update_checkbox_4: (125.0, 216.0, 14.0, 12.0)}
-            # Les labels à gérer
+            # Labels to manage
             labels_to_manage[button_2] = {
                 update_mode: (49.0, 75.0),
                 update_mode_info_1: (93.0, 96.0),
@@ -352,7 +351,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             check_previous_deactivate_button(button_2)
 
         def download_settings():
-            """Charger les éléments de la page DOWNLOAD
+            """Load the elements of the Download page.
             """
             global download_button_state, download_clicks
             global download_entry, choose_directory_path
@@ -377,11 +376,11 @@ def show_settings(main_window, SETTINGS, settings_button):
             # [ TEXT ]   Info path
             download_path_info = canvas.create_text(55.0, 100.0, anchor="nw", text=TEXT_16, fill=CURRENT_COLOR, font=INFO_POLICE)
 
-            # Les widgets à gérer
+            # Widgets to manage
             widgets_to_manage[button_3] = {
                 download_entry: (92.0, 76.0, 228.0, 13.0),
                 choose_directory_path: (340.0, 70.0, 50.0, 25.0)}
-            # Les labels à gérer
+            # Labels to manage
             labels_to_manage[button_3] = {
                 download_path: (55.0, 75.0),
                 download_path_info: (55.0, 100.0)}
@@ -389,7 +388,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             check_previous_deactivate_button(button_3)
 
         def save_settings():
-            """Sauvegarder les changements dans le fichier de configuration.
+            """Save the changes to the config file.
             """
             global save_clicks
 
@@ -417,7 +416,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 save_clicks = 0
                 return LOG.debug("Saving canceled ❌")
 
-        # === FOUNDATION
+        # === APP FOUNDATIONS
 
         # Background
         background = PhotoImage(file=relative_to_assets("background.png"))

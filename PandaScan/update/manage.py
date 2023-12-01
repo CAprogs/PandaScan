@@ -26,7 +26,7 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
         LOG.info(f"Searching for {selected_website} Updates 🔄..")
 
         start_time = time.time()
-        i = check_and_update(selected_website, SETTINGS, i, LOG)
+        i, website_status = check_and_update(selected_website, SETTINGS, i, LOG)
         end_time = time.time()
         elapsed_time = end_time - start_time
         if i != 0:
@@ -61,10 +61,10 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
         for website in WEBSITES:
 
             start_time = time.time()
-            i = check_and_update(website, SETTINGS, i, LOG)
+            i, website_status = check_and_update(website, SETTINGS, i, LOG)
             end_time = time.time()
             elapsed_time = end_time - start_time
-            if i != 0:
+            if website_status is True:
                 LOG.info(f"{website} is Up-to-date ✅ | lasted: {elapsed_time:.2f} s")
 
         if i != 0:

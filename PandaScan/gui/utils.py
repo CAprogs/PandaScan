@@ -3,22 +3,22 @@ from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
 
 
 def button_hover(button, button_image_1, button_image_2, Download_state=False):
-    """Activer le Hover d'un bouton
+    """Enable button hover.
 
     Args:
-        button (Any): bouton de référence
-        button_image_1 (Any): image par defaut
-        button_image_2 (Any): image alternative
-        Download_state (bool): état du bouton Download
+        button (Any): the widget button
+        button_image_1 (Any): default image
+        button_image_2 (Any): alternative image
+        Download_state (bool): download button state
     """
     def set_button_color(event, button, button_image, Download_state):
-        """Associer une image à un bouton
+        """Associate an image with a button
 
         Args:
-            event (Any): l'événement qui déclenche la fonction
-            button (Any): bouton de référence
-            button_image (Any): image à associer
-            Download_state (bool): état du bouton Download
+            event (Any): the event triggering the function
+            button (Any): the widget button
+            button_image (Any): the image to set
+            Download_state (bool): download button state
         """
         if Download_state is True:
             None
@@ -30,33 +30,33 @@ def button_hover(button, button_image_1, button_image_2, Download_state=False):
 
 
 def deactivate_button_hover(button):
-    """Désactiver le Hover d'un bouton.
+    """Disable button hover.
 
     Args:
-        button (Any): bouton de référence
+        button (Any): the widget button
     """
     button.unbind("<Enter>")
     button.unbind("<Leave>")
 
 
 def activate_button(button, button_image_1, button_image_2):
-    """Activer un bouton
+    """Activate a button
 
     Args:
-        button (Any): bouton de référence
-        button_image_1 (Any): image par défaut
-        button_image_2 (Any): image alternative
+        button (Any): the widget button
+        button_image_1 (Any): default image
+        button_image_2 (Any): alternative image
     """
     button.config(image=button_image_1, state=tk.NORMAL, cursor=ACTIVE_CURSOR)
     button_hover(button, button_image_1, button_image_2)
 
 
 def deactivate_button(button, button_image_2):
-    """Désactiver un bouton
+    """Deactivate a button
 
     Args:
-        button (Any): bouton de référence
-        button_image_2 (Any): image alternative
+        button (Any): the widget button
+        button_image_2 (Any): alternative image
     """
     button.config(image=button_image_2, state=tk.DISABLED, cursor=INACTIVE_CURSOR)
     deactivate_button_hover(button)

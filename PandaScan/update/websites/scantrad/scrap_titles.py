@@ -8,8 +8,8 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
 
     Args:
         DRIVER (Any): the chromedriver
-        PATH_TO_SCANTRAD (str): path to scantrad folder
-        LOG (Any): logger d'affichage
+        PATH_TO_SCANTRAD (str): path to scantrad directory (update)
+        LOG (Any): the logger
     """
 
     page = 1

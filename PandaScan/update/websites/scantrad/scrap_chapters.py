@@ -9,8 +9,8 @@ def Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG):
 
     Args:
         DRIVER (Any): the chromedriver
-        PATH_TO_SCANTRAD (str): path to scantrad folder
-        LOG (Any): logger d'affichage
+        PATH_TO_SCANTRAD (str): path to scantrad directory (update)
+        LOG (Any): the logger
     """
 
     datas = pd.read_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv')
@@ -24,7 +24,7 @@ def Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG):
             LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = []
 
-            DRIVER.implicitly_wait(0.5)
+            DRIVER.implicitly_wait(1)
 
             elements = DRIVER.find_elements(By.CLASS_NAME, 'wp-manga-chapter  ')
             for element in elements:

@@ -158,3 +158,15 @@ No added / deprecated files !
 
 Update 14 : 30/11/2023 | 01:12:29
 No added / deprecated files !
+
+Update 15 : 01/12/2023 | 17:55:27
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1442
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 243
+Changes in kingdom:
+  • Added chapters: chapitre 780
+Changes in one-piece:
+  • Added chapters: chapitre 1100
+Changes in one-punch-man:
+  • Added chapters: chapitre 195
