@@ -11,7 +11,7 @@
 
 
 <br>Have you always wanted to **download your favorite manga scans without limits**?</br>
-**PandaScan 🐼** is the µtorrent of your favorite manga 🤩 !
+**PandaScan 🐼** is the µtorrent for your favorite manga 🤩!
         
 </div>
 
@@ -21,7 +21,7 @@
 - Over **`37,000 chapters`** downloadable
 
 <details>
-  <summary> Available sites 🌐 </summary>
+  <summary> Available Sites 🌐 </summary>
 
   - [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) (🇫🇷)
   - [fmteam.fr](https://fmteam.fr/comics) (🇫🇷)
@@ -38,28 +38,30 @@
 
 ### Coming Soon 📅
 
-- An **English 󠁧󠁢󠁥󠁮󠁧🇬🇧** site will be added.
-- Another **French 󠁧󠁢󠁥󠁮󠁧🇫🇷** site will also be added.
-- Release of version **3.x.x** is coming very soon.
+- Addition of [anime-sama.me](https://anime-sama.me/) (🇫🇷) - in versions **3.x.x**
+- Addition of [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
+- Addition of [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
+- Addition of [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
+- Release of versions **3.x.x** postponed to 05/12/2023
 
-Make **suggestions** through the [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
+Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
 ## Features 🚀
 
-- _**Download**_ ↧ : Automatically download all the scans you want with just one click!
-- _**Storage**_ 📚 : Downloaded files are stored in the right place at the right time!
-- _**Update**_ ( Manual / Automatic ) 🔄 : Real magic 🪄, stay up to date with the latest releases of your scans!
-- _**Changelog**_ 🔗 : Stay informed about changes in your data! All changes are recorded after an update 𝌤
-- _**Settings**_ ⚙️ : Configure the essentials of the application to your liking, PandaScan 🐼 belongs to YOU 🫵
+- _**Download**_ ↧: Automatically and with just one click, download all the scans you desire!
+- _**Storage**_ 📚: Downloaded files are stored in the right place, at the right time!
+- _**Update**_ (Manual / Automatic) 🔄: A real magic trick 🪄, stay updated and alert to the latest releases of your scans!
+- _**Changelog**_ 🔗: Stay informed of changes in your data! All changes are recorded after an update 𝌤
+- _**Configuration**_ ⚙️: Configure the essentials of the application as you like, PandaScan 🐼 belongs to YOU 🫵
 
-## News 🎉
+## New Features 🎉
 
-The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (v2.1.1) allows you to change application settings directly on the interface.
+The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (v2.1.1) allows direct changes to the application settings on the interface
 | Window 1  | Window 2 | Window 3 |
 | :-------- | :-------       | :-------    |
 | <img width="500" alt="Screenshot 2023-10-12 at 02 51 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/f7a37e10-d97e-46fa-9166-c3ad002ee10c"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 51 59" src="https://github.com/CAprogs/PandaScan/assets/104645407/bf53d42b-2f30-4716-95af-b72eac069a39"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 52 02" src="https://github.com/CAprogs/PandaScan/assets/104645407/bafc2e16-13fc-4fad-86c3-b4232596d3d3">
 
-## Preview 👁️ (MacOs)
+## Preview 👁️ (MacOS)
 
 | Version  | <div align="center">[**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)</div> | <div align="center">[**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)</div> |
 | :-------- | :-------       | :-------    |
@@ -67,13 +69,13 @@ The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/Pan
 
 ## Principle 🪄
 
-The figure below represents the functioning of PandaScan 🐼. The 🟢 icons designate user selection.
+The figure below represents the operation of PandaScan 🐼. The 🟢 icons designate user selection.
 
 <img width="700" alt="Screenshot 2023-08-10 at 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
 
 ## Compatibility 🪢
 
-The following compatibilities are based on personal tests and are therefore not exhaustive.
+The following compatibilities are based on personal tests and therefore not exhaustive.
 |   OS  | BETA | LITE | Preview 👁️
 | :-------- | :-------       | :-------    |:-------    |
 | MacOS ( Apple Silicon ) |  ✅  | ✅ | <img width="500" alt="Screenshot 2023-10-12 at 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">
@@ -82,11 +84,11 @@ The following compatibilities are based on personal tests and are therefore not 
 
 ## Important ⚠️
 
-1. PandaScan 🐼 was created to facilitate the download and reading of your favorite manga locally. This project is non-profit and is intended for purely personal use.
-2. Excessive and frequent downloading can cause a website to malfunction. Please use this tool responsibly for the good of all.
-3. If some downloaded files are empty, it is completely normal! Websites are not perfect, and data storage can be costly.
+1. PandaScan 🐼 was created to facilitate the download and reading of your favorite mangas locally. This project is non-profit and intended for purely personal use.
+2. Excessive and frequent downloading may cause a website to malfunction. Please use this tool responsibly for the benefit of all.
+3. If some downloaded files are empty, it's completely normal! Websites are not perfect, and data storage can be costly.
 
-_**If you can afford to buy the works you read online, do it, even just to support the mangakas**_ 🥰 !
+_**If you have the means to buy the works you read online, do it, if only to support the mangakas**_ 🥰!
 
 ## Author ✍️
 
@@ -98,6 +100,6 @@ PandaScan 🐼 is under the [```MIT License```](https://github.com/CAprogs/Panda
 
 ## Donations & Support ❤️
 
-If you **like this project**, feel free to **give it a ⭐**!
+If you **like this project**, feel free to **leave a 🌟**!
 
 <a href="https://www.buymeacoffee.com/CAprogs"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
