@@ -5,9 +5,10 @@ import tkinter as tk
 from tkinter import Toplevel, BooleanVar, Entry, Button, OptionMenu
 from tkinter import Checkbutton, Canvas, PhotoImage, messagebox, StringVar
 from .utils import button_hover, activate_button, deactivate_button
+from foundation.selenium.utils import check_path
 from foundation.core.essentials import relative_to_assets
 from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
-from foundation.core.essentials import PATH_TO_CONFIG, LOG
+from foundation.core.essentials import OS_NAME, PATH_TO_CONFIG, LOG
 
 
 INFO_POLICE = ("Inter", 8 * -1)          # INFOS font
@@ -392,17 +393,17 @@ def show_settings(main_window, SETTINGS, settings_button):
             """
             global save_clicks
 
-            save_confirm = messagebox.askquestion(message=" Save new settings ❓")
+            save_confirm = messagebox.askquestion(message="Save new settings ❓")
 
             if save_confirm == "yes":
-                SETTINGS["chromedriver_path"] = chromedriver_entry.get()
+                SETTINGS["chromedriver_path"] = check_path(OS_NAME, LOG, chromedriver_entry.get())
                 SETTINGS["driver"]["headless"] = chromedriver_mode_var.get()
                 SETTINGS["Update"]["mode"] = update_mode_var.get()
                 SETTINGS["websites"]["fmteam"]["enabled"] = fmteam_checkbox_var.get()
                 SETTINGS["websites"]["lelscans"]["enabled"] = lelscans_checkbox_var.get()
                 SETTINGS["websites"]["scantrad"]["enabled"] = scantrad_checkbox_var.get()
                 SETTINGS["websites"]["animesama"]["enabled"] = animesama_checkbox_var.get()
-                SETTINGS["Download"]["path"] = download_entry.get()
+                SETTINGS["Download"]["path"] = check_path(OS_NAME, LOG, download_entry.get())
 
                 with open(PATH_TO_CONFIG, 'w') as json_file:
                     json.dump(SETTINGS, json_file, indent=4)

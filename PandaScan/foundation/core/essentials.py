@@ -1,4 +1,5 @@
 import os
+import platform
 import requests
 import json
 import sqlite3 as sql
@@ -6,6 +7,9 @@ from tkinter import messagebox
 from pathlib import Path
 from ..selenium.driver import set_driver_config
 from foundation.logger.log import CustomLogger, LOG_LEVELS, LOG_FORMATS
+
+# Get OS name
+OS_NAME = platform.system()
 
 # Cursor types
 INACTIVE_CURSOR = "arrow"
@@ -39,16 +43,16 @@ PATH_TO_ANIMESAMA = MAIN_DIRECTORY / "update/websites/animesama"
 with open(PATH_TO_CONFIG) as json_file:
     SETTINGS = json.load(json_file)
 
-# Instanciate logger
+# Instanciate the logger
 if SETTINGS["logger"]["enabled"] is False:
-    None
+    LOG = CustomLogger(state=False)  # Disable debug and info logs
 elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == LEVELS[0]:
-    LOG = CustomLogger(LOG_LEVELS[0], LOG_FORMATS[1])  # Display all messages
+    LOG = CustomLogger(LOG_LEVELS[0], LOG_FORMATS[1])  # Display all logs
 elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == LEVELS[1]:
-    LOG = CustomLogger(LOG_LEVELS[1], LOG_FORMATS[0])  # Only Display info messages
+    LOG = CustomLogger(LOG_LEVELS[1], LOG_FORMATS[0])  # Only Display info logs
 
 # Configure chromedriver and selenium
-DRIVER = set_driver_config(MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG)
+DRIVER = set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG)
 
 # Load SQl datas
 try:
@@ -82,7 +86,7 @@ def relative_to_assets(path: str) -> Path:
     """Get the relative path to the assets folder.
 
     Args:
-        path (str): name of the asset
+        path (str): asset’s name with its extension (e.g. "logo.png")
 
     Returns:
         str: the relative path to the asset

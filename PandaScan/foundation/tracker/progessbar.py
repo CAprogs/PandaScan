@@ -30,8 +30,8 @@ class ProgressBar:
         """Display the progress bar.
 
         Args:
-            prefix (str, optional): name of the progress bar displayed. Defaults to 'Progress:'.
-            suffix (str, optional): displayed when the progress bar is finished. Defaults to 'Complete'.
+            prefix (str, optional): name of the progress bar displayed.
+            suffix (str, optional): displayed when the progress bar is finished.
         """
         percent = float(self.progress) / float(self.total)
         fill_length = int(self.length * percent)

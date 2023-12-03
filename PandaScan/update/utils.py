@@ -7,17 +7,18 @@ from foundation.core.essentials import PATH_TO_SCANTRAD
 from foundation.core.essentials import PATH_TO_ANIMESAMA
 
 
-def confirm_update(mode):
+def confirm_update(mode, message):
     """Update check.
 
     Args:
         mode (str): "Manual" or "Auto"
+        message (str): message to display
 
     Returns:
         bool: True(validate), False(otherwise)
     """
 
-    result = messagebox.askquestion(f"Confirmation Check : {mode}", f"Proceed {mode}-Update ❓")
+    result = messagebox.askquestion(f"Confirmation Check : {mode}-Update", f"Update {message} ?")
     if result == "yes":
         return True
     return False

@@ -1,10 +1,18 @@
 import logging
 
 
+LOG_LEVELS = [logging.DEBUG,
+              logging.INFO]
+
+LOG_FORMATS = ["%(message)s",
+               "%(levelname)s - %(message)s"]
+
+
 class CustomLogger:
-    def __init__(self, level, format="[%(levelname)s] %(message)s"):
+    def __init__(self, level="INFO", format="[%(levelname)s] %(message)s", state=True):
         self.logger = logging.getLogger()
         self.logger.setLevel(level)
+        self.state = state
 
         # Add a logging handler to the console
         stream_handler = logging.StreamHandler()
@@ -17,7 +25,8 @@ class CustomLogger:
         Args:
             message (str): message to display
         """
-        self.logger.debug(f"{message}\n")
+        if self.state is True:
+            self.logger.debug(f"{message}\n")
 
     def info(self, message):
         """display an info message
@@ -25,11 +34,5 @@ class CustomLogger:
         Args:
             message (str): message to display
         """
-        self.logger.info(f"{message}\n")
-
-
-LOG_LEVELS = [logging.DEBUG,
-              logging.INFO]
-
-LOG_FORMATS = ["%(message)s",
-               "%(levelname)s - %(message)s"]
+        if self.state is True:
+            self.logger.info(f"{message}\n")

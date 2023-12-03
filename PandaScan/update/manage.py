@@ -20,8 +20,9 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
 
     i = 0
     mode = "Manual"
+    message = selected_website
 
-    if confirm_update(mode):
+    if confirm_update(mode, message):
         os.system("clear")
         LOG.info(f"Searching for {selected_website} Updates 🔄..")
 
@@ -36,7 +37,7 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
             messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelogs 🔎")
 
     else:
-        LOG.info(f"{mode} Update Canceled")
+        LOG.debug(f"{mode} Update Canceled")
 
 
 def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
@@ -53,8 +54,9 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
 
     i = 0
     mode = "Auto"
+    message = "all websites"
 
-    if confirm_update(mode):
+    if confirm_update(mode, message):
         os.system("clear")
         LOG.info("Searching for Updates 🔄..")
 
@@ -72,4 +74,4 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
             messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelogs 🔎")
 
     else:
-        LOG.info(f"{mode} Update Canceled")
+        LOG.debug(f"{mode} Update Canceled")
