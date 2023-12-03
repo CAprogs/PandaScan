@@ -38,7 +38,8 @@
 
 ### À Venir 📅
 
-- Ajout du site [anime-sama.me](https://anime-sama.me/) (🇫🇷) - dans les versions **3.x.x**
+- Ajout du site [animesama](https://anime-sama.me/) (🇫🇷) - dans les versions **3.x.x**
+- Ajout du site [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - dans les versions **4.x.x**
 - Ajout du site [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
 - Ajout du site [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
 - Ajout du site [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**

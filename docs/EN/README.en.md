@@ -10,8 +10,8 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
 
 
-<br>Have you always wanted to **download your favorite manga scans without limits**?</br>
-**PandaScan 🐼** is the µtorrent for your favorite manga 🤩!
+<br>Have you always wanted to **download your favourite manga scans without limits**?</br>
+**PandaScan 🐼** is the µtorrent of your favorite manga 🤩!
         
 </div>
 
@@ -38,7 +38,8 @@
 
 ### Coming Soon 📅
 
-- Addition of [anime-sama.me](https://anime-sama.me/) (🇫🇷) - in versions **3.x.x**
+- Addition of [animesama](https://anime-sama.me/) (🇫🇷) - in versions **3.x.x**
+- Addition of [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - in versions **4.x.x**
 - Addition of [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
 - Addition of [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
 - Addition of [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
@@ -69,7 +70,7 @@ The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/Pan
 
 ## Principle 🪄
 
-The figure below represents the operation of PandaScan 🐼. The 🟢 icons designate user selection.
+The figure below represents the principle behind PandaScan 🐼. The 🟢 icons designate user selection.
 
 <img width="700" alt="Screenshot 2023-08-10 at 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
 
