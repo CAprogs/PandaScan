@@ -330,7 +330,7 @@ def main():
             else:
                 messagebox.showinfo(f"Download info [{EMOJIS[13]}]", f"""
                                     \nManga : {selected_manga_name}
-                                    \nsucceeded : {downloads_succeeded}/{nb_of_manga_chapters} {EMOJIS[3]}
+                                    succeeded : {downloads_succeeded}/{nb_of_manga_chapters} {EMOJIS[3]}
                                     failed : {downloads_failed} {EMOJIS[4]}
                                     skipped : {downloads_skipped} {EMOJIS[12]}
 
