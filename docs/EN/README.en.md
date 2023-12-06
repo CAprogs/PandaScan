@@ -10,8 +10,8 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
 
 
-<br>Have you always wanted to **download your favourite manga scans without limits**?</br>
-**PandaScan 🐼** is the µtorrent of your favorite manga 🤩!
+<br>Have you always wanted to **download your favorite manga scans without limits**?</br>
+**PandaScan 🐼** is the µTorrent for your favorite manga 🤩!
         
 </div>
 
@@ -21,7 +21,7 @@
 - Over **`54,000 chapters`** downloadable
 
 <details>
-  <summary> Available Sites 🌐 </summary>
+  <summary> Available sites 🌐 </summary>
 
   - [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) (🇫🇷)
   - [fmteam.fr](https://fmteam.fr/comics) (🇫🇷)
@@ -42,8 +42,8 @@
 - Addition of [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
 - Addition of [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
 - Addition of [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
-- Addition of [mangamoins](https://mangamoins.shaeishu.co/?p=1)  (🇫🇷) - in versions **5.x.x**
-- Addition of [lelmanga](https://www.lelmanga.com/) (🇫🇷) - in versions **5.x.x**
+- Addition of [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - in versions **4.x.x**
+- Addition of [lelmanga](https://www.lelmanga.com/) (🇫🇷) - in versions **4.x.x**
 
 Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
@@ -57,45 +57,55 @@ Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaSca
 
 ## News 🎉
 
-The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (v3.1.1) brings many improvements:
-- You now have the ability to select ranges of chapters to download:
-[Photo]
-- Accelerated chapter download speed.
-- Addition of [anime-sama.me](https://anime-sama.me/) (🇫🇷)
+The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Pandascan_Beta.zip) version (v3.0.0-beta) is available!
+
+It brings many improvements:
+- Addition of a new site: [anime-sama.me](https://anime-sama.me/) (🇫🇷)
+- Optimized download speed
+- Improved download tracking 🤩
+
+| <div align="center">Progress Bar ⏩</div>  | <div align="center">Download Summary 📃</div>
+| :-------- | :-------
+| <img width="801" alt="progress_bar" src="https://github.com/CAprogs/PandaScan/assets/104645407/87308a33-982b-4c32-a1cc-a1206a64d104"> | <img width="322" alt="Download resume" src="https://github.com/CAprogs/PandaScan/assets/104645407/d2afb557-17c9-442d-aefa-21944e29ce08">
+
+- Dynamic chapter range selection:
+
+<img width="300" alt="Range selection" src="https://github.com/CAprogs/PandaScan/assets/104645407/28818769-617f-4b30-9802-88cbd1d8b50b">
+
 - The settings window has been reviewed and improved.
 
 | Window 1  | Window 2 | Window 3 |
 | :-------- | :-------       | :-------    |
-| <img width="500" alt="Screenshot 2023-10-12 at 02 51 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/f7a37e10-d97e-46fa-9166-c3ad002ee10c"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 51 59" src="https://github.com/CAprogs/PandaScan/assets/104645407/bf53d42b-2f30-4716-95af-b72eac069a39"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 52 02" src="https://github.com/CAprogs/PandaScan/assets/104645407/bafc2e16-13fc-4fad-86c3-b4232596d3d3">
+| <img width="500" alt="F1" src="https://github.com/CAprogs/PandaScan/assets/104645407/45f1a55d-34d3-4c0d-ac39-c8659991acc1"> |  <img width="500" alt="F2" src="https://github.com/CAprogs/PandaScan/assets/104645407/da4f5f5f-e474-4c7d-afb1-3cf2e7f817b6"> |  <img width="500" alt="F3" src="https://github.com/CAprogs/PandaScan/assets/104645407/1604d632-715f-490d-be3e-85f30e23bf73">
 
-## Preview 👁️ (MacOS)
+## Preview 👁️ (MacOs)
 
-| Version  | <div align="center">[**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)</div> | <div align="center">[**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)</div> |
+| Version  | <div align="center">[**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Pandascan_Beta.zip)</div> | <div align="center">[**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-lite/Pandascan_Lite.zip)</div> |
 | :-------- | :-------       | :-------    |
-|   **Preview**  | <img width="500" alt="Screenshot 2023-10-12 at 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">            | <img width="500" alt="Screenshot 2023-10-12 at 02 50 54" src="https://github.com/CAprogs/PandaScan/assets/104645407/c11dccc7-f0e8-4462-9525-6cf46eebc949">           |
+|   **Preview**  | <img width="500" alt="BETA" src="https://github.com/CAprogs/PandaScan/assets/104645407/78b6ebd8-fa3a-4021-b109-f8a6d35cea65">            | <img width="500" alt="LITE" src="https://github.com/CAprogs/PandaScan/assets/104645407/bda50f5b-efb7-4648-b7ac-8dd000710f20">           |
 
 ## Principle 🪄
 
-The figure below represents the principle behind PandaScan 🐼. The 🟢 icons designate user selection.
+The figure below represents how PandaScan 🐼 works. The 🟢 icons designate user selection.
 
-<img width="700" alt="Screenshot 2023-08-10 at 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
+<img width="700" alt="Capture d’écran 2023-08-10 à 14 52 06" src="https://github.com/CAprogs/PandaScan/assets/104645407/bea8df67-452a-415b-8ff2-81470b35c1d5">
 
-## Compatibility 🪢
+## Compatibilities 🪢
 
-The following compatibilities are based on personal tests and therefore not exhaustive.
+The following compatibilities are based on personal tests and are therefore not exhaustive.
 |   OS  | BETA | LITE | Preview 👁️
 | :-------- | :-------       | :-------    |:-------    |
-| MacOS ( Apple Silicon ) |  ✅  | ✅ | <img width="500" alt="Screenshot 2023-10-12 at 02 30 37" src="https://github.com/CAprogs/PandaScan/assets/104645407/aee0264e-36b2-4a13-8635-6da8798dfe15">
-| Windows ( x64 ) |  ✅ | ✅ | <div align="center"> <img width="450" alt="Screenshot 2023-10-13 at 20 01 12" src="https://github.com/CAprogs/PandaScan/assets/104645407/e75cad2b-80a0-4f28-bb77-10210272d14a"> </div>
-| Linux ( Ubuntu ARM64) |  ❌ |  ✅ | <div align="center"> <img width="450" alt="Screenshot 2023-10-13 at 20 01 12" src="https://github.com/CAprogs/PandaScan/assets/104645407/74d5fc4b-3cbd-442a-b56e-146cef868a45"> </div>
+| MacOS ( Apple Silicon ) |  ✅  | ✅ | <img width="500" alt="MAC" src="https://github.com/CAprogs/PandaScan/assets/104645407/78b6ebd8-fa3a-4021-b109-f8a6d35cea65">
+| Windows ( x64 ) |  ✅ | ✅ | <div align="center"> <img width="450" alt="Windows" src="https://github.com/CAprogs/PandaScan/assets/104645407/e75cad2b-80a0-4f28-bb77-10210272d14a"> </div>
+| Linux ( Ubuntu ARM64) |  ❌ |  ✅ | <div align="center"> <img width="450" alt="Linux" src="https://github.com/CAprogs/PandaScan/assets/104645407/74d5fc4b-3cbd-442a-b56e-146cef868a45"> </div>
 
 ## Important ⚠️
 
 1. PandaScan 🐼 was created to facilitate the download and reading of your favorite mangas locally. This project is non-profit and intended for purely personal use.
-2. Excessive and frequent downloading may cause a website to malfunction. Please use this tool responsibly for the benefit of all.
-3. If some downloaded files are empty, it's completely normal! Websites are not perfect, and data storage can be costly.
+2. Excessive and frequent downloading may cause a website to malfunction. Please use this tool responsibly for the good of all.
+3. If some downloaded files are empty, that is entirely normal! Websites are not perfect, and data storage can be costly.
 
-_**If you can afford to buy the works you read online, do it, even if it's just to support the mangakas**_ 🥰!
+_**If you can afford to buy the works you read online, do it, if only to support the mangakas**_ 🥰!
 
 ## Author ✍️
 
@@ -103,10 +113,10 @@ _**If you can afford to buy the works you read online, do it, even if it's just 
 
 ## License 📝
 
-PandaScan 🐼 is under the [```MIT License```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
+PandaScan 🐼 is under [```MIT License```](https://github.com/CAprogs/PandaScan/blob/main/LICENSE)
 
 ## Donations & Support ❤️
 
-If you **like this project**, feel free to **leave a 🌟**!
+If you **like this project**, feel free to **give it a ⭐**!
 
 <a href="https://www.buymeacoffee.com/CAprogs"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=CAprogs&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
