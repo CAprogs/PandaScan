@@ -4,10 +4,9 @@
 
 # 
 ![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) 
-![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue) 
-![GitHub forks](https://img.shields.io/github/forks/CAprogs/PandaScan?color=green) 
-![GitHub watchers](https://img.shields.io/github/watchers/CAprogs/PandaScan?color=red)
-![GitHub all releases](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
+![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue)
+![total downloads](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
+![latest release](https://img.shields.io/github/v/release/CAprogs/PandaScan?label=latest&color=orange)
 
 
 <br>Vous avez toujours eu l'envie de **télécharger vos scans de mangas favoris sans limite** ?</br>
@@ -35,7 +34,10 @@
   - [English](docs/EN/README.en.md) (EN)
 
 ### Installation
-  - [Guide d'installation](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md) ⇣
+  - [Guide d'installation](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide) ⇣
+    - [Beta](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Pandascan_Beta)
+    - [Lite](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Pandascan_Lite)
+
 
 ### À Venir 📅
 
