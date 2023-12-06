@@ -1,6 +1,6 @@
 # Get started with PandaScan 🐼
 
-## Version **V3.x.x** | _**05/12/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
+## Version **V3.x.x** | _**06/12/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
 
 - Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#os-compatibility-).
 - PandaScan 🐼 is still in development, so it may contains unexpected bugs.
@@ -32,7 +32,8 @@ Avoid using `conda`, it may cause some issues.
 
 - Try to execute the **`chromedriver.exe`**. You should get a similar message :
 
-[Photo]
+<img width="900" alt="chromedriver_success_exe" src="https://github.com/CAprogs/PandaScan/assets/104645407/a0feb85c-b555-41ec-897a-f3b44b547373">
+
 - Then kill the process using **`Ctrl + C`** or just manually close the terminal.
 - It may not work the first time for **`Mac users`** so follow these steps ⬇️.
 
