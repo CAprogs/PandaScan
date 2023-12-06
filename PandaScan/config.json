@@ -1,7 +1,7 @@
 {
     "chromedriver_path": "",
     "driver": {
-        "headless": false
+        "headless": true
     },
     "Update": {
         "mode": "manual"

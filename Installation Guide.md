@@ -79,11 +79,11 @@ cd path\to\Pandascan
 ```
 - Create & Activate a **python venv** named pandavenv ✚ Install the **requirements** & Upgrade **pip** ⬇️
 ```
-python3 -m venv pandavenv && source pandavenv\Scripts\activate && pip install -r requirements.txt && pip install --upgrade pip
+python -m venv pandavenv && .\pandavenv\Scripts\activate && pip install -r requirements.txt && python -m pip install --upgrade pip
 ```
 - Run **Pandascan** ⬇️
 ```
-python3 App.py
+python App.py
 ```
 - **COPY** & **PASTE** the `chromedriver.exe` path as below ⬇️
     - Don't forget to add the `.exe` extension at the end of your path
@@ -94,7 +94,7 @@ python3 App.py
 You can now easily start **PandaScan** whenever you want using the following command ⬇️
 - make sure you're in the **PandaScan** folder first ( `cd path\to\Pandascan` )
 ```
-source pandavenv\Scripts\activate && python3 App.py
+source .\pandavenv\Scripts\activate && python App.py
 ```
 
 ### **IV. THIRD STEP ( Optional )**
