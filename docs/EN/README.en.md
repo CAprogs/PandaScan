@@ -4,10 +4,9 @@
 
 # 
 ![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) 
-![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue) 
-![GitHub forks](https://img.shields.io/github/forks/CAprogs/PandaScan?color=green) 
-![GitHub watchers](https://img.shields.io/github/watchers/CAprogs/PandaScan?color=red)
-![GitHub all releases](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
+![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue)
+![total downloads](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
+![latest release](https://img.shields.io/github/v/release/CAprogs/PandaScan?label=latest&color=orange)
 
 
 <br>Have you always wanted to **download your favorite manga scans without limits**?</br>
@@ -35,7 +34,9 @@
   - [English](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md) (EN)
 
 ### Installation
-  - [Installation Guide](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md) ⇣
+- [Installation Guide](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide) ⇣
+    - [Beta](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Pandascan_Beta)
+    - [Lite](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Pandascan_Lite)
 
 ### Coming Soon 📅
 
@@ -70,7 +71,9 @@ It brings many improvements:
 
 - Dynamic chapter range selection:
 
+<div align="center">
 <img width="300" alt="Range selection" src="https://github.com/CAprogs/PandaScan/assets/104645407/28818769-617f-4b30-9802-88cbd1d8b50b">
+</div>
 
 - The settings window has been reviewed and improved.
 
