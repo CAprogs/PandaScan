@@ -10,8 +10,8 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 | Version  | Release |
 | :-------- | :-------  |
-|  `V3.1.0` | [**BETA**]()  |
-|  `V3.0.0`  | [**LITE**]()  |
+|  `V3.0.0-beta` | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Pandascan_Beta.zip)  |
+|  `V3.0.0-lite`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-lite/Pandascan_Lite.zip)  |
 
 `BETA` : [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required.
 

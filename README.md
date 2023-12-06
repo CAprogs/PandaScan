@@ -57,7 +57,9 @@ Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/Panda
 
 ## Nouveautés 🎉
 
-La version [**BETA**]() (v3.1.1) apporte de nombreuses améliorations :
+La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Pandascan_Beta.zip) (v3.0.0-beta) est disponible !
+
+Elle apporte de nombreuses améliorations :
 - Ajout d'un nouveau site : [anime-sama.me](https://anime-sama.me/) (🇫🇷)
 - Vitesse de téléchargement optimisée
 - Amélioration du suivi de téléchargement 🤩
@@ -67,6 +69,7 @@ La version [**BETA**]() (v3.1.1) apporte de nombreuses améliorations :
 | <img width="801" alt="progress_bar" src="https://github.com/CAprogs/PandaScan/assets/104645407/87308a33-982b-4c32-a1cc-a1206a64d104"> | <img width="322" alt="Download resume" src="https://github.com/CAprogs/PandaScan/assets/104645407/d2afb557-17c9-442d-aefa-21944e29ce08">
 
 - Sélection dynamique de range de chapitres :
+
 <img width="300" alt="Range selection" src="https://github.com/CAprogs/PandaScan/assets/104645407/28818769-617f-4b30-9802-88cbd1d8b50b">
 
 - La fenêtre des paramètres a été revue et améliorée.
@@ -77,7 +80,7 @@ La version [**BETA**]() (v3.1.1) apporte de nombreuses améliorations :
 
 ## Aperçu 👁️ (MacOs)
 
-| Version  | <div align="center">[**BETA**]()</div> | <div align="center">[**LITE**]()</div> |
+| Version  | <div align="center">[**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Pandascan_Beta.zip)</div> | <div align="center">[**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-lite/Pandascan_Lite.zip)</div> |
 | :-------- | :-------       | :-------    |
 |   **Aperçu**  | <img width="500" alt="BETA" src="https://github.com/CAprogs/PandaScan/assets/104645407/78b6ebd8-fa3a-4021-b109-f8a6d35cea65">            | <img width="500" alt="LITE" src="https://github.com/CAprogs/PandaScan/assets/104645407/bda50f5b-efb7-4648-b7ac-8dd000710f20">           |
 
