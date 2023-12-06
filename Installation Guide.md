@@ -51,19 +51,16 @@ Avoid using `conda`, it may cause some issues.
 ```
 cd path/to/PandaScan
 ```
-- Create & Activate a **python venv** named pandavenv ✚ Install the **requirements** & Upgrade **pip** ⬇️
+- Create & Activate a **python venv** named pandavenv ✚ Install the **requirements** & Upgrade **pip** ✚ Run **PandaScan** ⬇️
 ```
-python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip
+python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip && python3 App.py
 ```
-- Run **PandaScan** ⬇️
-```
-python3 App.py
-```
-- **COPY** & **PASTE** the `chromedriver.exe` path as below ⬇️
+- **COPY** & **PASTE** your `chromedriver.exe` path as below ⬇️
 
-[PHOTO]
+<img width="700" alt="mac" src="https://github.com/CAprogs/PandaScan/assets/104645407/9c460df1-16df-453b-b3ca-a5c2a4f744fa">
 
-You can now easily start **PandaScan** whenever you want using the following command ⬇️
+
+You can now easily run **PandaScan** whenever you want using the following command ⬇️
 - make sure you're in the **PandaScan** folder first ( `cd path/to/Pandascan` )
 ```
 source pandavenv/bin/activate && python3 App.py
@@ -77,21 +74,18 @@ source pandavenv/bin/activate && python3 App.py
 ```
 cd path\to\Pandascan
 ```
-- Create & Activate a **python venv** named pandavenv ✚ Install the **requirements** & Upgrade **pip** ⬇️
+- Create & Activate a **python venv** named pandavenv ✚ Install the **requirements** & Upgrade **pip** ✚ Run **PandaScan** ⬇️
 ```
-python -m venv pandavenv && .\pandavenv\Scripts\activate && pip install -r requirements.txt && python -m pip install --upgrade pip
+python -m venv pandavenv && .\pandavenv\Scripts\activate && pip install -r requirements.txt && python -m pip install --upgrade pip && python App.py
 ```
-- Run **Pandascan** ⬇️
-```
-python App.py
-```
-- **COPY** & **PASTE** the `chromedriver.exe` path as below ⬇️
+- **COPY** & **PASTE** your `chromedriver.exe` path as below ⬇️
     - Don't forget to add the `.exe` extension at the end of your path
 
-[PHOTO]
+<img width="700" alt="windows" src="https://github.com/CAprogs/PandaScan/assets/104645407/445652ff-8091-4c37-afd2-fe52610c035a">
 
 
-You can now easily start **PandaScan** whenever you want using the following command ⬇️
+
+You can now easily run **PandaScan** whenever you want using the following command ⬇️
 - make sure you're in the **PandaScan** folder first ( `cd path\to\Pandascan` )
 ```
 source .\pandavenv\Scripts\activate && python App.py
@@ -126,7 +120,6 @@ If a `Chromedriver Error` occurs , there could be several reasons :
 - You didn't `paste` the right path to **Chromedriver**. ( on Windows, don't forget to add the `.exe` extension at the end of your path )
 
 #
- Download speed depends on your internet connection.
 
 ### Failed downloads ❌
 
@@ -136,7 +129,7 @@ If a `download fails`, there could be several reasons :
 - Your internet connection is too slow.
 - The website has changed its data structure.
 
-#### You can always try to :
+#### Try to :
 - Delete the folder chapter's folder created and try again.
 - Switch to another connection. (e.g. from WiFi to cellular data)
 - Try again later if the website's server is down.
@@ -148,7 +141,7 @@ If a `download is skipped`, it means that :
 - The chapter is already downloaded.
 - A chapter with the same name already exists in the manga's folder.
 
-There is an exception for `Fmteam` because they have their own naming convention.
+There is an exception for `Fmteam` because it has its own naming convention.
 
 This prevents you from downloading the same chapter twice.
 #
@@ -181,9 +174,5 @@ The only setting that doesn't require to restart app is the `download path` : th
 
 # 
 #
-
-Pandascan will remain **FREE** and **OPEN SOURCE**.
-
-**`Contributions`** are very welcome. 
 
 If you like this project, consider giving it a ⭐️ on Github, it helps me a lot. 🫶
