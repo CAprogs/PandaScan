@@ -72,7 +72,9 @@ Elle apporte de nombreuses améliorations :
 
 - Sélection dynamique de range de chapitres :
 
+<div align="center">
 <img width="300" alt="Range selection" src="https://github.com/CAprogs/PandaScan/assets/104645407/28818769-617f-4b30-9802-88cbd1d8b50b">
+</div>
 
 - La fenêtre des paramètres a été revue et améliorée.
 
