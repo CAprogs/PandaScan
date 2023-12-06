@@ -25,6 +25,8 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
 
         DRIVER.get(page_url)
 
+        DRIVER.implicitly_wait(1)
+
         LOG.debug(f"Page {page} :")
 
         elements = DRIVER.find_elements(By.CLASS_NAME, 'h5')

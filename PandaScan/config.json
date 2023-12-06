@@ -18,7 +18,7 @@
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 15
+            "n_update": 16
         },
         "animesama": {
             "enabled": true,
