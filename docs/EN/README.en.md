@@ -17,8 +17,8 @@
 
 ## About 🥢
 
-- Over **`650 mangas`** available
-- Over **`37,000 chapters`** downloadable
+- Over **`730 mangas`** available
+- Over **`54,000 chapters`** downloadable
 
 <details>
   <summary> Available Sites 🌐 </summary>
@@ -26,6 +26,7 @@
   - [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) (🇫🇷)
   - [fmteam.fr](https://fmteam.fr/comics) (🇫🇷)
   - [scantrad-vf](https://scantrad-vf.me/) (🇫🇷)
+  - [anime-sama.me](https://anime-sama.me/) (🇫🇷)
 
 </details>
 
@@ -38,12 +39,11 @@
 
 ### Coming Soon 📅
 
-- Addition of [animesama](https://anime-sama.me/) (🇫🇷) - in versions **3.x.x**
-- Addition of [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - in versions **4.x.x**
 - Addition of [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
 - Addition of [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
 - Addition of [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in versions **4.x.x**
-- Release of versions **3.x.x** postponed to 05/12/2023
+- Addition of [mangamoins](https://mangamoins.shaeishu.co/?p=1)  (🇫🇷) - in versions **5.x.x**
+- Addition of [lelmanga](https://www.lelmanga.com/) (🇫🇷) - in versions **5.x.x**
 
 Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
@@ -57,7 +57,13 @@ Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaSca
 
 ## New Features 🎉
 
-The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (v2.1.1) allows direct changes to the application settings on the interface
+The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (v3.1.1) brings many improvements:
+- You now have the ability to select ranges of chapters to download:
+[Photo]
+- Accelerated chapter download speed.
+- Addition of the [anime-sama.me](https://anime-sama.me/) site (🇫🇷)
+- The settings window has been reviewed and improved.
+
 | Window 1  | Window 2 | Window 3 |
 | :-------- | :-------       | :-------    |
 | <img width="500" alt="Screenshot 2023-10-12 at 02 51 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/f7a37e10-d97e-46fa-9166-c3ad002ee10c"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 51 59" src="https://github.com/CAprogs/PandaScan/assets/104645407/bf53d42b-2f30-4716-95af-b72eac069a39"> |  <img width="500" alt="Screenshot 2023-10-12 at 02 52 02" src="https://github.com/CAprogs/PandaScan/assets/104645407/bafc2e16-13fc-4fad-86c3-b4232596d3d3">
@@ -89,7 +95,7 @@ The following compatibilities are based on personal tests and therefore not exha
 2. Excessive and frequent downloading may cause a website to malfunction. Please use this tool responsibly for the benefit of all.
 3. If some downloaded files are empty, it's completely normal! Websites are not perfect, and data storage can be costly.
 
-_**If you have the means to buy the works you read online, do it, if only to support the mangakas**_ 🥰!
+_**If you can afford to buy the works you read online, do it, even if it's just to support the mangakas**_ 🥰!
 
 ## Author ✍️
 

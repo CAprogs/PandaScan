@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from foundation.core.essentials import SELECTOR
 from foundation.core.essentials import LOG
+from foundation.core.emojis import EMOJIS
 
 
 def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_name):
@@ -43,10 +44,10 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
                 save_path = f"{chapter_file_path}/{page}.jpg"
                 response = animesama(img_link, save_path, page)
                 if response is False:
-                    LOG.debug(f"Download {download_id} aborted ❌, request failed.")
+                    LOG.debug(f"Download {download_id} aborted {EMOJIS[4]}, request failed.")
                     return "failed"
                 page += 1
-            LOG.debug(f"{chapter_name} downloaded ✅")
+            LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}")
             return "success"
         else:
             LOG.debug(f"Request failed | Status code : {http_response.status_code}")

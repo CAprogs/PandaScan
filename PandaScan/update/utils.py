@@ -5,6 +5,7 @@ from foundation.core.essentials import PATH_TO_FMTEAM
 from foundation.core.essentials import PATH_TO_LELSCANS
 from foundation.core.essentials import PATH_TO_SCANTRAD
 from foundation.core.essentials import PATH_TO_ANIMESAMA
+from foundation.core.emojis import EMOJIS
 
 
 def confirm_update(mode, message):
@@ -34,7 +35,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         LOG (Any): the logger
 
     Returns:
-        int: +1 (if update), +0 (otherwise)
+        int: +1 (if updated), +0 (otherwise)
         bool: True(website's update is enabled), False(otherwise)
     """
 
@@ -46,7 +47,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         from update.websites.fmteam.update_datas import Update_fmteam
         from update.websites.animesama.update_datas import Update_animesama
 
-        LOG.info(f"Updating {selected_website} 🔄..")
+        LOG.info(f"Updating {selected_website} {EMOJIS[8]}..")
 
         if selected_website == "scantrad":
             Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG)
@@ -65,5 +66,5 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         return i, website_status
 
     else:
-        LOG.info(f"{selected_website} can't be updated ❌ due to settings.")
+        LOG.info(f"{selected_website} can't be updated {EMOJIS[4]} due to settings.")
         return i, website_status

@@ -8,7 +8,7 @@
 '''
 # ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan ( BETA ) 🐼 | @2023 by CAprogs
-# This project aims to download mangas scans with ease for a local access and private use.
+# This project aims to download mangas scans with ease for local access and private use.
 # For now, Chromedriver is required to use PandaScan. Please follow the 'README' file for more information.
 # You are now able to change Settings directly in App.
 #    ° Choose between "manual" or "auto" update.
@@ -32,7 +32,9 @@ from gui.Settings import show_settings
 from gui.utils import button_hover
 from foundation.core.essentials import relative_to_assets, check_connection
 from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
-from foundation.core.essentials import WEBSITES, MAIN_DIRECTORY, DRIVER, SETTINGS, LOG
+from foundation.core.essentials import MAIN_DIRECTORY, DRIVER, SETTINGS, LOG
+from foundation.core.essentials import WEBSITES, ALL_WEBSITES, FR_WEBSITES, EN_WEBSITES
+from foundation.core.emojis import EMOJIS
 
 
 POLICE_1 = ("Inter", 15 * -1)
@@ -56,7 +58,7 @@ end_index = ""                                # index associated to the last cha
 download_button_state = False                 # state of the download button
 manga_file_path = ''                          # path to the manga folder
 
-TEXT_1 = "🌐"
+TEXT_1 = EMOJIS[5]
 TEXT_2 = "Manga name"
 TEXT_3 = "Chapter / Volume"
 TEXT_4 = "-"
@@ -67,17 +69,17 @@ def main():
     """
 
     if not check_connection():
-        messagebox.showinfo("Error [🛜]", "😵‍💫 Oups, no internet connection detected ❗️")
-        return print("\nPandascan exited 🚪\n")
+        messagebox.showinfo(f"Error [{EMOJIS[14]}]", f"{EMOJIS[9]} Oups, no internet connection detected {EMOJIS[11]}")
+        return print(f"\nPandascan exited {EMOJIS[1]}\n")
 
-    print("PandaScan is running ✅\n")
+    print(f"PandaScan is running {EMOJIS[3]}\n")
 
     main_window = Tk()
 
     logo = PhotoImage(file=relative_to_assets("pandacon.gif"))
     main_window.call('wm', 'iconphoto', main_window._w, logo)
 
-    main_window.title("PandaScan 🐼")
+    main_window.title(f"PandaScan {EMOJIS[0]}")
 
     main_window.geometry("962x686")
     main_window.configure(bg=CURRENT_COLOR)
@@ -102,7 +104,7 @@ def main():
         CONN.close()
         main_window.destroy()
         os.system("clear")
-        print("\nApp closed 👋\n")
+        print(f"\nApp closed {EMOJIS[2]}\n")
 
     def Clear_range_menus():
         """Clear and reset the selection range dropdown menus.
@@ -117,7 +119,7 @@ def main():
         Check_box.configure(state="disabled")
 
     def Reload_page():
-        """Reset the application widgets.
+        """Reset app's widgets.
         """
         global selected_manga_name
 
@@ -131,13 +133,31 @@ def main():
         Clear_range_menus()
 
     def Switch_website(*args):
-        """Change the scraping site.
+        """Change the website.
         """
         global default_website
 
         selected_item = website_list_var.get()
         default_website = selected_item
         LOG.debug(f"Website : {selected_item}")
+        Reload_page()
+
+    def Switch_language(*args):
+        """Fetch the website's menu with the websites associated to the selected language.
+        """
+
+        if language_list_var.get() == "All":
+            WEBSITES = ALL_WEBSITES
+        elif language_list_var.get() == EMOJIS[6]:
+            WEBSITES = FR_WEBSITES
+        elif language_list_var.get() == EMOJIS[7]:
+            WEBSITES = EN_WEBSITES
+
+        website_menu['menu'].delete(0, 'end')
+        website_list_var.set(WEBSITES[0])
+        for website in WEBSITES:
+            website_menu['menu'].add_command(label=website, command=tk._setit(website_list_var, website))
+        LOG.debug(f"Websites displayed : {language_list_var.get()}")
         Reload_page()
 
     def update_results(event):
@@ -308,14 +328,14 @@ def main():
             if download_id < nb_of_manga_chapters:
                 main_window.after(100, Start_download(progress_bar))
             else:
-                messagebox.showinfo("Download info [ℹ️]", f"""
+                messagebox.showinfo(f"Download info [{EMOJIS[13]}]", f"""
                                     \nManga : {selected_manga_name}
-                                    \nsucceeded : {downloads_succeeded}/{nb_of_manga_chapters} ✅
-                                    failed : {downloads_failed} ❌
-                                    skipped : {downloads_skipped} ⏩️
+                                    \nsucceeded : {downloads_succeeded}/{nb_of_manga_chapters} {EMOJIS[3]}
+                                    failed : {downloads_failed} {EMOJIS[4]}
+                                    skipped : {downloads_skipped} {EMOJIS[12]}
 
                                     \nStored in : {manga_file_path}
-                                    \n\nThanks for using PandaScan 🐼""")
+                                    \n\nThanks for using PandaScan {EMOJIS[0]}""")
                 download_button.configure(state="normal")
                 download_button_state = False
 
@@ -349,7 +369,7 @@ def main():
             Manage_download()
 
         if nb_of_manga_chapters == 0 or selected_manga_chapters == []:
-            messagebox.showinfo("Info [ℹ️]", "No Chapter Selected 🤕, Try again")
+            messagebox.showinfo(f"Info [{EMOJIS[13]}]", f"No Chapter Selected {EMOJIS[10]}, Try again")
         else:
             os.system("clear")
             LOG.info(f"Downloading {selected_manga_name} ..")
@@ -377,23 +397,26 @@ def main():
     entry_1 = Entry(main_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0)
     entry_1.place(x=376.0, y=195.0, width=269.0, height=16.0)
 
+    # === Dropdown selection of the language preference
+
+    language_list_var = StringVar(main_window)
+    language_list_var.set(SETTINGS["websites"]["default"])
+    language_menu = OptionMenu(main_window, language_list_var, "All", EMOJIS[6], EMOJIS[7])
+    language_menu.place(x=420.0, y=150.0, width=47.0)
+    language_menu.configure(bg=CURRENT_COLOR)
+    language_list_var.trace_add("write", Switch_language)
+
     # === Dropdown selection of the website
 
-    canvas.create_text(413.0, 152.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=POLICE_1)
+    # canvas.create_text(413.0, 152.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=POLICE_1)
     website_list_var = StringVar(main_window)
     website_list_var.set(default_website)
-    website_menu = OptionMenu(
-        main_window,
-        website_list_var,
-        WEBSITES[0],
-        WEBSITES[1],
-        WEBSITES[2],
-        WEBSITES[3]
-    )
-    website_menu.place(x=440.0, y=150.0)
+    website_menu = OptionMenu(main_window, website_list_var, default_website)
+    website_menu['menu'].delete(0, 'end')
+    for website in WEBSITES:
+        website_menu['menu'].add_command(label=website, command=tk._setit(website_list_var, website))
+    website_menu.place(x=470.0, y=150.0)
     website_menu.configure(bg=CURRENT_COLOR)
-
-    # Associate the website choice event with the 'Switch_website' function
     website_list_var.trace_add("write", Switch_website)
 
     # === ( ChapterBox : Image )

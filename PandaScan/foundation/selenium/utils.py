@@ -2,18 +2,19 @@ import json
 import os
 
 
-def check_extensions(extension_path_1, extension_path_2):
+def check_extensions(extension_path_1, extension_path_2, EMOJIS):
     """Check the extensions presence.
 
     Args:
         extension_path_1 (str): path to extension 1
         extension_path_2 (str): path to extension 2
+        EMOJIS (dict): the emojis
     """
     if not os.path.exists(extension_path_1) or not os.path.exists(extension_path_2):
-        print("\nSome CRX extensions are missing. ⚠️\n\nPandaScan exited 🚪")
+        print(f"\nSome CRX extensions are missing. ⚠️\n\nPandaScan exited {EMOJIS[1]}")
         exit()
     else:
-        print("\nExtensions found ✅")
+        print(f"\nExtensions found {EMOJIS[3]}")
 
 
 def check_path(OS_NAME, LOG, path):

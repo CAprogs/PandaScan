@@ -1,9 +1,6 @@
 import logging
 
 
-LOG_LEVELS = [logging.DEBUG,
-              logging.INFO]
-
 LOG_FORMATS = ["%(message)s",
                "%(levelname)s - %(message)s"]
 

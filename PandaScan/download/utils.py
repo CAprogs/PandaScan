@@ -1,6 +1,7 @@
 import requests
 import os
 from foundation.core.essentials import LOG
+from foundation.core.emojis import EMOJIS
 
 
 def chapter_transform(chapter_name, selected_website):
@@ -70,7 +71,7 @@ def check_url(pattern, tome, selected_manga_name, chapter_number):
             url = str(f"{pattern}{selected_manga_name}/fr/vol/{i}/ch/{chapter_number}")
         response = requests.head(url)
         if response.status_code == 200:
-            LOG.debug(f"""Valid address found ✅:
+            LOG.debug(f"""Valid address found {EMOJIS[3]}:
                 url : {url}
                 manga : {selected_manga_name}
                 tome : {i}

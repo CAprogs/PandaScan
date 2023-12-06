@@ -1,6 +1,7 @@
 import requests
 from lxml import html
 from foundation.core.essentials import LOG
+from foundation.core.emojis import EMOJIS
 
 
 def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_number):
@@ -29,10 +30,10 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
                 if response is True:
                     page += 1
                 else:
-                    LOG.debug(f"{chapter_number} downloaded ✅")
+                    LOG.debug(f"{chapter_number} downloaded {EMOJIS[3]}")
                     return "success"
         else:
-            LOG.debug(f"Download {download_id} aborted ❌, Status code : {http_response.status_code}")
+            LOG.debug(f"Download {download_id} aborted {EMOJIS[4]}, Status code : {http_response.status_code}")
             return "failed"
     except requests.ConnectionError as e:
         LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")

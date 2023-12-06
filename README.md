@@ -17,8 +17,8 @@
 
 ## À Propos 🥢
 
-- Plus de **`650 mangas`** disponibles
-- Plus de **`37 000 chapitres`** téléchargeables
+- Plus de **`730 mangas`** disponibles
+- Plus de **`54 000 chapitres`** téléchargeables
 
 <details>
   <summary> Les sites disponibles 🌐 </summary>
@@ -26,6 +26,7 @@
   - [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) (🇫🇷)
   - [fmteam.fr](https://fmteam.fr/comics) (🇫🇷)
   - [scantrad-vf](https://scantrad-vf.me/) (🇫🇷)
+  - [anime-sama.me](https://anime-sama.me/) (🇫🇷)
 
 </details>
 
@@ -38,12 +39,11 @@
 
 ### À Venir 📅
 
-- Ajout du site [animesama](https://anime-sama.me/) (🇫🇷) - dans les versions **3.x.x**
-- Ajout du site [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - dans les versions **4.x.x**
 - Ajout du site [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
 - Ajout du site [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
 - Ajout du site [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans les versions **4.x.x**
-- La release des versions **3.x.x** est repoussée au 05/12/2023
+- Ajout du site [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - dans les versions **4.x.x**
+- Ajout du site [lelmanga](https://www.lelmanga.com/) (🇫🇷) - dans les versions **4.x.x**
 
 Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
@@ -57,7 +57,13 @@ Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/Panda
 
 ## Nouveautés 🎉
 
-La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) (v2.1.1) permet de changer directement les paramètres de l'application sur l'interface
+La version [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) (v3.1.1) apporte de nombreuses améliorations :
+- Vous avez désormais la possibilité de sélectionner des ranges de chapitres à télécharger :
+[Photo]
+- Vitesse de téléchargement des chapitres accélérée.
+- Ajout du site [anime-sama.me](https://anime-sama.me/) (🇫🇷)
+- La fenêtre des paramètres a été revue et améliorée.
+
 | Fenêtre 1  | Fenêtre 2 | Fenêtre 3 |
 | :-------- | :-------       | :-------    |
 | <img width="500" alt="Capture d’écran 2023-10-12 à 02 51 55" src="https://github.com/CAprogs/PandaScan/assets/104645407/f7a37e10-d97e-46fa-9166-c3ad002ee10c"> |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 51 59" src="https://github.com/CAprogs/PandaScan/assets/104645407/bf53d42b-2f30-4716-95af-b72eac069a39"> |  <img width="500" alt="Capture d’écran 2023-10-12 à 02 52 02" src="https://github.com/CAprogs/PandaScan/assets/104645407/bafc2e16-13fc-4fad-86c3-b4232596d3d3">

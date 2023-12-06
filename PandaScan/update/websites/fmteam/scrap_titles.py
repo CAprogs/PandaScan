@@ -22,7 +22,7 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG):
     try:
         DRIVER.get(url)
 
-        DRIVER.implicitly_wait(1)
+        DRIVER.implicitly_wait(2)
 
         i = 1
         while True:

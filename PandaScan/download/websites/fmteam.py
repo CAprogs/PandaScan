@@ -5,6 +5,7 @@ import io
 import os
 from download.utils import check_tome, check_url
 from foundation.core.essentials import LOG
+from foundation.core.emojis import EMOJIS
 
 
 def init_download(selected_website, selected_manga_name, download_id, manga_file_path, SETTINGS, SELECTOR, chapter_number):
@@ -39,10 +40,10 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
         if http_response.status_code == 200:
             response = fmteam(http_response, manga_file_path, SETTINGS)
             if response is True:
-                LOG.debug(f"chapitre {chapter_number} downloaded ✅")
+                LOG.debug(f"chapitre {chapter_number} downloaded {EMOJIS[3]}")
                 return "success"
             elif response is False:
-                LOG.debug(f"Download {download_id} aborted ❌, request failed.")
+                LOG.debug(f"Download {download_id} aborted {EMOJIS[4]}, request failed.")
                 return "failed"
             else:
                 LOG.debug(f"Download {download_id} skipped !\n\nChapter found in : {response}")

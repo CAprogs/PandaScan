@@ -1,18 +1,13 @@
-<div align="center">
 
-<img width="800" alt="Developer Charles" src="https://github.com/CAprogs/PandaScan/assets/104645407/developer_charles.png">
-
-#
-
-## Behind PandaScan 🐼 (The Story)
+# Behind PandaScan 🐼 (The Story)
 
 ### Table of Contents
-- [Introduction](https://github.com/CAprogs/PandaScan/blob/main/docs/FR/LEARN.fr.md#introduction)
-- [Idea 💡](https://github.com/CAprogs/PandaScan/blob/main/docs/FR/LEARN.fr.md#id%C3%A9e-)
-- [Challenges ⛔️](https://github.com/CAprogs/PandaScan/blob/main/docs/FR/LEARN.fr.md#d%C3%A9fis-%EF%B8%8F)
-- [Development 🏗️](https://github.com/CAprogs/PandaScan/blob/main/docs/FR/LEARN.fr.md#d%C3%A9veloppement-%EF%B8%8F)
-- [Lessons Learned ✍️](https://github.com/CAprogs/PandaScan/blob/main/docs/FR/LEARN.fr.md#le%C3%A7ons-tir%C3%A9es-%EF%B8%8F)
-- [Acknowledgments](https://github.com/CAprogs/PandaScan/blob/main/docs/FR/LEARN.fr.md#remerciements)
+- [Introduction](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#introduction)
+- [Idea 💡](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#idea-)
+- [Challenges ⛔️](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#challenges-%EF%B8%8F)
+- [Development 🏗️](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#development-%EF%B8%8F)
+- [Lessons Learned ✍️](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#lessons-learned-%EF%B8%8F)
+- [Acknowledgments](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/LEARN.en.md#acknowledgments)
 
 #
 
@@ -88,7 +83,7 @@ Like any good perfectionist, I couldn't stop there. I absolutely had to make the
 
 However, the test version is available [here](https://github.com/CAprogs/PandaScan/releases).
 
-9. **A Essential Feature**
+9. **An Essential Feature**
 
 To achieve ultimate automation, I needed a way to keep the data up to date and avoid users manually running scripts to update available manga or chapters. 
 - So, I managed script execution by creating a JSON configuration file that allows choosing between manual or automatic updates when launching the application. 
@@ -112,5 +107,3 @@ _Charles_
 ---
 
 *This document aims to provide a detailed account of the creation of PandaScan 🐼, capturing the dedication and passion invested in bringing this project to life.*
-
-</div>

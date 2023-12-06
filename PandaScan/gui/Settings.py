@@ -9,6 +9,7 @@ from foundation.selenium.utils import check_path
 from foundation.core.essentials import relative_to_assets
 from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
 from foundation.core.essentials import OS_NAME, PATH_TO_CONFIG, LOG
+from foundation.core.emojis import EMOJIS
 
 
 INFO_POLICE = ("Inter", 8 * -1)          # INFOS font
@@ -30,7 +31,7 @@ save_clicks = 0                         # -||- SAVE button
 
 # CHROMEDRIVER_PAGE
 TEXT_1 = "Path*"
-TEXT_2 = "Path to your automated browser 🤖"
+TEXT_2 = f"Path to your automated browser {EMOJIS[18]}"
 TEXT_3 = "Mode"
 TEXT_4 = "Checked : automated browser can't be seen"
 TEXT_5 = "Unchecked : automated browser can be seen"
@@ -46,7 +47,7 @@ TEXT_13 = "Fmteam"
 TEXT_14 = "Animesama"
 # DOWNLOAD_PAGE
 TEXT_15 = "Path"
-TEXT_16 = "The folder where your scans'll be stored. ( Default : PandaScan 🐼 directory )"
+TEXT_16 = f"The folder where your scans'll be stored. ( Default : PandaScan {EMOJIS[0]} directory )"
 
 
 def show_settings(main_window, SETTINGS, settings_button):
@@ -100,7 +101,7 @@ def show_settings(main_window, SETTINGS, settings_button):
 
             settings_button.config(state="normal")
 
-            LOG.debug("Settings exited 🚪")
+            LOG.debug(f"Settings exited {EMOJIS[1]}")
             os.system("clear")
             if save_clicks == 0:
                 LOG.info("\nNo changes in Settings.")
@@ -393,7 +394,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             """
             global save_clicks
 
-            save_confirm = messagebox.askquestion(message="Save new settings ❓")
+            save_confirm = messagebox.askquestion(message=f"Save new settings {EMOJIS[19]}")
 
             if save_confirm == "yes":
                 SETTINGS["chromedriver_path"] = check_path(OS_NAME, LOG, chromedriver_entry.get())
@@ -410,12 +411,12 @@ def show_settings(main_window, SETTINGS, settings_button):
 
                 save_clicks += 1
 
-                return LOG.debug("New settings saved ✅")
+                return LOG.debug(f"New settings saved {EMOJIS[3]}")
 
             else:
 
                 save_clicks = 0
-                return LOG.debug("Saving canceled ❌")
+                return LOG.debug(f"Saving canceled {EMOJIS[4]}")
 
         # === APP FOUNDATIONS
 

@@ -3,6 +3,7 @@ import os
 from tkinter import messagebox
 from migrate.manage import Manage_migration
 from .utils import confirm_update, check_and_update
+from foundation.core.emojis import EMOJIS
 
 
 def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEBSITES, LOG):
@@ -24,17 +25,17 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
 
     if confirm_update(mode, message):
         os.system("clear")
-        LOG.info(f"Searching for {selected_website} Updates 🔄..")
+        LOG.info(f"Searching for {selected_website} Updates {EMOJIS[8]}..")
 
         start_time = time.time()
         i, website_status = check_and_update(selected_website, SETTINGS, i, LOG)
         end_time = time.time()
         elapsed_time = end_time - start_time
         if i != 0:
-            LOG.info(f"{selected_website} is Up-to-date ✅ | lasted: {elapsed_time:.2f} s")
+            LOG.info(f"{selected_website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
 
             Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
-            messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelogs 🔎")
+            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
 
     else:
         LOG.debug(f"{mode} Update Canceled")
@@ -58,7 +59,7 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
 
     if confirm_update(mode, message):
         os.system("clear")
-        LOG.info("Searching for Updates 🔄..")
+        LOG.info(f"Searching for Updates {EMOJIS[8]}..")
 
         for website in WEBSITES:
 
@@ -67,11 +68,11 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
             end_time = time.time()
             elapsed_time = end_time - start_time
             if website_status is True:
-                LOG.info(f"{website} is Up-to-date ✅ | lasted: {elapsed_time:.2f} s")
+                LOG.info(f"{website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
 
         if i != 0:
             Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
-            messagebox.showinfo("Update Info ℹ️", "Update completed ✅\n Explore the changelogs 🔎")
+            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
 
     else:
         LOG.debug(f"{mode} Update Canceled")

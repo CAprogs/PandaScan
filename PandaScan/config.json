@@ -1,27 +1,28 @@
 {
     "chromedriver_path": "",
     "driver": {
-        "headless": true
+        "headless": false
     },
     "Update": {
         "mode": "manual"
     },
     "websites": {
+        "default": "All",
         "fmteam": {
             "enabled": true,
-            "n_update": 16
+            "n_update": 17
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 15
+            "n_update": 16
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 14
+            "n_update": 15
         },
         "animesama": {
             "enabled": true,
-            "n_update": 4
+            "n_update": 5
         }
     },
     "Download": {

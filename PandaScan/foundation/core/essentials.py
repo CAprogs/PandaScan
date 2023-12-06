@@ -6,7 +6,9 @@ import sqlite3 as sql
 from tkinter import messagebox
 from pathlib import Path
 from ..selenium.driver import set_driver_config
-from foundation.logger.log import CustomLogger, LOG_LEVELS, LOG_FORMATS
+from foundation.logger.log import CustomLogger, LOG_FORMATS
+from .emojis import EMOJIS
+
 
 # Get OS name
 OS_NAME = platform.system()
@@ -16,13 +18,16 @@ INACTIVE_CURSOR = "arrow"
 ACTIVE_CURSOR = "hand2"
 
 # Available websites
-WEBSITES = ["fmteam",
-            "lelscans",
-            "animesama",
-            "scantrad"
-            ]
+WEBSITES_DICT = {"fmteam": "FR",
+                 "lelscans": "FR",
+                 "animesama": "FR",
+                 "scantrad": "FR"
+                 }
 
-LEVELS = ["DEBUG", "INFO"]
+# Set list of websites depending on their language
+ALL_WEBSITES = [website for website in WEBSITES_DICT.keys()]
+FR_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "FR"]
+EN_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "EN"]
 
 # Working directory
 MAIN_DIRECTORY = Path(os.path.abspath(os.getcwd()))
@@ -43,24 +48,32 @@ PATH_TO_ANIMESAMA = MAIN_DIRECTORY / "update/websites/animesama"
 with open(PATH_TO_CONFIG) as json_file:
     SETTINGS = json.load(json_file)
 
+# Set the default websites
+if SETTINGS["websites"]["default"] == "All":
+    WEBSITES = ALL_WEBSITES
+elif SETTINGS["websites"]["default"] == "FR":
+    WEBSITES = FR_WEBSITES
+elif SETTINGS["websites"]["default"] == "EN":
+    WEBSITES = EN_WEBSITES
+
 # Instanciate the logger
 if SETTINGS["logger"]["enabled"] is False:
     LOG = CustomLogger(state=False)  # Disable debug and info logs
-elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == LEVELS[0]:
-    LOG = CustomLogger(LOG_LEVELS[0], LOG_FORMATS[1])  # Display all logs
-elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == LEVELS[1]:
-    LOG = CustomLogger(LOG_LEVELS[1], LOG_FORMATS[0])  # Only Display info logs
+elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == "DEBUG":
+    LOG = CustomLogger(level="DEBUG", format=LOG_FORMATS[1])  # Display all logs
+elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == "INFO":
+    LOG = CustomLogger(format=LOG_FORMATS[0])  # Only Display info logs
 
 # Configure chromedriver and selenium
-DRIVER = set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG)
+DRIVER = set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS)
 
 # Load SQl datas
 try:
     CONN = sql.connect(f'{MAIN_DIRECTORY}/foundation/database/Pan_datas.db')
     SELECTOR = CONN.cursor()
-    print("\nDatas Loaded ✅")
+    print(f"\nDatas Loaded {EMOJIS[3]}")
 except sql.Error as e:
-    messagebox.showinfo("Error [📊]", f"😵‍💫 Oups, the database is missing. 🚨\n Error: {str(e)}")
+    messagebox.showinfo(f"Database Error [{EMOJIS[15]}]", f"{EMOJIS[9]} Oups, the database is missing. {EMOJIS[17]}\n Error: {str(e)}")
     exit()
 
 
@@ -74,7 +87,7 @@ def check_connection():
     try:
         response = requests.get("https://www.google.com")
         if response.status_code == 200:
-            print("\nConnected to Internet ✅\n")
+            print(f"\nConnected to Internet {EMOJIS[3]}\n")
             return True
         else:
             return False

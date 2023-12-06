@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from .utils import check_driver, check_extensions
 
 
-def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
+def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS):
     """Instantiate the browser elements.
 
     Args:
@@ -13,6 +13,7 @@ def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
         PATH_TO_CONFIG (str): path to the .json file
         SETTINGS (Any): .json configuration file
         LOG (Any): the logger
+        EMOJIS (dict): the emojis
 
     Returns:
         Any: the webdriver
@@ -20,7 +21,7 @@ def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
 
     ublock_path = f'{MAIN_DIRECTORY}/foundation/selenium/extensions/ublock.crx'
     adguard_path = f'{MAIN_DIRECTORY}/foundation/selenium/extensions/adguard.crx'
-    check_extensions(ublock_path, adguard_path)
+    check_extensions(ublock_path, adguard_path, EMOJIS)
 
     check_driver(OS_NAME, LOG, SETTINGS['chromedriver_path'], PATH_TO_CONFIG, SETTINGS)
 
@@ -48,10 +49,10 @@ def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG):
         SETTINGS["chromedriver_path"] = ""
         with open(PATH_TO_CONFIG, 'w') as json_file:
             json.dump(SETTINGS, json_file, indent=4)
-        print("PandaScan exited. 🚪\n")
+        print(f"PandaScan exited. {EMOJIS[1]}\n")
         exit()
 
     driver.maximize_window()
-    print("\nChromeDriver found ✅")
+    print(f"\nChromeDriver found {EMOJIS[3]}")
 
     return driver

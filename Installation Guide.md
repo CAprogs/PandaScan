@@ -1,41 +1,40 @@
 # Get started with PandaScan 🐼
 
-## Version **V2.x.x** | _**13/11/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
-
-A new release will be available soon. Stay tuned !
+## Version **V3.x.x** | _**05/12/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
 
 - Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#os-compatibility-).
-- If you encounter any issue please let me know through the [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
+- PandaScan 🐼 is still in development, so it may contains unexpected bugs.
+- If you encountered any issue, open one [here](https://github.com/CAprogs/PandaScan/issues).
 
 I assume you've already downloaded **PandaScan 🐼**. If not, download the **latest release** below ⬇️.
 
 | Version  | Release |
 | :-------- | :-------  |
-|  `V2.1.1` | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip)  |
-|  `V2.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v2.0.1/PandaScan.Lite.zip)  |
+|  `V3.1.1` | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.1.1/Pandascan_Beta.zip)  |
+|  `V3.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.1/Pandascan_Lite.zip)  |
 
-`BETA` : [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required for those who want access to all recent features.
+`BETA` : [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required.
 
-`LITE` : If you just want to have a taste, jump to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
+`LITE` : Directly jump to the [Second step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#ii-second-step).
 
 ---
 
 ### **I. FIRST STEP**
 #
 
+- Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )
+
+Avoid using `conda`, it may cause some issues.
+
 - Download [**Chromewebdriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable) ( Select the **right version** for your architecture as below )
 
 <img width="1493" alt="Capture d’écran 2023-09-28 à 18 14 57" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
 
----
-- **COPY** the path to your `.exe` file in your chromedriver folder & **Paste** it in the `config.json` file as below ⬇️
-  -  On **Windows** your path may look like : `User\Desktop\file_name` | You should redefine it as `User\\Desktop\\file_name`
-  
-![Installation Guide](https://github.com/CAprogs/PandaScan/assets/104645407/bffd530c-a774-4a56-b875-6a0d2136354d)
+- Try to execute the **`chromedriver.exe`**. You should get a similar message :
 
-**Please Note:** (BETA version only)
-- The **`chromedriver.exe`** file may be blocked by your computer. ( especially for **Mac users** )
-- Just follow these steps ⬇️.
+[Photo]
+- Then kill the process using **`Ctrl + C`** or just manually close the terminal.
+- It may not work the first time for **`Mac users`** so follow these steps ⬇️.
 
 ![ezgif com-optimize](https://github.com/CAprogs/PandaScan/assets/104645407/e629332b-3ab2-494f-a50e-88d6a9990eb1)
 
@@ -46,89 +45,57 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 ## MAC users 
 
-- Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )
-
-Avoid using `conda`. It may cause some issues and bugs.
-
 - Open your **Terminal**
   
-- Enter your **PandaScan folder** ⬇️
-  - Replace `path/to/PandaScan` with the path to your **PandaScan** folder
+- Replace `path/to/Pandascan` with the path to your **Pandascan** folder ⬇️
 ```
 cd path/to/PandaScan
 ```
-- Create a **python venv** named pandavenv ⬇️
+- Create & Activate a **python venv** named pandavenv ✚ Install the **requirements** & Upgrade **pip** ⬇️
 ```
-python3 -m venv pandavenv
+python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip
 ```
-- Upgrade **pip** ⬇️
-```
-pip install --upgrade pip
-```
-- Activate the **venv** ⬇️
-```
-source pandavenv/bin/activate
-```
-- Then install **requirements** ⬇️
-```
-pip install -r requirements.txt
-```
-
 - Run **PandaScan** ⬇️
 ```
 python3 App.py
 ```
-## WINDOWS users
+- **COPY** & **PASTE** the `chromedriver.exe` path as below ⬇️
 
-You can either use a `python venv` or `miniconda` to run PandaScan.
+[PHOTO]
 
-### Here's how to use **Miniconda** ⬇️
-
-- Download and install [**miniconda3**](https://docs.conda.io/projects/miniconda/en/latest/)
-
-Miniconda on Windows comes with the **Anaconda Prompt** that helps you to create and install your venv.
-
-- Search and Open **Anaconda Prompt**
-- Enter your **Miniconda** folder  ⬇️
+You can now easily start **PandaScan** whenever you want using the following command ⬇️
+- make sure you're in the **PandaScan** folder first ( `cd path/to/Pandascan` )
 ```
-cd miniconda3
-```
-- Create a **Conda Virtual environnement** named **Pandavenv** ⬇️
-```
-conda create --name pandavenv
-```
-- Activate the **Venv** ⬇️
-```
-conda activate pandavenv
-```
-- Verify if `pip` is installed in your venv  ⬇️
-
-```
-pip --version
-```
-- If `pip` is not installed in your venv, install it using ⬇️
-
-```
-conda install pip
+source pandavenv/bin/activate && python3 App.py
 ```
 
-- Install the **requirements** ⬇️
-  - Replace `path\to\requirements.txt` with your **requirements.txt** file path
-```
-pip install -r path\to\requirements.txt
-```
+## WINDOWS users 
 
-- Enter the PandaScan file ⬇️
-  - Replace `path\to\PandaScan` with your **PandaScan** folder path ⬇️
+- Open your **Command Prompt**
+  
+- Replace `path\to\Pandascan` with the path to your **Pandascan** folder ⬇️
 ```
-cd path\to\PandaScan
+cd path\to\Pandascan
 ```
+- Create & Activate a **python venv** named pandavenv ✚ Install the **requirements** & Upgrade **pip** ⬇️
+```
+python3 -m venv pandavenv && source pandavenv\Scripts\activate && pip install -r requirements.txt && pip install --upgrade pip
+```
+- Run **Pandascan** ⬇️
+```
+python3 App.py
+```
+- **COPY** & **PASTE** the `chromedriver.exe` path as below ⬇️
+    - Don't forget to add the `.exe` extension at the end of your path
 
-- Run **PandaScan** ⬇️
+[PHOTO]
+
+
+You can now easily start **PandaScan** whenever you want using the following command ⬇️
+- make sure you're in the **PandaScan** folder first ( `cd path\to\Pandascan` )
 ```
-conda run python App.py
+source pandavenv\Scripts\activate && python3 App.py
 ```
-#
 
 ### **IV. THIRD STEP ( Optional )**
 #
@@ -145,7 +112,78 @@ If you don't want to use CLI, you can run **PandaScan** using [**VScode**](https
 
 ![ezgif com-video-to-gif](https://github.com/CAprogs/PandaScan/assets/104645407/83a7d7db-f17d-4929-b0ff-01a603be0ea9)
 
+
+## Good To Know 📝
 ---
-**Please Note:** (BETA version only)
-- The **`changelog`** File is generate in _**PandaScan > changelog > websites > "select a website"**_
-- The **`changelog`** File helps you visualize if data have been removed, added or if there's no change at all in a particular Website.
+
+### Chromedriver Error 🤖 ( BETA only )
+
+If a `Chromedriver Error` occurs , there could be several reasons :
+
+- You didn't download the right version of **Chromedriver** for your architecture.
+- Your **Chromedriver version** doesn't `match` your **Chrome** version.
+- **Chromedriver** is `blocked` by your computer. ( make sure you've allowed its execution )
+- You didn't `paste` the right path to **Chromedriver**. ( on Windows, don't forget to add the `.exe` extension at the end of your path )
+
+#
+ Download speed depends on your internet connection.
+
+### Failed downloads ❌
+
+If a `download fails`, there could be several reasons :
+- The website's server is down.
+- Your internet connection is monitered by a firewall that blocks the download.
+- Your internet connection is too slow.
+- The website has changed its data structure.
+
+#### You can always try to :
+- Delete the folder chapter's folder created and try again.
+- Switch to another connection. (e.g. from WiFi to cellular data)
+- Try again later if the website's server is down.
+- Switch to another website ( your manga may be available on another website )
+#
+
+### Skipped downloads ⏩
+If a `download is skipped`, it means that :
+- The chapter is already downloaded.
+- A chapter with the same name already exists in the manga's folder.
+
+There is an exception for `Fmteam` because they have their own naming convention.
+
+This prevents you from downloading the same chapter twice.
+#
+
+### Updates 🔄 ( BETA only )
+
+There's two modes of update :
+- **Manual** : this is the default mode. Only the current site's data will be updated.
+- **Auto** : this mode will update all websites data when starting app.
+
+Updates `depends on settings` you've chosen :
+disabling a website's update will prevent the update from being performed for this specific website.
+#
+
+### ChangeLog 📝 ( BETA only )
+
+The `changelog` File helps you visualize if there's **any change** in a particular website's data.
+
+- A `changelog` File is generate in _**src > changelog > websites > "select a website"**_ after each update.
+
+#
+
+### Settings ⚙️ ( BETA only )
+
+Settings are saved in `config.json`.
+
+You can change them manually or using the **Settings** tab.
+
+The only setting that doesn't require to restart app is the `download path` : the new path will be used for the next download.
+
+# 
+#
+
+Pandascan will remain **FREE** and **OPEN SOURCE**.
+
+**`Contributions`** are very welcome. 
+
+If you like this project, consider giving it a ⭐️ on Github, it helps me a lot. 🫶

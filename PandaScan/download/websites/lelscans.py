@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from foundation.core.essentials import LOG
+from foundation.core.emojis import EMOJIS
 
 
 def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_number):
@@ -29,7 +30,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
                 if response is True:
                     page += 1
                 else:
-                    LOG.debug(f"chapitre {chapter_number} downloaded ✅")
+                    LOG.debug(f"chapitre {chapter_number} downloaded {EMOJIS[3]}")
                     return "success"
             else:
                 LOG.debug(f"Request failed | Status code : {http_response.status_code}")

@@ -1,6 +1,7 @@
 import pandas as pd
 import yaml
 from .utils import Delete_table
+from foundation.core.emojis import EMOJIS
 
 
 def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
@@ -56,6 +57,6 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
 
         # Enregistrer les modifications dans la DB
         CONN.commit()
-        LOG.info(f"{website} migrated ✅")
+        LOG.info(f"{website} migrated {EMOJIS[3]}")
 
-    LOG.info("Migration completed ✅.")
+    LOG.info(f"Migration completed {EMOJIS[3]}.")
