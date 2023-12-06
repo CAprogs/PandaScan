@@ -2,7 +2,7 @@
 
 ## Version **V3.x.x** | _**06/12/2023**_ released by [**CAprogs**](https://github.com/CAprogs)
 
-- Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#os-compatibility-).
+- Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#compatibility-).
 - PandaScan 🐼 is still in development, so it may contains unexpected bugs.
 - If you encountered any issue, open one [here](https://github.com/CAprogs/PandaScan/issues).
 
@@ -10,8 +10,8 @@ I assume you've already downloaded **PandaScan 🐼**. If not, download the **la
 
 | Version  | Release |
 | :-------- | :-------  |
-|  `V3.1.1` | [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.1.1/Pandascan_Beta.zip)  |
-|  `V3.0.1`  | [**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.1/Pandascan_Lite.zip)  |
+|  `V3.1.0` | [**BETA**]()  |
+|  `V3.0.0`  | [**LITE**]()  |
 
 `BETA` : [First step](https://github.com/CAprogs/PandaScan/blob/main/Installation%20Guide.md#i-first-step) is required.
 
@@ -173,7 +173,6 @@ You can change them manually or using the **Settings** tab.
 
 The only setting that doesn't require to restart app is the `download path` : the new path will be used for the next download.
 
-# 
 #
 
 If you like this project, consider giving it a ⭐️ on Github, it helps me a lot. 🫶
