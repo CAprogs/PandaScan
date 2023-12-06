@@ -329,13 +329,13 @@ def main():
                 main_window.after(100, Start_download(progress_bar))
             else:
                 messagebox.showinfo(f"Download info [{EMOJIS[13]}]", f"""
-                                    \nManga : {selected_manga_name}
+                                    Manga : {selected_manga_name}
 
                                     succeeded : {downloads_succeeded}/{nb_of_manga_chapters} {EMOJIS[3]}
                                     failed : {downloads_failed} {EMOJIS[4]}
                                     skipped : {downloads_skipped} {EMOJIS[12]}
 
-                                    \nStored in : {manga_file_path}
+                                    Stored in : {manga_file_path}
                                     \n\nThanks for using PandaScan {EMOJIS[0]}""")
                 download_button.configure(state="normal")
                 download_button_state = False
