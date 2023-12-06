@@ -55,13 +55,13 @@ Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaSca
 - _**Changelog**_ 🔗: Stay informed of changes in your data! All changes are recorded after an update 𝌤
 - _**Configuration**_ ⚙️: Configure the essentials of the application as you like, PandaScan 🐼 belongs to YOU 🫵
 
-## New Features 🎉
+## News 🎉
 
 The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v2.1.1/PandaScan.Beta.zip) version (v3.1.1) brings many improvements:
 - You now have the ability to select ranges of chapters to download:
 [Photo]
 - Accelerated chapter download speed.
-- Addition of the [anime-sama.me](https://anime-sama.me/) site (🇫🇷)
+- Addition of [anime-sama.me](https://anime-sama.me/) (🇫🇷)
 - The settings window has been reviewed and improved.
 
 | Window 1  | Window 2 | Window 3 |
