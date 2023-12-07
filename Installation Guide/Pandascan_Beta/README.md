@@ -81,18 +81,20 @@ source pandavenv/bin/activate && python3 App.py
 On windows, installation is a bit more complicated but don't worry, just follow these steps ⬇️.
 
 - Install [**miniconda3**](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe) (64-bit version)
-- Install and open **Powershell** ( via the Windows store )
+- Install **Powershell** ( via the Windows store )
 
 Make sure to **Deactivate your antivirus** before running any commands.
 
-- Copy & replace :
-    - `path\to\miniconda3` with the path to your **miniconda3** folder
-        - if you followed the default installation, it should look like `C:\Users\your_username\miniconda3`
-    - `path\to\requirements.txt` with the path to **requirements.txt** (add the `.txt` extension)
-    - `path\to\App.py` with the path to **App.py** (add the `.py` extension)
+- Open **Anaconda prompt** and Paste :
 ```
-cd path\to\miniconda3 && conda create --name pandavenv -y && conda activate pandavenv && conda install pip -y && pip install -r path\to\requirements.txt && python path\to\App.py
+conda init powershell
 ```
+- Close **Anaconda prompt** and Open **Powershell**
+- Copy & replace `path\to\Pandascan_Beta` with the right path ⬇️
+```
+conda create --name pandavenv -y && conda activate pandavenv && cd path\to\Pandascan_Beta && conda install pip -y && pip install -r requirements.txt && python App.py
+```
+
 - **COPY** & **PASTE** your `chromedriver.exe` path as below ⬇️
     - Don't forget to add the `.exe` extension
 
@@ -100,16 +102,19 @@ cd path\to\miniconda3 && conda create --name pandavenv -y && conda activate pand
 
 To easily run **PandaScan** on **Windows** :
 - Create a **.txt** file with the following content ⬇️
-     - replace `path/to/miniconda3` and `path/to/App.py` with their respective paths
+     - replace `path\to\Pandascan_Beta` with the right path
 ```
 @echo off
-cd path\to\miniconda3
-call conda activate pandavenv
-python path\to\App.py
+cd path\to\Pandascan_Lite
+CALL conda.bat activate pandavenv
+python App.py
 ```
-- Save the file as **PandaScan.bat** ( make sure to change the extension from **.txt** to **.bat** )
+- Save the **.txt** file as `panda.bat`
 
-Now every time you want to run **PandaScan**, just execute the **.bat** file with powershell.
+Now every time you want to run **Pandascan_Lite**, just execute the **.bat** file with Powershell by entering the path to `panda.bat`.
+```
+path\to\panda.bat
+```
 
 ## **III. Vscode ( Optional )**
 
