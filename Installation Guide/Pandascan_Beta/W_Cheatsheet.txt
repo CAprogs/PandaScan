@@ -1,0 +1,38 @@
+You should have downloaded and installed :
+* chromedriver ( for windows )
+* miniconda3
+* Powershell
+
+Tip ✨ :
+- Use [Ctrl + F] to replace all occurencies on Windows
+
+Paste each equivalent below ⬇️
+
+path\to\Pandascan_Beta = 
+path\to\chromedriver.exe =
+path\to\panda.bat =
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+========> Installation
+
+1. Anaconda Prompt
+conda init powershell
+
+2. Powershell
+conda create --name pandavenv -y && conda activate pandavenv && cd path\to\Pandascan_Beta && conda install pip -y && pip install -r requirements.txt && python App.py
+
+3. Powershell
+path\to\chromedriver.exe
+
+========> Create an executable
+
+1. panda.txt -> panda.bat
+@echo off
+cd path\to\Pandascan_Lite
+CALL conda.bat activate pandavenv
+python App.py
+
+========> Run Pandascan whenever you want
+
+1. Powershell ( or Drag and drop 'panda.bat' to Powershell )
+path\to\panda.bat

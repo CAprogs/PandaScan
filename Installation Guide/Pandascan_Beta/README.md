@@ -7,7 +7,7 @@
 </div>
 
 - Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#compatibility-).
-- Pandascan 🐼 is still in development, so it may contains unexpected bugs.
+- Pandascan_Beta 🐼 is still in development, so it may contains unexpected bugs.
 - If you encountered any issue, open one [here](https://github.com/CAprogs/PandaScan/issues).
 - See all releases [here](https://github.com/CAprogs/PandaScan/releases)
 
@@ -16,7 +16,9 @@
 - [I. Chromedriver 🤖](#i-chromedriver-🤖)
 - [II. Installation ↧](#ii-installation-↧)
     - [MAC 💻](#mac-💻)
+        - [Create your own executable (.sh)](#how-to-create-your-own-executable-sh)
     - [WINDOWS 💻](#windows-💻)
+        - [Create your own executable (.bat)](#how-to-create-your-own-executable-bat)
 - [III. Vscode ( Optional )](#iii-vscode--optional)
 - [Good To Know 📝](#good-to-know-📝)
     - [Chromedriver Error 🤖](#chromedriver-error-🤖)
@@ -26,13 +28,7 @@
     - [ChangeLog 📝](#changelog-📝)
     - [Settings ⚙️](#settings-⚙️)
 
-
-If you like this project, consider giving it a ⭐️ on Github, it helps me a lot. 🫶
-
----
-
-### **I. Chromedriver 🤖**
-#
+## **I. Chromedriver 🤖**
 
 - Download [**Chromewebdriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable) ( Select the **right version** for your architecture as below )
 
@@ -58,9 +54,9 @@ If you like this project, consider giving it a ⭐️ on Github, it helps me a l
 
 - Open your **Terminal**
   
-- Replace `path/to/Pandascan` with the path to your **Pandascan** folder ⬇️
+- Replace `path/to/Pandascan_Beta` with the path to your **Pandascan_Beta** folder ⬇️
 ```
-cd path/to/PandaScan
+cd path/to/Pandascan_Beta
 ```
 - Copy and Paste ⬇️
 ```
@@ -70,10 +66,31 @@ python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r req
 
 <img width="700" alt="mac" src="https://github.com/CAprogs/PandaScan/assets/104645407/9c460df1-16df-453b-b3ca-a5c2a4f744fa">
 
-To easily run **PandaScan** on **Mac** :
-- make sure you're in the **PandaScan** folder first ( `cd path/to/Pandascan` ) and execute  ⬇️
+### How to create your own executable (.sh)
+---
+
+- Create a `panda.txt` file inside Pandascan_Beta's folder
+- Copy and Paste inside `panda.txt` ⬇️
+    - replace `path/to/Pandascan_Beta` with the right path
 ```
-source pandavenv/bin/activate && python3 App.py
+cd path/to/Pandascan_Beta && source pandavenv/bin/activate && python3 App.py
+```
+- Save the file as `panda.sh`
+- Open your terminal and run ⬇️
+    - replace `path/to/Pandascan_Beta` with the right path
+
+```
+chmod +x panda.sh
+```
+
+Now you can run Pandascan_Beta whenever you want with your Terminal
+
+The easiest way is to Drag and drop `panda.sh` to the Terminal.
+
+- You can also run Pandascan_Beta with the terminal using ⬇️
+    - replace `path/to/panda.sh` with the right path
+```
+path/to/panda.sh
 ```
 
 ### WINDOWS 💻 
@@ -85,7 +102,7 @@ On windows, installation is a bit more complicated but don't worry, just follow 
 
 Make sure to **Deactivate your antivirus** before running any commands.
 
-- Open **Anaconda prompt** and Paste :
+- Open **Anaconda prompt** and run the command below ⬇️
 ```
 conda init powershell
 ```
@@ -100,31 +117,35 @@ conda create --name pandavenv -y && conda activate pandavenv && cd path\to\Panda
 
 <img width="700" alt="windows" src="https://github.com/CAprogs/PandaScan/assets/104645407/445652ff-8091-4c37-afd2-fe52610c035a">
 
-To easily run **PandaScan** on **Windows** :
-- Create a **.txt** file with the following content ⬇️
+### How to create your own executable (.bat)
+---
+
+- Create a `panda.txt` file with the following content ⬇️
      - replace `path\to\Pandascan_Beta` with the right path
 ```
 @echo off
-cd path\to\Pandascan_Lite
+cd path\to\Pandascan_Beta
 CALL conda.bat activate pandavenv
 python App.py
 ```
-- Save the **.txt** file as `panda.bat`
+- Rename the file as `panda.bat`
 
-Now every time you want to run **Pandascan_Lite**, just execute the **.bat** file with Powershell by entering the path to `panda.bat`.
+Now you can run Pandascan_Beta whenever you want with **Powershell**.
+
+The easiest way is to Drag and drop `panda.bat` to **Powershell**.
+
+- You can also run Pandascan with **Powershell** using ⬇️
+    - replace `path\to\panda.bat` with the right path
 ```
 path\to\panda.bat
 ```
 
 ## **III. Vscode ( Optional )**
 
-
-If you don't want to use CLI, you can run **PandaScan** using [**VScode**](https://code.visualstudio.com/) ⬇️
+If you don't want to use CLI, you can run **Pandascan_Beta** using [**VScode**](https://code.visualstudio.com/) ⬇️
 
 - Download and install [**Vscode**](https://code.visualstudio.com/)
-- Open **Vscode**
-- Click on **File** > **Open Folder**
-- Select your **PandaScan** folder
+- Open **Pandascan_Beta** folder with VScode
 - Select the **App.py** file
 - Select your **venv** ( **pandavenv** ) as interpreter
 - Click on **Run** > **Run without debugging**
@@ -192,3 +213,8 @@ Settings are saved in `config.json`.
 You can change them manually or using the **Settings** tab.
 
 Settings that doesn't require to restart app are `download path` and `website's updates`
+
+#
+<div align=center>
+If you like this project, consider giving it a ⭐️ on Github, it helps me a lot. 🫶
+</div>

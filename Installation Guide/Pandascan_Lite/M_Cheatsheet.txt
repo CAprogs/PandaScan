@@ -1,0 +1,32 @@
+You should have downloaded and installed :
+* Python
+
+Tip ✨ :
+- Use [⌘ + F] to replace all occurencies on MAC
+
+Paste each equivalent below ⬇️
+
+path/to/Pandascan_Lite = 
+path/to/panda.sh =
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+========> Installation
+
+1. Anaconda Prompt
+cd path/to/Pandascan_Lite
+
+2. Terminal
+python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip && python3 App.py
+
+========> Create an executable
+
+1. panda.txt -> panda.sh
+cd path/to/Pandascan_Lite && source pandavenv/bin/activate && python3 App.py
+
+2. Terminal
+chmod +x panda.sh
+
+========> Run Pandascan whenever you want
+
+1. Terminal ( or Drag and drop 'panda.sh' to the Terminal )
+path/to/panda.sh

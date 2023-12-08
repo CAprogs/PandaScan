@@ -17,16 +17,14 @@
 
 - [I. Installation ↧](#i-installation-↧)
     - [MAC 💻](#mac-💻)
+        - [Create your own executable (.sh)](#how-to-create-your-own-executable-sh)
     - [WINDOWS 💻](#windows-💻)
+        - [Create your own executable (.bat)](#how-to-create-your-own-executable-bat)
 - [II. VScode ( Optional )](#ii-vscode--optional)
 - [Good To Know 📝](#good-to-know-📝)
     - [Failed downloads ❌](#failed-downloads-❌)
     - [Skipped downloads ⏩](#skipped-downloads-⏩)
 
-
-If you like this project, consider giving it a ⭐️ on Github, it helps me a lot. 🫶
-
----
 
 ## **I. Installation ↧**
 
@@ -37,7 +35,7 @@ If you like this project, consider giving it a ⭐️ on Github, it helps me a l
 
 - Open your **Terminal**
   
-- Replace `path/to/Pandascan_Lite` with the path to your **Pandascan_Lite** folder ⬇️
+- Replace `path/to/Pandascan_Lite` with the right path ⬇️
 ```
 cd path/to/Pandascan_Lite
 ```
@@ -46,10 +44,31 @@ cd path/to/Pandascan_Lite
 python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip && python3 App.py
 ```
 
-To easily run **Pandascan_Lite** on **Mac** :
-- make sure you're in the **Pandascan_Lite** folder first ( `cd path/to/Pandascan_Lite` ) and execute  ⬇️
+### How to create your own executable (.sh)
+---
+
+- Create a `panda.txt` file inside Pandascan_Lite's folder
+- Copy and Paste inside `panda.txt` ⬇️
+    - replace `path/to/Pandascan_Lite` with the right path
 ```
-source pandavenv/bin/activate && python3 App.py
+cd path/to/Pandascan_Lite && source pandavenv/bin/activate && python3 App.py
+```
+- Save the file as `panda.sh`
+- Open your terminal and run ⬇️
+    - replace `path/to/Pandascan_Lite` with the right path
+
+```
+chmod +x panda.sh
+```
+
+Now you can run Pandascan_Lite whenever you want with your Terminal
+
+The easiest way is to Drag and drop `panda.sh` to the Terminal.
+
+- You can also run Pandascan with the terminal using ⬇️
+    - replace `path/to/panda.sh` with the right path
+```
+path/to/panda.sh
 ```
 
 ### WINDOWS 💻
@@ -66,13 +85,15 @@ Make sure to **Deactivate your antivirus** before running any commands.
 conda init powershell
 ```
 - Close **Anaconda prompt** and Open **Powershell**
-- Copy & replace `path\to\Pandascan_Lite` with the right path ⬇️
+    - Copy & replace `path\to\Pandascan_Lite` with the right path ⬇️
 ```
 conda create --name pandavenv -y && conda activate pandavenv && cd path\to\Pandascan_Lite && conda install pip -y && pip install -r requirements.txt && python App.py
 ```
 
-To easily run **PandaScan** on **Windows** :
-- Create a **.txt** file with the following content ⬇️
+### How to create your own executable (.bat)
+---
+
+- Create a `panda.txt` file with the following content ⬇️
      - replace `path\to\Pandascan_Lite` with the right path
 ```
 @echo off
@@ -80,9 +101,14 @@ cd path\to\Pandascan_Lite
 CALL conda.bat activate pandavenv
 python App.py
 ```
-- Save the **.txt** file as `panda.bat`
+- Rename the file as `panda.bat`
 
-Now every time you want to run **Pandascan_Lite**, just execute the **.bat** file with Powershell by entering the path to `panda.bat`.
+Now you can run Pandascan_Lite whenever you want with **Powershell**.
+
+The easiest way is to Drag and drop `panda.bat` to **Powershell**.
+
+- You can also run Pandascan with **Powershell** using ⬇️
+    - replace `path\to\panda.bat` with the right path
 ```
 path\to\panda.bat
 ```
@@ -92,15 +118,12 @@ path\to\panda.bat
 If you don't want to use CLI, you can run **Pandascan_Lite** using [**VScode**](https://code.visualstudio.com/) ⬇️
 
 - Download and install [**Vscode**](https://code.visualstudio.com/)
-- Open **Vscode**
-- Click on **File** > **Open Folder**
-- Select your **Pandascan_Lite** folder
+- Open **Pandascan_Lite** folder with VScode
 - Select the **App.py** file
 - Select your **venv** ( **pandavenv** ) as interpreter
 - Click on **Run** > **Run without debugging**
 
-![ezgif com-video-to-gif](https://github.com/CAprogs/Pandascan_Lite/assets/104645407/83a7d7db-f17d-4929-b0ff-01a603be0ea9)
-
+![ezgif com-video-to-gif](https://github.com/CAprogs/PandaScan/assets/104645407/83a7d7db-f17d-4929-b0ff-01a603be0ea9)
 
 ## Good To Know 📝
 
@@ -127,3 +150,9 @@ If a `download is skipped`, it means that :
 There is an exception for `Fmteam` because it has its own naming convention.
 
 This prevents you from downloading the same chapter twice.
+
+
+#
+<div align=center>
+If you like this project, consider giving it a ⭐️ on Github, it helps me a lot. 🫶
+</div>
