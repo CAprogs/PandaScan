@@ -6,16 +6,16 @@
 ![total_downloads](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
 </div>
 
-- Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#compatibility-).
+- Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#compatibility-)
 - Pandascan_Beta 🐼 is still in development, so it may contains unexpected bugs.
-- If you encountered any issue, open one [here](https://github.com/CAprogs/PandaScan/issues).
+- If you encountered any issue, open one [here](https://github.com/CAprogs/PandaScan/issues)
 - See all releases [here](https://github.com/CAprogs/PandaScan/releases)
 
 ### Summary
 
 - [I. Chromedriver 🤖](#i-chromedriver-🤖)
 - [II. Installation ↧](#ii-installation-↧)
-    - [MAC 💻](#mac-💻)
+    - [MAC 🖥️](#mac-🖥️)
         - [Create your own executable (.sh)](#how-to-create-your-own-executable-sh)
     - [WINDOWS 💻](#windows-💻)
         - [Create your own executable (.bat)](#how-to-create-your-own-executable-bat)
@@ -27,6 +27,16 @@
     - [Updates 🔄](#updates-🔄)
     - [ChangeLog 📝](#changelog-📝)
     - [Settings ⚙️](#settings-⚙️)
+
+#
+<div align="center">
+Download the cheatsheet for your OS below ⬇️
+
+
+| <div align="center">MAC</div>  | <div align="center">Windows</div>
+| :-------- | :-------
+cheatsheet | cheatsheet
+</div>
 
 ## **I. Chromedriver 🤖**
 
@@ -47,7 +57,7 @@
 
 ## **II. Installation ↧**
 
-### MAC 💻
+### MAC 🖥️
 ---
 
 - Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )

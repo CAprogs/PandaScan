@@ -1,9 +1,11 @@
+
+
 You should have downloaded and installed :
 * chromedriver ( for your MAC architecture )
 * Python
 
 Tip ✨ :
-- Use [⌘ + F] to replace all occurencies on MAC
+- Use [⌘ + F] to replace all occurences on MAC
 
 Paste each equivalent below ⬇️
 
@@ -11,7 +13,7 @@ path/to/Pandascan_Beta =
 path/to/chromedriver =
 path/to/panda.sh =
 
---------------------------------------------------------------------------------------------------------------------------------------------
+
 ========> Installation
 
 1. Anaconda Prompt

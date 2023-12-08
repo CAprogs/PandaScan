@@ -7,16 +7,16 @@
 
 </div>
 
-- Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#compatibility-).
+- Please see Supported OS ( & tested ) versions [here](https://github.com/CAprogs/PandaScan/blob/main/docs/EN/README.en.md#compatibility-)
 - Pandascan 🐼 is still in development, so it may contains unexpected bugs.
-- If you encountered any issue, open one [here](https://github.com/CAprogs/PandaScan/issues).
+- If you encountered any issue, open one [here](https://github.com/CAprogs/PandaScan/issues)
 - See all releases [here](https://github.com/CAprogs/PandaScan/releases)
 
 
 ### Summary
 
 - [I. Installation ↧](#i-installation-↧)
-    - [MAC 💻](#mac-💻)
+    - [MAC 🖥️](#mac-🖥️)
         - [Create your own executable (.sh)](#how-to-create-your-own-executable-sh)
     - [WINDOWS 💻](#windows-💻)
         - [Create your own executable (.bat)](#how-to-create-your-own-executable-bat)
@@ -25,10 +25,20 @@
     - [Failed downloads ❌](#failed-downloads-❌)
     - [Skipped downloads ⏩](#skipped-downloads-⏩)
 
+#
+
+<div align="center">
+Download the cheatsheet for your OS below ⬇️
+
+
+| <div align="center">MAC</div>  | <div align="center">Windows</div>
+| :-------- | :-------
+cheatsheet | cheatsheet
+</div>
 
 ## **I. Installation ↧**
 
-### MAC 💻
+### MAC 🖥️
 ---
 
 - Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )
@@ -76,7 +86,7 @@ path/to/panda.sh
 On windows, installation is a bit more complicated but don't worry, just follow these steps ⬇️.
 
 - Install [**miniconda3**](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe) (64-bit version)
-- Install **Powershell** ( via the Windows store )
+- Install **Powershell**( via the Windows store )
 
 Make sure to **Deactivate your antivirus** before running any commands.
 

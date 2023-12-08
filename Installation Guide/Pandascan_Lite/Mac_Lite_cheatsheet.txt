@@ -1,15 +1,17 @@
+
+
 You should have downloaded and installed :
 * Python
 
 Tip ✨ :
-- Use [⌘ + F] to replace all occurencies on MAC
+- Use [⌘ + F] to replace all occurences on MAC
 
 Paste each equivalent below ⬇️
 
 path/to/Pandascan_Lite = 
 path/to/panda.sh =
 
---------------------------------------------------------------------------------------------------------------------------------------------
+
 ========> Installation
 
 1. Anaconda Prompt
