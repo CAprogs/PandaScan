@@ -23,15 +23,16 @@ def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EM
     adguard_path = f'{MAIN_DIRECTORY}/foundation/selenium/extensions/adguard.crx'
     check_extensions(ublock_path, adguard_path, EMOJIS)
 
-    check_driver(OS_NAME, LOG, SETTINGS['chromedriver_path'], PATH_TO_CONFIG, SETTINGS)
+    check_driver(OS_NAME, LOG, SETTINGS["driver"]["path"], PATH_TO_CONFIG, SETTINGS)
 
     # Instantiate chromedriver service
-    chromedriver_path = Service(SETTINGS['chromedriver_path'])
+    chromedriver_path = Service(SETTINGS["driver"]["path"])
 
     # Instantiate chrome options
     options = webdriver.ChromeOptions()
     if SETTINGS['driver']['headless']:
         options.add_argument("--headless")
+        options.add_argument(SETTINGS['driver']['user_agent'])
         LOG.debug("Browser mode : Headless")
     else:
         LOG.debug("Browser mode : Headed")
@@ -46,7 +47,7 @@ def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EM
     except Exception as e:
         LOG.info("The path provided isn't the 'chromedriver.exe' file ⚠️ \n\nPlease refer to the 'README' file to provide the correct path.")
         LOG.debug({str(e)})
-        SETTINGS["chromedriver_path"] = ""
+        SETTINGS["driver"]["path"] = ""
         with open(PATH_TO_CONFIG, 'w') as json_file:
             json.dump(SETTINGS, json_file, indent=4)
         print(f"PandaScan exited. {EMOJIS[1]}\n")

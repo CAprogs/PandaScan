@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![latest](https://img.shields.io/github/v/release/CAprogs/PandaScan?label=latest%20release)
+![latest_release](https://img.shields.io/github/v/release/CAprogs/PandaScan?label=latest%20release)
 ![total_downloads](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
 </div>
 
@@ -35,7 +35,7 @@ Download the cheatsheet for your OS below ⬇️
 
 | <div align="center">MAC</div>  | <div align="center">Windows</div>
 | :-------- | :-------
-cheatsheet | cheatsheet
+[**cheatsheet**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Mac_cheatsheet.txt) | [**cheatsheet**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Windows_cheatsheet.txt)
 </div>
 
 ## **I. Chromedriver 🤖**

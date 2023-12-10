@@ -35,8 +35,8 @@
 
 ### Installation
 - [Installation Guide](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide) ⇣
-    - [Beta](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Pandascan_Beta)
-    - [Lite](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Pandascan_Lite)
+    - [Beta](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Beta)
+    - [Lite](https://github.com/CAprogs/PandaScan/tree/main/Installation%20Guide/Lite)
 
 ### Coming Soon 📅
 
@@ -58,9 +58,9 @@ Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaSca
 
 ## News 🎉
 
-The [**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Pandascan_Beta.zip) version (v3.0.0-beta) is available!
+[**v3.x.x**](https://github.com/CAprogs/PandaScan/releases) is out !
 
-It brings many improvements:
+Bringing some improvements :
 - Addition of a new site: [anime-sama.me](https://anime-sama.me/) (🇫🇷)
 - Optimized download speed
 - Improved download tracking 🤩
@@ -83,7 +83,7 @@ It brings many improvements:
 
 ## Preview 👁️ (MacOs)
 
-| Version  | <div align="center">[**BETA**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-beta/Pandascan_Beta.zip)</div> | <div align="center">[**LITE**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-lite/Pandascan_Lite.zip)</div> |
+| Version  | <div align="center">**BETA**</div> | <div align="center">**LITE**</div> |
 | :-------- | :-------       | :-------    |
 |   **Preview**  | <img width="500" alt="BETA" src="https://github.com/CAprogs/PandaScan/assets/104645407/78b6ebd8-fa3a-4021-b109-f8a6d35cea65">            | <img width="500" alt="LITE" src="https://github.com/CAprogs/PandaScan/assets/104645407/bda50f5b-efb7-4648-b7ac-8dd000710f20">           |
 

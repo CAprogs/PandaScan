@@ -60,7 +60,7 @@ def check_driver(OS_NAME, LOG, driver_path, PATH_TO_CONFIG, SETTINGS):
 
     driver_path = check_path(OS_NAME, LOG, driver_path)
 
-    SETTINGS["chromedriver_path"] = driver_path
+    SETTINGS["driver"]["path"] = driver_path
 
     with open(PATH_TO_CONFIG, 'w') as json_file:
         json.dump(SETTINGS, json_file, indent=4)

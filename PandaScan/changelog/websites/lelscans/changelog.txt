@@ -178,3 +178,9 @@ Changes in jujutsu-kaisen:
   • Added chapters: chapitre 244
 Changes in my-hero-academia:
   • Added chapters: chapitre 408
+
+Update 17 : 10/12/2023 | 02:03:32
+Changes in my-hero-academia:
+  • Added chapters: chapitre 409
+Changes in one-piece:
+  • Added chapters: chapitre 1101

@@ -247,7 +247,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             chromedriver_path = canvas.create_text(49.0, 75.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=TITLE_POLICE)
             # [ WIDGET ] Entry
             chromedriver_entry = Entry(settings_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0)
-            chromedriver_entry.insert(0, SETTINGS["chromedriver_path"])
+            chromedriver_entry.insert(0, SETTINGS["driver"]["path"])
             chromedriver_entry.place(x=92.0, y=76.0, width=228.0, height=13.0)
             # [ WIDGET ] Button choose file
             choose_file_path = Button(settings_window, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, text="Search", font=CORPUS_POLICE, command=lambda: choose_file(chromedriver_entry))
@@ -397,7 +397,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             save_confirm = messagebox.askquestion(message=f"Save new settings {EMOJIS[19]}")
 
             if save_confirm == "yes":
-                SETTINGS["chromedriver_path"] = check_path(OS_NAME, LOG, chromedriver_entry.get())
+                SETTINGS["driver"]["path"] = check_path(OS_NAME, LOG, chromedriver_entry.get())
                 SETTINGS["driver"]["headless"] = chromedriver_mode_var.get()
                 SETTINGS["Update"]["mode"] = update_mode_var.get()
                 SETTINGS["websites"]["fmteam"]["enabled"] = fmteam_checkbox_var.get()

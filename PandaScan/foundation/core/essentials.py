@@ -24,6 +24,11 @@ WEBSITES_DICT = {"fmteam": "FR",
                  "scantrad": "FR"
                  }
 
+# Available languages mode
+LANGUAGES = ["All",
+             EMOJIS[6],
+             EMOJIS[7]]
+
 # Set list of websites depending on their language
 ALL_WEBSITES = [website for website in WEBSITES_DICT.keys()]
 FR_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "FR"]
@@ -49,11 +54,11 @@ with open(PATH_TO_CONFIG) as json_file:
     SETTINGS = json.load(json_file)
 
 # Set the default websites
-if SETTINGS["websites"]["default"] == "All":
+if SETTINGS["websites"]["languages"] == "All":
     WEBSITES = ALL_WEBSITES
-elif SETTINGS["websites"]["default"] == "FR":
+elif SETTINGS["websites"]["languages"] == "FR":
     WEBSITES = FR_WEBSITES
-elif SETTINGS["websites"]["default"] == "EN":
+elif SETTINGS["websites"]["languages"] == "EN":
     WEBSITES = EN_WEBSITES
 
 # Instanciate the logger
@@ -93,6 +98,25 @@ def check_connection():
             return False
     except requests.RequestException as e:
         print(f"\n{e}\n")
+
+
+def check_version():
+    """Check if app's version is the latest
+    """
+
+    response = requests.get("https://api.github.com/repos/CAprogs/PandaScan/releases/latest")
+
+    if response.status_code == 200:
+        release_info = response.json()
+        latest_version = release_info['tag_name'].replace("-beta", "")
+
+        if latest_version:
+            if latest_version != SETTINGS["App_version"]:
+                messagebox.showinfo(f"App Update [{EMOJIS[8]}]", f"A new version of PandaScan is available : {latest_version} !")
+            elif latest_version == SETTINGS["App_version"]:
+                LOG.debug(f"\nApp's up-to-date {EMOJIS[3]}")
+    else:
+        LOG.debug(f"An error occured when trying to get the latest version {EMOJIS[9]}")
 
 
 def relative_to_assets(path: str) -> Path:

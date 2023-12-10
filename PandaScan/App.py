@@ -30,9 +30,9 @@ from download.manage import download
 from update.manage import manual_update, auto_update
 from gui.Settings import show_settings
 from gui.utils import button_hover
-from foundation.core.essentials import relative_to_assets, check_connection
+from foundation.core.essentials import relative_to_assets, check_connection, check_version
 from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
-from foundation.core.essentials import MAIN_DIRECTORY, DRIVER, SETTINGS, LOG
+from foundation.core.essentials import MAIN_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
 from foundation.core.essentials import WEBSITES, ALL_WEBSITES, FR_WEBSITES, EN_WEBSITES
 from foundation.core.emojis import EMOJIS
 
@@ -44,7 +44,6 @@ CURRENT_COLOR = "#FFFFFF"                     # dominant text color
 ALT_COLOR = "#6B0000"                         # -||- info text color
 ENTRY_TEXT_COLOR = "#000716"                  # -||- entry text color
 
-default_website = WEBSITES[0]                 # website selected
 nb_of_manga_chapters = 0                      # number of chapters from a manga (total)
 nb_of_chapters_to_download = 0                # number of chapters to download
 download_id = 0                               # id of the current download
@@ -58,14 +57,16 @@ end_index = ""                                # index associated to the last cha
 download_button_state = False                 # state of the download button
 manga_file_path = ''                          # path to the manga folder
 
-TEXT_1 = EMOJIS[5]
-TEXT_2 = "Manga name"
-TEXT_3 = "Chapter / Volume"
-TEXT_4 = "-"
+TEXT_1 = "Manga name"
+TEXT_2 = "Chapter / Volume"
+TEXT_3 = "-"
 
 
 def main():
     """Load application components."
+
+    Returns:
+        str: a message when app's closing
     """
 
     if not check_connection():
@@ -73,14 +74,13 @@ def main():
         return print(f"\nPandascan exited {EMOJIS[1]}\n")
 
     print(f"PandaScan is running {EMOJIS[3]}\n")
+    check_version()
 
     main_window = Tk()
-
     logo = PhotoImage(file=relative_to_assets("pandacon.gif"))
     main_window.call('wm', 'iconphoto', main_window._w, logo)
 
     main_window.title(f"PandaScan {EMOJIS[0]}")
-
     main_window.geometry("962x686")
     main_window.configure(bg=CURRENT_COLOR)
     canvas = Canvas(
@@ -132,32 +132,43 @@ def main():
         chapters_box.delete(0, tk.END)
         Clear_range_menus()
 
+    def manage_menu(menu, menu_list, menu_list_var):
+        """Manage menu displayed items
+
+        Args:
+            menu (Any): the menu
+            menu_list (list): menu's elements
+            menu_list_var (str): element selected in the menu
+        """
+
+        menu['menu'].delete(0, 'end')
+        for element in menu_list:
+            if element != menu_list_var.get():
+                menu['menu'].add_command(label=element, command=tk._setit(menu_list_var, element))
+
     def Switch_website(*args):
         """Change the website.
         """
-        global default_website
 
-        selected_item = website_list_var.get()
-        default_website = selected_item
-        LOG.debug(f"Website : {selected_item}")
+        manage_menu(website_menu, WEBSITES, website_list_var)
+        LOG.debug(f"Website : {website_list_var.get()}")
         Reload_page()
 
     def Switch_language(*args):
         """Fetch the website's menu with the websites associated to the selected language.
         """
 
-        if language_list_var.get() == "All":
+        if language_list_var.get() == LANGUAGES[0]:
             WEBSITES = ALL_WEBSITES
-        elif language_list_var.get() == EMOJIS[6]:
+        elif language_list_var.get() == LANGUAGES[1]:
             WEBSITES = FR_WEBSITES
-        elif language_list_var.get() == EMOJIS[7]:
+        elif language_list_var.get() == LANGUAGES[2]:
             WEBSITES = EN_WEBSITES
 
-        website_menu['menu'].delete(0, 'end')
         website_list_var.set(WEBSITES[0])
-        for website in WEBSITES:
-            website_menu['menu'].add_command(label=website, command=tk._setit(website_list_var, website))
-        LOG.debug(f"Websites displayed : {language_list_var.get()}")
+        manage_menu(language_menu, LANGUAGES, language_list_var)
+        manage_menu(website_menu, WEBSITES, website_list_var)
+        LOG.debug(f"Languages displayed : {language_list_var.get()}")
         Reload_page()
 
     def update_results(event):
@@ -166,10 +177,9 @@ def main():
         Args:
             event (Any): The event triggering the function.
         """
-        keyword = entry_1.get()
-        keyword = '%' + keyword + '%'
+        keyword = '%' + entry_1.get() + '%'
         query = "SELECT NomManga FROM Mangas WHERE NomManga LIKE ? AND NomSite = ?"
-        SELECTOR.execute(query, (keyword, default_website))
+        SELECTOR.execute(query, (keyword, website_list_var.get()))
         results = [row[0] for row in SELECTOR.fetchall()]
         result_box.delete(0, tk.END)
         result_box.insert(tk.END, *results)
@@ -267,7 +277,7 @@ def main():
             selected_manga_name (str): name of the selected manga
         """
         query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
-        SELECTOR.execute(query, (default_website, selected_manga_name))
+        SELECTOR.execute(query, (website_list_var.get(), selected_manga_name))
         results = [result[0] for result in SELECTOR.fetchall()]
         chapters_box.delete(0, tk.END)
         chapters_box.insert(tk.END, *results)
@@ -312,7 +322,7 @@ def main():
             else:
                 chapter_file_path = manga_file_path / chapter_name
 
-            status = download(default_website, chapter_file_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR)
+            status = download(website_list_var.get(), chapter_file_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR)
             if status == "success":
                 downloads_succeeded += 1
             elif status == "failed":
@@ -401,21 +411,19 @@ def main():
     # === Dropdown selection of the language preference
 
     language_list_var = StringVar(main_window)
-    language_list_var.set(SETTINGS["websites"]["default"])
-    language_menu = OptionMenu(main_window, language_list_var, "All", EMOJIS[6], EMOJIS[7])
+    language_list_var.set(SETTINGS["websites"]["languages"])
+    language_menu = OptionMenu(main_window, language_list_var, LANGUAGES[0], LANGUAGES[1], LANGUAGES[2])
+    manage_menu(language_menu, LANGUAGES, language_list_var)
     language_menu.place(x=420.0, y=150.0, width=47.0)
     language_menu.configure(bg=CURRENT_COLOR)
     language_list_var.trace_add("write", Switch_language)
 
     # === Dropdown selection of the website
 
-    # canvas.create_text(413.0, 152.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=POLICE_1)
     website_list_var = StringVar(main_window)
-    website_list_var.set(default_website)
-    website_menu = OptionMenu(main_window, website_list_var, default_website)
-    website_menu['menu'].delete(0, 'end')
-    for website in WEBSITES:
-        website_menu['menu'].add_command(label=website, command=tk._setit(website_list_var, website))
+    website_list_var.set(WEBSITES[0])
+    website_menu = OptionMenu(main_window, website_list_var, website_list_var.get())
+    manage_menu(website_menu, WEBSITES, website_list_var)
     website_menu.place(x=470.0, y=150.0)
     website_menu.configure(bg=CURRENT_COLOR)
     website_list_var.trace_add("write", Switch_website)
@@ -432,7 +440,7 @@ def main():
 
     # === Manga Display area ( MangaBox )
 
-    canvas.create_text(331.0, 269.0, anchor="nw", text=TEXT_2, fill=CURRENT_COLOR, font=POLICE_1)
+    canvas.create_text(331.0, 269.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=POLICE_1)
 
     # Manga display list
     result_box = Listbox(main_window, selectmode=tk.SINGLE)
@@ -447,7 +455,7 @@ def main():
 
     # === Chapter Display area ( ChapterBox )
 
-    canvas.create_text(525.0, 269.0, anchor="nw", text=TEXT_3, fill=CURRENT_COLOR, font=POLICE_1)
+    canvas.create_text(525.0, 269.0, anchor="nw", text=TEXT_2, fill=CURRENT_COLOR, font=POLICE_1)
 
     # Chapter display list
     chapters_box = Listbox(main_window, selectmode=tk.MULTIPLE)
@@ -480,7 +488,7 @@ def main():
     min_chapter_var.trace_add("write", lambda *args: on_menu_select())
 
     # "-" text
-    canvas.create_text(585.0, 527.0, anchor="nw", text=TEXT_4, fill=ALT_COLOR, font=POLICE_3)
+    canvas.create_text(585.0, 527.0, anchor="nw", text=TEXT_3, fill=ALT_COLOR, font=POLICE_3)
 
     # 2nd dropdown chapter menu
     max_chapter_var = StringVar(main_window)
@@ -560,7 +568,7 @@ def main():
         auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG)
         main_window.deiconify()
     elif SETTINGS['Update']['mode'] == "manual":
-        update_button.config(command=lambda: manual_update(MAIN_DIRECTORY, default_website, SETTINGS, CONN, SELECTOR, WEBSITES, LOG))
+        update_button.config(command=lambda: manual_update(MAIN_DIRECTORY, website_list_var.get(), SETTINGS, CONN, SELECTOR, WEBSITES, LOG))
         button_hover(update_button, button_update_1, button_update_2, download_button_state)
 
     main_window.protocol("WM_DELETE_WINDOW", on_closing)

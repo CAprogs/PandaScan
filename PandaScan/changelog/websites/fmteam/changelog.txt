@@ -269,3 +269,18 @@ Changes in yomi-no-tsugai:
   • Removed chapters: chapitre 19, chapitre 18, chapitre 17
 Changes in yomotsuhegui:
   • Removed chapters: chapitre 15, chapitre 14, chapitre 13, chapitre 12, chapitre 11, chapitre 10, chapitre 9, chapitre 8, chapitre 7, chapitre 6, chapitre 5, chapitre 4, chapitre 3, chapitre 2, chapitre 1
+
+Update 18 : 10/12/2023 | 02:01:51
+Changes in berserk:
+  • Added chapters: chapitre 375, chapitre 374, chapitre 373
+Changes in choujin-x:
+  • Added chapters: chapitre 45
+  • Removed chapters: chapitre 42
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1442, chapitre 1441, chapitre 1440
+Changes in kamen-byoto:
+  • Removed chapters: chapitre 10, chapitre 9, chapitre 8, chapitre 7, chapitre 6, chapitre 5, chapitre 4.2, chapitre 4.1, chapitre 3, chapitre 2, chapitre 1
+Changes in vinland-saga:
+  • Added chapters: chapitre 207, chapitre 206, chapitre 205
+Changes in yomotsuhegui:
+  • Added chapters: chapitre 15, chapitre 14, chapitre 13, chapitre 12, chapitre 11, chapitre 10, chapitre 9, chapitre 8, chapitre 7, chapitre 6, chapitre 5, chapitre 4, chapitre 3, chapitre 2, chapitre 1
