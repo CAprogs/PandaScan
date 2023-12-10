@@ -19,8 +19,8 @@ def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EM
         Any: the webdriver
     """
 
-    ublock_path = f'{MAIN_DIRECTORY}/foundation/selenium/extensions/ublock.crx'
-    adguard_path = f'{MAIN_DIRECTORY}/foundation/selenium/extensions/adguard.crx'
+    ublock_path = f'{MAIN_DIRECTORY}/src/foundation/selenium/extensions/ublock.crx'
+    adguard_path = f'{MAIN_DIRECTORY}/src/foundation/selenium/extensions/adguard.crx'
     check_extensions(ublock_path, adguard_path, EMOJIS)
 
     check_driver(OS_NAME, LOG, SETTINGS["driver"]["path"], PATH_TO_CONFIG, SETTINGS)

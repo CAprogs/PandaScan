@@ -25,16 +25,16 @@ import tkinter as tk
 from tkinter import Tk, Canvas, Entry, Listbox, IntVar
 from tkinter import Scrollbar, Button, Checkbutton
 from tkinter import PhotoImage, StringVar, OptionMenu, messagebox
-from foundation.tracker.progessbar import ProgressBar
-from download.manage import download
-from update.manage import manual_update, auto_update
-from gui.Settings import show_settings
-from gui.utils import button_hover
-from foundation.core.essentials import relative_to_assets, check_connection, check_version
-from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
-from foundation.core.essentials import MAIN_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
-from foundation.core.essentials import WEBSITES, ALL_WEBSITES, FR_WEBSITES, EN_WEBSITES
-from foundation.core.emojis import EMOJIS
+from src.foundation.tracker.progessbar import ProgressBar
+from src.download.manage import download
+from src.update.manage import manual_update, auto_update
+from src.gui.Settings import show_settings
+from src.gui.utils import button_hover
+from src.foundation.core.essentials import relative_to_assets, check_connection, check_version
+from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
+from src.foundation.core.essentials import MAIN_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
+from src.foundation.core.essentials import WEBSITES, ALL_WEBSITES, FR_WEBSITES, EN_WEBSITES
+from src.foundation.core.emojis import EMOJIS
 
 
 POLICE_1 = ("Inter", 15 * -1)

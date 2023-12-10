@@ -4,8 +4,8 @@ import json
 from datetime import datetime
 from .utils import read_previous_state, generate_report
 from .utils import write_current_state
-from foundation.core.essentials import MAIN_DIRECTORY, SETTINGS
-from foundation.core.essentials import PATH_TO_CONFIG
+from src.foundation.core.essentials import MAIN_DIRECTORY, SETTINGS
+from src.foundation.core.essentials import PATH_TO_CONFIG
 
 
 def generate_changelog(PATH_TO_WEBSITE, website):

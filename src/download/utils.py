@@ -1,7 +1,7 @@
 import requests
 import os
-from foundation.core.essentials import LOG
-from foundation.core.emojis import EMOJIS
+from src.foundation.core.essentials import LOG
+from src.foundation.core.emojis import EMOJIS
 
 
 def chapter_transform(chapter_name, selected_website):

@@ -3,9 +3,9 @@ import requests
 import zipfile
 import io
 import os
-from download.utils import check_tome, check_url
-from foundation.core.essentials import LOG
-from foundation.core.emojis import EMOJIS
+from src.download.utils import check_tome, check_url
+from src.foundation.core.essentials import LOG
+from src.foundation.core.emojis import EMOJIS
 
 
 def init_download(selected_website, selected_manga_name, download_id, manga_file_path, SETTINGS, SELECTOR, chapter_number):

@@ -1,7 +1,7 @@
 import requests
 from lxml import html
-from foundation.core.essentials import LOG
-from foundation.core.emojis import EMOJIS
+from src.foundation.core.essentials import LOG
+from src.foundation.core.emojis import EMOJIS
 
 
 def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_number):

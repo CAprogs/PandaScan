@@ -6,7 +6,7 @@ import sqlite3 as sql
 from tkinter import messagebox
 from pathlib import Path
 from ..selenium.driver import set_driver_config
-from foundation.logger.log import CustomLogger, LOG_FORMATS
+from src.foundation.logger.log import CustomLogger, LOG_FORMATS
 from .emojis import EMOJIS
 
 
@@ -38,16 +38,16 @@ EN_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "EN
 MAIN_DIRECTORY = Path(os.path.abspath(os.getcwd()))
 
 # Assets directory
-ASSETS_DIRECTORY = MAIN_DIRECTORY / "gui/assets"
+ASSETS_DIRECTORY = MAIN_DIRECTORY / "src/gui/assets"
 
 # Path to config file
-PATH_TO_CONFIG = MAIN_DIRECTORY / "config.json"
+PATH_TO_CONFIG = MAIN_DIRECTORY / "src/config.json"
 
 # paths to websites file ( Update )
-PATH_TO_SCANTRAD = MAIN_DIRECTORY / "update/websites/scantrad"
-PATH_TO_LELSCANS = MAIN_DIRECTORY / "update/websites/lelscans"
-PATH_TO_FMTEAM = MAIN_DIRECTORY / "update/websites/fmteam"
-PATH_TO_ANIMESAMA = MAIN_DIRECTORY / "update/websites/animesama"
+PATH_TO_SCANTRAD = MAIN_DIRECTORY / "src/update/websites/scantrad"
+PATH_TO_LELSCANS = MAIN_DIRECTORY / "src/update/websites/lelscans"
+PATH_TO_FMTEAM = MAIN_DIRECTORY / "src/update/websites/fmteam"
+PATH_TO_ANIMESAMA = MAIN_DIRECTORY / "src/update/websites/animesama"
 
 # load config file
 with open(PATH_TO_CONFIG) as json_file:
@@ -74,7 +74,7 @@ DRIVER = set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LO
 
 # Load SQl datas
 try:
-    CONN = sql.connect(f'{MAIN_DIRECTORY}/foundation/database/Pan_datas.db')
+    CONN = sql.connect(f'{MAIN_DIRECTORY}/src/foundation/database/Pan_datas.db')
     SELECTOR = CONN.cursor()
     print(f"\nDatas Loaded {EMOJIS[3]}")
 except sql.Error as e:

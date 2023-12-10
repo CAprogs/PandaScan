@@ -5,11 +5,11 @@ import tkinter as tk
 from tkinter import Toplevel, BooleanVar, Entry, Button, OptionMenu
 from tkinter import Checkbutton, Canvas, PhotoImage, messagebox, StringVar
 from .utils import button_hover, activate_button, deactivate_button
-from foundation.selenium.utils import check_path
-from foundation.core.essentials import relative_to_assets
-from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
-from foundation.core.essentials import OS_NAME, PATH_TO_CONFIG, LOG
-from foundation.core.emojis import EMOJIS
+from src.foundation.selenium.utils import check_path
+from src.foundation.core.essentials import relative_to_assets
+from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
+from src.foundation.core.essentials import OS_NAME, PATH_TO_CONFIG, LOG
+from src.foundation.core.emojis import EMOJIS
 
 
 INFO_POLICE = ("Inter", 8 * -1)          # INFOS font

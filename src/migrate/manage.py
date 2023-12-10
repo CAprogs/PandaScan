@@ -1,7 +1,7 @@
 import pandas as pd
 import yaml
 from .utils import Delete_table
-from foundation.core.emojis import EMOJIS
+from src.foundation.core.emojis import EMOJIS
 
 
 def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):

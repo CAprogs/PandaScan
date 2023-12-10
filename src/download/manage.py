@@ -1,8 +1,8 @@
-from download.websites import scantrad
-from download.websites import lelscans
-from download.websites import fmteam
-from download.websites import animesama
-from download.utils import chapter_transform, check_manga_path
+from src.download.websites import scantrad
+from src.download.websites import lelscans
+from src.download.websites import fmteam
+from src.download.websites import animesama
+from src.download.utils import chapter_transform, check_manga_path
 
 
 def download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR):

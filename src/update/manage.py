@@ -1,9 +1,9 @@
 import time
 import os
 from tkinter import messagebox
-from migrate.manage import Manage_migration
+from src.migrate.manage import Manage_migration
 from .utils import confirm_update, check_and_update
-from foundation.core.emojis import EMOJIS
+from src.foundation.core.emojis import EMOJIS
 
 
 def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEBSITES, LOG):

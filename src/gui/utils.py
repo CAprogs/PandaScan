@@ -1,5 +1,5 @@
 import tkinter as tk
-from foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
+from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
 
 
 def button_hover(button, button_image_1, button_image_2, Download_state=False):

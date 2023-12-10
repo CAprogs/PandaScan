@@ -1,11 +1,11 @@
 from tkinter import messagebox
-from changelog.manage import generate_changelog
-from foundation.core.essentials import DRIVER
-from foundation.core.essentials import PATH_TO_FMTEAM
-from foundation.core.essentials import PATH_TO_LELSCANS
-from foundation.core.essentials import PATH_TO_SCANTRAD
-from foundation.core.essentials import PATH_TO_ANIMESAMA
-from foundation.core.emojis import EMOJIS
+from src.changelog.manage import generate_changelog
+from src.foundation.core.essentials import DRIVER
+from src.foundation.core.essentials import PATH_TO_FMTEAM
+from src.foundation.core.essentials import PATH_TO_LELSCANS
+from src.foundation.core.essentials import PATH_TO_SCANTRAD
+from src.foundation.core.essentials import PATH_TO_ANIMESAMA
+from src.foundation.core.emojis import EMOJIS
 
 
 def confirm_update(mode, message):
