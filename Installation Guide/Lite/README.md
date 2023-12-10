@@ -26,14 +26,14 @@
     - [Skipped downloads ⏩](#skipped-downloads-⏩)
 
 #
-
 <div align="center">
-Download the cheatsheet for your OS below ⬇️
+You can use the following cheatsheets to help you with the installation process ⬇️
 
+#
 
 | <div align="center">MAC</div>  | <div align="center">Windows</div>
 | :-------- | :-------
-[**cheatsheet**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-lite/Mac_cheatsheet.txt) | [**cheatsheet**](https://github.com/CAprogs/PandaScan/releases/download/v3.0.0-lite/Windows_cheatsheet.txt)
+[**cheatsheet**](cheatsheets/Mac.txt) | [**cheatsheet**](cheatsheets/Windows.txt)
 </div>
 
 ## **I. Installation ↧**
