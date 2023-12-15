@@ -5,14 +5,13 @@ from src.foundation.core.essentials import LOG
 from src.foundation.core.emojis import EMOJIS
 
 
-def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_name):
+def init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name):
     """Initialize the download from animesama.
 
     Args:
         selected_website (str): selected website
-        chapter_file_path (str): path of the folder to save images
+        chapter_file_path (str): path of the folder where to save images
         selected_manga_name (str): selected manga name
-        download_id (int): current download number
         chapter_name (str): chapter name
 
     Returns:
@@ -41,7 +40,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
                     img_elements = [element.contents[0] for element in separator_list]
                 img_list = [element for element in img_elements if '<img' in str(element)]
                 if len(img_list) != expected_imgs:
-                    LOG.debug(f"Download {download_id} aborted | {chapter_name} | some images are missing {EMOJIS[10]}")
+                    LOG.debug(f"Download aborted | {chapter_name} | some images are missing {EMOJIS[10]}")
                     return "failed"
 
             for img in img_list:
@@ -51,12 +50,12 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
                     try:
                         img_link = img.contents[0]['data-src']
                     except Exception as e:
-                        LOG.debug(f"Download {download_id} aborted | {chapter_name} | Error : {e}")
+                        LOG.debug(f"Download aborted | {chapter_name} | Error : {e}")
                         return "failed"
                 save_path = f"{chapter_file_path}/{page}.jpg"
                 response = animesama(img_link, save_path, page)
                 if response is False:
-                    LOG.debug(f"Download {download_id} aborted {EMOJIS[4]}, request failed.")
+                    LOG.debug(f"Download aborted {EMOJIS[4]}, request failed.")
                     return "failed"
                 page += 1
             LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}")

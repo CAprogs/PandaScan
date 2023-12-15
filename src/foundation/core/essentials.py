@@ -21,7 +21,8 @@ ACTIVE_CURSOR = "hand2"
 WEBSITES_DICT = {"fmteam": "FR",
                  "lelscans": "FR",
                  "animesama": "FR",
-                 "scantrad": "FR"
+                 "scantrad": "FR",
+                 "tcbscans": "EN"
                  }
 
 # Available languages mode
@@ -48,6 +49,7 @@ PATH_TO_SCANTRAD = MAIN_DIRECTORY / "src/update/websites/scantrad"
 PATH_TO_LELSCANS = MAIN_DIRECTORY / "src/update/websites/lelscans"
 PATH_TO_FMTEAM = MAIN_DIRECTORY / "src/update/websites/fmteam"
 PATH_TO_ANIMESAMA = MAIN_DIRECTORY / "src/update/websites/animesama"
+PATH_TO_TCBSCANS = MAIN_DIRECTORY / "src/update/websites/tcbscans"
 
 # load config file
 with open(PATH_TO_CONFIG) as json_file:

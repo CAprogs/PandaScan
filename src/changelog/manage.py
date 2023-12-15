@@ -34,7 +34,7 @@ def generate_changelog(PATH_TO_WEBSITE, website):
 
     report = f"\nUpdate {update_number} : {update_time}\n{changelog}"
 
-    with open(f'{MAIN_DIRECTORY}/changelog/websites/{website}/changelog.txt', 'a') as file:
+    with open(f'{MAIN_DIRECTORY}/src/changelog/websites/{website}/changelog.txt', 'a') as file:
         file.write(report)
 
     SETTINGS["websites"][website]["n_update"] = update_number

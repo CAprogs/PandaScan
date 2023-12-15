@@ -10,5 +10,9 @@ def Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG):
         LOG (Any): the logger
     """
 
-    scrap_titles.Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG)
-    scrap_chapters.Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG)
+    result = scrap_titles.Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG)
+    if result == "success":
+        scrap_chapters.Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG)
+        return 1
+    else:
+        return 0

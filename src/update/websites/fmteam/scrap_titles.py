@@ -52,10 +52,14 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG):
                 break
 
         LOG.info(f"{len(manga_name_list)} mangas fetched.")
+        if len(manga_name_list) == 0:
+            return "failed"
 
         data_to_add = [{"NomManga": name, "links": links, "has_tome": has_tome, "last_tome": last_tome} for name, links, has_tome, last_tome in zip(manga_name_list, links_list, has_tome_list, last_tome_list)]
         datas = pd.DataFrame(data_to_add)
         datas.to_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv', index=False)
+        return "success"
 
     except Exception as e:
         LOG.debug(f"Error : {e} | Fmteam")
+        return "failed"

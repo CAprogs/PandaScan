@@ -38,13 +38,18 @@ def Scrap_titles(PATH_TO_LELSCANS, LOG):
                     manga_name_list.append(manga_name)
 
             LOG.info(f"{len(manga_name_list)} mangas fetched")
+            if len(manga_name_list) == 0:
+                return "failed"
 
             data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
             datas = pd.DataFrame(data_to_add)
             datas.to_csv(f'{PATH_TO_LELSCANS}/datas/mangas.csv', index=False)
+            return "success"
 
         else:
             LOG.debug("Error: no manga added | Lelscans")
+            return "failed"
 
     except Exception as e:
         LOG.debug(f"Error : {e} | Lelscans")
+        return "failed"

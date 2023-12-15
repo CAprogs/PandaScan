@@ -5,6 +5,7 @@ from src.foundation.core.essentials import PATH_TO_FMTEAM
 from src.foundation.core.essentials import PATH_TO_LELSCANS
 from src.foundation.core.essentials import PATH_TO_SCANTRAD
 from src.foundation.core.essentials import PATH_TO_ANIMESAMA
+from src.foundation.core.essentials import PATH_TO_TCBSCANS
 from src.foundation.core.emojis import EMOJIS
 
 
@@ -42,27 +43,38 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
     website_status = SETTINGS["websites"][selected_website]["enabled"]
 
     if website_status:
-        from update.websites.scantrad.update_datas import Update_scantrad
-        from update.websites.lelscans.update_datas import Update_lelscans
-        from update.websites.fmteam.update_datas import Update_fmteam
-        from update.websites.animesama.update_datas import Update_animesama
+        from src.update.websites.scantrad.update_datas import Update_scantrad
+        from src.update.websites.lelscans.update_datas import Update_lelscans
+        from src.update.websites.fmteam.update_datas import Update_fmteam
+        from src.update.websites.animesama.update_datas import Update_animesama
+        from src.update.websites.tcbscans.update_datas import Update_tcbscans
 
         LOG.info(f"Updating {selected_website} {EMOJIS[8]}..")
 
         if selected_website == "scantrad":
-            Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG)
-            generate_changelog(PATH_TO_SCANTRAD, selected_website)
+            i = Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG)
+            if i != 0:
+                generate_changelog(PATH_TO_SCANTRAD, selected_website)
         elif selected_website == "lelscans":
-            Update_lelscans(PATH_TO_LELSCANS, LOG)
-            generate_changelog(PATH_TO_LELSCANS, selected_website)
+            i = Update_lelscans(PATH_TO_LELSCANS, LOG)
+            if i != 0:
+                generate_changelog(PATH_TO_LELSCANS, selected_website)
         elif selected_website == "fmteam":
-            Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG)
-            generate_changelog(PATH_TO_FMTEAM, selected_website)
+            i = Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG)
+            if i != 0:
+                generate_changelog(PATH_TO_FMTEAM, selected_website)
         elif selected_website == "animesama":
-            Update_animesama(PATH_TO_ANIMESAMA, LOG)
-            generate_changelog(PATH_TO_ANIMESAMA, selected_website)
+            i = Update_animesama(PATH_TO_ANIMESAMA, LOG)
+            if i != 0:
+                generate_changelog(PATH_TO_ANIMESAMA, selected_website)
+        elif selected_website == "tcbscans":
+            i = Update_tcbscans(PATH_TO_TCBSCANS, LOG)
+            if i != 0:
+                generate_changelog(PATH_TO_TCBSCANS, selected_website)
+        else:
+            LOG.info(f"{selected_website} isn't supported {EMOJIS[4]}.")
+            return i, website_status
 
-        i += 1
         return i, website_status
 
     else:

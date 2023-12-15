@@ -82,12 +82,11 @@ def check_url(pattern, tome, selected_manga_name, chapter_number):
         return None
 
 
-def check_manga_path(chapter_file_path, download_id):
+def check_manga_path(chapter_file_path):
     """Check if the manga path exists.
 
     Args:
-        chapter_file_path (str): path of the folder to save images
-        download_id (int): current download number
+        chapter_file_path (str): path of the folder where to save images
 
     Returns:
         bool: True(manga already exists), False(otherwise)
@@ -96,5 +95,5 @@ def check_manga_path(chapter_file_path, download_id):
         os.makedirs(chapter_file_path)
         return False
     else:
-        LOG.debug(f"Download {download_id} skipped !\n\nChapter found in : {chapter_file_path}")
+        LOG.debug(f"Download skipped !\n\nChapter found in : {chapter_file_path}")
         return True

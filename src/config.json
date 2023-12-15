@@ -1,7 +1,7 @@
 {
     "App_version": "v3.0.1",
     "driver": {
-        "path": "",
+        "path": "/Users/charles-albert/Desktop/chromedriver-mac-arm64/chromedriver",
         "headless": true,
         "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     },
@@ -25,6 +25,10 @@
         "animesama": {
             "enabled": true,
             "n_update": 6
+        },
+        "tcbscans": {
+            "enabled": true,
+            "n_update": 0
         }
     },
     "Download": {

@@ -9,5 +9,10 @@ def Update_animesama(PATH_TO_ANIMESAMA, LOG):
         LOG (Any): the logger
     """
 
-    scrap_titles.Scrap_titles(PATH_TO_ANIMESAMA, LOG)
-    scrap_chapters.Scrap_chapters(PATH_TO_ANIMESAMA, LOG)
+    result = scrap_titles.Scrap_titles(PATH_TO_ANIMESAMA, LOG)
+    if result == "success":
+        scrap_chapters.Scrap_chapters(PATH_TO_ANIMESAMA, LOG)
+        return 1
+    else:
+        return 0
+
