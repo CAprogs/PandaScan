@@ -1,7 +1,7 @@
 {
     "App_version": "v3.0.1",
     "driver": {
-        "path": "/Users/charles-albert/Desktop/chromedriver-mac-arm64/chromedriver",
+        "path": "",
         "headless": true,
         "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     },
@@ -12,23 +12,23 @@
         "languages": "All",
         "fmteam": {
             "enabled": true,
-            "n_update": 18
+            "n_update": 19
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 17
+            "n_update": 18
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 17
+            "n_update": 18
         },
         "animesama": {
             "enabled": true,
-            "n_update": 6
+            "n_update": 7
         },
         "tcbscans": {
             "enabled": true,
-            "n_update": 0
+            "n_update": 1
         }
     },
     "Download": {
