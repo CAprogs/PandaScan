@@ -14,7 +14,7 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
 
     page = 1
     a = ""
-    mangas_titles = []
+    manga_name_list = []
 
     while True:
 
@@ -37,7 +37,7 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
                 result = re.search(r'/manga/([^/]+)/', href_value)
                 if result:
                     manga_name = result.group(1)
-                    mangas_titles.append({"NomManga": manga_name})
+                    manga_name_list.append({"NomManga": manga_name})
                     LOG.debug(f"{manga_name} added")
                 else:
                     LOG.debug(f"No value found for {href_value}. Page N°{page} | scantrad")
@@ -45,7 +45,10 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
         else:
             break
 
-    LOG.info(f"{len(mangas_titles)} mangas fetched.")
+    LOG.info(f"{len(manga_name_list)} mangas fetched.")
+    if len(manga_name_list) == 0:
+        return "failed"
 
-    datas = pd.DataFrame(mangas_titles)
+    datas = pd.DataFrame(manga_name_list)
     datas.to_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv', index=False)
+    return "success"

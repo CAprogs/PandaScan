@@ -224,7 +224,10 @@ def main():
     def fetch_chapters_in_menu():
         """Fill the list of chapters in the dropdown menus for range selection.
         """
-        num_chapters = [chapitre.replace("chapitre ", "") for chapitre in chapters_box.get(0, tk.END)]
+        if "chapitre" in chapters_box.get(0):
+            num_chapters = [chapitre.replace("chapitre ", "") for chapitre in chapters_box.get(0, tk.END)]
+        elif "chapter" in chapters_box.get(0):
+            num_chapters = [chapter.replace("chapter ", "") for chapter in chapters_box.get(0, tk.END)]
         for chapter in num_chapters:
             min_chapter_menu['menu'].add_command(label=chapter, command=tk._setit(min_chapter_var, chapter))
             max_chapter_menu['menu'].add_command(label=chapter, command=tk._setit(max_chapter_var, chapter))
@@ -243,8 +246,12 @@ def main():
 
             min_var = min_chapter_var.get()
             max_var = max_chapter_var.get()
-            start_chapter = "chapitre " + min_var
-            end_chapter = "chapitre " + max_var
+            if "chapitre" in chapters_box.get(0):
+                start_chapter = "chapitre " + min_var
+                end_chapter = "chapitre " + max_var
+            elif "chapter" in chapters_box.get(0):
+                start_chapter = "chapter " + min_var
+                end_chapter = "chapter " + max_var
 
             all_chapters = chapters_box.get(0, tk.END)
             start_index = all_chapters.index(start_chapter)
@@ -322,7 +329,7 @@ def main():
             else:
                 chapter_file_path = manga_file_path / chapter_name
 
-            status = download(website_list_var.get(), chapter_file_path, selected_manga_name, download_id, chapter_name, manga_file_path, SETTINGS, SELECTOR)
+            status = download(website_list_var.get(), chapter_file_path, selected_manga_name, chapter_name, manga_file_path)
             if status == "success":
                 downloads_succeeded += 1
             elif status == "failed":

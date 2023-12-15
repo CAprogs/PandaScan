@@ -4,20 +4,17 @@ import zipfile
 import io
 import os
 from src.download.utils import check_tome, check_url
-from src.foundation.core.essentials import LOG
+from src.foundation.core.essentials import SETTINGS, SELECTOR, LOG
 from src.foundation.core.emojis import EMOJIS
 
 
-def init_download(selected_website, selected_manga_name, download_id, manga_file_path, SETTINGS, SELECTOR, chapter_number):
+def init_download(selected_website, manga_file_path, selected_manga_name, chapter_number):
     """Initialize the download from fmteam.
 
     Args:
         selected_website (str): selected website
-        selected_manga_name (str): selected manga name
-        download_id (int): current download number
         manga_file_path (str): path of the folder to save chapters
-        SETTINGS (Any): json configuration file
-        SELECTOR (Any): DB cursor
+        selected_manga_name (str): selected manga name
         chapter_number (str): chapter number to download
 
     Returns:
@@ -43,10 +40,10 @@ def init_download(selected_website, selected_manga_name, download_id, manga_file
                 LOG.debug(f"chapitre {chapter_number} downloaded {EMOJIS[3]}")
                 return "success"
             elif response is False:
-                LOG.debug(f"Download {download_id} aborted {EMOJIS[4]}, request failed.")
+                LOG.debug(f"Download aborted {EMOJIS[4]}, request failed.")
                 return "failed"
             else:
-                LOG.debug(f"Download {download_id} skipped !\n\nChapter found in : {response}")
+                LOG.debug(f"Download skipped !\n\nChapter found in : {response}")
                 return "skipped"
         else:
             LOG.debug(f"Request failed : {selected_website} | {selected_manga_name}")

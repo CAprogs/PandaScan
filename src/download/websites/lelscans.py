@@ -4,14 +4,13 @@ from src.foundation.core.essentials import LOG
 from src.foundation.core.emojis import EMOJIS
 
 
-def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_number):
+def init_download(selected_website, chapter_file_path, selected_manga_name, chapter_number):
     """Initialize the download from lelscans.
 
     Args:
         selected_website (str): selected website
-        chapter_file_path (str): path of the folder to save images
+        chapter_file_path (str): path of the folder where to save images
         selected_manga_name (str): selected manga name
-        download_id (int): current download number
         chapter_number (str): chapter number to download
 
     Returns:

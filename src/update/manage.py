@@ -36,7 +36,8 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
 
             Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
             messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
-
+        else:
+            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}")
     else:
         LOG.debug(f"{mode} Update Canceled")
 
@@ -65,10 +66,13 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
 
             start_time = time.time()
             i, website_status = check_and_update(website, SETTINGS, i, LOG)
+            i += i
             end_time = time.time()
             elapsed_time = end_time - start_time
-            if website_status is True:
+            if website_status is True and i != 0:
                 LOG.info(f"{website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
+            else:
+                LOG.info(f"{website} Update failed {EMOJIS[4]} | lasted: {elapsed_time:.2f} s")
 
         if i != 0:
             Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)

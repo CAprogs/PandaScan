@@ -9,5 +9,9 @@ def Update_lelscans(PATH_TO_LELSCANS, LOG):
         LOG (Any): the logger
     """
 
-    scrap_titles.Scrap_titles(PATH_TO_LELSCANS, LOG)
-    scrap_chapters.Scrap_chapters(PATH_TO_LELSCANS, LOG)
+    result = scrap_titles.Scrap_titles(PATH_TO_LELSCANS, LOG)
+    if result == "success":
+        scrap_chapters.Scrap_chapters(PATH_TO_LELSCANS, LOG)
+        return 1
+    else:
+        return 0

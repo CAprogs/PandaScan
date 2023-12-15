@@ -4,14 +4,13 @@ from src.foundation.core.essentials import LOG
 from src.foundation.core.emojis import EMOJIS
 
 
-def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_number):
+def init_download(selected_website, chapter_file_path, selected_manga_name, chapter_number):
     """Initialize the download from scantrad.
 
     Args:
         selected_website (str): selected website
-        chapter_file_path (str): path of the folder to save images
+        chapter_file_path (str): path of the folder where to save images
         selected_manga_name (str): selected manga name
-        download_id (int): current download number
         chapter_number (str): chapter number to download
 
     Returns:
@@ -33,7 +32,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
                     LOG.debug(f"{chapter_number} downloaded {EMOJIS[3]}")
                     return "success"
         else:
-            LOG.debug(f"Download {download_id} aborted {EMOJIS[4]}, Status code : {http_response.status_code}")
+            LOG.debug(f"Request failed : {selected_website} {EMOJIS[4]}, Status code : {http_response.status_code}")
             return "failed"
     except requests.ConnectionError as e:
         LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
@@ -61,7 +60,7 @@ def scantrad(http_response, xpath, save_path, page):
         if image_response.status_code == 200:
             with open(save_path, 'wb') as f:
                 f.write(image_response.content)
-            LOG.debug(f"Image {page} téléchargée.")
+            LOG.debug(f"Image {page} downloaded.")
             return True
         else:
             LOG.debug(f"Failed downloading Image {page}. Statut Code : {image_response.status_code}")
