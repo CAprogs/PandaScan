@@ -32,7 +32,7 @@ from src.gui.Settings import show_settings
 from src.gui.utils import button_hover
 from src.foundation.core.essentials import relative_to_assets, check_connection, check_version
 from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
-from src.foundation.core.essentials import MAIN_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
+from src.foundation.core.essentials import MAIN_DIRECTORY, SRC_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
 from src.foundation.core.essentials import WEBSITES, ALL_WEBSITES, FR_WEBSITES, EN_WEBSITES
 from src.foundation.core.emojis import EMOJIS
 
@@ -329,7 +329,7 @@ def main():
             else:
                 chapter_file_path = manga_file_path / chapter_name
 
-            status = download(website_list_var.get(), chapter_file_path, selected_manga_name, chapter_name, manga_file_path)
+            status = download(website_list_var.get(), chapter_file_path, selected_manga_name, chapter_name, DRIVER)
             if status == "success":
                 downloads_succeeded += 1
             elif status == "failed":
@@ -572,10 +572,10 @@ def main():
     if SETTINGS['Update']['mode'] == "auto":
         main_window.withdraw()
         update_button.config(state=tk.DISABLED, cursor=INACTIVE_CURSOR)
-        auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG)
+        auto_update(SRC_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG)
         main_window.deiconify()
     elif SETTINGS['Update']['mode'] == "manual":
-        update_button.config(command=lambda: manual_update(MAIN_DIRECTORY, website_list_var.get(), SETTINGS, CONN, SELECTOR, WEBSITES, LOG))
+        update_button.config(command=lambda: manual_update(SRC_DIRECTORY, website_list_var.get(), SETTINGS, CONN, SELECTOR, WEBSITES, LOG))
         button_hover(update_button, button_update_1, button_update_2, download_button_state)
 
     main_window.protocol("WM_DELETE_WINDOW", on_closing)

@@ -4,11 +4,11 @@ from .utils import Delete_table
 from src.foundation.core.emojis import EMOJIS
 
 
-def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
+def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
     """Migrate the CSV and YAML data to the database.
 
     Args:
-        MAIN_DIRECTORY (str): path to the working directory
+        SRC_DIRECTORY (str): path to the src directory
         CONN (Any): DB connection
         SELECTOR (Any): DB cursor
         WEBSITES (list): list of available websites
@@ -28,11 +28,12 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
     df_sites = pd.DataFrame(websites)
     df_sites.to_sql('SitesWeb', CONN, if_exists='replace', index=False)
 
-    # Charger le fichier CSV [chapters_links.csv] dans un DataFrame pandas (animesama & tcbscans)
-    df_animesama = pd.read_csv(f'{MAIN_DIRECTORY}/src/update/websites/animesama/datas/chapters_links.csv')
-    df_tcbscans = pd.read_csv(f'{MAIN_DIRECTORY}/src/update/websites/tcbscans/datas/chapters_links.csv')
+    # Charger le fichier CSV [chapters_links.csv] dans un DataFrame pandas (animesama, tcbscans, fmteam)
+    df_animesama = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/animesama/datas/chapters_links.csv')
+    df_tcbscans = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/tcbscans/datas/chapters_links.csv')
+    df_fmteam = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/fmteam/datas/chapters_links.csv')
     # Concaténer les deux DataFrames & enregistrer les données dans la table "ChapterLink"
-    df_chapters_links = pd.concat([df_animesama, df_tcbscans], ignore_index=True)
+    df_chapters_links = pd.concat([df_animesama, df_tcbscans, df_fmteam], ignore_index=True)
     df_chapters_links.to_sql('ChapterLink', CONN, if_exists='replace', index=False)
 
     LOG.info("Database Checks and Cleanup ..")
@@ -44,12 +45,12 @@ def Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
 
         # Charger le fichier CSV [mangas.csv] dans un DataFrame pandas
         website = website['NomSite']
-        df_mangas = pd.read_csv(f'{MAIN_DIRECTORY}/src/update/websites/{website}/datas/mangas.csv')
+        df_mangas = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
         df_mangas['NomSite'] = website
         df_mangas.to_sql('Mangas', CONN, if_exists='append', index=False)
 
         # Charger le fichier YAML [mangas_chapters.yml] dans un dictionnaire
-        with open(f'{MAIN_DIRECTORY}/src/update/websites/{website}/datas/mangas_chapters.yml', 'r') as file:
+        with open(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas_chapters.yml', 'r') as file:
             yaml_content = yaml.load(file, Loader=yaml.FullLoader)
 
         # Parcourir le dictionnaire et insérer les données dans la table "Chapitres"

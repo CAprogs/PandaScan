@@ -15,6 +15,8 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
 
     datas = pd.read_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv')
     manga_chapters_dict = {}
+    chapters_and_links = []
+    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
 
     pattern = r'/ch/(\d+)/sub/(\d+)'
 
@@ -46,7 +48,8 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
 
                 chapter = "chapitre " + chapter_number
                 manga_chapters_dict[manga_name].append(chapter)
-                LOG.debug(f"{chapter} added")
+                chapters_and_links.append(["fmteam", manga_name, chapter, url_chapter_download])
+                LOG.debug(f"{chapter} added | link : {url_chapter_download}")
                 i += 1
             except Exception as e:
                 LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
@@ -58,6 +61,8 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM, LOG):
                     LOG.debug(f"Chapter N°{int(ch_number) - 1} doesn't exist | {manga_name}\n {e}")
                     break
 
+    links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
+    links_dataframe.to_csv(f'{PATH_TO_FMTEAM}/datas/chapters_links.csv', index=False)
     yml_data = yaml.dump(manga_chapters_dict)
 
     with open(f'{PATH_TO_FMTEAM}/datas/mangas_chapters_temp.yml', 'w') as file:

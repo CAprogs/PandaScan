@@ -6,23 +6,22 @@ from src.download.websites import tcbscans
 from src.download.utils import chapter_transform, check_manga_path
 
 
-def download(selected_website, chapter_file_path, selected_manga_name, chapter_name, manga_file_path):
+def download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER):
     """Manage the right download for a specific website.
 
     Args:
         selected_website (str): selected website
-        chapter_file_path (str): path of the folder to save images
+        chapter_file_path (str): path of the folder where to save images
         selected_manga_name (str): selected manga name
         chapter_name (str): chapter name
-        manga_file_path (str): path of the folder to save chapters
+        DRIVER (ANY): the chromedriver
 
     Returns:
         str: download status (success, skipped, or failed)
     """
 
-    if selected_website != "fmteam":
-        if check_manga_path(chapter_file_path):
-            return "skipped"
+    if check_manga_path(chapter_file_path):
+        return "skipped"
 
     chapter_number = chapter_transform(chapter_name, selected_website)
 
@@ -33,7 +32,7 @@ def download(selected_website, chapter_file_path, selected_manga_name, chapter_n
         status = lelscans.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_number)
 
     elif selected_website == "fmteam":
-        status = fmteam.init_download(selected_website, manga_file_path, selected_manga_name, chapter_number)
+        status = fmteam.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER)
 
     elif selected_website == "animesama":
         status = animesama.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)

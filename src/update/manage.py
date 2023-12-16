@@ -6,11 +6,11 @@ from .utils import confirm_update, check_and_update
 from src.foundation.core.emojis import EMOJIS
 
 
-def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEBSITES, LOG):
+def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEBSITES, LOG):
     """Launch manual update of a website.
 
     Args:
-        MAIN_DIRECTORY (str): path to the working directory
+        SRC_DIRECTORY (str): path to the src directory
         selected_website (str): name of the website to update
         SETTINGS (Any): .json configuration file
         CONN (Any): DB connection
@@ -34,7 +34,7 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
         if i != 0:
             LOG.info(f"{selected_website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
 
-            Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
+            Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
             messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
         else:
             messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}")
@@ -42,11 +42,11 @@ def manual_update(MAIN_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WE
         LOG.debug(f"{mode} Update Canceled")
 
 
-def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
+def auto_update(SRC_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
     """Launch auto update of websites.
 
     Args:
-        MAIN_DIRECTORY (str): path to the working directory
+        SRC_DIRECTORY (str): path to the src directory
         WEBSITES (dict): list of available websites
         SETTINGS (Any): .json configuration file
         CONN (Any): DB connection
@@ -75,7 +75,7 @@ def auto_update(MAIN_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
                 LOG.info(f"{website} Update failed {EMOJIS[4]} | lasted: {elapsed_time:.2f} s")
 
         if i != 0:
-            Manage_migration(MAIN_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
+            Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
             messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
 
     else:

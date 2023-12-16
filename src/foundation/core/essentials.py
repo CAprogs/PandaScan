@@ -35,21 +35,24 @@ ALL_WEBSITES = [website for website in WEBSITES_DICT.keys()]
 FR_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "FR"]
 EN_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "EN"]
 
-# Working directory
+# Pandascan directory
 MAIN_DIRECTORY = Path(os.path.abspath(os.getcwd()))
 
+# Src directory
+SRC_DIRECTORY = MAIN_DIRECTORY / "src"
+
 # Assets directory
-ASSETS_DIRECTORY = MAIN_DIRECTORY / "src/gui/assets"
+ASSETS_DIRECTORY = SRC_DIRECTORY / "gui/assets"
 
 # Path to config file
-PATH_TO_CONFIG = MAIN_DIRECTORY / "src/config.json"
+PATH_TO_CONFIG = SRC_DIRECTORY / "config.json"
 
 # paths to websites file ( Update )
-PATH_TO_SCANTRAD = MAIN_DIRECTORY / "src/update/websites/scantrad"
-PATH_TO_LELSCANS = MAIN_DIRECTORY / "src/update/websites/lelscans"
-PATH_TO_FMTEAM = MAIN_DIRECTORY / "src/update/websites/fmteam"
-PATH_TO_ANIMESAMA = MAIN_DIRECTORY / "src/update/websites/animesama"
-PATH_TO_TCBSCANS = MAIN_DIRECTORY / "src/update/websites/tcbscans"
+PATH_TO_SCANTRAD = SRC_DIRECTORY / "update/websites/scantrad"
+PATH_TO_LELSCANS = SRC_DIRECTORY / "update/websites/lelscans"
+PATH_TO_FMTEAM = SRC_DIRECTORY / "update/websites/fmteam"
+PATH_TO_ANIMESAMA = SRC_DIRECTORY / "update/websites/animesama"
+PATH_TO_TCBSCANS = SRC_DIRECTORY / "update/websites/tcbscans"
 
 # load config file
 with open(PATH_TO_CONFIG) as json_file:
@@ -72,11 +75,11 @@ elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == "I
     LOG = CustomLogger(format=LOG_FORMATS[0])  # Only Display info logs
 
 # Configure chromedriver and selenium
-DRIVER = set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS)
+DRIVER = set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS)
 
 # Load SQl datas
 try:
-    CONN = sql.connect(f'{MAIN_DIRECTORY}/src/foundation/database/Pan_datas.db')
+    CONN = sql.connect(f'{SRC_DIRECTORY}/foundation/database/Pan_datas.db')
     SELECTOR = CONN.cursor()
     print(f"\nDatas Loaded {EMOJIS[3]}")
 except sql.Error as e:
