@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from .utils import read_previous_state, generate_report
 from .utils import write_current_state
-from src.foundation.core.essentials import MAIN_DIRECTORY, SETTINGS
+from src.foundation.core.essentials import SRC_DIRECTORY, SETTINGS
 from src.foundation.core.essentials import PATH_TO_CONFIG
 
 
@@ -34,7 +34,7 @@ def generate_changelog(PATH_TO_WEBSITE, website):
 
     report = f"\nUpdate {update_number} : {update_time}\n{changelog}"
 
-    with open(f'{MAIN_DIRECTORY}/src/changelog/websites/{website}/changelog.txt', 'a') as file:
+    with open(f'{SRC_DIRECTORY}/changelog/websites/{website}/changelog.txt', 'a') as file:
         file.write(report)
 
     SETTINGS["websites"][website]["n_update"] = update_number

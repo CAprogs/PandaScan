@@ -4,12 +4,12 @@ from selenium.webdriver.chrome.service import Service
 from .utils import check_driver, check_extensions
 
 
-def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS):
+def set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS):
     """Instantiate the browser elements.
 
     Args:
         OS_NAME (str): name of the OS
-        MAIN_DIRECTORY (str): path to the working directory
+        SRC_DIRECTORY (str): path to the src directory
         PATH_TO_CONFIG (str): path to the .json file
         SETTINGS (Any): .json configuration file
         LOG (Any): the logger
@@ -19,8 +19,8 @@ def set_driver_config(OS_NAME, MAIN_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EM
         Any: the webdriver
     """
 
-    ublock_path = f'{MAIN_DIRECTORY}/src/foundation/selenium/extensions/ublock.crx'
-    adguard_path = f'{MAIN_DIRECTORY}/src/foundation/selenium/extensions/adguard.crx'
+    ublock_path = f'{SRC_DIRECTORY}/foundation/selenium/extensions/ublock.crx'
+    adguard_path = f'{SRC_DIRECTORY}/foundation/selenium/extensions/adguard.crx'
     check_extensions(ublock_path, adguard_path, EMOJIS)
 
     check_driver(OS_NAME, LOG, SETTINGS["driver"]["path"], PATH_TO_CONFIG, SETTINGS)
