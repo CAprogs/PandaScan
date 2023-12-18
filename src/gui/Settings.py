@@ -4,7 +4,7 @@ import os
 import tkinter as tk
 from tkinter import Toplevel, BooleanVar, Entry, Button, OptionMenu
 from tkinter import Checkbutton, Canvas, PhotoImage, messagebox, StringVar
-from .utils import button_hover, activate_button, deactivate_button
+from .utils import button_hover, activate_button, deactivate_button, manage_menu
 from src.foundation.selenium.utils import check_path
 from src.foundation.core.essentials import relative_to_assets
 from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR
@@ -45,9 +45,11 @@ TEXT_11 = "Scantrad"
 TEXT_12 = "Lelscans"
 TEXT_13 = "Fmteam"
 TEXT_14 = "Animesama"
+TEXT_15 = "Lelmanga"
+TEXT_16 = "Tcbscans"
 # DOWNLOAD_PAGE
-TEXT_15 = "Path"
-TEXT_16 = f"The folder where your scans'll be stored. ( Default : PandaScan {EMOJIS[0]} directory )"
+TEXT_50 = "Path"
+TEXT_51 = f"The folder where your scans'll be stored. ( Default : PandaScan {EMOJIS[0]} directory )"
 
 
 def show_settings(main_window, SETTINGS, settings_button):
@@ -88,6 +90,8 @@ def show_settings(main_window, SETTINGS, settings_button):
         lelscans_checkbox_var = BooleanVar(value=SETTINGS["websites"]["lelscans"]["enabled"])
         scantrad_checkbox_var = BooleanVar(value=SETTINGS["websites"]["scantrad"]["enabled"])
         animesama_checkbox_var = BooleanVar(value=SETTINGS["websites"]["animesama"]["enabled"])
+        lelmanga_checkbox_var = BooleanVar(value=SETTINGS["websites"]["lelmanga"]["enabled"])
+        tcbscans_checkbox_var = BooleanVar(value=SETTINGS["websites"]["tcbscans"]["enabled"])
 
         # Initialize dictionaries [widgets + labels]
         widgets_to_manage = {}
@@ -167,6 +171,9 @@ def show_settings(main_window, SETTINGS, settings_button):
             for element, (x, y, width, height) in widgets_to_manage[button].items():
                 element.place(x=x, y=y, width=width, height=height)
             settings_window.update()
+
+        def Switch_update_mode(*args):
+            manage_menu(update_mode_menu, ["manual", "auto"], update_mode_var)
 
         def check_previous_deactivate_button(button):
             """Check which button was disabled before disabling the current button.
@@ -300,7 +307,9 @@ def show_settings(main_window, SETTINGS, settings_button):
             # [ WIDGET ] Menu [Update mode]
             update_mode_var = StringVar(settings_window)
             update_mode_var.set(SETTINGS["Update"]["mode"])
-            update_mode_menu = OptionMenu(settings_window, update_mode_var, "manual", "auto")
+            update_mode_menu = OptionMenu(settings_window, update_mode_var, update_mode_var.get())
+            manage_menu(update_mode_menu, ["manual", "auto"], update_mode_var)
+            update_mode_var.trace_add("write", Switch_update_mode)
             update_mode_menu.place(x=92.0, y=76.0)
             update_mode_menu.configure(bg=CURRENT_COLOR)
             # [ TEXT ]   Infos [Update mode]
@@ -330,6 +339,16 @@ def show_settings(main_window, SETTINGS, settings_button):
             # [ WIDGET ] Checkbox_4 [Animesama]
             update_checkbox_4 = Checkbutton(settings_window, variable=animesama_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_4.place(x=125.0, y=216.0, width=14.0, height=12.0)
+            # [ TEXT ]   Lelmanga
+            update_lelmanga = canvas.create_text(65.0, 236.0, anchor="nw", text=TEXT_15, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            # [ WIDGET ] Checkbox_5 [Lelmanga]
+            update_checkbox_5 = Checkbutton(settings_window, variable=lelmanga_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_5.place(x=125.0, y=236.0, width=14.0, height=12.0)
+            # [ TEXT ]   Tcbscans
+            update_tcbscans = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_16, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            # [ WIDGET ] Checkbox_6 [Tcbscans]
+            update_checkbox_6 = Checkbutton(settings_window, variable=tcbscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_6.place(x=265.0, y=158.0, width=14.0, height=12.0)
 
             # Widgets to manage
             widgets_to_manage[button_2] = {
@@ -337,7 +356,9 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_checkbox_1: (125.0, 158.0, 14.0, 12.0),
                 update_checkbox_2: (125.0, 176.0, 14.0, 12.0),
                 update_checkbox_3: (125.0, 196.0, 14.0, 12.0),
-                update_checkbox_4: (125.0, 216.0, 14.0, 12.0)}
+                update_checkbox_4: (125.0, 216.0, 14.0, 12.0),
+                update_checkbox_5: (125.0, 236.0, 14.0, 12.0),
+                update_checkbox_6: (265.0, 158.0, 14.0, 12.0)}
             # Labels to manage
             labels_to_manage[button_2] = {
                 update_mode: (49.0, 75.0),
@@ -348,7 +369,9 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_scantrad: (65.0, 158.0),
                 update_lelscan: (65.0, 176.0),
                 update_fmteam: (65.0, 196.0),
-                update_animesama: (65.0, 216.0)}
+                update_animesama: (65.0, 216.0),
+                update_lelmanga: (65.0, 236.0),
+                update_tcbscans: (195.0, 158.0)}
 
             check_previous_deactivate_button(button_2)
 
@@ -366,7 +389,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 return
 
             # [ TEXT ]   Path
-            download_path = canvas.create_text(55.0, 75.0, anchor="nw", text=TEXT_15, fill=CURRENT_COLOR, font=TITLE_POLICE)
+            download_path = canvas.create_text(55.0, 75.0, anchor="nw", text=TEXT_50, fill=CURRENT_COLOR, font=TITLE_POLICE)
             # [ WIDGET ] Entry
             download_entry = Entry(settings_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0)
             download_entry.insert(0, SETTINGS["Download"]["path"])
@@ -376,7 +399,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             choose_directory_path.configure(highlightbackground=BACKGROUND_BUTTON_COLOR)
             choose_directory_path.place(x=340.0, y=70.0, width=50.0, height=25.0)
             # [ TEXT ]   Info path
-            download_path_info = canvas.create_text(55.0, 100.0, anchor="nw", text=TEXT_16, fill=CURRENT_COLOR, font=INFO_POLICE)
+            download_path_info = canvas.create_text(55.0, 100.0, anchor="nw", text=TEXT_51, fill=CURRENT_COLOR, font=INFO_POLICE)
 
             # Widgets to manage
             widgets_to_manage[button_3] = {
@@ -404,6 +427,8 @@ def show_settings(main_window, SETTINGS, settings_button):
                 SETTINGS["websites"]["lelscans"]["enabled"] = lelscans_checkbox_var.get()
                 SETTINGS["websites"]["scantrad"]["enabled"] = scantrad_checkbox_var.get()
                 SETTINGS["websites"]["animesama"]["enabled"] = animesama_checkbox_var.get()
+                SETTINGS["websites"]["lelmanga"]["enabled"] = lelmanga_checkbox_var.get()
+                SETTINGS["websites"]["tcbscans"]["enabled"] = tcbscans_checkbox_var.get()
                 SETTINGS["Download"]["path"] = check_path(OS_NAME, LOG, download_entry.get())
 
                 with open(PATH_TO_CONFIG, 'w') as json_file:

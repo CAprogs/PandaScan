@@ -60,3 +60,18 @@ def deactivate_button(button, button_image_2):
     """
     button.config(image=button_image_2, state=tk.DISABLED, cursor=INACTIVE_CURSOR)
     deactivate_button_hover(button)
+
+
+def manage_menu(menu, menu_list, menu_list_var):
+    """Manage menu displayed items
+
+    Args:
+        menu (Any): the menu
+        menu_list (list): menu's elements
+        menu_list_var (str): element selected in the menu
+    """
+
+    menu['menu'].delete(0, 'end')
+    for element in menu_list:
+        if element != menu_list_var.get():
+            menu['menu'].add_command(label=element, command=tk._setit(menu_list_var, element))

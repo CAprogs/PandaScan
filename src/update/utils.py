@@ -6,6 +6,7 @@ from src.foundation.core.essentials import PATH_TO_LELSCANS
 from src.foundation.core.essentials import PATH_TO_SCANTRAD
 from src.foundation.core.essentials import PATH_TO_ANIMESAMA
 from src.foundation.core.essentials import PATH_TO_TCBSCANS
+from src.foundation.core.essentials import PATH_TO_LELMANGA
 from src.foundation.core.emojis import EMOJIS
 
 
@@ -48,6 +49,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         from src.update.websites.fmteam.update_datas import Update_fmteam
         from src.update.websites.animesama.update_datas import Update_animesama
         from src.update.websites.tcbscans.update_datas import Update_tcbscans
+        from src.update.websites.lelmanga.update_datas import Update_lelmanga
 
         LOG.info(f"Updating {selected_website} {EMOJIS[8]}..")
 
@@ -71,6 +73,10 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
             i = Update_tcbscans(PATH_TO_TCBSCANS, LOG)
             if i != 0:
                 generate_changelog(PATH_TO_TCBSCANS, selected_website)
+        elif selected_website == "lelmanga":
+            i = Update_lelmanga(PATH_TO_LELMANGA, LOG)
+            if i != 0:
+                generate_changelog(PATH_TO_LELMANGA, selected_website)
         else:
             LOG.info(f"{selected_website} isn't supported {EMOJIS[4]}.")
             return i, website_status

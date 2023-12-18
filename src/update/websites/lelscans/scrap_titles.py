@@ -51,5 +51,5 @@ def Scrap_titles(PATH_TO_LELSCANS, LOG):
         return "success"
 
     except Exception as e:
-        LOG.debug(f"Error : {e} | Lelscans")
+        LOG.debug(f"Error : {e}")
         return "failed"

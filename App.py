@@ -29,7 +29,7 @@ from src.foundation.tracker.progessbar import ProgressBar
 from src.download.manage import download
 from src.update.manage import manual_update, auto_update
 from src.gui.Settings import show_settings
-from src.gui.utils import button_hover
+from src.gui.utils import button_hover, manage_menu
 from src.foundation.core.essentials import relative_to_assets, check_connection, check_version
 from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
 from src.foundation.core.essentials import MAIN_DIRECTORY, SRC_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
@@ -131,20 +131,6 @@ def main():
         result_box.delete(0, tk.END)
         chapters_box.delete(0, tk.END)
         Clear_range_menus()
-
-    def manage_menu(menu, menu_list, menu_list_var):
-        """Manage menu displayed items
-
-        Args:
-            menu (Any): the menu
-            menu_list (list): menu's elements
-            menu_list_var (str): element selected in the menu
-        """
-
-        menu['menu'].delete(0, 'end')
-        for element in menu_list:
-            if element != menu_list_var.get():
-                menu['menu'].add_command(label=element, command=tk._setit(menu_list_var, element))
 
     def Switch_website(*args):
         """Change the website.
@@ -572,10 +558,10 @@ def main():
     if SETTINGS['Update']['mode'] == "auto":
         main_window.withdraw()
         update_button.config(state=tk.DISABLED, cursor=INACTIVE_CURSOR)
-        auto_update(SRC_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG)
+        auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG)
         main_window.deiconify()
     elif SETTINGS['Update']['mode'] == "manual":
-        update_button.config(command=lambda: manual_update(SRC_DIRECTORY, website_list_var.get(), SETTINGS, CONN, SELECTOR, WEBSITES, LOG))
+        update_button.config(command=lambda: manual_update(SRC_DIRECTORY, website_list_var.get(), SETTINGS, CONN, SELECTOR, LOG))
         button_hover(update_button, button_update_1, button_update_2, download_button_state)
 
     main_window.protocol("WM_DELETE_WINDOW", on_closing)
