@@ -10,14 +10,20 @@ def Scrap_chapters(PATH_TO_TCBSCANS, LOG):
     Args:
         PATH_TO_TCBSCANS (str): path to tcbscans directory (update)
         LOG (Any): the logger
+
+    Returns:
+        str: 'success' if passed, 'failed' if an error occured
     """
 
-    datas = pd.read_csv(f'{PATH_TO_TCBSCANS}/datas/mangas.csv')
+    try:
+        datas = pd.read_csv(f'{PATH_TO_TCBSCANS}/datas/mangas.csv')
+    except Exception as e:
+        return LOG.debug(f"Error : {e}")
     manga_chapters_dict = {}
     chapters_and_links = []
-    last_manga_index = len(datas['NomManga'])-1
-    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
     failed_mangas = []
+    last_manga_index = len(datas['NomManga']) - 1
+    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
 
     for index, manga_name in enumerate(datas['NomManga']):
         url = datas['links'][index]
@@ -27,9 +33,6 @@ def Scrap_chapters(PATH_TO_TCBSCANS, LOG):
             html_content = response.text
             soup_1 = BeautifulSoup(html_content, "html.parser")
             select_element = soup_1.select_one('body > main > div.overflow-hidden > div > div > div.col-span-2')
-            if not select_element and last_manga_index != len(datas['NomManga'])-1:
-                LOG.debug(f"Error : No chapter found | {url} | tcbscans")
-                continue
 
             LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = []
@@ -38,25 +41,27 @@ def Scrap_chapters(PATH_TO_TCBSCANS, LOG):
             for element in chapters_elements:
                 chapter_title = [element.text for element in element.contents if "text-lg font-bold" in str(element)]
                 # extract the chapter and his link
-                if chapter_title != []:
-                    chapter = "chapter " + chapter_title[0].split("Chapter", 1)[1].strip()
-                    chapter_link = 'https://tcbscans.com' + element['href']
-                    manga_chapters_dict[manga_name].append(chapter)
-                    chapters_and_links.append(["tcbscans", manga_name, chapter, chapter_link])
-                    LOG.debug(f"{chapter} added | link : {chapter_link}")
-                else:
-                    LOG.debug(f"Error : {chapter_title} | {url} | tcbscans")
+                chapter = "chapter " + chapter_title[0].split("Chapter", 1)[1].strip()
+                chapter_link = 'https://tcbscans.com' + element['href']
+                manga_chapters_dict[manga_name].append(chapter)
+                chapters_and_links.append(["tcbscans", manga_name, chapter, chapter_link])
+                LOG.debug(f"{chapter} added | link : {chapter_link}")
 
             LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
 
         except Exception as e:
+            failed_mangas.append(manga_name)
+            LOG.debug(f"Error : {e} | {url}")
             if index != last_manga_index:
-                LOG.debug(f"Error : {e} | {url} | tcbscans | not the last manga")
-                failed_mangas.append(manga_name)
                 continue
-            else:
-                LOG.debug(f"Error : {e} | {url} | tcbscans | {manga_name}")
-                return
+
+    if len(failed_mangas) == len(datas['NomManga']):
+        LOG.debug("Error : All mangas failed ..")
+        return "failed"
+    elif failed_mangas != []:
+        LOG.debug(f"\n{len(failed_mangas)} mangas failed ..\n")
+        for manga in failed_mangas:
+            LOG.debug(manga)
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
     links_dataframe.to_csv(f'{PATH_TO_TCBSCANS}/datas/chapters_links.csv', index=False)
@@ -64,8 +69,4 @@ def Scrap_chapters(PATH_TO_TCBSCANS, LOG):
     yml_data = yaml.dump(manga_chapters_dict)
     with open(f'{PATH_TO_TCBSCANS}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
-    
-    LOG.debug(f"\n{len(failed_mangas)} mangas failed :\n")
-    if failed_mangas != []:
-        for manga in failed_mangas:
-            LOG.debug(manga)
+    return "success"

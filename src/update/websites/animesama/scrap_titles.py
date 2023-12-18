@@ -9,6 +9,9 @@ def Scrap_titles(PATH_TO_ANIMESAMA, LOG):
     Args:
         PATH_TO_ANIMESAMA (str): path to animesama directory (update)
         LOG (Any): the logger
+
+    Returns:
+        str: 'success' if passed, 'failed' if an error occured
     """
 
     links_list = []
@@ -23,30 +26,27 @@ def Scrap_titles(PATH_TO_ANIMESAMA, LOG):
             html_content = response.text
             soup = BeautifulSoup(html_content, "html.parser")
             select_element = soup.select_one('#content > div > div.postbody > div.bixbox.seriesearch > div.mrgn > div.listupd')
+            mangas = select_element.find_all("div", class_="bs")
 
-            if select_element:
-                mangas = select_element.find_all("div", class_="bs")
-                if mangas == []:
-                    LOG.debug(f"No manga added | {url}")
-                    break
-                for manga in mangas:
-                    link = manga.find("a").get("href")
-                    manga_name = link.split("/")[-2]
-                    links_list.append(link)
-                    manga_name_list.append(manga_name)
-                    LOG.debug(f"{manga_name} added | {link}")
-            else:
-                LOG.debug(f"No select_element | {url}")
+            if mangas == []:
+                LOG.debug(f"No manga added | {url}")
                 break
+            for manga in mangas:
+                link = manga.find("a").get("href")
+                manga_name = link.split("/")[-2]
+                links_list.append(link)
+                manga_name_list.append(manga_name)
+                LOG.debug(f"{manga_name} added | {link}")
             page += 1
 
         except Exception as e:
             LOG.debug(f"Error | {e}")
             break
 
-    LOG.info(f"{len(manga_name_list)} mangas fetched.")
-    if len(manga_name_list) == 0:
+    if manga_name_list == []:
         return "failed"
+
+    LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
     data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)

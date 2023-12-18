@@ -11,41 +11,61 @@ def Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG):
         DRIVER (Any): the chromedriver
         PATH_TO_SCANTRAD (str): path to scantrad directory (update)
         LOG (Any): the logger
+
+    Returns:
+        str: 'success' if passed, 'failed' if an error occured
     """
 
-    datas = pd.read_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv')
+    try:
+        datas = pd.read_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv')
+    except Exception as e:
+        return LOG.debug(f"Error : {e}")
     manga_chapters_dict = {}
+    chapters_and_links = []
+    failed_mangas = []
+    last_manga_index = len(datas['NomManga']) - 1
+    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
 
-    for manga_name in datas['NomManga']:
-        url_start = f'https://scantrad-vf.co/manga/{manga_name}/'
+    for index, manga_name in enumerate(datas['NomManga']):
+        url = datas['links'][index]
 
         try:
-            DRIVER.get(url_start)
+            DRIVER.get(url)
             LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = []
-
             DRIVER.implicitly_wait(2)
-
             elements = DRIVER.find_elements(By.CLASS_NAME, 'wp-manga-chapter  ')
-            for element in elements:
-                link = element.find_element(By.TAG_NAME, 'a')
-                href_value = link.get_attribute('href')
-                result = re.search(rf'/{manga_name}/([^/]+)/', href_value)
-                if result:
-                    chapter = result.group(1)
-                    if chapter:
-                        chapter_str = chapter.replace('-', ' ')
-                        manga_chapters_dict[manga_name].append(chapter_str)
-                        LOG.debug(f"{chapter_str} added")
-                    else:
-                        LOG.debug(f"No value found | {href_value} | scantrad")
-                else:
-                    LOG.debug(f"No value found. | {manga_name} | scantrad")
-        except Exception as e:
-            LOG.debug(f"Error : {e} | {manga_name}")
 
-    datas = datas.reset_index(drop=True)
+            for element in elements:
+                # extract the chapter and his link
+                link = element.find_element(By.TAG_NAME, 'a')
+                chapter_link = link.get_attribute('href')
+                result = re.search(rf'/{manga_name}/([^/]+)/', chapter_link)
+                chapter = result.group(1).replace('-', ' ')
+                manga_chapters_dict[manga_name].append(chapter)
+                chapters_and_links.append(["scantrad", manga_name, chapter, chapter_link])
+                LOG.debug(f"{chapter} added | {chapter_link}")
+
+            LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
+
+        except Exception as e:
+            failed_mangas.append(manga_name)
+            LOG.debug(f"Error : {e} | {url} | scantrad")
+            if index != last_manga_index:
+                continue
+
+    if len(failed_mangas) == len(datas['NomManga']):
+        LOG.debug("Error : All mangas failed ..")
+        return "failed"
+    elif failed_mangas != []:
+        LOG.debug(f"\n{len(failed_mangas)} mangas failed ..\n")
+        for manga in failed_mangas:
+            LOG.debug(manga)
+
+    links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
+    links_dataframe.to_csv(f'{PATH_TO_SCANTRAD}/datas/chapters_links.csv', index=False)
+
     yml_data = yaml.dump(manga_chapters_dict)
-    datas.to_csv(f'{PATH_TO_SCANTRAD}/datas/mangas.csv', index=False)
     with open(f'{PATH_TO_SCANTRAD}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
+    return "success"

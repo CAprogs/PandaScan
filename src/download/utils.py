@@ -5,25 +5,6 @@ import zipfile
 from src.foundation.core.essentials import LOG
 
 
-def chapter_transform(chapter_name, selected_website):
-    """Transform the chapter name to the right format.
-
-    Args:
-        chapter_name (str): chapter name
-        selected_website (str): selected website
-
-    Returns:
-        str: chapter name in the right format
-    """
-
-    if selected_website == "scantrad":
-        result = chapter_name.replace(' ', '-')
-        return result
-    else:
-        result = chapter_name.replace('chapitre ', '')
-        return result
-
-
 def check_manga_path(chapter_file_path):
     """Check if the manga path exists.
 
@@ -87,4 +68,4 @@ def find_latest_zip(chapter_file_path, timeout=60):
         if zip_files:
             return max(zip_files, key=os.path.getctime)
         time.sleep(1)
-    return None 
+    return None

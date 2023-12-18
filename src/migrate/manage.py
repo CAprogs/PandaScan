@@ -13,6 +13,9 @@ def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
         SELECTOR (Any): DB cursor
         WEBSITES (list): list of available websites
         LOG (Any): the logger
+
+    Returns:
+        str: 'success' if passed, 'failed' if an error occured
     """
 
     LOG.info("Datas migration ..")
@@ -23,45 +26,62 @@ def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
                 {'NomSite': WEBSITES[4]}
                 ]
 
-    tables = ["Mangas", "Chapitres"]
+    nb_websites = len(websites)
+    latest_website_index = nb_websites - 1
+    failed_migrations = []
 
+    tables = ["Mangas", "Chapitres", "ChapterLink"]
+
+    # df_sites -> Table "SitesWeb"
     df_sites = pd.DataFrame(websites)
     df_sites.to_sql('SitesWeb', CONN, if_exists='replace', index=False)
-
-    # Charger le fichier CSV [chapters_links.csv] dans un DataFrame pandas (animesama, tcbscans, fmteam)
-    df_animesama = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/animesama/datas/chapters_links.csv')
-    df_tcbscans = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/tcbscans/datas/chapters_links.csv')
-    df_fmteam = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/fmteam/datas/chapters_links.csv')
-    # Concaténer les deux DataFrames & enregistrer les données dans la table "ChapterLink"
-    df_chapters_links = pd.concat([df_animesama, df_tcbscans, df_fmteam], ignore_index=True)
-    df_chapters_links.to_sql('ChapterLink', CONN, if_exists='replace', index=False)
 
     LOG.info("Database Checks and Cleanup ..")
 
     for table in tables:
-        Delete_table(table, CONN, SELECTOR)
+        result = Delete_table(table, CONN, SELECTOR)
+        if result:
+            LOG.info(f"Table {table} deleted ..")
 
     for website in websites:
+        try:
+            website = website['NomSite']
 
-        # Charger le fichier CSV [mangas.csv] dans un DataFrame pandas
-        website = website['NomSite']
-        df_mangas = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
-        df_mangas['NomSite'] = website
-        df_mangas.to_sql('Mangas', CONN, if_exists='append', index=False)
+            # [mangas.csv] -> Table "Mangas"
+            df_mangas = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
+            df_mangas['NomSite'] = website
+            df_mangas.to_sql('Mangas', CONN, if_exists='append', index=False)
 
-        # Charger le fichier YAML [mangas_chapters.yml] dans un dictionnaire
-        with open(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas_chapters.yml', 'r') as file:
-            yaml_content = yaml.load(file, Loader=yaml.FullLoader)
+            # [chapters_links.csv] -> Table "ChapterLink"
+            df_chapters_links = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/chapters_links.csv')
+            df_chapters_links.to_sql('ChapterLink', CONN, if_exists='append', index=False)
 
-        # Parcourir le dictionnaire et insérer les données dans la table "Chapitres"
-        for manga, chapitres in yaml_content.items():
-            for chapitre in chapitres:
-                data = {'NomSite': website, 'NomManga': manga, 'Chapitres': chapitre}
-                df_chapitre = pd.DataFrame([data])
-                df_chapitre.to_sql('Chapitres', CONN, if_exists='append', index=False)
+            # Read the YAML file
+            with open(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas_chapters.yml', 'r') as file:
+                yaml_content = yaml.load(file, Loader=yaml.FullLoader)
 
-        # Enregistrer les modifications dans la DB
-        CONN.commit()
-        LOG.info(f"{website} migrated {EMOJIS[3]}")
+            # [mangas_chapters.yml] -> Table "Chapitres"
+            for manga, chapitres in yaml_content.items():
+                for chapitre in chapitres:
+                    data = {'NomSite': website, 'NomManga': manga, 'Chapitres': chapitre}
+                    df_chapitre = pd.DataFrame([data])
+                    df_chapitre.to_sql('Chapitres', CONN, if_exists='append', index=False)
 
-    LOG.info(f"Migration completed {EMOJIS[3]}.")
+            # Save changes to the database
+            CONN.commit()
+            LOG.info(f"{website} migrated {EMOJIS[3]}")
+
+        except Exception as e:
+            failed_migrations.append(website)
+            LOG.info(f"Error : {e} | {website} failed to migrate {EMOJIS[4]}")
+            if website.index != latest_website_index:
+                continue
+
+    if len(failed_migrations) == nb_websites:
+        return "failed"
+    elif failed_migrations != []:
+        LOG.debug(f"\n{len(failed_migrations)} mangas failed ..\n")
+        for website in failed_migrations:
+            LOG.debug(website)
+
+    return "success"

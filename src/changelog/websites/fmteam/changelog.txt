@@ -312,3 +312,6 @@ Changes in blue-lock-episode-nagi:
   • Added chapters: chapitre 17
 Changes in out:
   • Added chapters: chapitre 167
+
+Update 22 : 17/12/2023 | 23:44:24
+No added / deprecated files !

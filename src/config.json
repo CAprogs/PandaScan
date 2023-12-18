@@ -12,23 +12,23 @@
         "languages": "All",
         "fmteam": {
             "enabled": true,
-            "n_update": 20
+            "n_update": 22
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 18
+            "n_update": 20
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 18
+            "n_update": 19
         },
         "animesama": {
             "enabled": true,
-            "n_update": 7
+            "n_update": 8
         },
         "tcbscans": {
             "enabled": true,
-            "n_update": 1
+            "n_update": 2
         }
     },
     "Download": {

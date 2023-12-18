@@ -9,6 +9,9 @@ def Scrap_titles(PATH_TO_TCBSCANS, LOG):
     Args:
         PATH_TO_TCBSCANS (str): path to tcbscans directory (update)
         LOG (Any): the logger
+
+    Returns:
+        str: 'success' if passed, 'failed' if an error occured
     """
 
     links_list = []
@@ -41,9 +44,10 @@ def Scrap_titles(PATH_TO_TCBSCANS, LOG):
         LOG.debug(f"Error | {e}")
         return "failed"
 
-    LOG.info(f"{len(manga_name_list)} mangas fetched.")
-    if len(manga_name_list) == 0:
+    if manga_name_list == []:
         return "failed"
+
+    LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
     data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)

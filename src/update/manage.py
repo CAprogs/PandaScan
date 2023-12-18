@@ -34,8 +34,13 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEB
         if i != 0:
             LOG.info(f"{selected_website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
 
-            Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
-            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
+            result = Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
+            if result == "success":
+                LOG.info(f"Migration completed {EMOJIS[3]}.")
+                messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
+            elif result == "failed":
+                LOG.info(f"Migration failed {EMOJIS[4]}.")
+                messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}\n Please Debug {EMOJIS[10]}")
         else:
             messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}")
     else:
@@ -75,8 +80,13 @@ def auto_update(SRC_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
                 LOG.info(f"{website} Update failed {EMOJIS[4]} | lasted: {elapsed_time:.2f} s")
 
         if i != 0:
-            Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
-            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
+            result = Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
+            if result == "success":
+                LOG.info(f"Migration completed {EMOJIS[3]}.")
+                messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
+            elif result == "failed":
+                LOG.info(f"Migration failed {EMOJIS[4]}.")
+                messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}\n Please Debug {EMOJIS[10]}")
 
     else:
         LOG.debug(f"{mode} Update Canceled")
