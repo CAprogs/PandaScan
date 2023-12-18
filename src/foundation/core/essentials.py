@@ -22,7 +22,8 @@ WEBSITES_DICT = {"fmteam": "FR",
                  "lelscans": "FR",
                  "animesama": "FR",
                  "scantrad": "FR",
-                 "tcbscans": "EN"
+                 "tcbscans": "EN",
+                 "lelmanga": "FR"
                  }
 
 # Available languages mode
@@ -53,6 +54,7 @@ PATH_TO_LELSCANS = SRC_DIRECTORY / "update/websites/lelscans"
 PATH_TO_FMTEAM = SRC_DIRECTORY / "update/websites/fmteam"
 PATH_TO_ANIMESAMA = SRC_DIRECTORY / "update/websites/animesama"
 PATH_TO_TCBSCANS = SRC_DIRECTORY / "update/websites/tcbscans"
+PATH_TO_LELMANGA = SRC_DIRECTORY / "update/websites/lelmanga"
 
 # load config file
 with open(PATH_TO_CONFIG) as json_file:
@@ -109,19 +111,38 @@ def check_version():
     """Check if app's version is the latest
     """
 
-    response = requests.get("https://api.github.com/repos/CAprogs/PandaScan/releases/latest")
+    filters = [".", "v"]
+    try:
+        response = requests.get("https://api.github.com/repos/CAprogs/PandaScan/releases/latest")
+    except requests.RequestException as e:
+        print(f"\n{e}\n")
+        return
 
-    if response.status_code == 200:
-        release_info = response.json()
-        latest_version = release_info['tag_name'].replace("-beta", "")
+    try:
+        if response.status_code == 200:
+            release_info = response.json()
+            latest_version = release_info['tag_name'].replace("-beta", "")
+            current_version = SETTINGS["App_version"]
+            str_latest_v = latest_version
+            str_current_v = current_version
+            for filter in filters:
+                latest_version = latest_version.replace(filter, "")
+                current_version = current_version.replace(filter, "")
 
-        if latest_version:
-            if latest_version != SETTINGS["App_version"]:
-                messagebox.showinfo(f"App Update [{EMOJIS[8]}]", f"A new version of PandaScan is available : {latest_version} !")
-            elif latest_version == SETTINGS["App_version"]:
-                LOG.debug(f"\nApp's up-to-date {EMOJIS[3]}")
-    else:
-        LOG.debug(f"An error occured when trying to get the latest version {EMOJIS[9]}")
+            if int(latest_version) > int(current_version):
+                messagebox.showinfo(f"App's Update [{EMOJIS[8]}]", f"""
+                                    A new version of Pandascan is available !
+
+                                    latest : {str_latest_v}
+                                    current : {str_current_v}
+
+                                    https://github.com/CAprogs/PandaScan/releases""")
+            elif int(latest_version) == int(current_version):
+                LOG.info(f"App's up-to-date {EMOJIS[3]}")
+        else:
+            LOG.debug(f"An error occured {EMOJIS[9]}, status code : {response.status_code}")
+    except Exception as e:
+        LOG.debug(f"Error : {e}")
 
 
 def relative_to_assets(path: str) -> Path:

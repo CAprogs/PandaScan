@@ -1,17 +1,17 @@
 import pandas as pd
 import yaml
 from .utils import Delete_table
+from src.foundation.core.essentials import WEBSITES_DICT
 from src.foundation.core.emojis import EMOJIS
 
 
-def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
+def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, LOG):
     """Migrate the CSV and YAML data to the database.
 
     Args:
         SRC_DIRECTORY (str): path to the src directory
         CONN (Any): DB connection
         SELECTOR (Any): DB cursor
-        WEBSITES (list): list of available websites
         LOG (Any): the logger
 
     Returns:
@@ -19,12 +19,7 @@ def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG):
     """
 
     LOG.info("Datas migration ..")
-    websites = [{'NomSite': WEBSITES[0]},
-                {'NomSite': WEBSITES[1]},
-                {'NomSite': WEBSITES[2]},
-                {'NomSite': WEBSITES[3]},
-                {'NomSite': WEBSITES[4]}
-                ]
+    websites = [{'NomSite': website} for website in WEBSITES_DICT.keys()]
 
     nb_websites = len(websites)
     latest_website_index = nb_websites - 1

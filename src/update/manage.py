@@ -6,7 +6,7 @@ from .utils import confirm_update, check_and_update
 from src.foundation.core.emojis import EMOJIS
 
 
-def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEBSITES, LOG):
+def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG):
     """Launch manual update of a website.
 
     Args:
@@ -15,7 +15,6 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEB
         SETTINGS (Any): .json configuration file
         CONN (Any): DB connection
         SELECTOR (Any): DB cursor
-        WEBSITES (dict): list of available websites
         LOG (Any): the logger
     """
 
@@ -34,7 +33,7 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEB
         if i != 0:
             LOG.info(f"{selected_website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
 
-            result = Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
+            result = Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, LOG)
             if result == "success":
                 LOG.info(f"Migration completed {EMOJIS[3]}.")
                 messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")
@@ -42,17 +41,17 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, WEB
                 LOG.info(f"Migration failed {EMOJIS[4]}.")
                 messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}\n Please Debug {EMOJIS[10]}")
         else:
-            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}")
+            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update aborted due to settings {EMOJIS[4]}")
     else:
         LOG.debug(f"{mode} Update Canceled")
 
 
-def auto_update(SRC_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
-    """Launch auto update of websites.
+def auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
+    """Update all enabled websites.
 
     Args:
         SRC_DIRECTORY (str): path to the src directory
-        WEBSITES (dict): list of available websites
+        ALL_WEBSITES (list): list of available websites
         SETTINGS (Any): .json configuration file
         CONN (Any): DB connection
         SELECTOR (Any): DB cursor
@@ -67,7 +66,7 @@ def auto_update(SRC_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
         os.system("clear")
         LOG.info(f"Searching for Updates {EMOJIS[8]}..")
 
-        for website in WEBSITES:
+        for website in ALL_WEBSITES:
 
             start_time = time.time()
             i, website_status = check_and_update(website, SETTINGS, i, LOG)
@@ -80,7 +79,7 @@ def auto_update(SRC_DIRECTORY, WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
                 LOG.info(f"{website} Update failed {EMOJIS[4]} | lasted: {elapsed_time:.2f} s")
 
         if i != 0:
-            result = Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, WEBSITES, LOG)
+            result = Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, LOG)
             if result == "success":
                 LOG.info(f"Migration completed {EMOJIS[3]}.")
                 messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update completed {EMOJIS[3]}\n Explore the changelogs {EMOJIS[16]}")

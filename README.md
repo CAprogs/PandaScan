@@ -16,8 +16,8 @@
 
 ## À Propos 🥢
 
-- Plus de **`750 mangas`** disponibles
-- Plus de **`58 000 chapitres`** téléchargeables
+- Plus de **`800 mangas`** disponibles
+- Plus de **`61 000 chapitres`** téléchargeables
 
 <details>
   <summary> Les sites disponibles 🌐 </summary>
@@ -27,6 +27,7 @@
   - [scantrad-vf.me](https://scantrad-vf.me/) (🇫🇷)
   - [anime-sama.me](https://anime-sama.me/) (🇫🇷)
   - [tcbscans.com](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
+  - [lelmanga.com](https://www.lelmanga.com/) (🇫🇷)
 
 </details>
 
@@ -44,7 +45,6 @@
 
 - Ajout du site [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans la version **3.0.3**
 - Ajout du site [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - dans la version **3.0.3**
-- Ajout du site [lelmanga](https://www.lelmanga.com/) (🇫🇷) - dans la version **3.0.3**
 - Ajout du site [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans la version **3.0.4**
 - Ajout du site [lhtranslation](https://lhtranslation.net/home/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans la version **3.0.4**
 
@@ -63,7 +63,7 @@ Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/Panda
 La [**v3.x.x**](https://github.com/CAprogs/PandaScan/releases) est disponible !
 
 Elle apporte de nombreuses améliorations :
-- Ajout d'un nouveau site : [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
+- Ajout de 2 nouveaux sites : [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) et [lelmanga](https://www.lelmanga.com/) (🇫🇷)
 - Vitesse de téléchargement optimisée
 - Amélioration du suivi de téléchargement 🤩
 
@@ -71,7 +71,7 @@ Elle apporte de nombreuses améliorations :
 | :-------- | :-------
 | <img width="801" alt="progress_bar" src="https://github.com/CAprogs/PandaScan/assets/104645407/87308a33-982b-4c32-a1cc-a1206a64d104"> | <img width="322" alt="Download resume" src="https://github.com/CAprogs/PandaScan/assets/104645407/d2afb557-17c9-442d-aefa-21944e29ce08">
 
-- Tri des sites par langue ( 🇫🇷 / 🇬🇧 / ALL ):
+- Triez vos sites par langue ( 🇫🇷 / 🇬🇧 / ALL ):
 
 <div align="center">
 <img width="300" alt="Language selection" src="">

@@ -3,6 +3,7 @@ from src.download.websites import lelscans
 from src.download.websites import fmteam
 from src.download.websites import animesama
 from src.download.websites import tcbscans
+from src.download.websites import lelmanga
 from src.download.utils import check_manga_path
 
 
@@ -37,5 +38,8 @@ def download(selected_website, chapter_file_path, selected_manga_name, chapter_n
 
     elif selected_website == "tcbscans":
         status = tcbscans.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
+
+    elif selected_website == "lelmanga":
+        status = lelmanga.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
 
     return status

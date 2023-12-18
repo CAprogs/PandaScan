@@ -1,5 +1,5 @@
 {
-    "App_version": "v3.0.1",
+    "App_version": "v3.0.2",
     "driver": {
         "path": "",
         "headless": true,
@@ -29,6 +29,10 @@
         "tcbscans": {
             "enabled": true,
             "n_update": 2
+        },
+        "lelmanga": {
+            "enabled": true,
+            "n_update": 1
         }
     },
     "Download": {
