@@ -21,7 +21,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
     query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
     SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
     chapter_link = SELECTOR.fetchone()[0]
-    
+
     if not isinstance(chapter_file_path, str):
         chapter_file_path = chapter_file_path._str
     try:
@@ -30,7 +30,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
         DRIVER.get(chapter_link)
 
         zip_file_path = find_latest_zip(chapter_file_path)
-        
+
         if zip_file_path:
             # Extract the zip file content
             extract_zip(zip_file_path, chapter_file_path)

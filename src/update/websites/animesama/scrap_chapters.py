@@ -10,11 +10,19 @@ def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
     Args:
         PATH_TO_ANIMESAMA (str): path to animesama directory (update)
         LOG (Any): the logger
+
+    Returns:
+        str: 'success' if passed, 'failed' if an error occured
     """
 
-    datas = pd.read_csv(f'{PATH_TO_ANIMESAMA}/datas/mangas.csv')
+    try:
+        datas = pd.read_csv(f'{PATH_TO_ANIMESAMA}/datas/mangas.csv')
+    except Exception as e:
+        return LOG.debug(f"Error : {e}")
     manga_chapters_dict = {}
     chapters_and_links = []
+    failed_mangas = []
+    last_manga_index = len(datas['NomManga']) - 1
     columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
 
     for index, manga_name in enumerate(datas['NomManga']):
@@ -26,7 +34,7 @@ def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
             soup_1 = BeautifulSoup(html_content, "html.parser")
             select_element = soup_1.select_one('#chapterlist')
             if not select_element:
-                LOG.debug(f"Error : No chapters found | {url} | animesama")
+                LOG.debug(f"Error : No chapters found | {url}")
                 return
 
             LOG.debug(f"Manga : {manga_name}")
@@ -47,8 +55,18 @@ def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
             LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
 
         except Exception as e:
-            LOG.debug(f"Error : {e} | {url} | animesama")
-            return
+            failed_mangas.append(manga_name)
+            LOG.debug(f"Error : {e} | {url}")
+            if index != last_manga_index:
+                continue
+
+    if len(failed_mangas) == len(datas['NomManga']):
+        LOG.debug("Error : All mangas failed ..")
+        return "failed"
+    elif failed_mangas != []:
+        LOG.debug(f"\n{len(failed_mangas)} mangas failed ..\n")
+        for manga in failed_mangas:
+            LOG.debug(manga)
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
     links_dataframe.to_csv(f'{PATH_TO_ANIMESAMA}/datas/chapters_links.csv', index=False)
@@ -56,3 +74,4 @@ def Scrap_chapters(PATH_TO_ANIMESAMA, LOG):
     yml_data = yaml.dump(manga_chapters_dict)
     with open(f'{PATH_TO_ANIMESAMA}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
+    return "success"

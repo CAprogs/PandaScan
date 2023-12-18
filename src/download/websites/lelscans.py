@@ -1,26 +1,29 @@
 import requests
 from bs4 import BeautifulSoup
-from src.foundation.core.essentials import LOG
+from src.foundation.core.essentials import SELECTOR, LOG
 from src.foundation.core.emojis import EMOJIS
 
 
-def init_download(selected_website, chapter_file_path, selected_manga_name, chapter_number):
+def init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name):
     """Initialize the download from lelscans.
 
     Args:
         selected_website (str): selected website
         chapter_file_path (str): path of the folder where to save images
         selected_manga_name (str): selected manga name
-        chapter_number (str): chapter number to download
+        chapter_name (str): chapter name
 
     Returns:
         str: download status (success or failed)
     """
 
     page = 1
+    query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
+    SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
+    url = SELECTOR.fetchone()[0]
 
     while True:
-        chapter_link = str(f"https://lelscans.net/scan-{selected_manga_name}/{chapter_number}/{page}")
+        chapter_link = url + f"/{page}"
         try:
             http_response = requests.get(chapter_link)
             if http_response.status_code == 200:
@@ -28,14 +31,17 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
                 response = lelscans(http_response, save_path, page)
                 if response is True:
                     page += 1
-                else:
-                    LOG.debug(f"chapitre {chapter_number} downloaded {EMOJIS[3]}")
+                elif response is False and page >= 1:
+                    LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}")
                     return "success"
+                else:
+                    LOG.debug(f"Request failed | {selected_website} | {selected_manga_name} | {chapter_name}")
+                    return "failed"
             else:
                 LOG.debug(f"Request failed | Status code : {http_response.status_code}")
                 return "failed"
         except requests.ConnectionError as e:
-            LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_number}\n Error : {e}")
+            LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
             return "failed"
 
 

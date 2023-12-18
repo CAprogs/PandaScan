@@ -4,3 +4,7 @@ No added / deprecated files !
 
 Update 1 : 15/12/2023 | 05:01:08
 No added / deprecated files !
+
+Update 2 : 17/12/2023 | 23:45:36
+Changes in jujutsu-kaisen:
+  • Added chapters: chapter 245
