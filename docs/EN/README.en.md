@@ -73,7 +73,7 @@ Bringing some improvements :
 - Websites can now be sorted by languages ( 🇫🇷 / 🇬🇧 / ALL ):
 
 <div align="center">
-<img width="300" alt="Language selection" src="">
+<img width="300" alt="Language selection" src="https://github.com/CAprogs/PandaScan/assets/104645407/96065e2b-0f3c-4baa-9109-c142936723c3">
 </div>
 
 - Dynamic chapter range selection:
