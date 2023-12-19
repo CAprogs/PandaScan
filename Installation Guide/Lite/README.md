@@ -146,7 +146,7 @@ If a `download fails`, there could be several reasons :
 - The website has changed its data structure.
 
 #### Try to :
-- Delete the folder chapter's folder created and try again.
+- Delete the chapter's folder created and try again.
 - Switch to another connection. (e.g. from WiFi to cellular data)
 - Try again later if the website's server is down.
 - Switch to another website ( your manga may be available on another website )
