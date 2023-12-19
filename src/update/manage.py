@@ -41,7 +41,7 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG
                 LOG.info(f"Migration failed {EMOJIS[4]}.")
                 messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update failed {EMOJIS[4]}\n Please Debug {EMOJIS[10]}")
         else:
-            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update aborted due to settings {EMOJIS[4]}")
+            messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Update aborted {EMOJIS[4]}, Please Debug {EMOJIS[10]}")
     else:
         LOG.debug(f"{mode} Update Canceled")
 
