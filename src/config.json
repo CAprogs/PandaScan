@@ -33,6 +33,10 @@
         "lelmanga": {
             "enabled": true,
             "n_update": 1
+        },
+        "manganelo": {
+            "enabled": true,
+            "n_update": -1
         }
     },
     "Download": {

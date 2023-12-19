@@ -47,6 +47,7 @@ TEXT_13 = "Fmteam"
 TEXT_14 = "Animesama"
 TEXT_15 = "Lelmanga"
 TEXT_16 = "Tcbscans"
+TEXT_17 = "Manganelo"
 # DOWNLOAD_PAGE
 TEXT_50 = "Path"
 TEXT_51 = f"The folder where your scans'll be stored. ( Default : PandaScan {EMOJIS[0]} directory )"
@@ -92,6 +93,7 @@ def show_settings(main_window, SETTINGS, settings_button):
         animesama_checkbox_var = BooleanVar(value=SETTINGS["websites"]["animesama"]["enabled"])
         lelmanga_checkbox_var = BooleanVar(value=SETTINGS["websites"]["lelmanga"]["enabled"])
         tcbscans_checkbox_var = BooleanVar(value=SETTINGS["websites"]["tcbscans"]["enabled"])
+        manganelo_checkbox_var = BooleanVar(value=SETTINGS["websites"]["manganelo"]["enabled"])
 
         # Initialize dictionaries [widgets + labels]
         widgets_to_manage = {}
@@ -349,6 +351,11 @@ def show_settings(main_window, SETTINGS, settings_button):
             # [ WIDGET ] Checkbox_6 [Tcbscans]
             update_checkbox_6 = Checkbutton(settings_window, variable=tcbscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_6.place(x=265.0, y=158.0, width=14.0, height=12.0)
+            # [ TEXT ]   Manganelo
+            update_manganelo = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_17, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            # [ WIDGET ] Checkbox_7 [Manganelo]
+            update_checkbox_7 = Checkbutton(settings_window, variable=manganelo_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_7.place(x=265.0, y=176.0, width=14.0, height=12.0)
 
             # Widgets to manage
             widgets_to_manage[button_2] = {
@@ -358,7 +365,8 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_checkbox_3: (125.0, 196.0, 14.0, 12.0),
                 update_checkbox_4: (125.0, 216.0, 14.0, 12.0),
                 update_checkbox_5: (125.0, 236.0, 14.0, 12.0),
-                update_checkbox_6: (265.0, 158.0, 14.0, 12.0)}
+                update_checkbox_6: (265.0, 158.0, 14.0, 12.0),
+                update_checkbox_7: (265.0, 176.0, 14.0, 12.0)}
             # Labels to manage
             labels_to_manage[button_2] = {
                 update_mode: (49.0, 75.0),
@@ -371,7 +379,8 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_fmteam: (65.0, 196.0),
                 update_animesama: (65.0, 216.0),
                 update_lelmanga: (65.0, 236.0),
-                update_tcbscans: (195.0, 158.0)}
+                update_tcbscans: (195.0, 158.0),
+                update_manganelo: (195.0, 176.0)}
 
             check_previous_deactivate_button(button_2)
 
@@ -429,6 +438,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 SETTINGS["websites"]["animesama"]["enabled"] = animesama_checkbox_var.get()
                 SETTINGS["websites"]["lelmanga"]["enabled"] = lelmanga_checkbox_var.get()
                 SETTINGS["websites"]["tcbscans"]["enabled"] = tcbscans_checkbox_var.get()
+                SETTINGS["websites"]["manganelo"]["enabled"] = manganelo_checkbox_var.get()
                 SETTINGS["Download"]["path"] = check_path(OS_NAME, LOG, download_entry.get())
 
                 with open(PATH_TO_CONFIG, 'w') as json_file:
