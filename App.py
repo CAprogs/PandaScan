@@ -143,6 +143,7 @@ def main():
     def Switch_language(*args):
         """Fetch the website's menu with the websites associated to the selected language.
         """
+        global WEBSITES
 
         if language_list_var.get() == LANGUAGES[0]:
             WEBSITES = ALL_WEBSITES
