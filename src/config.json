@@ -1,5 +1,5 @@
 {
-    "App_version": "v3.0.2",
+    "App_version": "v3.0.3",
     "driver": {
         "path": "",
         "headless": true,
@@ -12,31 +12,38 @@
         "languages": "All",
         "fmteam": {
             "enabled": true,
-            "n_update": 22
+            "n_update": 23,
+            "time_to_update": 165.26
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 20
+            "n_update": 21,
+            "time_to_update": 3.50
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 19
+            "n_update": 20,
+            "time_to_update": 591.25
         },
         "animesama": {
             "enabled": true,
-            "n_update": 8
+            "n_update": 9,
+            "time_to_update": 53.34
         },
         "tcbscans": {
             "enabled": true,
-            "n_update": 2
+            "n_update": 3,
+            "time_to_update": 4.79
         },
         "lelmanga": {
             "enabled": true,
-            "n_update": 1
+            "n_update": 2,
+            "time_to_update": 15.26
         },
         "manganelo": {
             "enabled": true,
-            "n_update": -1
+            "n_update": 1,
+            "time_to_update": 219.82
         }
     },
     "Download": {

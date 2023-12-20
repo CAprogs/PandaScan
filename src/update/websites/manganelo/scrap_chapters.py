@@ -18,7 +18,8 @@ def Scrap_chapters(PATH_TO_MANGANELO, LOG):
     try:
         datas = pd.read_csv(f'{PATH_TO_MANGANELO}/datas/mangas.csv')
     except Exception as e:
-        return LOG.info(f"Error : {e}")
+        LOG.debug(f"Error : {e}")
+        return "failed"
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []
@@ -34,7 +35,7 @@ def Scrap_chapters(PATH_TO_MANGANELO, LOG):
             soup_1 = BeautifulSoup(html_content, "html.parser")
             select_element = soup_1.select_one('body > div.body-site > div.container.container-main > div.container-main-left > div.panel-story-chapter-list > ul')
 
-            LOG.info(f"Manga : {manga_name}")
+            LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = []
             li_elements = select_element.find_all('li', class_="a-h")
 
@@ -46,23 +47,23 @@ def Scrap_chapters(PATH_TO_MANGANELO, LOG):
                 chapter = chapter_link.split("/")[-1].replace("-", " ")
                 manga_chapters_dict[manga_name].append(chapter)
                 chapters_and_links.append(["manganelo", manga_name, chapter, chapter_link])
-                LOG.info(f"{chapter} added | link : {chapter_link}")
+                LOG.debug(f"{chapter} added | link : {chapter_link}")
 
-            LOG.info(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
+            LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
 
         except Exception as e:
             failed_mangas.append(manga_name)
-            LOG.info(f"Error : {e} | {url}")
+            LOG.debug(f"Error : {e} | {url}")
             if index != last_manga_index:
                 continue
 
     if len(failed_mangas) == len(datas['NomManga']):
-        LOG.info("Error : All mangas failed ..")
+        LOG.debug("Error : All mangas failed ..")
         return "failed"
     elif failed_mangas != []:
-        LOG.info(f"\n{len(failed_mangas)} mangas failed ..\n")
+        LOG.debug(f"\n{len(failed_mangas)} mangas failed ..\n")
         for manga in failed_mangas:
-            LOG.info(manga)
+            LOG.debug(manga)
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
     links_dataframe.to_csv(f'{PATH_TO_MANGANELO}/datas/chapters_links.csv', index=False)
@@ -70,3 +71,4 @@ def Scrap_chapters(PATH_TO_MANGANELO, LOG):
     yml_data = yaml.dump(manga_chapters_dict)
     with open(f'{PATH_TO_MANGANELO}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
+    return "success"

@@ -27,10 +27,13 @@ def Scrap_titles(PATH_TO_MANGANELO, LOG):
             html_content = response.text
             soup = BeautifulSoup(html_content, "html.parser")
             select_element = soup.select_one('body > div.body-site > div.container.container-main > div.panel-content-genres')
-            mangas = select_element.find_all("div", class_="content-genres-item")
+            if select_element == None:
+                LOG.debug(f"No element found here | {url}")
+                break
 
+            mangas = select_element.find_all("div", class_="content-genres-item")
             if mangas == []:
-                LOG.info(f"No manga added | {url}")
+                LOG.debug(f"No manga added | {url}")
                 break
             for manga in mangas:
                 title_element = manga.find("div", class_="genres-item-info")
@@ -41,17 +44,17 @@ def Scrap_titles(PATH_TO_MANGANELO, LOG):
                 link = "https://ww7.manganelo.tv" + title_element.find("a").get("href")
                 links_list.append(link)
                 manga_name_list.append(manga_name)
-                LOG.info(f"{manga_name} added | {link}")
+                LOG.debug(f"{manga_name} added | {link}")
             page += 1
 
         except Exception as e:
-            LOG.info(f"Error : {e}")
+            LOG.debug(f"Error : {e}")
             return "failed"
 
     if manga_name_list == []:
         return "failed"
 
-    LOG.info(f"{len(manga_name_list)} mangas fetched.")
+    LOG.debug(f"{len(manga_name_list)} mangas fetched.")
 
     data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)

@@ -19,6 +19,8 @@ CURRENT_COLOR = "#FFFFFF"                # Dominant color (white)
 ALT_COLOR = "#FFC700"                    # Alternative INFOS -||-
 ENTRY_TEXT_COLOR = "#000716"             # Text entry -||-
 BACKGROUND_BUTTON_COLOR = "red"          # Background buttons -||-
+FR_WEBSITES_COLOR = "#0031AF"        # French websites -||-
+EN_WEBSITES_COLOR = "#640000"        # English websites -||-
 
 settings_window = None                  # State of the SETTINGS window
 chromedriver_button_state = False       # State of the CHROMEDRIVER button
@@ -322,37 +324,37 @@ def show_settings(main_window, SETTINGS, settings_button):
             # [ TEXT ]   Info [Websites]
             update_websites_info = canvas.create_text(50.0, 140.0, anchor="nw", text=TEXT_10, fill=CURRENT_COLOR, font=INFO_POLICE)
             # [ TEXT ]   Scantrad
-            update_scantrad = canvas.create_text(65.0, 158.0, anchor="nw", text=TEXT_11, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            update_scantrad = canvas.create_text(65.0, 158.0, anchor="nw", text=TEXT_11, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_1 [Scantrad]
             update_checkbox_1 = Checkbutton(settings_window, variable=scantrad_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_1.place(x=125.0, y=158.0, width=14.0, height=12.0)
             # [ TEXT ]   Lelscans
-            update_lelscan = canvas.create_text(65.0, 176.0, anchor="nw", text=TEXT_12, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            update_lelscan = canvas.create_text(65.0, 176.0, anchor="nw", text=TEXT_12, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_2 [Lelscan]
             update_checkbox_2 = Checkbutton(settings_window, variable=lelscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_2.place(x=125.0, y=176.0, width=14.0, height=12.0)
             # [ TEXT ]   Fmteam
-            update_fmteam = canvas.create_text(65.0, 196.0, anchor="nw", text=TEXT_13, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            update_fmteam = canvas.create_text(65.0, 196.0, anchor="nw", text=TEXT_13, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_3 [Fmteam]
             update_checkbox_3 = Checkbutton(settings_window, variable=fmteam_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_3.place(x=125.0, y=196.0, width=14.0, height=12.0)
             # [ TEXT ]   Animesama
-            update_animesama = canvas.create_text(65.0, 216.0, anchor="nw", text=TEXT_14, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            update_animesama = canvas.create_text(65.0, 216.0, anchor="nw", text=TEXT_14, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_4 [Animesama]
             update_checkbox_4 = Checkbutton(settings_window, variable=animesama_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_4.place(x=125.0, y=216.0, width=14.0, height=12.0)
             # [ TEXT ]   Lelmanga
-            update_lelmanga = canvas.create_text(65.0, 236.0, anchor="nw", text=TEXT_15, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            update_lelmanga = canvas.create_text(65.0, 236.0, anchor="nw", text=TEXT_15, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_5 [Lelmanga]
             update_checkbox_5 = Checkbutton(settings_window, variable=lelmanga_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_5.place(x=125.0, y=236.0, width=14.0, height=12.0)
             # [ TEXT ]   Tcbscans
-            update_tcbscans = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_16, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            update_tcbscans = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_16, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_6 [Tcbscans]
             update_checkbox_6 = Checkbutton(settings_window, variable=tcbscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_6.place(x=265.0, y=158.0, width=14.0, height=12.0)
             # [ TEXT ]   Manganelo
-            update_manganelo = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_17, fill=CURRENT_COLOR, font=CORPUS_POLICE)
+            update_manganelo = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_17, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_7 [Manganelo]
             update_checkbox_7 = Checkbutton(settings_window, variable=manganelo_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_7.place(x=265.0, y=176.0, width=14.0, height=12.0)
