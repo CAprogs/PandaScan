@@ -6,3 +6,6 @@ Update 1 : 18/12/2023 | 21:01:12
 Changes in dragon-ball-super:
   • Added chapters: chapitre 100
   • Removed chapters: chapitre 100 (SPOILER)
+
+Update 2 : 20/12/2023 | 02:12:55
+No added / deprecated files !

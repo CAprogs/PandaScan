@@ -35,24 +35,24 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
                     try:
                         img_link = img['data-src']
                     except Exception as e:
-                        LOG.info(f"Download aborted | {chapter_name} | Error : {e}")
+                        LOG.debug(f"Download aborted | {chapter_name} | Error : {e}")
                         return "failed"
                     save_path = f"{chapter_file_path}/{page}.jpg"
                     response = manganelo(img_link, save_path, page)
                     if response is False:
-                        LOG.info(f"Download aborted , request failed {EMOJIS[4]}")
+                        LOG.debug(f"Download aborted , request failed {EMOJIS[4]}")
                         return "failed"
                     page += 1
-                LOG.info(f"{chapter_name} downloaded {EMOJIS[3]}") 
+                LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}") 
                 return "success"
             else:
-                LOG.info(f"Download aborted | {chapter_name} | some images are missing {EMOJIS[10]}")
+                LOG.debug(f"Download aborted | {chapter_name} | some images are missing {EMOJIS[10]}")
                 return "failed"
         else:
-            LOG.info(f"Request failed | Status code : {http_response.status_code}")
+            LOG.debug(f"Request failed | Status code : {http_response.status_code}")
             return "failed"
     except requests.ConnectionError as e:
-        LOG.info(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
         return "failed"
 
 
@@ -72,8 +72,8 @@ def manganelo(img_link, save_path, page):
     if image_response.status_code == 200:
         with open(save_path, 'wb') as f:
             f.write(image_response.content)
-        LOG.info(f"Image {page} downloaded")
+        LOG.debug(f"Image {page} downloaded")
         return True
     else:
-        LOG.info(f"Failed downloading Image {page}. Status code : {image_response.status_code}")
+        LOG.debug(f"Failed downloading Image {page}. Status code : {image_response.status_code}")
         return False

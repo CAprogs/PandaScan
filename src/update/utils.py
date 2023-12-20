@@ -1,6 +1,7 @@
+import json
 from tkinter import messagebox
 from src.changelog.manage import generate_changelog
-from src.foundation.core.essentials import DRIVER
+from src.foundation.core.essentials import DRIVER, PATH_TO_CONFIG
 from src.foundation.core.essentials import PATH_TO_FMTEAM
 from src.foundation.core.essentials import PATH_TO_LELSCANS
 from src.foundation.core.essentials import PATH_TO_SCANTRAD
@@ -28,6 +29,20 @@ def confirm_update(mode, message):
     return False
 
 
+def w_average_time(website, elapsed_time, SETTINGS):
+    """Write the average time of an update.
+
+    Args:
+        website (str): name of the website updated
+        SETTINGS (Any): .json configuration file
+        elapsed_time (float): time taken by an update
+    """
+
+    SETTINGS["websites"][website]["time_to_update"] = elapsed_time
+    with open(PATH_TO_CONFIG, "w") as f:
+        json.dump(SETTINGS, f, indent=4)
+
+
 def check_and_update(selected_website, SETTINGS, i, LOG):
     """Check if a website can be updated and perform the update.
 
@@ -42,9 +57,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         bool: True(website's update is enabled), False(otherwise)
     """
 
-    website_status = SETTINGS["websites"][selected_website]["enabled"]
-
-    if website_status:
+    if SETTINGS["websites"][selected_website]["enabled"]:
         from src.update.websites.scantrad.update_datas import Update_scantrad
         from src.update.websites.lelscans.update_datas import Update_lelscans
         from src.update.websites.fmteam.update_datas import Update_fmteam
@@ -53,42 +66,41 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         from src.update.websites.lelmanga.update_datas import Update_lelmanga
         from src.update.websites.manganelo.update_datas import Update_manganelo
 
-        LOG.info(f"Updating {selected_website} {EMOJIS[8]}..")
+        LOG.info(f"Updating {selected_website} {EMOJIS[8]}")
 
         if selected_website == "scantrad":
             i = Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG)
             if i != 0:
-                generate_changelog(PATH_TO_SCANTRAD, selected_website)
+                status = generate_changelog(PATH_TO_SCANTRAD, selected_website)
         elif selected_website == "lelscans":
             i = Update_lelscans(PATH_TO_LELSCANS, LOG)
             if i != 0:
-                generate_changelog(PATH_TO_LELSCANS, selected_website)
+                status = generate_changelog(PATH_TO_LELSCANS, selected_website)
         elif selected_website == "fmteam":
             i = Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG)
             if i != 0:
-                generate_changelog(PATH_TO_FMTEAM, selected_website)
+                status = generate_changelog(PATH_TO_FMTEAM, selected_website)
         elif selected_website == "animesama":
             i = Update_animesama(PATH_TO_ANIMESAMA, LOG)
             if i != 0:
-                generate_changelog(PATH_TO_ANIMESAMA, selected_website)
+                status = generate_changelog(PATH_TO_ANIMESAMA, selected_website)
         elif selected_website == "tcbscans":
             i = Update_tcbscans(PATH_TO_TCBSCANS, LOG)
             if i != 0:
-                generate_changelog(PATH_TO_TCBSCANS, selected_website)
+                status = generate_changelog(PATH_TO_TCBSCANS, selected_website)
         elif selected_website == "lelmanga":
             i = Update_lelmanga(PATH_TO_LELMANGA, LOG)
             if i != 0:
-                generate_changelog(PATH_TO_LELMANGA, selected_website)
+                status = generate_changelog(PATH_TO_LELMANGA, selected_website)
         elif selected_website == "manganelo":
             i = Update_manganelo(PATH_TO_MANGANELO, LOG)
             if i != 0:
-                generate_changelog(PATH_TO_MANGANELO, selected_website)
+                status = generate_changelog(PATH_TO_MANGANELO, selected_website)
         else:
             LOG.info(f"{selected_website} isn't supported {EMOJIS[4]}.")
-            return i, website_status
-
-        return i, website_status
+            status = "failed"
 
     else:
-        LOG.info(f"{selected_website} can't be updated {EMOJIS[4]} due to settings.")
-        return i, website_status
+        status = "skipped"
+    
+    return i, status
