@@ -25,7 +25,7 @@ def generate_changelog(PATH_TO_WEBSITE, website):
 
         previous_state = read_previous_state(PATH_TO_WEBSITE)
         if previous_state == {}:
-            return print(f"\nNo previous state found ! | {website}")
+            LOG.debug(f"\nNo previous state found ! | {website}")
 
         changelog = generate_report(current_state, previous_state)
 
