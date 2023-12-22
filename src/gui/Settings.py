@@ -54,7 +54,8 @@ TEXT_18 = "Mangamoins"
 # DOWNLOAD_PAGE
 TEXT_50 = "Path"
 TEXT_51 = f"The folder where your scans'll be stored. ( Default : PandaScan {EMOJIS[0]} directory )"
-
+# Choose Button
+TEXT_100 = "Choose"
 
 def show_settings(main_window, SETTINGS, settings_button):
     """Display the SETTINGS window.
@@ -263,7 +264,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             chromedriver_entry.insert(0, SETTINGS["driver"]["path"])
             chromedriver_entry.place(x=92.0, y=76.0, width=228.0, height=13.0)
             # [ WIDGET ] Button choose file
-            choose_file_path = Button(settings_window, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, text="Search", font=CORPUS_POLICE, command=lambda: choose_file(chromedriver_entry))
+            choose_file_path = Button(settings_window, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, text=TEXT_100, font=CORPUS_POLICE, command=lambda: choose_file(chromedriver_entry))
             choose_file_path.configure(highlightbackground=BACKGROUND_BUTTON_COLOR)
             choose_file_path.place(x=340.0, y=70.0, width=50.0, height=25.0)
             # [ TEXT ]   Info path
@@ -350,20 +351,20 @@ def show_settings(main_window, SETTINGS, settings_button):
             # [ WIDGET ] Checkbox_5 [Lelmanga]
             update_checkbox_5 = Checkbutton(settings_window, variable=lelmanga_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_5.place(x=125.0, y=236.0, width=14.0, height=12.0)
-            # [ TEXT ]   Tcbscans
-            update_tcbscans = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_16, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
-            # [ WIDGET ] Checkbox_6 [Tcbscans]
-            update_checkbox_6 = Checkbutton(settings_window, variable=tcbscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
-            update_checkbox_6.place(x=265.0, y=158.0, width=14.0, height=12.0)
-            # [ TEXT ]   Manganelo
-            update_manganelo = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_17, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
-            # [ WIDGET ] Checkbox_7 [Manganelo]
-            update_checkbox_7 = Checkbutton(settings_window, variable=manganelo_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
-            update_checkbox_7.place(x=265.0, y=176.0, width=14.0, height=12.0)
             # [ TEXT ]   Mangamoins
-            update_mangamoins = canvas.create_text(195.0, 196.0, anchor="nw", text=TEXT_18, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
-            # [ WIDGET ] Checkbox_8 [Mangamoins]
-            update_checkbox_8 = Checkbutton(settings_window, variable=mangamoins_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_mangamoins = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_18, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
+            # [ WIDGET ] Checkbox_6 [Mangamoins]
+            update_checkbox_6 = Checkbutton(settings_window, variable=mangamoins_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_6.place(x=265.0, y=158.0, width=14.0, height=12.0)
+            # [ TEXT ]   Tcbscans
+            update_tcbscans = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_16, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            # [ WIDGET ] Checkbox_7 [Tcbscans]
+            update_checkbox_7 = Checkbutton(settings_window, variable=tcbscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_7.place(x=265.0, y=176.0, width=14.0, height=12.0)
+            # [ TEXT ]   Manganelo
+            update_manganelo = canvas.create_text(195.0, 196.0, anchor="nw", text=TEXT_17, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            # [ WIDGET ] Checkbox_8 [Manganelo]
+            update_checkbox_8 = Checkbutton(settings_window, variable=manganelo_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_8.place(x=265.0, y=196.0, width=14.0, height=12.0)
 
             # Widgets to manage
@@ -389,9 +390,9 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_fmteam: (65.0, 196.0),
                 update_animesama: (65.0, 216.0),
                 update_lelmanga: (65.0, 236.0),
-                update_tcbscans: (195.0, 158.0),
-                update_manganelo: (195.0, 176.0),
-                update_mangamoins: (195.0, 196.0)}
+                update_mangamoins: (195.0, 158.0),
+                update_tcbscans: (195.0, 176.0),
+                update_manganelo: (195.0, 196.0)}
 
             check_previous_deactivate_button(button_2)
 
@@ -415,7 +416,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             download_entry.insert(0, SETTINGS["Download"]["path"])
             download_entry.place(x=92.0, y=76.0, width=228.0, height=13.0)
             # [ WIDGET ] Choose directory button
-            choose_directory_path = Button(settings_window, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, text="Search", font=CORPUS_POLICE, command=lambda: choose_directory(download_entry))
+            choose_directory_path = Button(settings_window, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, text=TEXT_100, font=CORPUS_POLICE, command=lambda: choose_directory(download_entry))
             choose_directory_path.configure(highlightbackground=BACKGROUND_BUTTON_COLOR)
             choose_directory_path.place(x=340.0, y=70.0, width=50.0, height=25.0)
             # [ TEXT ]   Info path

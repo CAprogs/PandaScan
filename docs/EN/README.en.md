@@ -16,8 +16,8 @@
 
 ## About 🥢
 
-- Over **`800 mangas`** available
-- Over **`61,000 chapters`** downloadable
+- Over **`1600 mangas`** available
+- Over **`95,000 chapters`** downloadable
 
 <details>
   <summary> Available websites 🌐 </summary>
@@ -28,6 +28,8 @@
   - [anime-sama.me](https://anime-sama.me/) (🇫🇷)
   - [tcbscans.com](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
   - [lelmanga.com](https://www.lelmanga.com/) (🇫🇷)
+  - [manganelo.tv](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
+  - [mangamoins.shaeishu.co](https://mangamoins.shaeishu.co/?p=1) (🇫🇷)
 
 </details>
 
@@ -42,8 +44,6 @@
 
 ### Coming Soon 📅
 
-- Addition of [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in version **3.0.3**
-- Addition of [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷) - in version **3.0.3**
 - Addition of [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in version **3.0.4**
 - Addition of [lhtranslation](https://lhtranslation.net/home/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - in version **3.0.4**
 
@@ -62,7 +62,7 @@ Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaSca
 [**v3.x.x**](https://github.com/CAprogs/PandaScan/releases) is out !
 
 Bringing some improvements :
-- Addition of 2 new websites : [tcbscans](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) and [lelmanga](https://www.lelmanga.com/) (🇫🇷)
+- Addition of 2 new websites : [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) and [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷)
 - Optimized download speed
 - Improved download tracking 🤩
 
