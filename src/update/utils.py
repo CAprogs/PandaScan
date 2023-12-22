@@ -12,18 +12,47 @@ from src.foundation.core.essentials import PATH_TO_MANGANELO
 from src.foundation.core.emojis import EMOJIS
 
 
-def confirm_update(mode, message):
-    """Update check.
+def get_average_time(mode, selected_website, SETTINGS, ALL_WEBSITES=None):
+    """Get the average time of an update.
+
+    Args:
+        mode (str): "Manual" or "Auto"
+        selected_website (str): name of the website to update
+        SETTINGS (Any): .json configuration file
+        ALL_WEBSITES (list/optional): list of available websites
+
+    Returns:
+        str: average time of an update
+    """
+
+    average_time = ""
+    if mode.lower() == "manual" and SETTINGS["websites"][selected_website]["time_to_update"] != 0:
+        average_time = f"Average duration : {SETTINGS["websites"][selected_website]["time_to_update"]} s"
+    elif mode.lower() == "auto":
+        total_time = 0
+        for website in [website for website in ALL_WEBSITES if SETTINGS["websites"][website]["enabled"]]:
+            if SETTINGS["websites"][website]["time_to_update"] != 0:
+                total_time += SETTINGS["websites"][website]["time_to_update"]
+        if total_time != 0:
+            average_time = f"Average duration : {total_time} s"
+    return average_time
+
+
+def confirm_update(mode, message, SETTINGS, ALL_WEBSITES=None):
+    """Ask for confirmation before updating.
 
     Args:
         mode (str): "Manual" or "Auto"
         message (str): message to display
+        SETTINGS (Any): .json configuration file
+        ALL_WEBSITES (list/optional): list of available websites
 
     Returns:
         bool: True(validate), False(otherwise)
     """
 
-    result = messagebox.askquestion(f"Confirmation Check : {mode}-Update", f"Update {message} ?")
+    average_time = get_average_time(mode, message, SETTINGS, ALL_WEBSITES)
+    result = messagebox.askquestion(f"Confirmation Check : {mode}-Update", f"Update {message} ?\n\n{average_time}")
     if result == "yes":
         return True
     return False

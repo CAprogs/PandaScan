@@ -11,3 +11,17 @@ Changes in jujutsu-kaisen:
 
 Update 3 : 20/12/2023 | 02:12:59
 No added / deprecated files !
+
+Update 4 : 21/12/2023 | 18:50:30
+Changes in chainsaw-man:
+  • Added chapters: chapter 151
+Changes in one-piece:
+  • Added chapters: chapter 1102
+
+Update 5 : 22/12/2023 | 10:33:45
+Changes in black-clover:
+  • Added chapters: chapter 369
+Changes in jujutsu-kaisen:
+  • Added chapters: chapter 246
+Changes in my-hero-academia:
+  • Added chapters: chapter 410

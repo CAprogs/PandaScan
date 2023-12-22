@@ -1,7 +1,7 @@
 {
     "App_version": "v3.0.3",
     "driver": {
-        "path": "",
+        "path": "/Users/charles-albert/Desktop/chromedriver-mac-arm64/chromedriver",
         "headless": true,
         "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     },
@@ -12,38 +12,38 @@
         "languages": "All",
         "fmteam": {
             "enabled": true,
-            "n_update": 23,
-            "time_to_update": 165.26
+            "n_update": 25,
+            "time_to_update": 164.42
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 21,
-            "time_to_update": 3.50
+            "n_update": 23,
+            "time_to_update": 4.12
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 20,
-            "time_to_update": 591.25
+            "n_update": 23,
+            "time_to_update": 1759.17
         },
         "animesama": {
             "enabled": true,
-            "n_update": 9,
-            "time_to_update": 53.34
+            "n_update": 11,
+            "time_to_update": 20.44
         },
         "tcbscans": {
             "enabled": true,
-            "n_update": 3,
-            "time_to_update": 4.79
+            "n_update": 5,
+            "time_to_update": 4.06
         },
         "lelmanga": {
             "enabled": true,
-            "n_update": 2,
-            "time_to_update": 15.26
+            "n_update": 4,
+            "time_to_update": 14.72
         },
         "manganelo": {
             "enabled": true,
-            "n_update": 1,
-            "time_to_update": 219.82
+            "n_update": 3,
+            "time_to_update": 218.63
         }
     },
     "Download": {

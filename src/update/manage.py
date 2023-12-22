@@ -18,10 +18,11 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG
         LOG (Any): the logger
     """
 
+    i = 0
     mode = "Manual"
     message = selected_website
 
-    if confirm_update(mode, message):
+    if confirm_update(mode, message, SETTINGS):
         os.system("clear")
         LOG.info(f"Searching for {selected_website} Updates {EMOJIS[8]}..")
 
@@ -72,7 +73,7 @@ def auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
     updates_skipped = 0
 
 
-    if confirm_update(mode, message):
+    if confirm_update(mode, message, SETTINGS, ALL_WEBSITES):
         os.system("clear")
         LOG.info(f"Searching for Updates {EMOJIS[8]}..")
 

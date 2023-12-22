@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import yaml
+import time
 from selenium.webdriver.common.by import By
 
 
@@ -33,7 +34,7 @@ def Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG):
             DRIVER.get(url)
             LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = []
-            DRIVER.implicitly_wait(2)
+            time.sleep(2)
             elements = DRIVER.find_elements(By.CLASS_NAME, 'wp-manga-chapter  ')
 
             for element in elements:

@@ -201,3 +201,11 @@ Changes in jujutsu-kaisen:
 
 Update 21 : 20/12/2023 | 02:01:55
 No added / deprecated files !
+
+Update 22 : 21/12/2023 | 18:41:25
+Changes in kingdom:
+  • Added chapters: chapitre 782
+
+Update 23 : 22/12/2023 | 10:33:06
+Changes in one-piece:
+  • Added chapters: chapitre 1102
