@@ -45,6 +45,7 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG
         elif status == "skipped":
             LOG.info(f"{selected_website} Update skipped {EMOJIS[12]}")
             messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"Sorry, {selected_website} can't be updated due to settings {EMOJIS[10]}")
+
         elif status == "failed":
             LOG.info(f"{selected_website} Update failed {EMOJIS[4]}")
             messagebox.showinfo(f"Update Info {EMOJIS[13]}", f"{selected_website} Update failed {EMOJIS[4]}\n Please Debug {EMOJIS[10]}")

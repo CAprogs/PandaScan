@@ -2,13 +2,9 @@ import json
 from tkinter import messagebox
 from src.changelog.manage import generate_changelog
 from src.foundation.core.essentials import DRIVER, PATH_TO_CONFIG
-from src.foundation.core.essentials import PATH_TO_FMTEAM
-from src.foundation.core.essentials import PATH_TO_LELSCANS
-from src.foundation.core.essentials import PATH_TO_SCANTRAD
-from src.foundation.core.essentials import PATH_TO_ANIMESAMA
-from src.foundation.core.essentials import PATH_TO_TCBSCANS
-from src.foundation.core.essentials import PATH_TO_LELMANGA
-from src.foundation.core.essentials import PATH_TO_MANGANELO
+from src.foundation.core.essentials import PATH_TO_FMTEAM, PATH_TO_LELSCANS, PATH_TO_SCANTRAD
+from src.foundation.core.essentials import PATH_TO_ANIMESAMA, PATH_TO_TCBSCANS, PATH_TO_LELMANGA
+from src.foundation.core.essentials import PATH_TO_MANGANELO, PATH_TO_MANGAMOINS
 from src.foundation.core.emojis import EMOJIS
 
 
@@ -94,6 +90,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         from src.update.websites.tcbscans.update_datas import Update_tcbscans
         from src.update.websites.lelmanga.update_datas import Update_lelmanga
         from src.update.websites.manganelo.update_datas import Update_manganelo
+        from src.update.websites.mangamoins.update_datas import Update_mangamoins
 
         LOG.info(f"Updating {selected_website} {EMOJIS[8]}")
 
@@ -125,6 +122,10 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
             i = Update_manganelo(PATH_TO_MANGANELO, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_MANGANELO, selected_website)
+        elif selected_website == "mangamoins":
+            i = Update_mangamoins(PATH_TO_MANGAMOINS, LOG)
+            if i != 0:
+                status = generate_changelog(PATH_TO_MANGAMOINS, selected_website)
         else:
             LOG.info(f"{selected_website} isn't supported {EMOJIS[4]}.")
             status = "failed"
