@@ -14,7 +14,7 @@ path/to/panda.sh =
 
 ========> Installation
 
-1. Anaconda Prompt
+1. Terminal
 cd path/to/Pandascan_Lite
 
 2. Terminal

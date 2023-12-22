@@ -9,3 +9,23 @@ Changes in dragon-ball-super:
 
 Update 2 : 20/12/2023 | 02:12:55
 No added / deprecated files !
+
+Update 3 : 21/12/2023 | 18:50:24
+Changes in black-clover:
+  • Added chapters: chapitre 369
+Changes in chainsaw-man:
+  • Added chapters: chapitre 151
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 246
+Changes in kagura-bachi:
+  • Added chapters: chapitre 15
+Changes in kingdom:
+  • Added chapters: chapitre 782
+Changes in my-hero-academia:
+  • Added chapters: chapitre 410
+Changes in one-piece:
+  • Added chapters: chapitre 1102
+
+Update 4 : 22/12/2023 | 10:33:41
+Changes in kaiju-no-8:
+  • Added chapters: chapitre 99
