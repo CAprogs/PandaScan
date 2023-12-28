@@ -209,3 +209,22 @@ Changes in kingdom:
 Update 23 : 22/12/2023 | 10:33:06
 Changes in one-piece:
   • Added chapters: chapitre 1102
+
+Update 24 : 26/12/2023 | 09:54:49
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 246
+Changes in my-hero-academia:
+  • Added chapters: chapitre 410
+
+Update 25 : 26/12/2023 | 10:16:03
+No added / deprecated files !
+
+Update 26 : 28/12/2023 | 03:19:30
+Changes in black-clover:
+  • Added chapters: chapitre 369
+Changes in blue-lock:
+  • Added chapters: chapitre 245
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1444
+Changes in one-piece:
+  • Added chapters: chapitre 1103

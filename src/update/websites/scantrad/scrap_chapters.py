@@ -34,7 +34,7 @@ def Scrap_chapters(DRIVER, PATH_TO_SCANTRAD, LOG):
             DRIVER.get(url)
             LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = []
-            time.sleep(2)
+            time.sleep(0.5)
             elements = DRIVER.find_elements(By.CLASS_NAME, 'wp-manga-chapter  ')
 
             for element in elements:

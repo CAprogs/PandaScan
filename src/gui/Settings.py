@@ -48,9 +48,10 @@ TEXT_12 = "Lelscans"
 TEXT_13 = "Fmteam"
 TEXT_14 = "Animesama"
 TEXT_15 = "Lelmanga"
-TEXT_16 = "Tcbscans"
-TEXT_17 = "Manganelo"
-TEXT_18 = "Mangamoins"
+TEXT_16 = "Mangamoins"
+TEXT_17 = "Tcbscans"
+TEXT_18 = "Manganelo"
+TEXT_19 = "Mangasaki"
 # DOWNLOAD_PAGE
 TEXT_50 = "Path"
 TEXT_51 = f"The folder where your scans'll be stored. ( Default : PandaScan {EMOJIS[0]} directory )"
@@ -99,6 +100,7 @@ def show_settings(main_window, SETTINGS, settings_button):
         tcbscans_checkbox_var = BooleanVar(value=SETTINGS["websites"]["tcbscans"]["enabled"])
         manganelo_checkbox_var = BooleanVar(value=SETTINGS["websites"]["manganelo"]["enabled"])
         mangamoins_checkbox_var = BooleanVar(value=SETTINGS["websites"]["mangamoins"]["enabled"])
+        mangasaki_checkbox_var = BooleanVar(value=SETTINGS["websites"]["mangasaki"]["enabled"])
 
         # Initialize dictionaries [widgets + labels]
         widgets_to_manage = {}
@@ -352,20 +354,25 @@ def show_settings(main_window, SETTINGS, settings_button):
             update_checkbox_5 = Checkbutton(settings_window, variable=lelmanga_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_5.place(x=125.0, y=236.0, width=14.0, height=12.0)
             # [ TEXT ]   Mangamoins
-            update_mangamoins = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_18, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_mangamoins = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_16, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_6 [Mangamoins]
             update_checkbox_6 = Checkbutton(settings_window, variable=mangamoins_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_6.place(x=265.0, y=158.0, width=14.0, height=12.0)
             # [ TEXT ]   Tcbscans
-            update_tcbscans = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_16, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_tcbscans = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_17, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_7 [Tcbscans]
             update_checkbox_7 = Checkbutton(settings_window, variable=tcbscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_7.place(x=265.0, y=176.0, width=14.0, height=12.0)
             # [ TEXT ]   Manganelo
-            update_manganelo = canvas.create_text(195.0, 196.0, anchor="nw", text=TEXT_17, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_manganelo = canvas.create_text(195.0, 196.0, anchor="nw", text=TEXT_18, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
             # [ WIDGET ] Checkbox_8 [Manganelo]
             update_checkbox_8 = Checkbutton(settings_window, variable=manganelo_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
             update_checkbox_8.place(x=265.0, y=196.0, width=14.0, height=12.0)
+            # [ TEXT ]   Mangasaki
+            update_mangasaki = canvas.create_text(195.0, 216.0, anchor="nw", text=TEXT_19, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            # [ WIDGET ] Checkbox_9 [Mangasaki]
+            update_checkbox_9 = Checkbutton(settings_window, variable=mangasaki_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_9.place(x=265.0, y=216.0, width=14.0, height=12.0)
 
             # Widgets to manage
             widgets_to_manage[button_2] = {
@@ -377,7 +384,8 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_checkbox_5: (125.0, 236.0, 14.0, 12.0),
                 update_checkbox_6: (265.0, 158.0, 14.0, 12.0),
                 update_checkbox_7: (265.0, 176.0, 14.0, 12.0),
-                update_checkbox_8: (265.0, 196.0, 14.0, 12.0)}
+                update_checkbox_8: (265.0, 196.0, 14.0, 12.0),
+                update_checkbox_9: (265.0, 216.0, 14.0, 12.0)}
             # Labels to manage
             labels_to_manage[button_2] = {
                 update_mode: (49.0, 75.0),
@@ -392,7 +400,8 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_lelmanga: (65.0, 236.0),
                 update_mangamoins: (195.0, 158.0),
                 update_tcbscans: (195.0, 176.0),
-                update_manganelo: (195.0, 196.0)}
+                update_manganelo: (195.0, 196.0),
+                update_mangasaki: (195.0, 216.0)}
 
             check_previous_deactivate_button(button_2)
 
@@ -452,6 +461,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 SETTINGS["websites"]["tcbscans"]["enabled"] = tcbscans_checkbox_var.get()
                 SETTINGS["websites"]["manganelo"]["enabled"] = manganelo_checkbox_var.get()
                 SETTINGS["websites"]["mangamoins"]["enabled"] = mangamoins_checkbox_var.get()
+                SETTINGS["websites"]["mangasaki"]["enabled"] = mangasaki_checkbox_var.get()
                 SETTINGS["Download"]["path"] = check_path(OS_NAME, LOG, download_entry.get())
 
                 with open(PATH_TO_CONFIG, 'w') as json_file:
