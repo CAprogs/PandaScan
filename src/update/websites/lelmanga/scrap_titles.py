@@ -46,7 +46,7 @@ def Scrap_titles(PATH_TO_LELMANGA, LOG):
     if manga_name_list == []:
         return "failed"
 
-    LOG.debug(f"{len(manga_name_list)} mangas fetched.")
+    LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
     data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)

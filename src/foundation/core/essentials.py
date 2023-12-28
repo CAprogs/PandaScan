@@ -25,7 +25,8 @@ WEBSITES_DICT = {"fmteam": "FR",
                  "lelmanga": "FR",
                  "mangamoins": "FR",
                  "tcbscans": "EN",
-                 "manganelo": "EN"
+                 "manganelo": "EN",
+                 "mangasaki": "EN"
                  }
 
 # Available languages mode
@@ -59,6 +60,7 @@ PATH_TO_TCBSCANS = SRC_DIRECTORY / "update/websites/tcbscans"
 PATH_TO_LELMANGA = SRC_DIRECTORY / "update/websites/lelmanga"
 PATH_TO_MANGANELO = SRC_DIRECTORY / "update/websites/manganelo"
 PATH_TO_MANGAMOINS = SRC_DIRECTORY / "update/websites/mangamoins"
+PATH_TO_MANGASAKI = SRC_DIRECTORY / "update/websites/mangasaki"
 
 # load config file
 with open(PATH_TO_CONFIG) as json_file:

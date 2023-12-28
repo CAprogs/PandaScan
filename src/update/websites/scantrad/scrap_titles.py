@@ -23,9 +23,9 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
     while True:
 
         if page == 1:
-            page_url = f"https://scantrad-vf.co/manga/{a}?m_orderby=alphabet"
+            page_url = f"https://scantrad-vf.me/manga/{a}?m_orderby=alphabet"
         else:
-            page_url = f"https://scantrad-vf.co/manga/page/{page}/?m_orderby=alphabet"
+            page_url = f"https://scantrad-vf.me/manga/page/{page}/?m_orderby=alphabet"
 
         try:
             DRIVER.get(page_url)
@@ -58,7 +58,7 @@ def Scrap_titles(DRIVER, PATH_TO_SCANTRAD, LOG):
     if manga_name_list == []:
         return "failed"
 
-    LOG.debug(f"{len(manga_name_list)} mangas fetched.")
+    LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
     data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)

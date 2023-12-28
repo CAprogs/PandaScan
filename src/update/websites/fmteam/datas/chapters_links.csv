@@ -1,4 +1,5 @@
 NomSite,NomManga,Chapitres,ChapterLink
+fmteam,batuque,chapitre 121,https://fmteam.fr/api/download/batuque/fr/ch/121
 fmteam,batuque,chapitre 120,https://fmteam.fr/api/download/batuque/fr/ch/120
 fmteam,batuque,chapitre 119,https://fmteam.fr/api/download/batuque/fr/ch/119
 fmteam,batuque,chapitre 118,https://fmteam.fr/api/download/batuque/fr/ch/118
@@ -122,13 +123,12 @@ fmteam,batuque,chapitre 1,https://fmteam.fr/api/download/batuque/fr/ch/1
 fmteam,berserk,chapitre 375,https://fmteam.fr/api/download/berserk/fr/ch/375
 fmteam,berserk,chapitre 374,https://fmteam.fr/api/download/berserk/fr/ch/374
 fmteam,berserk,chapitre 373,https://fmteam.fr/api/download/berserk/fr/ch/373
+fmteam,blue-lock,chapitre 245,https://fmteam.fr/api/download/blue-lock/fr/ch/245
 fmteam,blue-lock,chapitre 244,https://fmteam.fr/api/download/blue-lock/fr/ch/244
 fmteam,blue-lock,chapitre 243,https://fmteam.fr/api/download/blue-lock/fr/ch/243
-fmteam,blue-lock,chapitre 242,https://fmteam.fr/api/download/blue-lock/fr/ch/242
+fmteam,blue-lock-episode-nagi,chapitre 18,https://fmteam.fr/api/download/blue-lock-episode-nagi/fr/ch/18
 fmteam,blue-lock-episode-nagi,chapitre 17,https://fmteam.fr/api/download/blue-lock-episode-nagi/fr/ch/17
 fmteam,blue-lock-episode-nagi,chapitre 16,https://fmteam.fr/api/download/blue-lock-episode-nagi/fr/ch/16
-fmteam,blue-lock-episode-nagi,chapitre 15,https://fmteam.fr/api/download/blue-lock-episode-nagi/fr/ch/15
-fmteam,blue-lock-episode-nagi,chapitre 14,https://fmteam.fr/api/download/blue-lock-episode-nagi/fr/ch/14
 fmteam,bouncer,chapitre 79,https://fmteam.fr/api/download/bouncer/fr/vol/13/ch/79
 fmteam,bouncer,chapitre 78,https://fmteam.fr/api/download/bouncer/fr/vol/13/ch/78
 fmteam,bouncer,chapitre 77,https://fmteam.fr/api/download/bouncer/fr/vol/13/ch/77
@@ -226,9 +226,9 @@ fmteam,dandadan,chapitre 120,https://fmteam.fr/api/download/dandadan/fr/ch/120
 fmteam,dandadan,chapitre 119,https://fmteam.fr/api/download/dandadan/fr/ch/119
 fmteam,dr-stone-4d-science,chapitre 2,https://fmteam.fr/api/download/dr-stone-4d-science/fr/ch/2
 fmteam,dr-stone-4d-science,chapitre 1,https://fmteam.fr/api/download/dr-stone-4d-science/fr/ch/1
+fmteam,hajime-no-ippo,chapitre 1444,https://fmteam.fr/api/download/hajime-no-ippo/fr/ch/1444
 fmteam,hajime-no-ippo,chapitre 1443,https://fmteam.fr/api/download/hajime-no-ippo/fr/ch/1443
 fmteam,hajime-no-ippo,chapitre 1442,https://fmteam.fr/api/download/hajime-no-ippo/fr/ch/1442
-fmteam,hajime-no-ippo,chapitre 1441,https://fmteam.fr/api/download/hajime-no-ippo/fr/ch/1441
 fmteam,kamen-byoto,chapitre 10,https://fmteam.fr/api/download/kamen-byoto/fr/vol/3/ch/10
 fmteam,kamen-byoto,chapitre 9,https://fmteam.fr/api/download/kamen-byoto/fr/vol/3/ch/9
 fmteam,kamen-byoto,chapitre 8,https://fmteam.fr/api/download/kamen-byoto/fr/vol/3/ch/8
@@ -243,6 +243,11 @@ fmteam,kamen-byoto,chapitre 1,https://fmteam.fr/api/download/kamen-byoto/fr/vol/
 fmteam,kingdom,chapitre 782,https://fmteam.fr/api/download/kingdom/fr/ch/782
 fmteam,kingdom,chapitre 781,https://fmteam.fr/api/download/kingdom/fr/ch/781
 fmteam,kingdom,chapitre 780,https://fmteam.fr/api/download/kingdom/fr/ch/780
+fmteam,out,chapitre 172,https://fmteam.fr/api/download/out/fr/vol/19/ch/172
+fmteam,out,chapitre 171,https://fmteam.fr/api/download/out/fr/vol/19/ch/171
+fmteam,out,chapitre 170,https://fmteam.fr/api/download/out/fr/vol/19/ch/170
+fmteam,out,chapitre 169,https://fmteam.fr/api/download/out/fr/vol/18/ch/169
+fmteam,out,chapitre 168,https://fmteam.fr/api/download/out/fr/vol/18/ch/168
 fmteam,out,chapitre 167,https://fmteam.fr/api/download/out/fr/vol/18/ch/167
 fmteam,out,chapitre 166,https://fmteam.fr/api/download/out/fr/vol/18/ch/166
 fmteam,out,chapitre 165,https://fmteam.fr/api/download/out/fr/vol/18/ch/165

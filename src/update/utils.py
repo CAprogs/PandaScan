@@ -4,7 +4,7 @@ from src.changelog.manage import generate_changelog
 from src.foundation.core.essentials import DRIVER, PATH_TO_CONFIG
 from src.foundation.core.essentials import PATH_TO_FMTEAM, PATH_TO_LELSCANS, PATH_TO_SCANTRAD
 from src.foundation.core.essentials import PATH_TO_ANIMESAMA, PATH_TO_TCBSCANS, PATH_TO_LELMANGA
-from src.foundation.core.essentials import PATH_TO_MANGANELO, PATH_TO_MANGAMOINS
+from src.foundation.core.essentials import PATH_TO_MANGANELO, PATH_TO_MANGAMOINS, PATH_TO_MANGASAKI
 from src.foundation.core.emojis import EMOJIS
 
 
@@ -91,6 +91,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         from src.update.websites.lelmanga.update_datas import Update_lelmanga
         from src.update.websites.manganelo.update_datas import Update_manganelo
         from src.update.websites.mangamoins.update_datas import Update_mangamoins
+        from src.update.websites.mangasaki.update_datas import Update_mangasaki
 
         LOG.info(f"Updating {selected_website} {EMOJIS[8]}")
 
@@ -98,34 +99,56 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
             i = Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_SCANTRAD, selected_website)
+            else:
+                status = "failed"
         elif selected_website == "lelscans":
             i = Update_lelscans(PATH_TO_LELSCANS, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_LELSCANS, selected_website)
+            else:
+                status = "failed"
         elif selected_website == "fmteam":
             i = Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_FMTEAM, selected_website)
+            else:
+                status = "failed"
         elif selected_website == "animesama":
             i = Update_animesama(PATH_TO_ANIMESAMA, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_ANIMESAMA, selected_website)
+            else:
+                status = "failed"
         elif selected_website == "tcbscans":
             i = Update_tcbscans(PATH_TO_TCBSCANS, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_TCBSCANS, selected_website)
+            else:
+                status = "failed"
         elif selected_website == "lelmanga":
             i = Update_lelmanga(PATH_TO_LELMANGA, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_LELMANGA, selected_website)
+            else:
+                status = "failed"
         elif selected_website == "manganelo":
             i = Update_manganelo(PATH_TO_MANGANELO, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_MANGANELO, selected_website)
+            else:
+                status = "failed"
         elif selected_website == "mangamoins":
             i = Update_mangamoins(PATH_TO_MANGAMOINS, LOG)
             if i != 0:
                 status = generate_changelog(PATH_TO_MANGAMOINS, selected_website)
+            else:
+                status = "failed"
+        elif selected_website == "mangasaki":
+            i = Update_mangasaki(DRIVER, PATH_TO_MANGASAKI, LOG)
+            if i != 0:
+                status = generate_changelog(PATH_TO_MANGASAKI, selected_website)
+            else:
+                status = "failed"
         else:
             LOG.info(f"{selected_website} isn't supported {EMOJIS[4]}.")
             status = "failed"

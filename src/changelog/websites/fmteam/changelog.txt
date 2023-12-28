@@ -327,3 +327,25 @@ Changes in kingdom:
 
 Update 25 : 22/12/2023 | 10:33:02
 No added / deprecated files !
+
+Update 26 : 26/12/2023 | 09:54:44
+Changes in blue-lock:
+  • Added chapters: chapitre 245
+  • Removed chapters: chapitre 242
+Changes in blue-lock-episode-nagi:
+  • Added chapters: chapitre 18
+  • Removed chapters: chapitre 15, chapitre 14
+Changes in out:
+  • Added chapters: chapitre 170, chapitre 169, chapitre 168
+
+Update 27 : 26/12/2023 | 10:15:59
+No added / deprecated files !
+
+Update 28 : 28/12/2023 | 03:19:24
+Changes in batuque:
+  • Added chapters: chapitre 121
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1444
+  • Removed chapters: chapitre 1441
+Changes in out:
+  • Added chapters: chapitre 172, chapitre 171
