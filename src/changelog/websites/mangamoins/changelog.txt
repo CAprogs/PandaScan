@@ -23,3 +23,9 @@ Changes in black-clover:
 Update 2 : 28/12/2023 | 03:20:13
 Changes in one-piece:
   • Added chapters: chapitre 1103
+
+Update 3 : 30/12/2023 | 03:07:08
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 247
+Changes in my-hero-academia:
+  • Added chapters: chapitre 411

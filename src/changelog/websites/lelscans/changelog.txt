@@ -228,3 +228,6 @@ Changes in hajime-no-ippo:
   • Added chapters: chapitre 1444
 Changes in one-piece:
   • Added chapters: chapitre 1103
+
+Update 27 : 30/12/2023 | 02:53:57
+No added / deprecated files !
