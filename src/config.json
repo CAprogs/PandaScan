@@ -1,5 +1,5 @@
 {
-    "App_version": "v3.0.3",
+    "App_version": "v3.0.4",
     "driver": {
         "path": "",
         "headless": true,

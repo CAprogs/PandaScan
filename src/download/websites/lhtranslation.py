@@ -1,18 +1,16 @@
 import requests
-from bs4 import BeautifulSoup
-#from src.foundation.core.essentials import SELECTOR
-#from src.foundation.core.essentials import LOG
-#from src.foundation.core.emojis import EMOJIS
+from lxml import html
+from src.foundation.core.essentials import SELECTOR, LOG
+from src.foundation.core.emojis import EMOJIS
 
 
-def init_download(selected_website, chapter_file_path, selected_manga_name, download_id, chapter_name):
+def init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name):
     """Initialize the download from lhtranslation.
 
     Args:
         selected_website (str): selected website
-        chapter_file_path (str): path of the folder to save images
+        chapter_file_path (str): path of the folder where to save images
         selected_manga_name (str): selected manga name
-        download_id (int): current download number
         chapter_name (str): chapter name
 
     Returns:
@@ -20,71 +18,58 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, down
     """
 
     page = 0
-    #query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
-    #SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
-    #chapter_link = SELECTOR.fetchone()[0]
-    chapter_link = ""
+    query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
+    SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
+    chapter_link = SELECTOR.fetchone()[0] + "?style=list"
     try:
         http_response = requests.get(chapter_link)
         if http_response.status_code == 200:
-            soup_1 = BeautifulSoup(http_response.text, "html.parser")
-            select_element = soup_1.select_one('#readerarea')
-            expected_imgs = str(select_element.contents).count('<img')
-            p_elements = select_element.find_all("p")
-
-            if p_elements != [] and len(p_elements) == expected_imgs:
-                img_elements = [element.contents[0] for element in p_elements]
-                img_list = [element for element in img_elements if '<img' in str(element)]
-                if len(img_list) != expected_imgs:
-                    print(f"Download {download_id} aborted | {chapter_name} | some images are missing ") #{EMOJIS[10]}
-                    return "failed"
-            else:
-                print(f"Download {download_id} aborted | {chapter_name} | some images are missing ") #{EMOJIS[10]}
-                return "failed"
-
-            for img in img_list:
-                try:
-                    img_link = img['src']
-                except Exception as e:
-                    print(f"Download {download_id} aborted | {chapter_name} | Error : {e}")
-                    return "failed"
+            while True:
+                xpath = f'//*[@id="image-{page}"]'
                 save_path = f"{chapter_file_path}/{page}.jpg"
-                response = lhtranslation(img_link, save_path, page)
-                if response is False:
-                    print(f"Download {download_id} aborted , request failed.") #{EMOJIS[4]}
+                response = lhtranslation(http_response, xpath, save_path, page)
+                if response is True:
+                    page += 1
+                elif response is False and page >= 1:
+                    LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}")
+                    return "success"
+                else:
+                    LOG.debug(f"Request failed | {selected_website} | {selected_manga_name} | {chapter_name}")
                     return "failed"
-                page += 1
-            print(f"{chapter_name} downloaded ") #{EMOJIS[3]}
-            return "success"
         else:
-            print(f"Request failed | Status code : {http_response.status_code}")
+            LOG.debug(f"Request failed : {selected_website} {EMOJIS[4]}, Status code : {http_response.status_code}")
             return "failed"
     except requests.ConnectionError as e:
-        print(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
         return "failed"
 
 
-def lhtranslation(img_link, save_path, page):
+def lhtranslation(http_response, xpath, save_path, page):
     """Download images from lhtranslation with the given URL.
 
     Args:
-        img_link (str): image download link
-        save_path (str): path to save images
+        http_response (int): HTTP response code
+        xpath (str): images xpath
+        save_path (str): path of the folder to save images
         page (int): page number to download
 
     Returns:
         bool: True(download successful), False(otherwise)
     """
 
-    image_response = requests.get(img_link)
-    if image_response.status_code == 200:
-        with open(save_path, 'wb') as f:
-            f.write(image_response.content)
-        print(f"Image {page} downloaded")
-        return True
+    tree = html.fromstring(http_response.content)
+    image_element = tree.xpath(xpath)
+    if image_element:
+        image_url = image_element[0].get('data-src')
+        image_response = requests.get(image_url)
+        if image_response.status_code == 200:
+            with open(save_path, 'wb') as f:
+                f.write(image_response.content)
+            LOG.debug(f"Image {page} downloaded.")
+            return True
+        else:
+            LOG.debug(f"Failed downloading Image {page}. Statut Code : {image_response.status_code}")
+            return False
     else:
-        print(f"Failed downloading Image {page}. Status code : {image_response.status_code}")
+        LOG.debug("No element found for the xpath provided.")
         return False
-
-if __name__ == "__main__":
-    init_download("lhtranslation", "/Users/charles-albert/Desktop/PandaScan/tests/lhtranslation/", "nanatsu-no-taizai", 1, "chapter 335")
