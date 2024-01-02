@@ -89,7 +89,7 @@ Bringing some improvements :
 
 | Window 1  | Window 2 | Window 3 |
 | :-------- | :-------       | :-------    |
-| <img width="500" alt="F1" src="https://github.com/CAprogs/PandaScan/assets/104645407/45f1a55d-34d3-4c0d-ac39-c8659991acc1"> |  <img width="500" alt="F2" src="https://github.com/CAprogs/PandaScan/assets/104645407/da4f5f5f-e474-4c7d-afb1-3cf2e7f817b6"> |  <img width="500" alt="F3" src="https://github.com/CAprogs/PandaScan/assets/104645407/1604d632-715f-490d-be3e-85f30e23bf73">
+| <img width="500" alt="F1" src="https://github.com/CAprogs/PandaScan/assets/104645407/1d686b76-e475-4f9b-9709-7b569fe2fd97">|  <img width="500" alt="F2" src="https://github.com/CAprogs/PandaScan/assets/104645407/7be88e4b-77f0-40f4-bccb-5da561761c95">| <img width="500" alt="F3" src="https://github.com/CAprogs/PandaScan/assets/104645407/323805ea-ebc0-46ab-bc8f-d32d304ff0a5">
 
 ## Preview 👁️ (MacOs)
 
