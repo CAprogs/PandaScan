@@ -31,7 +31,7 @@ def set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMO
     # Instantiate chrome options
     options = webdriver.ChromeOptions()
     if SETTINGS['driver']['headless']:
-        options.add_argument("--headless")
+        options.add_argument("--headless=new")
         options.add_argument(SETTINGS['driver']['user_agent'])
         LOG.debug("Browser mode : Headless")
     else:

@@ -24,7 +24,6 @@ def Scrap_titles(DRIVER, PATH_TO_MANGASAKI, LOG):
 
         try:
             DRIVER.get(url)
-            DRIVER.implicitly_wait(1)
             select_element = DRIVER.find_element(By.TAG_NAME, 'tbody')
 
             if page == 0:

@@ -18,7 +18,8 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI, LOG):
     try:
         datas = pd.read_csv(f'{PATH_TO_MANGASAKI}/datas/mangas.csv')
     except Exception as e:
-        return LOG.debug(f"Error : {e}")
+        LOG.debug(f"Error : {e}")
+        return "failed"
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []

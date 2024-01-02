@@ -5,6 +5,7 @@ from src.foundation.core.essentials import DRIVER, PATH_TO_CONFIG
 from src.foundation.core.essentials import PATH_TO_FMTEAM, PATH_TO_LELSCANS, PATH_TO_SCANTRAD
 from src.foundation.core.essentials import PATH_TO_ANIMESAMA, PATH_TO_TCBSCANS, PATH_TO_LELMANGA
 from src.foundation.core.essentials import PATH_TO_MANGANELO, PATH_TO_MANGAMOINS, PATH_TO_MANGASAKI
+from src.foundation.core.essentials import PATH_TO_LHTRANSLATION
 from src.foundation.core.emojis import EMOJIS
 
 
@@ -23,14 +24,26 @@ def get_average_time(mode, selected_website, SETTINGS, ALL_WEBSITES=None):
 
     average_time = ""
     if mode.lower() == "manual" and SETTINGS["websites"][selected_website]["time_to_update"] != 0:
-        average_time = f"Average duration : {SETTINGS["websites"][selected_website]["time_to_update"]} s"
+        update_time = SETTINGS["websites"][selected_website]["time_to_update"]
+        if update_time > 3600:
+            average_time = f"Average duration : {update_time/3600:.2f} h"
+        elif update_time > 60:
+            average_time = f"Average duration : {update_time/60:.2f} min"
+        else:
+            average_time = f"Average duration : {update_time} s"
     elif mode.lower() == "auto":
         total_time = 0
         for website in [website for website in ALL_WEBSITES if SETTINGS["websites"][website]["enabled"]]:
             if SETTINGS["websites"][website]["time_to_update"] != 0:
                 total_time += SETTINGS["websites"][website]["time_to_update"]
         if total_time != 0:
-            average_time = f"Average duration : {total_time} s"
+            if total_time > 3600:
+                total_time = f"{total_time/3600:.2f} h"
+            elif total_time > 60:
+                total_time = f"{total_time/60:.2f} min"
+            else:
+                total_time = f"{total_time} s"
+            average_time = f"Average duration : {total_time}"
     return average_time
 
 
@@ -92,67 +105,48 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
         from src.update.websites.manganelo.update_datas import Update_manganelo
         from src.update.websites.mangamoins.update_datas import Update_mangamoins
         from src.update.websites.mangasaki.update_datas import Update_mangasaki
+        from src.update.websites.lhtranslation.update_datas import Update_lhtranslation
 
         LOG.info(f"Updating {selected_website} {EMOJIS[8]}")
 
         if selected_website == "scantrad":
-            i = Update_scantrad(DRIVER, PATH_TO_SCANTRAD, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_SCANTRAD, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_SCANTRAD
+            i = Update_scantrad(DRIVER, path, LOG)
         elif selected_website == "lelscans":
-            i = Update_lelscans(PATH_TO_LELSCANS, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_LELSCANS, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_LELSCANS
+            i = Update_lelscans(path, LOG)
         elif selected_website == "fmteam":
-            i = Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_FMTEAM, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_FMTEAM
+            i = Update_fmteam(DRIVER, path, LOG)
         elif selected_website == "animesama":
-            i = Update_animesama(PATH_TO_ANIMESAMA, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_ANIMESAMA, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_ANIMESAMA
+            i = Update_animesama(path, LOG)
         elif selected_website == "tcbscans":
-            i = Update_tcbscans(PATH_TO_TCBSCANS, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_TCBSCANS, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_TCBSCANS
+            i = Update_tcbscans(path, LOG)
         elif selected_website == "lelmanga":
-            i = Update_lelmanga(PATH_TO_LELMANGA, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_LELMANGA, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_LELMANGA
+            i = Update_lelmanga(path, LOG)
         elif selected_website == "manganelo":
-            i = Update_manganelo(PATH_TO_MANGANELO, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_MANGANELO, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_MANGANELO
+            i = Update_manganelo(path, LOG)
         elif selected_website == "mangamoins":
-            i = Update_mangamoins(PATH_TO_MANGAMOINS, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_MANGAMOINS, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_MANGAMOINS
+            i = Update_mangamoins(path, LOG)
         elif selected_website == "mangasaki":
-            i = Update_mangasaki(DRIVER, PATH_TO_MANGASAKI, LOG)
-            if i != 0:
-                status = generate_changelog(PATH_TO_MANGASAKI, selected_website)
-            else:
-                status = "failed"
+            path = PATH_TO_MANGASAKI
+            i = Update_mangasaki(DRIVER, path, LOG)
+        elif selected_website == "lhtranslation":
+            path = PATH_TO_LHTRANSLATION
+            i = Update_lhtranslation(DRIVER, path, LOG)
         else:
             LOG.info(f"{selected_website} isn't supported {EMOJIS[4]}.")
             status = "failed"
 
+        if i != 0:
+            status = generate_changelog(path, selected_website)
+        else:
+            status = "failed"
     else:
         status = "skipped"
     

@@ -12,48 +12,53 @@
         "languages": "All",
         "fmteam": {
             "enabled": true,
-            "n_update": 29,
-            "time_to_update": 164.87
+            "n_update": 30,
+            "time_to_update": 168.68
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 27,
-            "time_to_update": 5.58
+            "n_update": 28,
+            "time_to_update": 4.22
         },
         "scantrad": {
             "enabled": true,
-            "n_update": 25,
-            "time_to_update": 747.32
+            "n_update": 26,
+            "time_to_update": 840.66
         },
         "animesama": {
             "enabled": true,
-            "n_update": 15,
-            "time_to_update": 20.59
+            "n_update": 16,
+            "time_to_update": 19.28
         },
         "tcbscans": {
-            "enabled": false,
-            "n_update": 7,
-            "time_to_update": 5.95
+            "enabled": true,
+            "n_update": 8,
+            "time_to_update": 4.98
         },
         "lelmanga": {
             "enabled": true,
-            "n_update": 7,
-            "time_to_update": 13.19
+            "n_update": 8,
+            "time_to_update": 13.87
         },
         "manganelo": {
-            "enabled": false,
-            "n_update": 5,
-            "time_to_update": 234.51
+            "enabled": true,
+            "n_update": 6,
+            "time_to_update": 213.67
         },
         "mangamoins": {
             "enabled": true,
-            "n_update": 3,
-            "time_to_update": 10.32
+            "n_update": 4,
+            "time_to_update": 10.99
         },
         "mangasaki": {
             "enabled": false,
             "n_update": 0,
             "time_to_update": 9763.21
+        },
+        "lhtranslation": {
+            "enabled": true,
+            "n_update": 2,
+            "time_to_update": 98.15
         }
     },
     "Download": {

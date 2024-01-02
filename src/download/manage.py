@@ -1,6 +1,7 @@
 from src.download.websites import scantrad, lelscans, fmteam
 from src.download.websites import animesama, tcbscans, lelmanga
 from src.download.websites import manganelo, mangamoins, mangasaki
+from src.download.websites import lhtranslation
 from src.download.utils import check_manga_path
 
 
@@ -47,6 +48,9 @@ def download(selected_website, chapter_file_path, selected_manga_name, chapter_n
     
     elif selected_website == "mangasaki":
         status = mangasaki.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER)
+    
+    elif selected_website == "lhtranslation":
+        status = lhtranslation.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER)
     
     else:
         status = "failed"
