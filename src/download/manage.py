@@ -50,7 +50,7 @@ def download(selected_website, chapter_file_path, selected_manga_name, chapter_n
         status = mangasaki.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER)
     
     elif selected_website == "lhtranslation":
-        status = lhtranslation.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER)
+        status = lhtranslation.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
     
     else:
         status = "failed"

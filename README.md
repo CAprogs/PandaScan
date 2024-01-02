@@ -6,7 +6,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/CAprogs/PandaScan?color=yellow) 
 ![GitHub](https://img.shields.io/github/license/CAprogs/PandaScan?color=blue)
 ![total downloads](https://img.shields.io/github/downloads/CAprogs/PandaScan/total?color=purple)
-![latest release](https://img.shields.io/github/v/release/CAprogs/PandaScan?label=latest&color=orange)
+![latest release](https://img.shields.io/github/v/release/CAprogs/PandaScan?label=latest&color=darkgreen)
 
 
 <br>Vous avez toujours eu l'envie de **télécharger vos scans de mangas favoris sans limite** ?</br>
@@ -16,20 +16,20 @@
 
 ## À Propos 🥢
 
-- Plus de **`1600 mangas`** disponibles
-- Plus de **`95 000 chapitres`** téléchargeables
+- Plus de **`4600 mangas`** disponibles
+- Plus de **`311 000 chapitres`** téléchargeables
 
 <details>
   <summary> Les sites disponibles 🌐 </summary>
 
-  - [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) (🇫🇷)
-  - [fmteam.fr](https://fmteam.fr/comics) (🇫🇷)
-  - [scantrad-vf.me](https://scantrad-vf.me/) (🇫🇷)
-  - [anime-sama.me](https://anime-sama.me/) (🇫🇷)
-  - [tcbscans.com](https://tcbscans.com/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
-  - [lelmanga.com](https://www.lelmanga.com/) (🇫🇷)
-  - [manganelo.tv](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧)
-  - [mangamoins.shaeishu.co](https://mangamoins.shaeishu.co/?p=1) (🇫🇷)
+| <div align="center">**🇫🇷**</div>  | <div align="center">**🇬🇧**</div> |
+| :-------- | :-------   |
+| [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) | [tcbscans.com](https://tcbscans.com/) |
+| [fmteam.fr](https://fmteam.fr/comics) | [manganelo.tv](https://ww7.manganelo.tv/) |
+| [scantrad-vf.me](https://scantrad-vf.me/) | [mangasaki.org](https://www.mangasaki.org/) |
+| [anime-sama.me](https://anime-sama.me/) | [lhtranslation.net](https://lhtranslation.net/home/) |
+| [lelmanga.com](https://www.lelmanga.com/) |  |
+| [mangamoins.shaeishu.co](https://mangamoins.shaeishu.co/?p=1) |  |
 
 </details>
 
@@ -45,8 +45,11 @@
 
 ### À Venir 📅
 
-- Ajout du site [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans la version **3.0.4**
-- Ajout du site [lhtranslation](https://lhtranslation.net/home/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) - dans la version **3.0.4**
+- Mode Custom
+  - Définir une liste de sites favoris
+  - Mettre à jour une liste de mangas définie ( ne mettra plus à jour tout le site = gain de temps )
+- Ajout de nouveaux paramètres ( Settings window )
+- Tests Unitaires, Tests d'intégration
 
 Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/PandaScan/discussions/2).
 
@@ -63,7 +66,7 @@ Faites vos **suggestions** à travers le [Chat](https://github.com/CAprogs/Panda
 La [**v3.x.x**](https://github.com/CAprogs/PandaScan/releases) est disponible !
 
 Elle apporte de nombreuses améliorations :
-- Ajout de 2 nouveaux sites : [manganelo](https://ww7.manganelo.tv/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) et [mangamoins](https://mangamoins.shaeishu.co/?p=1) (🇫🇷)
+- Ajout de 2 nouveaux sites : [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) et [lhtranslation](https://lhtranslation.net/home/) (🇫🇷)
 - Vitesse de téléchargement optimisée
 - Amélioration du suivi de téléchargement 🤩
 
