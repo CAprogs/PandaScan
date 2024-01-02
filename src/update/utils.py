@@ -26,9 +26,9 @@ def get_average_time(mode, selected_website, SETTINGS, ALL_WEBSITES=None):
     if mode.lower() == "manual" and SETTINGS["websites"][selected_website]["time_to_update"] != 0:
         update_time = SETTINGS["websites"][selected_website]["time_to_update"]
         if update_time > 3600:
-            average_time = f"Average duration : {update_time/3600:.2f} h"
+            average_time = f"Average duration : {update_time / 3600:.2f} h"
         elif update_time > 60:
-            average_time = f"Average duration : {update_time/60:.2f} min"
+            average_time = f"Average duration : {update_time / 60:.2f} min"
         else:
             average_time = f"Average duration : {update_time} s"
     elif mode.lower() == "auto":
@@ -38,9 +38,9 @@ def get_average_time(mode, selected_website, SETTINGS, ALL_WEBSITES=None):
                 total_time += SETTINGS["websites"][website]["time_to_update"]
         if total_time != 0:
             if total_time > 3600:
-                total_time = f"{total_time/3600:.2f} h"
+                total_time = f"{total_time / 3600:.2f} h"
             elif total_time > 60:
-                total_time = f"{total_time/60:.2f} min"
+                total_time = f"{total_time / 60:.2f} min"
             else:
                 total_time = f"{total_time} s"
             average_time = f"Average duration : {total_time}"
@@ -149,5 +149,5 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
             status = "failed"
     else:
         status = "skipped"
-    
+
     return i, status

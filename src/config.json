@@ -51,7 +51,7 @@
             "time_to_update": 10.99
         },
         "mangasaki": {
-            "enabled": false,
+            "enabled": true,
             "n_update": 0,
             "time_to_update": 9763.21
         },

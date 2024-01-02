@@ -14,7 +14,7 @@ def generate_changelog(PATH_TO_WEBSITE, website):
     Args:
         PATH_TO_WEBSITE (str): path to the website folder (update module)
         website (str): name of the website
-    
+
     Returns:
         str: "success" (if the changelog is generated), "failed" (otherwise)
     """

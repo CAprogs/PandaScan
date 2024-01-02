@@ -59,6 +59,7 @@ TEXT_51 = f"The folder where your scans'll be stored. ( Default : PandaScan {EMO
 # Choose Button
 TEXT_100 = "Choose"
 
+
 def show_settings(main_window, SETTINGS, settings_button):
     """Display the SETTINGS window.
 

@@ -16,9 +16,9 @@ def Get_number_of_pages(soup, LOG):
     try:
         select_element = soup.select_one('body > main > div.ContentGauche > div.bottom_pages > div')
         if select_element:
-                pages_element = select_element.find_all("a")
-                last_page = pages_element[-1].text
-                return int(last_page)
+            pages_element = select_element.find_all("a")
+            last_page = pages_element[-1].text
+            return int(last_page)
         else:
             LOG.debug("No select_element")
             return None
@@ -51,7 +51,7 @@ def Scrap_titles(PATH_TO_MANGAMOINS, LOG):
             soup = BeautifulSoup(html_content, "html.parser")
             if page == 1:
                 last_page = Get_number_of_pages(soup, LOG)
-                if last_page == None:
+                if last_page is None:
                     LOG.debug("Error : No page element found")
                     return "failed"
             elif page > last_page:
@@ -87,6 +87,6 @@ def Scrap_titles(PATH_TO_MANGAMOINS, LOG):
 
     LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
-    datas = pd.DataFrame(manga_name_list, columns= ["NomManga"])
+    datas = pd.DataFrame(manga_name_list, columns=["NomManga"])
     datas.to_csv(f'{PATH_TO_MANGAMOINS}/datas/mangas.csv', index=False)
     return "success"

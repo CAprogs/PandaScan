@@ -39,19 +39,19 @@ def download(selected_website, chapter_file_path, selected_manga_name, chapter_n
 
     elif selected_website == "lelmanga":
         status = lelmanga.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
-    
+
     elif selected_website == "manganelo":
         status = manganelo.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
-    
+
     elif selected_website == "mangamoins":
         status = mangamoins.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
-    
+
     elif selected_website == "mangasaki":
         status = mangasaki.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER)
-    
+
     elif selected_website == "lhtranslation":
         status = lhtranslation.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
-    
+
     else:
         status = "failed"
 

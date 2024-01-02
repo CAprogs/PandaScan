@@ -39,7 +39,7 @@ def Scrap_chapters(PATH_TO_MANGAMOINS, LOG):
             soup = BeautifulSoup(html_content, "html.parser")
             if page == 1:
                 last_page = Get_number_of_pages(soup, LOG)
-                if last_page == None:
+                if last_page is None:
                     LOG.debug("Error : No last page found")
                     return
             elif page > last_page:
@@ -79,7 +79,7 @@ def Scrap_chapters(PATH_TO_MANGAMOINS, LOG):
         except Exception as e:
             LOG.debug(f"Error : {e} | {url}")
             return "failed"
-    
+
     for manga_name in manga_chapters_dict.keys():
         LOG.debug(f"{manga_name} : {len(manga_chapters_dict[manga_name])} chapters fetched.")
 

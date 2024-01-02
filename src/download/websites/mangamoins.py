@@ -22,7 +22,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
     query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
     SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
     chapter_link = SELECTOR.fetchone()[0]
-    
+
     try:
         http_response = requests.get(chapter_link)
         if http_response.status_code == 200:
