@@ -231,3 +231,13 @@ Changes in one-piece:
 
 Update 27 : 30/12/2023 | 02:53:57
 No added / deprecated files !
+
+Update 28 : 02/01/2024 | 03:04:33
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 247
+Changes in kingdom:
+  • Added chapters: chapitre 783
+Changes in my-hero-academia:
+  • Added chapters: chapitre 411
+Changes in one-punch-man:
+  • Added chapters: chapitre 197

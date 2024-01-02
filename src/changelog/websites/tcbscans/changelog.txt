@@ -36,3 +36,6 @@ Changes in my-hero-academia:
   • Added chapters: chapter 411
 Changes in one-piece:
   • Added chapters: chapter 1103
+
+Update 8 : 02/01/2024 | 03:19:23
+No added / deprecated files !

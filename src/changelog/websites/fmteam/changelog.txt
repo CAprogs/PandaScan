@@ -362,3 +362,9 @@ Changes in one-punch-man:
   • Removed chapters: chapitre 194
 Changes in out:
   • Added chapters: chapitre 174, chapitre 173
+
+Update 30 : 02/01/2024 | 03:04:29
+Changes in out:
+  • Added chapters: chapitre 177, chapitre 176, chapitre 175
+Changes in the-fable-the-second-contact:
+  • Added chapters: chapitre 68
