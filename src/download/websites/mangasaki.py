@@ -29,7 +29,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
 
         if not isinstance(chapter_file_path, str):
             chapter_file_path = chapter_file_path._str
-        
+
         if img_elements == []:
             LOG.debug(f"Download aborted {EMOJIS[4]}, no images found. | {chapter_link}")
             return "failed"

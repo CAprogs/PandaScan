@@ -43,7 +43,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
                         LOG.debug(f"Download aborted , request failed {EMOJIS[4]}")
                         return "failed"
                     page += 1
-                LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}") 
+                LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}")
                 return "success"
             else:
                 LOG.debug(f"Download aborted | {chapter_name} | some images are missing {EMOJIS[10]}")

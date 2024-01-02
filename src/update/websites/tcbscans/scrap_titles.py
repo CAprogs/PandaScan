@@ -23,7 +23,7 @@ def Scrap_titles(PATH_TO_TCBSCANS, LOG):
         response = requests.get(url)
         html_content = response.text
         soup = BeautifulSoup(html_content, "html.parser")
-        select_element = soup.select_one('body > main > div.overflow-hidden > div > div.grid.grid-cols-1.md\:grid-cols-2.gap-3')
+        select_element = soup.select_one('body > main > div.overflow-hidden > div > div.grid.grid-cols-1.md\\:grid-cols-2.gap-3')
 
         if select_element:
             mangas = select_element.find_all("div", class_="relative h-24 w-24 sm:mb-0 mb-3")

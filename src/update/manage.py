@@ -33,7 +33,7 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG
 
         if status == "success":
             LOG.info(f"{selected_website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
-            w_average_time(selected_website, round(elapsed_time,2), SETTINGS)
+            w_average_time(selected_website, round(elapsed_time, 2), SETTINGS)
             result = Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, LOG)
             if result == "success":
                 LOG.info(f"Migration completed {EMOJIS[3]}")
@@ -73,7 +73,6 @@ def auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
     updates_failed = 0
     updates_skipped = 0
 
-
     if confirm_update(mode, message, SETTINGS, ALL_WEBSITES):
         os.system("clear")
         LOG.info(f"Searching for Updates {EMOJIS[8]}..")
@@ -87,7 +86,7 @@ def auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
             elapsed_time = end_time - start_time
             if status == "success":
                 LOG.info(f"{website} is Up-to-date {EMOJIS[3]} | lasted: {elapsed_time:.2f} s")
-                w_average_time(website, round(elapsed_time,2), SETTINGS)
+                w_average_time(website, round(elapsed_time, 2), SETTINGS)
                 updates_succeeded += 1
             elif status == "skipped":
                 LOG.info(f"{website} Update skipped {EMOJIS[12]}")

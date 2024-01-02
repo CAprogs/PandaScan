@@ -23,14 +23,14 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI, LOG):
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []
-    last_manga_index = len(datas['NomManga'])-1
+    last_manga_index = len(datas['NomManga']) - 1
     columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
 
     for index, manga_name in enumerate(datas['NomManga']):
         url = datas['links'][index]
         i = 0
         previous_chapter_number = 0
-        
+
         LOG.info(f"Manga : {manga_name}")
         manga_chapters_dict[manga_name] = []
 
@@ -45,14 +45,14 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI, LOG):
                         try:
                             last_page = int(last_page_element.get_attribute('href').split("=")[-1])
                         except Exception as e:
-                            LOG.debug(f"No last_page_element | {url}")
+                            LOG.debug(f"No last_page_element | {url} | {e}")
                             last_page_element = None
                     else:
                         LOG.debug(f"No last_page_element | {url}")
                         last_page_element = None
                 elif i > last_page:
                     break
-                
+
                 select_element = DRIVER.find_element(By.TAG_NAME, 'tbody')
                 options = select_element.find_elements(By.TAG_NAME, 'tr')
 
@@ -68,6 +68,7 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI, LOG):
                     try:
                         number_1 = int(split_link[0])
                     except Exception as e:
+                        LOG.debug(f"No chapter added. | {e}")
                         continue
                     try:
                         number_2 = int(split_link[1])
@@ -91,7 +92,7 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI, LOG):
                         elif float(chapter_number) == float(previous_chapter_number):
                             LOG.debug(f"The chapter number is the same as the previous one. | {chapter_number}")
                             continue
-                        
+
                         previous_chapter_number = chapter_number
 
                     chapter = "chapter " + str(chapter_number)
@@ -99,7 +100,7 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI, LOG):
                     chapters_and_links.append(["mangasaki", manga_name, chapter, chapter_link])
                     LOG.debug(f"{chapter} added | link : {chapter_link}")
 
-                if last_page_element == None:
+                if last_page_element is None:
                     break
                 i += 1
 

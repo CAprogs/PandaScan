@@ -27,7 +27,7 @@ def Scrap_titles(PATH_TO_MANGANELO, LOG):
             html_content = response.text
             soup = BeautifulSoup(html_content, "html.parser")
             select_element = soup.select_one('body > div.body-site > div.container.container-main > div.panel-content-genres')
-            if select_element == None:
+            if select_element is None:
                 LOG.debug(f"No element found here | {url}")
                 break
 

@@ -10,7 +10,7 @@ def Scrap_titles(DRIVER, PATH_TO_MANGASAKI, LOG):
         DRIVER (Any): the chromedriver
         PATH_TO_MANGASAKI (str): path to mangasaki directory (update)
         LOG (Any): the logger
-    
+
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """

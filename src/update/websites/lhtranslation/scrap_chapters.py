@@ -53,7 +53,7 @@ def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION, LOG):
                         chapter_number = int(chapter[0].replace('chapter', ''))
                         chapter = f"chapter {chapter_number}"
                     except Exception as e:
-                        LOG.debug(f"Error : {chapter} | {chapter_link} | lhtranslation")
+                        LOG.debug(f"Error : {chapter} | {chapter_link} | {e}")
                         continue
                 manga_chapters_dict[manga_name].append(chapter)
                 chapters_and_links.append(["lhtranslation", manga_name, chapter, chapter_link])
@@ -63,7 +63,7 @@ def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION, LOG):
 
         except Exception as e:
             failed_mangas.append(manga_name)
-            LOG.debug(f"Error : {e} | {url} | lhtranslation")
+            LOG.debug(f"Error : {e} | {url}")
             if index != last_manga_index:
                 continue
 

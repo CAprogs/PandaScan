@@ -23,7 +23,7 @@ def Scrap_titles(DRIVER, PATH_TO_LHTRANSLATION, LOG):
     url = "https://lhtranslation.net/?s&post_type=wp-manga&m_orderby=alphabet"
 
     DRIVER.get(url)
-    
+
     while True:
         try:
             load_more_element = DRIVER.find_element(By.XPATH, '//*[@id="navigation-ajax"]/div[1]')
