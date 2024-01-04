@@ -65,7 +65,7 @@ Make your **suggestions** through the [Chat](https://github.com/CAprogs/PandaSca
 [**v3.x.x**](https://github.com/CAprogs/PandaScan/releases) is out !
 
 Bringing some improvements :
-- Addition of 2 new websites : [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) et [lhtranslation](https://lhtranslation.net/home/) (🇫🇷)
+- Addition of 2 new websites : [mangasaki](https://www.mangasaki.org/) (󠁧󠁢󠁥󠁮󠁧🇬🇧) et [lhtranslation](https://lhtranslation.net/home/) (🇬🇧)
 - Optimized download speed
 - Improved download tracking 🤩
 
