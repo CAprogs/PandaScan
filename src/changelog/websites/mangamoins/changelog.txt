@@ -32,3 +32,12 @@ Changes in my-hero-academia:
 
 Update 4 : 02/01/2024 | 03:19:18
 No added / deprecated files !
+
+Update 5 : 06/01/2024 | 01:01:34
+No added / deprecated files !
+
+Update 6 : 08/01/2024 | 02:37:37
+No added / deprecated files !
+
+Update 7 : 11/01/2024 | 16:11:47
+No added / deprecated files !

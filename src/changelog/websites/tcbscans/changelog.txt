@@ -39,3 +39,7 @@ Changes in one-piece:
 
 Update 8 : 02/01/2024 | 03:19:23
 No added / deprecated files !
+
+Update 9 : 11/01/2024 | 16:11:53
+Changes in chainsaw-man:
+  • Added chapters: chapter 152

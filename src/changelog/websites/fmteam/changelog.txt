@@ -368,3 +368,27 @@ Changes in out:
   • Added chapters: chapitre 177, chapitre 176, chapitre 175
 Changes in the-fable-the-second-contact:
   • Added chapters: chapitre 68
+
+Update 31 : 06/01/2024 | 00:53:56
+Changes in blue-lock:
+  • Added chapters: chapitre 246
+  • Removed chapters: chapitre 243
+Changes in dai-dark:
+  • Added chapters: chapitre 44
+  • Removed chapters: chapitre 41
+Changes in dr-stone-4d-science:
+  • Added chapters: chapitre 3
+Changes in out:
+  • Added chapters: chapitre 178
+Changes in the-fable-the-second-contact:
+  • Added chapters: chapitre 72, chapitre 71, chapitre 70, chapitre 69
+
+Update 32 : 08/01/2024 | 02:35:28
+Changes in the-fable-the-second-contact:
+  • Added chapters: chapitre 74, chapitre 73
+
+Update 33 : 11/01/2024 | 15:53:30
+Changes in choujin-x:
+  • Added chapters: chapitre 47
+Changes in the-fable-the-second-contact:
+  • Added chapters: chapitre 77, chapitre 76, chapitre 75

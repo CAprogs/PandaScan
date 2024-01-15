@@ -56,3 +56,15 @@ Changes in shuumatsu-no-valkyrie:
 
 Update 8 : 02/01/2024 | 03:19:07
 No added / deprecated files !
+
+Update 9 : 06/01/2024 | 01:01:19
+Changes in mashle-magic-and-muscles:
+  • Added chapters: chapitre 162.5
+Changes in sakamoto-days:
+  • Added chapters: chapitre 150
+
+Update 10 : 08/01/2024 | 02:37:19
+No added / deprecated files !
+
+Update 11 : 11/01/2024 | 16:11:32
+No added / deprecated files !
