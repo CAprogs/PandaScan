@@ -392,3 +392,25 @@ Changes in choujin-x:
   • Added chapters: chapitre 47
 Changes in the-fable-the-second-contact:
   • Added chapters: chapitre 77, chapitre 76, chapitre 75
+
+Update 34 : 25/01/2024 | 21:45:39
+Changes in batuque:
+  • Added chapters: chapitre 122
+Changes in blue-lock:
+  • Added chapters: chapitre 248, chapitre 247
+  • Removed chapters: chapitre 245, chapitre 244
+Changes in catechism:
+  • Added chapters: chapitre 3
+Changes in choujin-x:
+  • Removed chapters: chapitre 44
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1446, chapitre 1445
+  • Removed chapters: chapitre 1443, chapitre 1442
+Changes in kingdom:
+  • Added chapters: chapitre 785, chapitre 784
+  • Removed chapters: chapitre 782, chapitre 781
+Changes in one-punch-man:
+  • Added chapters: chapitre 198
+  • Removed chapters: chapitre 195
+Changes in out:
+  • Added chapters: chapitre 180, chapitre 179

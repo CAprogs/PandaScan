@@ -2,7 +2,7 @@
     "App_version": "v3.0.4",
     "driver": {
         "path": "",
-        "headless": false,
+        "headless": true,
         "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     },
     "Update": {
@@ -11,52 +11,52 @@
     "websites": {
         "languages": "All",
         "fmteam": {
-            "enabled": true,
-            "n_update": 33,
-            "time_to_update": 171.73
+            "enabled": false,
+            "n_update": 34,
+            "time_to_update": 179.67
         },
         "lelscans": {
-            "enabled": true,
-            "n_update": 31,
-            "time_to_update": 5.03
+            "enabled": false,
+            "n_update": 32,
+            "time_to_update": 22.18
         },
         "scantrad": {
-            "enabled": true,
-            "n_update": 27,
-            "time_to_update": 742.48
+            "enabled": false,
+            "n_update": 28,
+            "time_to_update": 2149.38
         },
         "animesama": {
-            "enabled": true,
-            "n_update": 20,
-            "time_to_update": 35.32
+            "enabled": false,
+            "n_update": 21,
+            "time_to_update": 113.14
         },
         "tcbscans": {
-            "enabled": true,
-            "n_update": 9,
-            "time_to_update": 5.25
+            "enabled": false,
+            "n_update": 10,
+            "time_to_update": 20.07
         },
         "lelmanga": {
-            "enabled": true,
-            "n_update": 11,
-            "time_to_update": 11.68
+            "enabled": false,
+            "n_update": 12,
+            "time_to_update": 34.84
         },
         "manganelo": {
             "enabled": true,
-            "n_update": 6,
-            "time_to_update": 213.67
+            "n_update": 8,
+            "time_to_update": 294.96
         },
         "mangamoins": {
-            "enabled": true,
-            "n_update": 7,
-            "time_to_update": 15.41
+            "enabled": false,
+            "n_update": 8,
+            "time_to_update": 20.42
         },
         "mangasaki": {
-            "enabled": true,
+            "enabled": false,
             "n_update": 0,
             "time_to_update": 9763.21
         },
         "lhtranslation": {
-            "enabled": true,
+            "enabled": false,
             "n_update": 2,
             "time_to_update": 98.15
         }

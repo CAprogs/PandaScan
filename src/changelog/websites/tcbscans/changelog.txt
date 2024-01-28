@@ -43,3 +43,13 @@ No added / deprecated files !
 Update 9 : 11/01/2024 | 16:11:53
 Changes in chainsaw-man:
   • Added chapters: chapter 152
+
+Update 10 : 25/01/2024 | 22:24:59
+Changes in chainsaw-man:
+  • Added chapters: chapter 153
+Changes in jujutsu-kaisen:
+  • Added chapters: chapter 248
+Changes in my-hero-academia:
+  • Added chapters: chapter 413, chapter 412
+Changes in one-piece:
+  • Added chapters: chapter 1105, chapter 1104

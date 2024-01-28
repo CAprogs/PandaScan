@@ -251,3 +251,17 @@ Changes in blue-lock:
 
 Update 31 : 11/01/2024 | 15:57:59
 No added / deprecated files !
+
+Update 32 : 25/01/2024 | 21:46:01
+Changes in blue-lock:
+  • Added chapters: chapitre 248, chapitre 247
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1446, chapitre 1445
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 248
+Changes in kingdom:
+  • Added chapters: chapitre 785, chapitre 784
+Changes in my-hero-academia:
+  • Added chapters: chapitre 412
+Changes in one-piece:
+  • Added chapters: chapitre 1105, chapitre 1104

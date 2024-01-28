@@ -41,3 +41,11 @@ No added / deprecated files !
 
 Update 7 : 11/01/2024 | 16:11:47
 No added / deprecated files !
+
+Update 8 : 25/01/2024 | 22:24:39
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 248
+Changes in my-hero-academia:
+  • Added chapters: chapitre 412
+Changes in one-piece:
+  • Added chapters: chapitre 1105, chapitre 1104

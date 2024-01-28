@@ -68,3 +68,28 @@ No added / deprecated files !
 
 Update 11 : 11/01/2024 | 16:11:32
 No added / deprecated files !
+
+Update 12 : 25/01/2024 | 22:24:19
+Changes in blue-lock:
+  • Added chapters: chapitre 248, chapitre 247
+Changes in boruto-two-blue-vortex:
+  • Added chapters: chapitre 6
+Changes in chainsaw-man:
+  • Added chapters: chapitre 153, chapitre 152
+=> Added new entry 'd-gray-man' with chapters: chapitre 249, chapitre 248, chapitre 247, chapitre 246, chapitre 245, chapitre 244
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 135, chapitre 134.5, chapitre 134, chapitre 133
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 248
+Changes in kagura-bachi:
+  • Added chapters: chapitre 17, chapitre 16
+Changes in kingdom:
+  • Added chapters: chapitre 785, chapitre 784
+Changes in my-hero-academia:
+  • Added chapters: chapitre 413, chapitre 412
+Changes in one-piece:
+  • Added chapters: chapitre 1105, chapitre 1104
+Changes in one-punch-man:
+  • Added chapters: chapitre 258
+Changes in sakamoto-days:
+  • Added chapters: chapitre 151
