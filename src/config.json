@@ -11,14 +11,14 @@
     "websites": {
         "languages": "All",
         "fmteam": {
-            "enabled": false,
-            "n_update": 34,
-            "time_to_update": 179.67
+            "enabled": true,
+            "n_update": 35,
+            "time_to_update": 164.66
         },
         "lelscans": {
-            "enabled": false,
-            "n_update": 32,
-            "time_to_update": 22.18
+            "enabled": true,
+            "n_update": 33,
+            "time_to_update": 4.72
         },
         "scantrad": {
             "enabled": false,
@@ -26,9 +26,9 @@
             "time_to_update": 2149.38
         },
         "animesama": {
-            "enabled": false,
-            "n_update": 21,
-            "time_to_update": 113.14
+            "enabled": true,
+            "n_update": 22,
+            "time_to_update": 61.12
         },
         "tcbscans": {
             "enabled": false,
@@ -36,19 +36,19 @@
             "time_to_update": 20.07
         },
         "lelmanga": {
-            "enabled": false,
-            "n_update": 12,
-            "time_to_update": 34.84
+            "enabled": true,
+            "n_update": 13,
+            "time_to_update": 17.34
         },
         "manganelo": {
-            "enabled": true,
+            "enabled": false,
             "n_update": 8,
             "time_to_update": 294.96
         },
         "mangamoins": {
-            "enabled": false,
-            "n_update": 8,
-            "time_to_update": 20.42
+            "enabled": true,
+            "n_update": 9,
+            "time_to_update": 11.12
         },
         "mangasaki": {
             "enabled": false,

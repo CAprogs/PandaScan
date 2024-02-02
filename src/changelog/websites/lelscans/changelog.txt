@@ -265,3 +265,19 @@ Changes in my-hero-academia:
   • Added chapters: chapitre 412
 Changes in one-piece:
   • Added chapters: chapitre 1105, chapitre 1104
+
+Update 33 : 02/02/2024 | 04:47:14
+Changes in blue-lock:
+  • Added chapters: chapitre 249
+Changes in d-gray-man:
+  • Added chapters: chapitre 250
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1447
+Changes in kingdom:
+  • Added chapters: chapitre 786
+Changes in my-hero-academia:
+  • Added chapters: chapitre 413
+Changes in one-piece:
+  • Added chapters: chapitre 1106
+Changes in one-punch-man:
+  • Added chapters: chapitre 198

@@ -93,3 +93,37 @@ Changes in one-punch-man:
   • Added chapters: chapitre 258
 Changes in sakamoto-days:
   • Added chapters: chapitre 151
+
+Update 13 : 02/02/2024 | 04:48:33
+Changes in blue-lock:
+  • Added chapters: chapitre 249
+Changes in chainsaw-man:
+  • Added chapters: chapitre 154
+Changes in choujin-x:
+  • Added chapters: chapitre 48, chapitre 47
+Changes in d-gray-man:
+  • Added chapters: chapitre 250
+Changes in dragon-ball-super:
+  • Added chapters: chapitre 101
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 136
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 249
+Changes in kagura-bachi:
+  • Added chapters: chapitre 19, chapitre 18
+Changes in kaiju-no-8:
+  • Added chapters: chapitre 101, chapitre 100
+Changes in kingdom:
+  • Added chapters: chapitre 786
+Changes in mamayuyu:
+  • Added chapters: chapitre 19, chapitre 18, chapitre 17, chapitre 16, chapitre 15
+Changes in one-piece:
+  • Added chapters: chapitre 1106
+Changes in sakamoto-days:
+  • Added chapters: chapitre 152
+Changes in shuumatsu-no-valkyrie:
+  • Added chapters: chapitre 86
+Changes in vinland-saga:
+  • Added chapters: chapitre 208
+Changes in yomi-no-tsugai:
+  • Added chapters: chapitre 20, chapitre 19, chapitre 18

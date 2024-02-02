@@ -414,3 +414,25 @@ Changes in one-punch-man:
   • Removed chapters: chapitre 195
 Changes in out:
   • Added chapters: chapitre 180, chapitre 179
+
+Update 35 : 02/02/2024 | 04:47:10
+Changes in blue-lock:
+  • Added chapters: chapitre 249
+Changes in choujin-x:
+  • Added chapters: chapitre 48.1
+Changes in dgray-man:
+  • Added chapters: chapitre 250
+  • Removed chapters: chapitre 247
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1447
+Changes in kingdom:
+  • Added chapters: chapitre 786
+  • Removed chapters: chapitre 783
+Changes in out:
+  • Added chapters: chapitre 181
+Changes in vinland-saga:
+  • Added chapters: chapitre 208
+  • Removed chapters: chapitre 205
+Changes in yomi-no-tsugai:
+  • Added chapters: chapitre 20
+  • Removed chapters: chapitre 17
