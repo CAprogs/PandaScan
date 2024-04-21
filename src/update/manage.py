@@ -1,6 +1,6 @@
 import time
-import os
 from tkinter import messagebox
+from src.foundation.core.essentials import clear_console
 from src.migrate.manage import Manage_migration
 from .utils import confirm_update, check_and_update, w_average_time
 from src.foundation.core.emojis import EMOJIS
@@ -23,7 +23,7 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG
     message = selected_website
 
     if confirm_update(mode, message, SETTINGS):
-        os.system("clear")
+        clear_console()
         LOG.info(f"Searching for {selected_website} Updates {EMOJIS[8]}..")
 
         start_time = time.time()
@@ -74,7 +74,7 @@ def auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
     updates_skipped = 0
 
     if confirm_update(mode, message, SETTINGS, ALL_WEBSITES):
-        os.system("clear")
+        clear_console()
         LOG.info(f"Searching for Updates {EMOJIS[8]}..")
 
         for website in ALL_WEBSITES:

@@ -9,7 +9,7 @@ def Update_animesama(PATH_TO_ANIMESAMA, LOG):
         LOG (Any): the logger
 
     Returns:
-        int: 1 if success , 0 if an error occured
+        int: 1 if success , 0 if an error occurred
     """
 
     result = scrap_titles.Scrap_titles(PATH_TO_ANIMESAMA, LOG)

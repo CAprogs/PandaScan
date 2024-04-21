@@ -127,3 +127,203 @@ Changes in vinland-saga:
   • Added chapters: chapitre 208
 Changes in yomi-no-tsugai:
   • Added chapters: chapitre 20, chapitre 19, chapitre 18
+
+Update 14 : 13/02/2024 | 07:38:30
+Changes in blue-lock:
+  • Added chapters: chapitre 251, chapitre 250
+=> Added new entry 'burning-kabaddi' with chapters: chapitre 29, chapitre 28, chapitre 27, chapitre 26, chapitre 25.5, chapitre 25, chapitre 24, chapitre 23, chapitre 22, chapitre 21, chapitre 20, chapitre 19, chapitre 18, chapitre 17, chapitre 16, chapitre 15, chapitre 14, chapitre 13, chapitre 12, chapitre 11, chapitre 10, chapitre 9, chapitre 8, chapitre 7.5, chapitre 7, chapitre 6, chapitre 5, chapitre 4, chapitre 3, chapitre 2, chapitre 1
+Changes in dandadan:
+  • Added chapters: chapitre 140, chapitre 139, chapitre 138
+=> Added new entry 'feng-shen-ji' with chapters: chapitre 86, chapitre 85, chapitre 84, chapitre 83, chapitre 82, chapitre 81, chapitre 80
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 137
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 250
+Changes in one-punch-man:
+  • Added chapters: chapitre 259
+Changes in sakamoto-days:
+  • Added chapters: chapitre 154, chapitre 153
+Changes in yomi-no-tsugai:
+  • Added chapters: chapitre 21
+
+Update 15 : 18/02/2024 | 13:05:28
+Changes in boruto-two-blue-vortex:
+  • Added chapters: chapitre 7
+Changes in chainsaw-man:
+  • Added chapters: chapitre 155
+Changes in dragon-ball-super:
+  • Added chapters: chapitre 102
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 138
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 251
+Changes in kagura-bachi:
+  • Added chapters: chapitre 20
+Changes in kaiju-no-8:
+  • Added chapters: chapitre 102
+Changes in kingdom:
+  • Added chapters: chapitre 787
+Changes in mamayuyu:
+  • Added chapters: chapitre 21, chapitre 20
+Changes in my-hero-academia:
+  • Added chapters: chapitre 414
+Changes in one-piece:
+  • Added chapters: chapitre 1107
+
+Update 16 : 02/03/2024 | 11:38:31
+Changes in blue-lock:
+  • Added chapters: chapitre 253, chapitre 252
+Changes in chainsaw-man:
+  • Added chapters: chapitre 156
+Changes in choujin-x:
+  • Added chapters: chapitre 49.1
+Changes in edens-zero:
+  • Added chapters: chapitre 276, chapitre 275, chapitre 274, chapitre 273, chapitre 272, chapitre 271, chapitre 270, chapitre 269, chapitre 268, chapitre 266, chapitre 265, chapitre 264, chapitre 263, chapitre 262, chapitre 261, chapitre 260, chapitre 259, chapitre 258, chapitre 257, chapitre 256, chapitre 255, chapitre 254, chapitre 253, chapitre 252, chapitre 251, chapitre 250, chapitre 249, chapitre 248, chapitre 247, chapitre 246, chapitre 245, chapitre 244, chapitre 243, chapitre 241, chapitre 240, chapitre 239, chapitre 235, chapitre 234, chapitre 233, chapitre 232, chapitre 231, chapitre 230, chapitre 229, chapitre 228, chapitre 227, chapitre 226, chapitre 225, chapitre 224, chapitre 223, chapitre 222, chapitre 221, chapitre 220, chapitre 219, chapitre 218, chapitre 217, chapitre 216, chapitre 215, chapitre 214, chapitre 213, chapitre 212, chapitre 211, chapitre 210, chapitre 209, chapitre 208, chapitre 207, chapitre 206, chapitre 205, chapitre 204, chapitre 203, chapitre 202, chapitre 201, chapitre 200, chapitre 199, chapitre 198, chapitre 197, chapitre 196, chapitre 195, chapitre 194, chapitre 193, chapitre 192, chapitre 191, chapitre 190, chapitre 189, chapitre 188, chapitre 187, chapitre 186, chapitre 185, chapitre 184, chapitre 183, chapitre 182, chapitre 181, chapitre 180, chapitre 179, chapitre 178, chapitre 177, chapitre 176, chapitre 175, chapitre 174, chapitre 173, chapitre 172, chapitre 171, chapitre 170, chapitre 169, chapitre 168, chapitre 167, chapitre 166, chapitre 165, chapitre 164, chapitre 163, chapitre 162, chapitre 161, chapitre 160, chapitre 159, chapitre 158, chapitre 157, chapitre 156, chapitre 154, chapitre 153, chapitre 152, chapitre 150, chapitre 147, chapitre 155, chapitre 151, chapitre 149, chapitre 148, chapitre 146
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 140, chapitre 139
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 252
+Changes in kagura-bachi:
+  • Added chapters: chapitre 21
+Changes in kaiju-no-8:
+  • Added chapters: chapitre 103
+Changes in kingdom:
+  • Added chapters: chapitre 789, chapitre 788
+Changes in mamayuyu:
+  • Added chapters: chapitre 22
+Changes in my-hero-academia:
+  • Added chapters: chapitre 415
+Changes in one-piece:
+  • Added chapters: chapitre 1109, chapitre 1108
+Changes in one-punch-man:
+  • Added chapters: chapitre 260
+Changes in sakamoto-days:
+  • Added chapters: chapitre 156, chapitre 155
+Changes in shuumatsu-no-valkyrie:
+  • Added chapters: chapitre 87.5, chapitre 87
+=> Added new entry 'shuumatsu-no-valkyrie-kitan-jack-the-ripper-no-jikenbo' with chapters: chapitre 24, chapitre 23, chapitre 22, chapitre 21, chapitre 20, chapitre 19, chapitre 18, chapitre 17, chapitre 16, chapitre 15, chapitre 14, chapitre 13, chapitre 12, chapitre 11, chapitre 10, chapitre 9, chapitre 8, chapitre 7, chapitre 6, chapitre 5, chapitre 4, chapitre 3, chapitre 2, chapitre 1
+Changes in vinland-saga:
+  • Added chapters: chapitre 209
+
+Update 17 : 08/03/2024 | 08:50:21
+Changes in blue-lock:
+  • Added chapters: chapitre 254
+Changes in burning-kabaddi:
+  • Added chapters: chapitre 30
+Changes in chainsaw-man:
+  • Added chapters: chapitre 157
+Changes in edens-zero:
+  • Added chapters: chapitre 278, chapitre 277
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 141
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 253
+Changes in kagura-bachi:
+  • Added chapters: chapitre 24
+Changes in mamayuyu:
+  • Added chapters: chapitre 24
+Changes in my-hero-academia:
+  • Added chapters: chapitre 416
+Changes in sakamoto-days:
+  • Added chapters: chapitre 158, chapitre 157
+
+Update 18 : 17/03/2024 | 01:01:37
+Changes in boruto-two-blue-vortex:
+  • Added chapters: chapitre 8
+Changes in burning-kabaddi:
+  • Added chapters: chapitre 31
+Changes in chainsaw-man:
+  • Added chapters: chapitre 158
+Changes in choujin-x:
+  • Added chapters: chapitre 49.2
+Changes in dandadan:
+  • Added chapters: chapitre 143, chapitre 142, chapitre 141
+Changes in edens-zero:
+  • Added chapters: chapitre 279
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 142
+Changes in kagura-bachi:
+  • Added chapters: chapitre 25, chapitre 23, chapitre 22
+Changes in kingdom:
+  • Added chapters: chapitre 790
+Changes in my-hero-academia:
+  • Added chapters: chapitre 417
+Changes in one-piece:
+  • Added chapters: chapitre 1110
+
+Update 19 : 21/03/2024 | 19:23:55
+Changes in blue-lock:
+  • Added chapters: chapitre 255
+Changes in chainsaw-man:
+  • Added chapters: chapitre 159
+Changes in choujin-x:
+  • Added chapters: chapitre 50.1
+Changes in dandadan:
+  • Added chapters: chapitre 144
+Changes in dragon-ball-super:
+  • Added chapters: chapitre 103
+Changes in edens-zero:
+  • Added chapters: chapitre 280
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 254
+Changes in kingdom:
+  • Added chapters: chapitre 791
+Changes in mamayuyu:
+  • Added chapters: chapitre 26
+Changes in one-piece:
+  • Added chapters: chapitre 1111
+Changes in sakamoto-days:
+  • Added chapters: chapitre 159
+
+Update 20 : 28/03/2024 | 21:32:35
+Changes in blue-lock:
+  • Added chapters: chapitre 256
+Changes in dandadan:
+  • Added chapters: chapitre 145
+Changes in edens-zero:
+  • Added chapters: chapitre 281
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 255
+Changes in kingdom:
+  • Added chapters: chapitre 792
+Changes in mamayuyu:
+  • Added chapters: chapitre 27
+Changes in my-hero-academia:
+  • Added chapters: chapitre 418
+Changes in sakamoto-days:
+  • Added chapters: chapitre 160
+Changes in shuumatsu-no-valkyrie-kitan-jack-the-ripper-no-jikenbo:
+  • Added chapters: chapitre 25
+=> Added new entry 'the-pool' with chapters: chapitre 2, chapitre 1
+
+Update 21 : 03/04/2024 | 02:28:22
+Changes in chainsaw-man:
+  • Added chapters: chapitre 161, chapitre 160
+Changes in choujin-x:
+  • Added chapters: chapitre 50.3
+Changes in kaiju-no-8:
+  • Added chapters: chapitre 104
+Changes in shuumatsu-no-valkyrie:
+  • Added chapters: chapitre 88
+
+Update 22 : 15/04/2024 | 19:34:50
+Changes in blue-lock:
+  • Added chapters: chapitre 257
+Changes in chainsaw-man:
+  • Added chapters: chapitre 162
+Changes in choujin-x:
+  • Added chapters: chapitre 50.4
+Changes in edens-zero:
+  • Added chapters: chapitre 283, chapitre 282
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 145, chapitre 144, chapitre 143
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 256
+Changes in kingdom:
+  • Added chapters: chapitre 793
+Changes in my-hero-academia:
+  • Added chapters: chapitre 420, chapitre 419
+Changes in sakamoto-days:
+  • Added chapters: chapitre 161
+Changes in shuumatsu-no-valkyrie:
+  • Added chapters: chapitre 88.5

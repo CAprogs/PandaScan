@@ -14,7 +14,7 @@
 #    ° Choose between "manual" or "auto" update.
 #    ° Select where to save your scans after a download.
 #    ° Updating PandaScan generates changelog files | Check changelogs in 'changelog > choose a website > changelog.txt'.
-# Please note that some websites may provide empty folders when downloading (especially scantrad)
+# Please note that some websites may provide empty folders when downloading due to non availability of the actual scans.
 # If you like this project, please consider giving it a ⭐️ on Github.🫶
 # Credits: @Tkinter-designer by ParthJadhav
 # ------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ from src.download.manage import download
 from src.update.manage import manual_update, auto_update
 from src.gui.Settings import show_settings
 from src.gui.utils import button_hover, manage_menu
-from src.foundation.core.essentials import relative_to_assets, check_connection, check_version
+from src.foundation.core.essentials import relative_to_assets, check_connection, check_version, clear_console
 from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
 from src.foundation.core.essentials import MAIN_DIRECTORY, SRC_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
 from src.foundation.core.essentials import WEBSITES, ALL_WEBSITES, FR_WEBSITES, EN_WEBSITES
@@ -103,7 +103,7 @@ def main():
             DRIVER.quit()
         CONN.close()
         main_window.destroy()
-        os.system("clear")
+        clear_console()
         print(f"\nApp closed {EMOJIS[2]}\n")
 
     def Clear_range_menus():
@@ -376,7 +376,7 @@ def main():
         if nb_of_manga_chapters == 0 or selected_manga_chapters == []:
             messagebox.showinfo(f"Info [{EMOJIS[13]}]", f"No Chapter Selected {EMOJIS[10]}, Try again")
         else:
-            os.system("clear")
+            clear_console()
             LOG.info(f"Downloading {selected_manga_name} ..")
             Set_download_directory()
 

@@ -6,49 +6,44 @@
         "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     },
     "Update": {
-        "mode": "manual"
+        "mode": "auto"
     },
     "websites": {
         "languages": "All",
         "fmteam": {
-            "enabled": true,
-            "n_update": 35,
-            "time_to_update": 164.66
+            "enabled": false,
+            "n_update": 41,
+            "time_to_update": 214.39
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 33,
-            "time_to_update": 4.72
-        },
-        "scantrad": {
-            "enabled": false,
-            "n_update": 28,
-            "time_to_update": 2149.38
+            "n_update": 41,
+            "time_to_update": 46.91
         },
         "animesama": {
-            "enabled": true,
-            "n_update": 22,
-            "time_to_update": 61.12
+            "enabled": false,
+            "n_update": 27,
+            "time_to_update": 76.06
         },
         "tcbscans": {
             "enabled": false,
-            "n_update": 10,
-            "time_to_update": 20.07
+            "n_update": 11,
+            "time_to_update": 13.85
         },
         "lelmanga": {
             "enabled": true,
-            "n_update": 13,
-            "time_to_update": 17.34
+            "n_update": 22,
+            "time_to_update": 90.19
         },
         "manganelo": {
             "enabled": false,
-            "n_update": 8,
-            "time_to_update": 294.96
+            "n_update": 9,
+            "time_to_update": 435.17
         },
         "mangamoins": {
             "enabled": true,
-            "n_update": 9,
-            "time_to_update": 11.12
+            "n_update": 18,
+            "time_to_update": 43.18
         },
         "mangasaki": {
             "enabled": false,
@@ -57,12 +52,12 @@
         },
         "lhtranslation": {
             "enabled": false,
-            "n_update": 2,
-            "time_to_update": 98.15
+            "n_update": 3,
+            "time_to_update": 306.86
         }
     },
     "Download": {
-        "path": ""
+        "path": "/Users/charles-albert/Desktop/Mangas"
     },
     "logger": {
         "enabled": true,

@@ -2,6 +2,12 @@ import json
 import os
 
 
+def clear_console():
+    """Clear the console.
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def check_extensions(extension_path_1, extension_path_2, EMOJIS):
     """Check the extensions presence.
 
@@ -52,7 +58,7 @@ def check_driver(OS_NAME, LOG, driver_path, PATH_TO_CONFIG, SETTINGS):
 
     while "chromedriver" not in driver_path or not os.path.exists(driver_path):
 
-        os.system("clear")
+        clear_console()
         print("""\nChromeDriver is required to run PandaScan. ⚠️  (Refer to the 'README' file)
               \n° On Windows : include the '.exe' extension in the path (e.g. 'C:\\Users\\User\\chromedriver.exe')
               \n° On Linux with arm64 (VM) : consider downloading the Lite version instead""")
@@ -65,4 +71,4 @@ def check_driver(OS_NAME, LOG, driver_path, PATH_TO_CONFIG, SETTINGS):
     with open(PATH_TO_CONFIG, 'w') as json_file:
         json.dump(SETTINGS, json_file, indent=4)
 
-    os.system("clear")
+    clear_console()

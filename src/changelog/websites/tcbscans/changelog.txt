@@ -53,3 +53,16 @@ Changes in my-hero-academia:
   • Added chapters: chapter 413, chapter 412
 Changes in one-piece:
   • Added chapters: chapter 1105, chapter 1104
+
+Update 11 : 21/03/2024 | 19:24:38
+=> Added new entry 'black-clover-gaiden-quartet-knights' with chapters: chapter 40, chapter 39, chapter 38, chapter 37, chapter 36, chapter 35, chapter 34, chapter 33, chapter 32, chapter 31, chapter 30, chapter 29, chapter 28, chapter 27, chapter 26, chapter 25, chapter 24, chapter 23, chapter 22.1, chapter 22, chapter 21, chapter 20, chapter 19, chapter 18, chapter 17, chapter 16, chapter 15, chapter 14, chapter 13, chapter 12, chapter 11, chapter 10, chapter 9, chapter 8, chapter 7, chapter 6, chapter 5, chapter 4, chapter 3, chapter 2, chapter 1
+Changes in chainsaw-man:
+  • Added chapters: chapter 159, chapter 158, chapter 157, chapter 156, chapter 155, chapter 154
+Changes in haikyu-special:
+  • Added chapters: chapter 3
+Changes in jujutsu-kaisen:
+  • Added chapters: chapter 253, chapter 252, chapter 251, chapter 250, chapter 249
+Changes in my-hero-academia:
+  • Added chapters: chapter 417, chapter 416, chapter 415, chapter 414
+Changes in one-piece:
+  • Added chapters: chapter 1110, chapter 1109, chapter 1108, chapter 1107, chapter 1106

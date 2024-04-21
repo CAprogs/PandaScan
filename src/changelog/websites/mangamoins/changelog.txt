@@ -57,3 +57,60 @@ Changes in my-hero-academia:
   • Added chapters: chapitre 413
 Changes in one-piece:
   • Added chapters: chapitre 1106
+
+Update 10 : 13/02/2024 | 04:13:12
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 250
+
+Update 11 : 18/02/2024 | 13:05:42
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 251
+Changes in my-hero-academia:
+  • Added chapters: chapitre 414
+Changes in one-piece:
+  • Added chapters: chapitre 1107
+
+Update 12 : 02/03/2024 | 11:38:44
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 252
+Changes in my-hero-academia:
+  • Added chapters: chapitre 415
+Changes in one-piece:
+  • Added chapters: chapitre 1109, chapitre 1108
+
+Update 13 : 08/03/2024 | 08:50:33
+Changes in one-piece-colo:
+  • Added chapters: chapitre 1107
+
+Update 14 : 17/03/2024 | 01:01:49
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 253
+Changes in my-hero-academia:
+  • Added chapters: chapitre 417, chapitre 416
+Changes in one-piece:
+  • Added chapters: chapitre 1110
+
+Update 15 : 21/03/2024 | 19:24:25
+No added / deprecated files !
+
+Update 16 : 28/03/2024 | 21:33:05
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 254
+Changes in one-piece:
+  • Added chapters: chapitre 1111
+
+Update 17 : 03/04/2024 | 02:28:34
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 255
+Changes in my-hero-academia:
+  • Added chapters: chapitre 418
+
+Update 18 : 15/04/2024 | 19:35:33
+=> Added new entry 'astro-royale' with chapters: chapitre 01
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 256
+Changes in my-hero-academia:
+  • Added chapters: chapitre 420, chapitre 419
+=> Added new entry 'one-piece-(version-finale)' with chapters: chapitre 1098
+=> Added new entry 'spy-x-family' with chapters: chapitre 96, chapitre 95, chapitre 94, chapitre 93, chapitre 92, chapitre 91, chapitre 90, chapitre 89, chapitre 88, chapitre 87, chapitre 86, chapitre 85, chapitre 84, chapitre 83, chapitre 82, chapitre 81, chapitre 80, chapitre 79, chapitre 78, chapitre 77, chapitre 76
+=> Added new entry 'spy-x-family,-extra-mission' with chapters: chapitre 13, chapitre 12, chapitre 11, chapitre 10

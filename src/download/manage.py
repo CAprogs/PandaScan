@@ -1,4 +1,4 @@
-from src.download.websites import scantrad, lelscans, fmteam
+from src.download.websites import lelscans, fmteam
 from src.download.websites import animesama, tcbscans, lelmanga
 from src.download.websites import manganelo, mangamoins, mangasaki
 from src.download.websites import lhtranslation
@@ -22,10 +22,7 @@ def download(selected_website, chapter_file_path, selected_manga_name, chapter_n
     if check_manga_path(chapter_file_path):
         return "skipped"
 
-    if selected_website == "scantrad":
-        status = scantrad.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
-
-    elif selected_website == "lelscans":
+    if selected_website == "lelscans":
         status = lelscans.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
 
     elif selected_website == "fmteam":

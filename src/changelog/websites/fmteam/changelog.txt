@@ -436,3 +436,125 @@ Changes in vinland-saga:
 Changes in yomi-no-tsugai:
   • Added chapters: chapitre 20
   • Removed chapters: chapitre 17
+
+Update 36 : 18/02/2024 | 13:03:35
+Changes in blue-lock:
+  • Added chapters: chapitre 251, chapitre 250
+  • Removed chapters: chapitre 248, chapitre 247, chapitre 246
+Changes in choujin-x:
+  • Added chapters: chapitre 48.3, chapitre 48.2
+  • Removed chapters: chapitre 47, chapitre 46, chapitre 45
+=> Added new entry 'eyeshield-21' with chapters: chapitre fr
+=> Added new entry 'haikyu-2' with chapters: chapitre fr
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1448
+  • Removed chapters: chapitre 1445, chapitre 1444
+Changes in kingdom:
+  • Added chapters: chapitre 787
+  • Removed chapters: chapitre 784
+Changes in one-punch-man:
+  • Added chapters: chapitre 199
+  • Removed chapters: chapitre 196
+Changes in out:
+  • Added chapters: chapitre 184, chapitre 183, chapitre 182
+Changes in yomi-no-tsugai:
+  • Added chapters: chapitre 21
+
+Update 37 : 02/03/2024 | 11:37:05
+Changes in batuque:
+  • Added chapters: chapitre 123
+Changes in blue-lock:
+  • Added chapters: chapitre 253, chapitre 252
+  • Removed chapters: chapitre 250, chapitre 249
+Changes in blue-lock-episode-nagi:
+  • Added chapters: chapitre 19
+  • Removed chapters: chapitre 16
+Changes in choujin-x:
+  • Added chapters: chapitre 49.1
+  • Removed chapters: chapitre 48.1
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1449
+  • Removed chapters: chapitre 1446
+Changes in kingdom:
+  • Added chapters: chapitre 789, chapitre 788
+  • Removed chapters: chapitre 786, chapitre 785
+Changes in one-punch-man:
+  • Added chapters: chapitre 200
+  • Removed chapters: chapitre 197
+Changes in out:
+  • Added chapters: chapitre 186, chapitre 185
+Changes in real:
+  • Added chapters: chapitre 96
+  • Removed chapters: chapitre 93
+=> Added new entry 'the-pool' with chapters: chapitre 1
+Changes in vinland-saga:
+  • Added chapters: chapitre 209
+  • Removed chapters: chapitre 206
+Changes in yomi-no-tsugai:
+  • Removed chapters: chapitre 18
+
+Update 38 : 08/03/2024 | 08:47:49
+Changes in blue-lock:
+  • Added chapters: chapitre 254
+  • Removed chapters: chapitre 251
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1450
+  • Removed chapters: chapitre 1447
+Changes in yomotsuhegui:
+  • Added chapters: chapitre 16
+
+Update 39 : 17/03/2024 | 01:00:22
+Changes in choujin-x:
+  • Added chapters: chapitre 49.3, chapitre 49.2
+  • Removed chapters: chapitre 48.3, chapitre 48.2
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1451
+  • Removed chapters: chapitre 1448
+Changes in kingdom:
+  • Added chapters: chapitre 790
+  • Removed chapters: chapitre 787
+Changes in out:
+  • Added chapters: chapitre 188, chapitre 187
+Changes in yomotsuhegui:
+  • Added chapters: chapitre 17
+
+Update 40 : 21/03/2024 | 19:21:18
+Changes in blue-lock:
+  • Added chapters: chapitre 255
+  • Removed chapters: chapitre 252
+Changes in choujin-x:
+  • Added chapters: chapitre 50.2, chapitre 50.1
+  • Removed chapters: chapitre 49.2, chapitre 49.1
+Changes in eyeshield-21:
+  • Removed chapters: chapitre fr
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1452
+  • Removed chapters: chapitre 1449
+Changes in kingdom:
+  • Added chapters: chapitre 791
+  • Removed chapters: chapitre 788
+Changes in the-fable-the-second-contact:
+  • Added chapters: chapitre 78
+Changes in vinland-saga:
+  • Removed chapters: chapitre 209, chapitre 208, chapitre 207
+
+Update 41 : 28/03/2024 | 21:31:27
+Changes in blue-lock:
+  • Added chapters: chapitre 256
+  • Removed chapters: chapitre 253
+Changes in choujin-x:
+  • Added chapters: chapitre 50.3
+Changes in kingdom:
+  • Added chapters: chapitre 792
+  • Removed chapters: chapitre 789
+Changes in out:
+  • Added chapters: chapitre 189
+Changes in the-fable-the-second-contact:
+  • Added chapters: chapitre 86, chapitre 85, chapitre 84, chapitre 83, chapitre 82, chapitre 81, chapitre 80, chapitre 79
+Changes in the-pool:
+  • Added chapters: chapitre 2
+Changes in vinland-saga:
+  • Added chapters: chapitre 209, chapitre 208, chapitre 207
+Changes in yomi-no-tsugai:
+  • Added chapters: chapitre 22
+  • Removed chapters: chapitre 19

@@ -45,7 +45,9 @@ def set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMO
     try:
         driver = webdriver.Chrome(service=chromedriver_path, options=options)
     except Exception as e:
-        LOG.info("The path provided isn't the 'chromedriver.exe' file ⚠️ \n\nPlease refer to the 'README' file to provide the correct path.")
+        LOG.info("""The path provided is obsolete or doesn't refer to the 'chromedriver.exe' file ⚠️
+                \nPlease refer to the 'README' file to provide the correct path or update your chromedriver.
+                """)
         LOG.debug({str(e)})
         SETTINGS["driver"]["path"] = ""
         with open(PATH_TO_CONFIG, 'w') as json_file:

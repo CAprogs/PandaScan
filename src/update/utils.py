@@ -2,7 +2,7 @@ import json
 from tkinter import messagebox
 from src.changelog.manage import generate_changelog
 from src.foundation.core.essentials import DRIVER, PATH_TO_CONFIG
-from src.foundation.core.essentials import PATH_TO_FMTEAM, PATH_TO_LELSCANS, PATH_TO_SCANTRAD
+from src.foundation.core.essentials import PATH_TO_FMTEAM, PATH_TO_LELSCANS
 from src.foundation.core.essentials import PATH_TO_ANIMESAMA, PATH_TO_TCBSCANS, PATH_TO_LELMANGA
 from src.foundation.core.essentials import PATH_TO_MANGANELO, PATH_TO_MANGAMOINS, PATH_TO_MANGASAKI
 from src.foundation.core.essentials import PATH_TO_LHTRANSLATION
@@ -96,7 +96,6 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
     """
 
     if SETTINGS["websites"][selected_website]["enabled"]:
-        from src.update.websites.scantrad.update_datas import Update_scantrad
         from src.update.websites.lelscans.update_datas import Update_lelscans
         from src.update.websites.fmteam.update_datas import Update_fmteam
         from src.update.websites.animesama.update_datas import Update_animesama
@@ -109,10 +108,7 @@ def check_and_update(selected_website, SETTINGS, i, LOG):
 
         LOG.info(f"Updating {selected_website} {EMOJIS[8]}")
 
-        if selected_website == "scantrad":
-            path = PATH_TO_SCANTRAD
-            i = Update_scantrad(DRIVER, path, LOG)
-        elif selected_website == "lelscans":
+        if selected_website == "lelscans":
             path = PATH_TO_LELSCANS
             i = Update_lelscans(path, LOG)
         elif selected_website == "fmteam":

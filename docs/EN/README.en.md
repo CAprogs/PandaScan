@@ -26,9 +26,8 @@
 | :-------- | :-------   |
 | [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) | [tcbscans.com](https://tcbscans.com/) |
 | [fmteam.fr](https://fmteam.fr/comics) | [manganelo.tv](https://ww7.manganelo.tv/) |
-| [scantrad-vf.me](https://scantrad-vf.me/) | [mangasaki.org](https://www.mangasaki.org/) |
-| [anime-sama.me](https://anime-sama.me/) | [lhtranslation.net](https://lhtranslation.net/home/) |
-| [lelmanga.com](https://www.lelmanga.com/) |  |
+| [anime-sama.me](https://anime-sama.me/) | [mangasaki.org](https://www.mangasaki.org/) |
+| [lelmanga.com](https://www.lelmanga.com/) | [lhtranslation.net](https://lhtranslation.net/home/) |
 | [mangamoins.shaeishu.co](https://mangamoins.shaeishu.co/?p=1) |  |
 
 </details>

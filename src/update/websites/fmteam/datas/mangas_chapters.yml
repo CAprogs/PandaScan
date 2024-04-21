@@ -1,4 +1,5 @@
 batuque:
+- chapitre 123
 - chapitre 122
 - chapitre 121
 - chapitre 120
@@ -126,14 +127,13 @@ berserk:
 - chapitre 374
 - chapitre 373
 blue-lock:
-- chapitre 249
-- chapitre 248
-- chapitre 247
-- chapitre 246
+- chapitre 256
+- chapitre 255
+- chapitre 254
 blue-lock-episode-nagi:
+- chapitre 19
 - chapitre 18
 - chapitre 17
-- chapitre 16
 bouncer:
 - chapitre 79
 - chapitre 78
@@ -221,10 +221,10 @@ catechism:
 - chapitre 1
 - chapitre 0
 choujin-x:
-- chapitre 48.1
-- chapitre 47
-- chapitre 46
-- chapitre 45
+- chapitre 50.3
+- chapitre 50.2
+- chapitre 50.1
+- chapitre 49.3
 dai-dark:
 - chapitre 44
 - chapitre 43
@@ -241,11 +241,13 @@ dr-stone-4d-science:
 - chapitre 3
 - chapitre 2
 - chapitre 1
+eyeshield-21: []
+haikyu-2:
+- chapitre fr
 hajime-no-ippo:
-- chapitre 1447
-- chapitre 1446
-- chapitre 1445
-- chapitre 1444
+- chapitre 1452
+- chapitre 1451
+- chapitre 1450
 kamen-byoto:
 - chapitre 10
 - chapitre 9
@@ -259,14 +261,22 @@ kamen-byoto:
 - chapitre 2
 - chapitre 1
 kingdom:
-- chapitre 786
-- chapitre 785
-- chapitre 784
+- chapitre 792
+- chapitre 791
+- chapitre 790
 one-punch-man:
+- chapitre 200
+- chapitre 199
 - chapitre 198
-- chapitre 197
-- chapitre 196
 out:
+- chapitre 189
+- chapitre 188
+- chapitre 187
+- chapitre 186
+- chapitre 185
+- chapitre 184
+- chapitre 183
+- chapitre 182
 - chapitre 181
 - chapitre 180
 - chapitre 179
@@ -449,10 +459,19 @@ out:
 - chapitre 2
 - chapitre 1
 real:
+- chapitre 96
 - chapitre 95
 - chapitre 94
-- chapitre 93
 the-fable-the-second-contact:
+- chapitre 86
+- chapitre 85
+- chapitre 84
+- chapitre 83
+- chapitre 82
+- chapitre 81
+- chapitre 80
+- chapitre 79
+- chapitre 78
 - chapitre 77
 - chapitre 76
 - chapitre 75
@@ -530,15 +549,20 @@ the-fable-the-second-contact:
 - chapitre 3
 - chapitre 2
 - chapitre 1
+the-pool:
+- chapitre 2
+- chapitre 1
 vinland-saga:
+- chapitre 209
 - chapitre 208
 - chapitre 207
-- chapitre 206
 yomi-no-tsugai:
+- chapitre 22
+- chapitre 21
 - chapitre 20
-- chapitre 19
-- chapitre 18
 yomotsuhegui:
+- chapitre 17
+- chapitre 16
 - chapitre 15
 - chapitre 14
 - chapitre 13

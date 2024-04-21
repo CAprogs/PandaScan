@@ -21,7 +21,6 @@ ACTIVE_CURSOR = "hand2"
 WEBSITES_DICT = {"fmteam": "FR",
                  "lelscans": "FR",
                  "animesama": "FR",
-                 "scantrad": "FR",
                  "lelmanga": "FR",
                  "mangamoins": "FR",
                  "tcbscans": "EN",
@@ -30,6 +29,7 @@ WEBSITES_DICT = {"fmteam": "FR",
                  "lhtranslation": "EN"
                  }
 
+# TODO: si l'os est windows ou Linux on utilise FR et EN au lieu des drapeaux
 # Available languages mode
 LANGUAGES = ["All",
              EMOJIS[6],
@@ -53,7 +53,6 @@ ASSETS_DIRECTORY = SRC_DIRECTORY / "gui/assets"
 PATH_TO_CONFIG = SRC_DIRECTORY / "config.json"
 
 # paths to websites file ( Update )
-PATH_TO_SCANTRAD = SRC_DIRECTORY / "update/websites/scantrad"
 PATH_TO_LELSCANS = SRC_DIRECTORY / "update/websites/lelscans"
 PATH_TO_FMTEAM = SRC_DIRECTORY / "update/websites/fmteam"
 PATH_TO_ANIMESAMA = SRC_DIRECTORY / "update/websites/animesama"
@@ -164,3 +163,9 @@ def relative_to_assets(path: str) -> Path:
     """
 
     return ASSETS_DIRECTORY / Path(path)
+
+
+def clear_console():
+    """Clear the console.
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')

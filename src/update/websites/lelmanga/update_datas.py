@@ -9,7 +9,7 @@ def Update_lelmanga(PATH_TO_LELMANGA, LOG):
         LOG (Any): the logger
 
     Returns:
-        int: 1 if success , 0 if an error occured
+        int: 1 if success , 0 if an error occurred
     """
 
     result = scrap_titles.Scrap_titles(PATH_TO_LELMANGA, LOG)

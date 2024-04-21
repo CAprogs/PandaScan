@@ -10,7 +10,7 @@ def Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG):
         LOG (Any): the logger
 
     Returns:
-        int: 1 if success , 0 if an error occured
+        int: 1 if success , 0 if an error occurred
     """
 
     result = scrap_titles.Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG)
