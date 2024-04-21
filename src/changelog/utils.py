@@ -1,7 +1,7 @@
 import yaml
 
 
-def read_previous_state(PATH_TO_WEBSITE):
+def read_previous_state(PATH_TO_WEBSITE: str):
     """Read the previous state of the mangas chapters.
 
     Args:
@@ -17,7 +17,7 @@ def read_previous_state(PATH_TO_WEBSITE):
         return {}
 
 
-def write_current_state(state, PATH_TO_WEBSITE):
+def write_current_state(state, PATH_TO_WEBSITE: str):
     """Write the current state of the manga chapters.
 
     Args:

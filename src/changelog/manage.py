@@ -8,7 +8,7 @@ from src.foundation.core.essentials import SRC_DIRECTORY, SETTINGS
 from src.foundation.core.essentials import PATH_TO_CONFIG, LOG
 
 
-def generate_changelog(PATH_TO_WEBSITE, website):
+def generate_changelog(PATH_TO_WEBSITE: str, website: str):
     """Generate a changelog for a specific website.
 
     Args:

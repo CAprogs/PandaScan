@@ -5,7 +5,7 @@ import sys
 class ProgressBar:
     """Creates a progress bar that can be updated and displayed in the console.
     """
-    def __init__(self, total, length=50, fill='█'):
+    def __init__(self, total: int, length: int = 50, fill: str = '█'):
         self.total = total
         self.length = length
         self.fill = fill
@@ -13,10 +13,12 @@ class ProgressBar:
         self.start_time = time.perf_counter()
 
     def reset(self):
+        """Reset the progress bar.
+        """
         self.progress = 0
         self.start_time = time.perf_counter()
 
-    def update(self, progress):
+    def update(self, progress: int):
         """Update the progress bar.
 
         Args:
@@ -26,7 +28,7 @@ class ProgressBar:
         if self.progress > self.total:
             self.progress = self.total
 
-    def display(self, prefix='Progress:', suffix='Completed'):
+    def display(self, prefix: str = 'Progress:', suffix: str = 'Completed'):
         """Display the progress bar.
 
         Args:

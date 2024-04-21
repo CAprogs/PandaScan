@@ -1,7 +1,7 @@
 from ..lelmanga import scrap_titles, scrap_chapters
 
 
-def Update_lelmanga(PATH_TO_LELMANGA, LOG):
+def Update_lelmanga(PATH_TO_LELMANGA: str, LOG):
     """Update lelmanga datas.
 
     Args:

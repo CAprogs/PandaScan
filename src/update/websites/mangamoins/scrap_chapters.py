@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from ..mangamoins.scrap_titles import Get_number_of_pages
 
 
-def Scrap_chapters(PATH_TO_MANGAMOINS, LOG):
+def Scrap_chapters(PATH_TO_MANGAMOINS: str, LOG):
     """Scrap the mangas chapters from mangamoins.
 
     Args:

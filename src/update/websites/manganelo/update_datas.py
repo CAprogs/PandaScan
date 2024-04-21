@@ -1,7 +1,7 @@
 from ..manganelo import scrap_titles, scrap_chapters
 
 
-def Update_manganelo(PATH_TO_MANGANELO, LOG):
+def Update_manganelo(PATH_TO_MANGANELO: str, LOG):
     """Update manganelo datas.
 
     Args:

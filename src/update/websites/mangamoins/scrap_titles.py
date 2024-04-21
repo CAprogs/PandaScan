@@ -27,7 +27,7 @@ def Get_number_of_pages(soup, LOG):
         return None
 
 
-def Scrap_titles(PATH_TO_MANGAMOINS, LOG):
+def Scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
     """Scrap mangas titles from mangamoins.
 
     Args:

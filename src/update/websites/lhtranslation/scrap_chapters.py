@@ -5,7 +5,7 @@ import time
 from selenium.webdriver.common.by import By
 
 
-def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION, LOG):
+def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
     """Scrap the mangas chapters from lhtranslation.
 
     Args:

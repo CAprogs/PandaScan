@@ -3,7 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-def Scrap_titles(PATH_TO_MANGANELO, LOG):
+def Scrap_titles(PATH_TO_MANGANELO: str, LOG):
     """Scrap mangas titles from manganelo.
 
     Args:

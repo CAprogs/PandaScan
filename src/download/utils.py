@@ -5,7 +5,7 @@ import zipfile
 from src.foundation.core.essentials import LOG
 
 
-def check_manga_path(chapter_file_path):
+def check_manga_path(chapter_file_path: str):
     """Check if the manga path exists.
 
     Args:
@@ -23,7 +23,7 @@ def check_manga_path(chapter_file_path):
         return True
 
 
-def set_download_path(DRIVER, path):
+def set_download_path(DRIVER, path: str):
     """Set the download path.
 
     Args:
@@ -38,7 +38,7 @@ def set_download_path(DRIVER, path):
         LOG.debug(f"Error while setting download path : {e}")
 
 
-def extract_zip(zip_file_path, extraction_path):
+def extract_zip(zip_file_path: str, extraction_path: str):
     """Extract the zip file.
 
     Args:
@@ -50,7 +50,7 @@ def extract_zip(zip_file_path, extraction_path):
         zip_ref.extractall(extraction_path)
 
 
-def find_latest_zip(chapter_file_path, timeout=60):
+def find_latest_zip(chapter_file_path: str, timeout: int = 60):
     """Search for the latest zip file in the download path.
 
     Args:

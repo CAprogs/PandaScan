@@ -16,8 +16,8 @@
 
 ## About 🥢
 
-- Over **`4600 mangas`** available
-- Over **`311,000 chapters`** downloadable
+- Over **`4050 mangas`** available
+- Over **`282 000 chapters`** downloadable
 
 <details>
   <summary> Available websites 🌐 </summary>

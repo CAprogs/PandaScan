@@ -2,7 +2,7 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 
 
-def Scrap_titles(DRIVER, PATH_TO_FMTEAM, LOG):
+def Scrap_titles(DRIVER, PATH_TO_FMTEAM: str, LOG):
     """Scrap the mangas titles from fmteam.
 
     Args:

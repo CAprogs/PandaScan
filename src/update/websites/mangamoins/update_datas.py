@@ -1,7 +1,7 @@
 from ..mangamoins import scrap_titles, scrap_chapters
 
 
-def Update_mangamoins(PATH_TO_MANGAMOINS, LOG):
+def Update_mangamoins(PATH_TO_MANGAMOINS: str, LOG):
     """Update mangamoins datas.
 
     Args:

@@ -4,7 +4,7 @@ from src.foundation.core.essentials import SELECTOR, LOG
 from src.foundation.core.emojis import EMOJIS
 
 
-def init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER):
+def init_download(selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str, DRIVER):
     """Initialize the download from mangasaki.
 
     Args:
@@ -50,7 +50,7 @@ def init_download(selected_website, chapter_file_path, selected_manga_name, chap
         return "failed"
 
 
-def mangasaki(img_url, save_path, page):
+def mangasaki(img_url: str, save_path: str, page: int):
     """Download images from mangasaki with the given URL.
 
     Args:

@@ -1,5 +1,5 @@
 
-def Delete_table(table, CONN, SELECTOR):
+def Delete_table(table: str, CONN, SELECTOR):
     """Delete the content of a table.
 
     Args:

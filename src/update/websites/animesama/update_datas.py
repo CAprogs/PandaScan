@@ -1,7 +1,7 @@
 from ..animesama import scrap_titles, scrap_chapters
 
 
-def Update_animesama(PATH_TO_ANIMESAMA, LOG):
+def Update_animesama(PATH_TO_ANIMESAMA: str, LOG):
     """Update animesama datas.
 
     Args:

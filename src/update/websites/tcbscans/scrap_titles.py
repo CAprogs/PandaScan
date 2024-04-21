@@ -3,7 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-def Scrap_titles(PATH_TO_TCBSCANS, LOG):
+def Scrap_titles(PATH_TO_TCBSCANS: str, LOG):
     """Scrap mangas titles from tcbscans.
 
     Args:

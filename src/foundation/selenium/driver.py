@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from .utils import check_driver, check_extensions
 
 
-def set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS):
+def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SETTINGS, LOG, EMOJIS: dict):
     """Instantiate the browser elements.
 
     Args:

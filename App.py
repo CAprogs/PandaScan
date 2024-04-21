@@ -264,13 +264,13 @@ def main():
             selected_manga_chapters = []
             canvas.itemconfigure(Chapter_selected, text='0 selected')
 
-    def update_chapters(selected_manga_name):
+    def update_chapters(selected_manga_name: str):
         """Update the results in the Chapter List when a manga is selected.
 
         Args:
             selected_manga_name (str): name of the selected manga
         """
-        query = "SELECT Chapitres FROM Chapitres WHERE NomSite = ? AND NomManga = ?"
+        query = "SELECT Chapitres FROM ChapterLink WHERE NomSite = ? AND NomManga = ?"
         SELECTOR.execute(query, (website_list_var.get(), selected_manga_name))
         results = [result[0] for result in SELECTOR.fetchall()]
         chapters_box.delete(0, tk.END)
@@ -302,11 +302,11 @@ def main():
         downloads_failed = 0
         downloads_skipped = 0
 
-        def Start_download(progress_bar):
+        def Start_download(progress_bar: ProgressBar):
             """Start the download of selected chapters.
 
             Args:
-                progress_bar (Any): progress bar
+                progress_bar (ProgressBar): A progress bar object.
             """
             global download_id, download_button_state, downloads_succeeded, downloads_failed, downloads_skipped
 

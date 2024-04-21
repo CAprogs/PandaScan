@@ -1,7 +1,7 @@
 from ..tcbscans import scrap_titles, scrap_chapters
 
 
-def Update_tcbscans(PATH_TO_TCBSCANS, LOG):
+def Update_tcbscans(PATH_TO_TCBSCANS: str, LOG):
     """Update tcbscans datas.
 
     Args:

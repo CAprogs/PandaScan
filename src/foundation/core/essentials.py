@@ -29,11 +29,11 @@ WEBSITES_DICT = {"fmteam": "FR",
                  "lhtranslation": "EN"
                  }
 
-# TODO: si l'os est windows ou Linux on utilise FR et EN au lieu des drapeaux
+LANGUAGES = ["All", EMOJIS[6], EMOJIS[7]]
+
 # Available languages mode
-LANGUAGES = ["All",
-             EMOJIS[6],
-             EMOJIS[7]]
+LANGUAGES[1] = "FR" if os.name == "nt" else EMOJIS[6]
+LANGUAGES[2] = "EN" if os.name == "nt" else EMOJIS[7]
 
 # Set list of websites depending on their language
 ALL_WEBSITES = [website for website in WEBSITES_DICT.keys()]

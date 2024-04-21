@@ -4,7 +4,7 @@ import yaml
 from bs4 import BeautifulSoup
 
 
-def Scrap_chapters(PATH_TO_MANGANELO, LOG):
+def Scrap_chapters(PATH_TO_MANGANELO: str, LOG):
     """Scrap the mangas chapters from manganelo.
 
     Args:

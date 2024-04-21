@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-def Scrap_titles(DRIVER, PATH_TO_LHTRANSLATION, LOG):
+def Scrap_titles(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
     """Scrap the mangas titles from lhtranslation.
 
     Args:

@@ -1,7 +1,7 @@
 from ..lhtranslation import scrap_titles, scrap_chapters
 
 
-def Update_lhtranslation(DRIVER, PATH_TO_LHTRANSLATION, LOG):
+def Update_lhtranslation(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
     """Update lhtranslation datas.
 
     Args:

@@ -6,7 +6,7 @@ from .utils import confirm_update, check_and_update, w_average_time
 from src.foundation.core.emojis import EMOJIS
 
 
-def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG):
+def manual_update(SRC_DIRECTORY: str, selected_website: str, SETTINGS, CONN, SELECTOR, LOG):
     """Launch manual update of a website.
 
     Args:
@@ -54,7 +54,7 @@ def manual_update(SRC_DIRECTORY, selected_website, SETTINGS, CONN, SELECTOR, LOG
         LOG.debug(f"{mode} Update Canceled")
 
 
-def auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG):
+def auto_update(SRC_DIRECTORY: str, ALL_WEBSITES: list, SETTINGS, CONN, SELECTOR, LOG):
     """Update all enabled websites.
 
     Args:

@@ -1,7 +1,7 @@
 from ..lelscans import scrap_titles, scrap_chapters
 
 
-def Update_lelscans(PATH_TO_LELSCANS, LOG):
+def Update_lelscans(PATH_TO_LELSCANS: str, LOG):
     """Update lelscans datas.
 
     Args:

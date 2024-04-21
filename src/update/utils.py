@@ -1,5 +1,6 @@
 import json
 from tkinter import messagebox
+from typing import Literal
 from src.changelog.manage import generate_changelog
 from src.foundation.core.essentials import DRIVER, PATH_TO_CONFIG
 from src.foundation.core.essentials import PATH_TO_FMTEAM, PATH_TO_LELSCANS
@@ -9,7 +10,7 @@ from src.foundation.core.essentials import PATH_TO_LHTRANSLATION
 from src.foundation.core.emojis import EMOJIS
 
 
-def get_average_time(mode, selected_website, SETTINGS, ALL_WEBSITES=None):
+def get_average_time(mode: Literal["Manual", "Auto"], selected_website: str, SETTINGS, ALL_WEBSITES: list = []):
     """Get the average time of an update.
 
     Args:
@@ -47,7 +48,7 @@ def get_average_time(mode, selected_website, SETTINGS, ALL_WEBSITES=None):
     return average_time
 
 
-def confirm_update(mode, message, SETTINGS, ALL_WEBSITES=None):
+def confirm_update(mode: str, message: str, SETTINGS, ALL_WEBSITES: list = []):
     """Ask for confirmation before updating.
 
     Args:
@@ -81,7 +82,7 @@ def w_average_time(website, elapsed_time, SETTINGS):
         json.dump(SETTINGS, f, indent=4)
 
 
-def check_and_update(selected_website, SETTINGS, i, LOG):
+def check_and_update(selected_website: str, SETTINGS, i: int, LOG):
     """Check if a website can be updated and perform the update.
 
     Args:

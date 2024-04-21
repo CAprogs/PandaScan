@@ -16,8 +16,8 @@
 
 ## À Propos 🥢
 
-- Plus de **`4600 mangas`** disponibles
-- Plus de **`311 000 chapitres`** téléchargeables
+- Plus de **`4050 mangas`** disponibles
+- Plus de **`282 000 chapitres`** téléchargeables
 
 <details>
   <summary> Les sites disponibles 🌐 </summary>

@@ -5,7 +5,7 @@ from src.download.websites import lhtranslation
 from src.download.utils import check_manga_path
 
 
-def download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER):
+def download(selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str, DRIVER):
     """Manage the right download for a specific website.
 
     Args:
@@ -13,7 +13,7 @@ def download(selected_website, chapter_file_path, selected_manga_name, chapter_n
         chapter_file_path (str): path of the folder where to save images
         selected_manga_name (str): selected manga name
         chapter_name (str): chapter name
-        DRIVER (ANY): the chromedriver
+        DRIVER (Any): the chromedriver
 
     Returns:
         str: download status (success, skipped, or failed)

@@ -8,7 +8,7 @@ def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def check_extensions(extension_path_1, extension_path_2, EMOJIS):
+def check_extensions(extension_path_1: str, extension_path_2: str, EMOJIS):
     """Check the extensions presence.
 
     Args:
@@ -23,7 +23,7 @@ def check_extensions(extension_path_1, extension_path_2, EMOJIS):
         print(f"\nExtensions found {EMOJIS[3]}")
 
 
-def check_path(OS_NAME, LOG, path):
+def check_path(OS_NAME: str, LOG, path: str):
     """Check if the user-provided path is right and correct it if necessary.
 
     Args:
@@ -45,7 +45,7 @@ def check_path(OS_NAME, LOG, path):
         return path
 
 
-def check_driver(OS_NAME, LOG, driver_path, PATH_TO_CONFIG, SETTINGS):
+def check_driver(OS_NAME: str, LOG, driver_path: str, PATH_TO_CONFIG: str, SETTINGS):
     """Check the chromedriver’s presence.
 
     Args:

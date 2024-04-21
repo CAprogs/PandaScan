@@ -1,7 +1,7 @@
 from ..fmteam import scrap_titles, scrap_chapters
 
 
-def Update_fmteam(DRIVER, PATH_TO_FMTEAM, LOG):
+def Update_fmteam(DRIVER, PATH_TO_FMTEAM: str, LOG):
     """Update fmteam datas.
 
     Args:

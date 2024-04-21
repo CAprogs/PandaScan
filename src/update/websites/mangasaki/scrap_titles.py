@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from ..mangasaki.utils import get_manga_name
 
 
-def Scrap_titles(DRIVER, PATH_TO_MANGASAKI, LOG):
+def Scrap_titles(DRIVER, PATH_TO_MANGASAKI: str, LOG):
     """Scrap mangas titles from mangasaki.
 
     Args:

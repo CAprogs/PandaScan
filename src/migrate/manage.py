@@ -1,11 +1,10 @@
 import pandas as pd
-import yaml
 from .utils import Delete_table
 from src.foundation.core.essentials import WEBSITES_DICT
 from src.foundation.core.emojis import EMOJIS
 
 
-def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, LOG):
+def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
     """Migrate the CSV and YAML data to the database.
 
     Args:
@@ -50,17 +49,6 @@ def Manage_migration(SRC_DIRECTORY, CONN, SELECTOR, LOG):
             # [chapters_links.csv] -> Table "ChapterLink"
             df_chapters_links = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/chapters_links.csv')
             df_chapters_links.to_sql('ChapterLink', CONN, if_exists='append', index=False)
-
-            # Read the YAML file
-            with open(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas_chapters.yml', 'r') as file:
-                yaml_content = yaml.load(file, Loader=yaml.FullLoader)
-
-            # [mangas_chapters.yml] -> Table "Chapitres"
-            for manga, chapitres in yaml_content.items():
-                for chapitre in chapitres:
-                    data = {'NomSite': website, 'NomManga': manga, 'Chapitres': chapitre}
-                    df_chapitre = pd.DataFrame([data])
-                    df_chapitre.to_sql('Chapitres', CONN, if_exists='append', index=False)
 
             # Save changes to the database
             CONN.commit()

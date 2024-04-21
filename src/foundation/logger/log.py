@@ -6,7 +6,7 @@ LOG_FORMATS = ["%(message)s",
 
 
 class CustomLogger:
-    def __init__(self, level="INFO", format="[%(levelname)s] %(message)s", state=True):
+    def __init__(self, level: str = "INFO", format: str = "[%(levelname)s] %(message)s", state: bool = True):
         self.logger = logging.getLogger()
         self.logger.setLevel(level)
         self.state = state
@@ -16,7 +16,7 @@ class CustomLogger:
         stream_handler.setFormatter(logging.Formatter(format))
         self.logger.addHandler(stream_handler)
 
-    def debug(self, message):
+    def debug(self, message: str):
         """display a debug message
 
         Args:
@@ -25,7 +25,7 @@ class CustomLogger:
         if self.state is True:
             self.logger.debug(f"{message}\n")
 
-    def info(self, message):
+    def info(self, message: str):
         """display an info message
 
         Args:

@@ -1,7 +1,7 @@
 from ..mangasaki import scrap_titles, scrap_chapters
 
 
-def Update_mangasaki(DRIVER, PATH_TO_MANGASAKI, LOG):
+def Update_mangasaki(DRIVER, PATH_TO_MANGASAKI: str, LOG):
     """Update mangasaki datas.
 
     Args:

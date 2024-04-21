@@ -62,7 +62,7 @@ def deactivate_button(button, button_image_2):
     deactivate_button_hover(button)
 
 
-def manage_menu(menu, menu_list, menu_list_var):
+def manage_menu(menu, menu_list: list, menu_list_var: str):
     """Manage menu displayed items
 
     Args:
