@@ -365,3 +365,18 @@ Changes in kingdom:
   • Added chapters: chapitre 793
 Changes in my-hero-academia:
   • Added chapters: chapitre 420, chapitre 419
+
+Update 42 : 29/04/2024 | 19:19:59
+Changes in blue-lock:
+  • Added chapters: chapitre 259, chapitre 258
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1454, chapitre 1451
+  • Removed chapters: chapitre 1551
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 258, chapitre 257
+Changes in kingdom:
+  • Added chapters: chapitre 795, chapitre 794
+Changes in my-hero-academia:
+  • Added chapters: chapitre 421
+Changes in one-piece:
+  • Added chapters: chapitre 1113, chapitre 1112

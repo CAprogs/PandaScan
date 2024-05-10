@@ -1,7 +1,6 @@
-import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from .utils import check_driver, check_extensions
+from .utils import check_driver, check_extensions, dump_config
 
 
 def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SETTINGS, LOG, EMOJIS: dict):
@@ -23,7 +22,7 @@ def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SET
     adguard_path = f'{SRC_DIRECTORY}/foundation/selenium/extensions/adguard.crx'
     check_extensions(ublock_path, adguard_path, EMOJIS)
 
-    check_driver(OS_NAME, LOG, SETTINGS["driver"]["path"], PATH_TO_CONFIG, SETTINGS)
+    check_driver(OS_NAME, LOG, SETTINGS["driver"]["path"], PATH_TO_CONFIG, SETTINGS, SRC_DIRECTORY)
 
     # Instantiate chromedriver service
     chromedriver_path = Service(SETTINGS["driver"]["path"])
@@ -46,15 +45,18 @@ def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SET
         driver = webdriver.Chrome(service=chromedriver_path, options=options)
     except Exception as e:
         LOG.info("""The path provided is obsolete or doesn't refer to the 'chromedriver.exe' file ⚠️
-                \nPlease refer to the 'README' file to provide the correct path or update your chromedriver.
+                \nIf you previously downloaded the chromedriver, you might need to authorize its execution.
+                \nRefer to the 'README' file for more information.
                 """)
         LOG.debug({str(e)})
         SETTINGS["driver"]["path"] = ""
-        with open(PATH_TO_CONFIG, 'w') as json_file:
-            json.dump(SETTINGS, json_file, indent=4)
+        dump_config(PATH_TO_CONFIG, SETTINGS)
         print(f"PandaScan exited. {EMOJIS[1]}\n")
         exit()
 
+    if SETTINGS["driver"].get("downloaded_driver") is not None:
+        SETTINGS["driver"].pop("downloaded_driver")
+        dump_config(PATH_TO_CONFIG, SETTINGS)
     driver.maximize_window()
     print(f"\nChromeDriver found {EMOJIS[3]}")
 

@@ -3,7 +3,8 @@
     "driver": {
         "path": "",
         "headless": true,
-        "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "api_endpoint": "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json"
     },
     "Update": {
         "mode": "auto"
@@ -17,8 +18,8 @@
         },
         "lelscans": {
             "enabled": true,
-            "n_update": 41,
-            "time_to_update": 46.91
+            "n_update": 42,
+            "time_to_update": 20.72
         },
         "animesama": {
             "enabled": false,
@@ -32,8 +33,8 @@
         },
         "lelmanga": {
             "enabled": true,
-            "n_update": 22,
-            "time_to_update": 90.19
+            "n_update": 23,
+            "time_to_update": 59.97
         },
         "manganelo": {
             "enabled": false,
@@ -42,8 +43,8 @@
         },
         "mangamoins": {
             "enabled": true,
-            "n_update": 18,
-            "time_to_update": 43.18
+            "n_update": 19,
+            "time_to_update": 28.45
         },
         "mangasaki": {
             "enabled": false,
@@ -57,7 +58,7 @@
         }
     },
     "Download": {
-        "path": "/Users/charles-albert/Desktop/Mangas"
+        "path": ""
     },
     "logger": {
         "enabled": true,

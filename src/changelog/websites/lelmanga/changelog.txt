@@ -327,3 +327,35 @@ Changes in sakamoto-days:
   • Added chapters: chapitre 161
 Changes in shuumatsu-no-valkyrie:
   • Added chapters: chapitre 88.5
+
+Update 23 : 29/04/2024 | 19:20:59
+Changes in berserk:
+  • Added chapters: chapitre 376
+Changes in black-clover:
+  • Added chapters: chapitre 371, chapitre 370
+Changes in blue-lock:
+  • Added chapters: chapitre 259, chapitre 258
+Changes in boruto-two-blue-vortex:
+  • Added chapters: chapitre 9
+Changes in burning-kabaddi:
+  • Added chapters: chapitre 34, chapitre 33, chapitre 32
+Changes in choujin-x:
+  • Added chapters: chapitre 51.2, chapitre 51.1
+Changes in edens-zero:
+  • Added chapters: chapitre 285, chapitre 284
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 147, chapitre 146
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 258, chapitre 257
+Changes in kingdom:
+  • Added chapters: chapitre 795, chapitre 794
+Changes in my-hero-academia:
+  • Added chapters: chapitre 421
+Changes in one-piece:
+  • Added chapters: chapitre 1113, chapitre 1112
+Changes in sakamoto-days:
+  • Added chapters: chapitre 164, chapitre 163, chapitre 162
+Changes in the-pool:
+  • Added chapters: chapitre 3
+Changes in vinland-saga:
+  • Added chapters: chapitre 210
