@@ -47,7 +47,9 @@ There is two options when starting the app :
 - Manually insert the path to an existing `chromedriver` like before.
 - Let the app do the job for you by downloading the right version of the `chromedriver` corresponding to your architecture. ( recommended )
 
-`Image`
+<img width="600" alt="Installation window" src="https://github.com/CAprogs/PandaScan/assets/104645407/9ad7ad99-bd53-46a3-a905-22cdc6afbee9">
+
+
 
 ---
 
@@ -173,8 +175,7 @@ If you don't want to use the CLI, you can run **Pandascan_Beta** using [**VScode
 
 If you receive the following message there could be several reasons :
 
-`Image`
-
+<img width="600" alt="Chromedriver Error" src="https://github.com/CAprogs/PandaScan/assets/104645407/5691d6d6-c0e2-4fa8-a0ac-b1df5e95859e">
 
 - You didn't download the right version of **Chromedriver** for your architecture.
 - Your **Chromedriver version** doesn't `match` your **Chrome** version.
