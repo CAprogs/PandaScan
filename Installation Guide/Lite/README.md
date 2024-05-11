@@ -38,10 +38,17 @@ You can use the following cheatsheets to help you with the installation process 
 
 ## **I. Installation ↧**
 
+**Note** : If you're used to python, you doesn't need to follow step by step the installation process.
+
+- Make sure to have the right version of **Python** installed on your computer.
+- Create a **virtual environment** and install the requirements.
+- Then run the **App.py** file.
+
+
 ### MAC 🖥️
 ---
 
-- Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )
+- Download and install [**Python**](https://www.python.org/downloads/) ( **Python >= 3.12** is recommended )
 
 - Open your **Terminal**
   

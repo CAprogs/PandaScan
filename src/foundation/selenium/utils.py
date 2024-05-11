@@ -149,10 +149,10 @@ def provide_driver_path():
         driver_path = input("""
                 \n° On macOS : just paste the path to the 'chromedriver' file (executable)
                 \n° On Windows : include the '.exe' extension in the path (e.g. 'C:\\Users\\User\\chromedriver.exe')
-                \n° On Linux with arm64 (VM) : consider downloading the Lite version instead
+                \n° On Linux with arm64 (VM) : consider downloading the Lite version of PandaScan instead
 
                 \rPress CTRL + C to exit.
-                \n\r      Insert your ChromeDriver's path here =>  """)
+                \n\r          =>  """)
         return driver_path
     except KeyboardInterrupt:
         exit_app()
@@ -173,16 +173,16 @@ def check_driver(OS_NAME: str, LOG, driver_path: str, PATH_TO_CONFIG: str, SETTI
     if SETTINGS["driver"].get("downloaded_driver") is not None:
         driver_path = SETTINGS["driver"]["downloaded_driver"]
 
-    while "chromedriver" not in driver_path or not os.path.exists(driver_path):
+    while "chromedriver" not in driver_path or not os.path.exists(driver_path) or "LICENSE" in driver_path:
 
         menu_answer = None
 
         while menu_answer not in ["1", "2"]:
             clear_console()
             try:
-                menu_answer = input("""ChromeDriver is required to run PandaScan. ⚠️ (Select the appropriate option below)
+                menu_answer = input("""ChromeDriver is required to run PandaScan. ⚠️  (Select the appropriate option below)
                         \n   [1] Provide the path to an existing ChromeDriver
-                        \n   [2] Download the latest ChromeDriver
+                        \n   [2] Download and execute the latest ChromeDriver ( recommended )
 
                     \rPress CTRL + C to exit.
                     \n          =>  """)

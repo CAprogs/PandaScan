@@ -1,8 +1,8 @@
 
 
 You should have downloaded and installed :
-* chromedriver ( for your MAC architecture )
-* Python
+* chromedriver ( for your MAC architecture ) -- Optionnal
+* Python ( 3.12 or higher )
 
 Tip ✨ :
 - Use [⌘ + F] to replace all occurences on MAC
@@ -10,7 +10,6 @@ Tip ✨ :
 Paste each equivalent below ⬇️
 
 path/to/Pandascan_Beta = 
-path/to/chromedriver =
 path/to/panda.sh =
 
 
@@ -21,9 +20,6 @@ cd path/to/Pandascan_Beta
 
 2. Terminal
 python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip && python3 App.py
-
-3. Terminal
-path/to/chromedriver
 
 ========> Create an executable
 

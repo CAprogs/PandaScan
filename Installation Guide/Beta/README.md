@@ -13,7 +13,7 @@
 
 ### Summary
 
-- [I. Chromedriver 🤖](#i-chromedriver-🤖)
+- [I. Chromedriver 🤖 ( Optionnal )](#i-chromedriver-🤖)
 - [II. Installation ↧](#ii-installation-↧)
     - [MAC 🖥️](#mac-🖥️)
         - [Create your own executable (.sh)](#how-to-create-your-own-executable-sh)
@@ -41,27 +41,29 @@ You can use the following cheatsheets to help you with the installation process 
 
 ## **I. Chromedriver 🤖**
 
-- Download [**Chromewebdriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable) ( Select the **right version** for your architecture as below )
+The need to first download [**Chromedriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable) manually is now optional.
 
-<img width="1493" alt="chromedriver" src="https://github.com/CAprogs/PandaScan/assets/104645407/f795b470-cff5-4d63-af52-0a12c2687f96">
+There is two options when starting the app :
+- Manually insert the path to an existing `chromedriver` like before.
+- Let the app do the job for you by downloading the right version of the `chromedriver` corresponding to your architecture. ( recommended )
 
-- Try to execute the **`chromedriver.exe`**. You should get a similar message :
-
-<img width="900" alt="chromedriver_success_exe" src="https://github.com/CAprogs/PandaScan/assets/104645407/a0feb85c-b555-41ec-897a-f3b44b547373">
-
-- Then kill the process using **`Ctrl + C`** or just manually close the terminal.
-- It may not work the first time for **`Mac users`** so follow these steps ⬇️.
-
-![ezgif com-optimize](https://github.com/CAprogs/PandaScan/assets/104645407/e629332b-3ab2-494f-a50e-88d6a9990eb1)
+`Image`
 
 ---
 
+**Note** : If you're used to python, you doesn't need to follow step by step the installation process.
+
+- Make sure to have the right version of **Python** installed on your computer.
+- Create a **virtual environment** and install the requirements.
+- Then run the **App.py** file and follow the instructions on your terminal.
+
+---
 ## **II. Installation ↧**
 
 ### MAC 🖥️
 ---
 
-- Download and install [**Python**](https://www.python.org/downloads/) ( **Python 3.12** is recommended )
+- Download and install [**Python**](https://www.python.org/downloads/) ( **Python >= 3.12** is recommended )
 
 - Open your **Terminal**
   
@@ -73,9 +75,7 @@ cd path/to/Pandascan_Beta
 ```
 python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip && python3 App.py
 ```
-- **COPY** & **PASTE** your `chromedriver.exe` path as below ⬇️
-
-<img width="700" alt="mac" src="https://github.com/CAprogs/PandaScan/assets/104645407/9c460df1-16df-453b-b3ca-a5c2a4f744fa">
+- Then follow the instructions on your terminal
 
 ### How to create your own executable (.sh)
 ---
@@ -106,7 +106,8 @@ path/to/panda.sh
 
 ### WINDOWS 💻 
 ---
-On windows, installation is a bit more complicated but don't worry, just follow these steps ⬇️.
+
+On windows, installation is a bit more complicated if you're not used to python but don't worry, just follow these steps ⬇️.
 
 - Install [**miniconda3**](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe) (64-bit version)
 - Install **Powershell** ( via the Windows store )
@@ -123,10 +124,7 @@ conda init powershell
 conda create --name pandavenv -y && conda activate pandavenv && cd path\to\Pandascan_Beta && conda install pip -y && pip install -r requirements.txt && python App.py
 ```
 
-- **COPY** & **PASTE** your `chromedriver.exe` path as below ⬇️
-    - Don't forget to add the `.exe` extension
-
-<img width="700" alt="windows" src="https://github.com/CAprogs/PandaScan/assets/104645407/445652ff-8091-4c37-afd2-fe52610c035a">
+- Then follow the instructions on your terminal
 
 ### How to create your own executable (.bat)
 ---
@@ -143,8 +141,6 @@ python App.py
 
 Now you can run Pandascan_Beta whenever you want with **Powershell**.
 
-The easiest way is to Drag and drop `panda.bat` to **Powershell**.
-
 - You can also run Pandascan with **Powershell** using ⬇️
     - replace `path\to\panda.bat` with the right path
 ```
@@ -153,7 +149,7 @@ path\to\panda.bat
 
 ## **III. Vscode ( Optional )**
 
-If you don't want to use CLI, you can run **Pandascan_Beta** using [**VScode**](https://code.visualstudio.com/) ⬇️
+If you don't want to use the CLI, you can run **Pandascan_Beta** using [**VScode**](https://code.visualstudio.com/) ⬇️
 
 - Download and install [**Vscode**](https://code.visualstudio.com/)
 - Open **Pandascan_Beta** folder with VScode
@@ -169,11 +165,14 @@ If you don't want to use CLI, you can run **Pandascan_Beta** using [**VScode**](
 ### Chromedriver Error 🤖
 ---
 
-If a `Chromedriver Error` occurs , there could be several reasons :
+If you receive the following message there could be several reasons :
+
+`Image`
+
 
 - You didn't download the right version of **Chromedriver** for your architecture.
 - Your **Chromedriver version** doesn't `match` your **Chrome** version.
-- **Chromedriver** is `blocked` by your computer. ( make sure you've allowed its execution )
+- **Chromedriver** is `blocked` by your computer. ( make sure you've granted the execution rights )
 - You didn't `paste` the right path to **Chromedriver**. ( on Windows, don't forget to add the `.exe` extension at the end of your path )
 
 ### Failed downloads ❌

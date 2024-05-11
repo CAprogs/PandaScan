@@ -1,7 +1,6 @@
 
 
 You should have downloaded and installed :
-* chromedriver ( for windows )
 * miniconda3
 
 Tip ✨ :
@@ -31,5 +30,5 @@ python App.py
 
 ========> Run Pandascan whenever you want
 
-1. Powershell ( or Drag and drop 'panda.bat' to Powershell )
+1. Powershell
 path\to\panda.bat
