@@ -41,7 +41,7 @@ You can use the following cheatsheets to help you with the installation process 
 
 ## **I. Chromedriver 🤖**
 
-The need to first download [**Chromedriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable) manually is now optional.
+Manually downloading the [**Chromedriver**](https://googlechromelabs.github.io/chrome-for-testing/#stable)  is now optional as a first step.
 
 There is two options when starting the app :
 - Manually insert the path to an existing `chromedriver` like before.
@@ -75,6 +75,12 @@ cd path/to/Pandascan_Beta
 ```
 python3 -m venv pandavenv && source pandavenv/bin/activate && pip install -r requirements.txt && pip install --upgrade pip && python3 App.py
 ```
+
+**Note** : If you encounter any issue related to the `Tkinter` module while running the command above, you may need to install the `python-tk` package using [**homebrew**](https://brew.sh/) , then re-run the command above. Use the command below ⬇️ ( ref issue [**#13**](https://github.com/CAprogs/PandaScan/issues/13) )
+```
+brew install python-tk
+```
+
 - Then follow the instructions on your terminal
 
 ### How to create your own executable (.sh)
