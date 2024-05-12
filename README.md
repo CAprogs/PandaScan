@@ -98,7 +98,7 @@ Elle apporte de nombreuses améliorations :
 
 | Version  | <div align="center">**BETA**</div> | <div align="center">**LITE**</div> |
 | :-------- | :-------       | :-------    |
-|   **Aperçu**  | <img width="500" alt="BETA" src="https://github.com/CAprogs/PandaScan/assets/104645407/78b6ebd8-fa3a-4021-b109-f8a6d35cea65">            | <img width="500" alt="LITE" src="https://github.com/CAprogs/PandaScan/assets/104645407/bda50f5b-efb7-4648-b7ac-8dd000710f20">           |
+|   **Aperçu**  | <img width="500" alt="BETA" src="https://github.com/CAprogs/PandaScan/assets/104645407/cf0342cc-8a54-4696-befe-90842e1aa5ea">            | <img width="500" alt="LITE" src="https://github.com/CAprogs/PandaScan/assets/104645407/7f314b44-0ad8-49ee-8cd1-f49c00a8d0cc">
 
 ## Principe 🪄
 
@@ -111,7 +111,7 @@ La figure ci-dessous représente le fonctionnement de PandaScan 🐼. Les icône
 Les compatibilités suivantes sont basées sur des tests personnels et donc non exhaustifs.
 |   OS  | BETA | LITE | Aperçu 👁️
 | :-------- | :-------       | :-------    |:-------    |
-| MacOS ( Apple Silicon ) |  ✅  | ✅ | <img width="500" alt="MAC" src="https://github.com/CAprogs/PandaScan/assets/104645407/78b6ebd8-fa3a-4021-b109-f8a6d35cea65">
+| MacOS ( Apple Silicon ) |  ✅  | ✅ | <img width="500" alt="MAC" src="https://github.com/CAprogs/PandaScan/assets/104645407/cf0342cc-8a54-4696-befe-90842e1aa5ea">
 | Windows ( x64 ) |  ✅ | ✅ | <div align="center"> <img width="450" alt="Windows" src="https://github.com/CAprogs/PandaScan/assets/104645407/e75cad2b-80a0-4f28-bb77-10210272d14a"> </div>
 | Linux ( Ubuntu ARM64) |  ❌ |  ✅ | <div align="center"> <img width="450" alt="Linux" src="https://github.com/CAprogs/PandaScan/assets/104645407/74d5fc4b-3cbd-442a-b56e-146cef868a45"> </div>
 
