@@ -450,7 +450,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             save_confirm = messagebox.askquestion(message=f"Save new settings {EMOJIS[19]}")
 
             if save_confirm == "yes":
-                SETTINGS["driver"]["path"] = check_path(OS_NAME, LOG, chromedriver_entry.get())
+                SETTINGS["driver"]["path"] = check_path(OS_NAME, chromedriver_entry.get())
                 SETTINGS["driver"]["headless"] = chromedriver_mode_var.get()
                 SETTINGS["Update"]["mode"] = update_mode_var.get()
                 SETTINGS["websites"]["fmteam"]["enabled"] = fmteam_checkbox_var.get()
@@ -462,7 +462,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 SETTINGS["websites"]["mangamoins"]["enabled"] = mangamoins_checkbox_var.get()
                 SETTINGS["websites"]["mangasaki"]["enabled"] = mangasaki_checkbox_var.get()
                 SETTINGS["websites"]["lhtranslation"]["enabled"] = lhtranslation_checkbox_var.get()
-                SETTINGS["Download"]["path"] = check_path(OS_NAME, LOG, download_entry.get())
+                SETTINGS["Download"]["path"] = check_path(OS_NAME, download_entry.get())
 
                 with open(PATH_TO_CONFIG, 'w') as json_file:
                     json.dump(SETTINGS, json_file, indent=4)

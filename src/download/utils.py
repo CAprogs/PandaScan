@@ -3,6 +3,7 @@ import time
 import glob
 import zipfile
 from src.foundation.core.essentials import LOG
+from src.foundation.database.manage import TABLES
 
 
 def check_manga_path(chapter_file_path: str):
@@ -69,3 +70,18 @@ def find_latest_zip(chapter_file_path: str, timeout: int = 60):
             return max(zip_files, key=os.path.getctime)
         time.sleep(1)
     return None
+
+
+def fetch_chapterlink(SELECTOR, *args):
+    """fetch the chapter link.
+
+    Args:
+        SELECTOR (Any): the DB cursor
+
+    Returns:
+        str: the chapter link
+    """
+
+    query = f"SELECT ChapterLink FROM {TABLES[2]} WHERE MangaName = ? AND Website = ? AND Chapter = ?"
+    SELECTOR.execute(query, *args)
+    return SELECTOR.fetchone()[0]

@@ -7,54 +7,90 @@
         "api_endpoint": "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json"
     },
     "Update": {
-        "mode": "auto"
+        "mode": "manual"
     },
     "websites": {
-        "languages": "All",
+        "fav_language": "All",
         "fmteam": {
-            "enabled": false,
-            "n_update": 41,
-            "time_to_update": 214.39
+            "link": "https://fmteam.fr/comics",
+            "language": "FR",
+            "enabled": true,
+            "n_manga": 24,
+            "n_update": 43,
+            "time_to_update": 201.91,
+            "last_update": "13/05/2024 | 01:30:39"
         },
         "lelscans": {
+            "link": "https://lelscans.net/",
+            "language": "FR",
             "enabled": true,
-            "n_update": 42,
-            "time_to_update": 20.72
+            "n_manga": 34,
+            "n_update": 48,
+            "time_to_update": 5.48,
+            "last_update": "13/05/2024 | 01:30:44"
         },
         "animesama": {
-            "enabled": false,
+            "link": "https://anime-sama.me/",
+            "language": "FR",
+            "enabled": true,
+            "n_manga": 0,
             "n_update": 27,
-            "time_to_update": 76.06
+            "time_to_update": 76.06,
+            "last_update": ""
         },
         "tcbscans": {
-            "enabled": false,
+            "link": "https://tcbscans.com/",
+            "language": "EN",
+            "enabled": true,
+            "n_manga": 0,
             "n_update": 11,
-            "time_to_update": 13.85
+            "time_to_update": 13.85,
+            "last_update": ""
         },
         "lelmanga": {
+            "link": "https://www.lelmanga.com/",
+            "language": "FR",
             "enabled": true,
-            "n_update": 23,
-            "time_to_update": 59.97
+            "n_manga": 66,
+            "n_update": 25,
+            "time_to_update": 12.51,
+            "last_update": "13/05/2024 | 01:32:54"
         },
         "manganelo": {
-            "enabled": false,
-            "n_update": 9,
-            "time_to_update": 435.17
+            "link": "https://ww7.manganelo.tv/",
+            "language": "EN",
+            "enabled": true,
+            "n_manga": 800,
+            "n_update": 11,
+            "time_to_update": 302.87,
+            "last_update": "13/05/2024 | 01:37:57"
         },
         "mangamoins": {
+            "link": "https://mangamoins.shaeishu.co/?p=1",
+            "language": "FR",
             "enabled": true,
-            "n_update": 19,
-            "time_to_update": 28.45
+            "n_manga": 19,
+            "n_update": 21,
+            "time_to_update": 11.64,
+            "last_update": "13/05/2024 | 01:38:09"
         },
         "mangasaki": {
+            "link": "https://www.mangasaki.org/",
+            "language": "EN",
             "enabled": false,
+            "n_manga": 0,
             "n_update": 0,
-            "time_to_update": 9763.21
+            "time_to_update": 9763.21,
+            "last_update": ""
         },
         "lhtranslation": {
-            "enabled": false,
-            "n_update": 3,
-            "time_to_update": 306.86
+            "link": "https://lhtranslation.net/home/",
+            "language": "EN",
+            "enabled": true,
+            "n_manga": 89,
+            "n_update": 5,
+            "time_to_update": 102.93,
+            "last_update": "13/05/2024 | 01:39:52"
         }
     },
     "Download": {

@@ -1,7 +1,8 @@
 import os
-from src.download.utils import set_download_path, find_latest_zip, extract_zip
 from src.foundation.core.essentials import SELECTOR, LOG
 from src.foundation.core.emojis import EMOJIS
+from src.download.utils import set_download_path, find_latest_zip, extract_zip
+from ..utils import fetch_chapterlink
 
 
 def init_download(selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str, DRIVER):
@@ -18,9 +19,7 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
         str: download status (success, skipped or failed)
     """
 
-    query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
-    SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
-    chapter_link = SELECTOR.fetchone()[0]
+    chapter_link = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
 
     if not isinstance(chapter_file_path, str):
         chapter_file_path = chapter_file_path._str

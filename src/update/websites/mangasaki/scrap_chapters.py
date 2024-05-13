@@ -23,16 +23,16 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []
-    last_manga_index = len(datas['NomManga']) - 1
-    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
+    last_manga_index = len(datas['MangaName']) - 1
+    columns = ["Website", "MangaName", "Chapter", "ChapterLink"]
 
-    for index, manga_name in enumerate(datas['NomManga']):
-        url = datas['links'][index]
+    for index, manga_name in enumerate(datas['MangaName']):
+        url = datas['MangaLink'][index]
         i = 0
         previous_chapter_number = 0
 
         LOG.info(f"Manga : {manga_name}")
-        manga_chapters_dict[manga_name] = []
+        manga_chapters_dict[manga_name] = set()
 
         while True:
             try:
@@ -80,7 +80,7 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
                             LOG.debug(f"No chapter added. | {e}")
                             continue
 
-                    if i == 0 and manga_chapters_dict[manga_name] == []:
+                    if i == 0 and manga_chapters_dict[manga_name] == set():
                         previous_chapter_number = chapter_number
                     else:
                         if float(chapter_number) > float(previous_chapter_number):
@@ -96,7 +96,7 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
                         previous_chapter_number = chapter_number
 
                     chapter = "chapter " + str(chapter_number)
-                    manga_chapters_dict[manga_name].append(chapter)
+                    manga_chapters_dict[manga_name].add(chapter)
                     chapters_and_links.append(["mangasaki", manga_name, chapter, chapter_link])
                     LOG.debug(f"{chapter} added | link : {chapter_link}")
 
@@ -110,9 +110,10 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
                 if index != last_manga_index:
                     break
 
+        datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
         LOG.info(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
 
-    if len(failed_mangas) == len(datas['NomManga']):
+    if len(failed_mangas) == len(datas['MangaName']):
         LOG.debug("Error : All mangas failed ..")
         return "failed"
     elif failed_mangas != []:
@@ -126,4 +127,6 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
     yml_data = yaml.dump(manga_chapters_dict)
     with open(f'{PATH_TO_MANGASAKI}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
+
+    datas.to_csv(f'{PATH_TO_MANGASAKI}/datas/mangas.csv', index=False)
     return "success"

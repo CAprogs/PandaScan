@@ -48,21 +48,22 @@ def check_extensions(extension_path_1: str, extension_path_2: str, EMOJIS):
         print(f"\nExtensions found {EMOJIS[3]}")
 
 
-def check_path(OS_NAME: str, path: str):
+def check_path(OS_NAME: str, path: str, interrupt: bool = False):
     """Check if the user-provided path is right and correct it if necessary.
 
     Args:
         OS_NAME (str): name of the OS
-        LOG (Any): the logger
         path (str): the path to correct (if necessary)
+        interrupt (bool, optional): whether the function should print a message or not. Defaults to False.
 
     Returns:
         str: the right path (depending on the OS) or an empty string if the path doesn’t exist
     """
 
     if not os.path.exists(path):
-        print(f"\nPath '{path}' doesn’t exist.")
-        time.sleep(2)
+        if interrupt:
+            print(f"\nPath '{path}' doesn’t exist.")
+            time.sleep(2)
         return ""
     elif OS_NAME == "Windows":
         correct_path = path.replace("\\", "\\\\")
@@ -199,7 +200,7 @@ def check_driver(OS_NAME: str, LOG, driver_path: str, PATH_TO_CONFIG: str, SETTI
         elif menu_answer == "2":
             driver_path = download_chromedriver(LOG, SETTINGS, SRC_DIRECTORY)
 
-        driver_path = check_path(OS_NAME, driver_path)
+        driver_path = check_path(OS_NAME, driver_path, True)
 
     SETTINGS["driver"]["path"] = driver_path
     if OS_NAME != "Windows":

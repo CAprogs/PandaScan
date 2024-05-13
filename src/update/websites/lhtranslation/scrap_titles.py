@@ -60,7 +60,8 @@ def Scrap_titles(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
 
     LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
-    data_to_add = [{"NomManga": name, "links": links} for name, links in zip(manga_name_list, links_list)]
+    data_to_add = [{"MangaName": name, "MangaLink": link} for name, link in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)
+    datas['n_chapter'] = 0
     datas.to_csv(f'{PATH_TO_LHTRANSLATION}/datas/mangas.csv', index=False)
     return "success"

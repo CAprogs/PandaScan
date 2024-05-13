@@ -558,3 +558,45 @@ Changes in vinland-saga:
 Changes in yomi-no-tsugai:
   • Added chapters: chapitre 22
   • Removed chapters: chapitre 19
+
+Update 42 : 12/05/2024 | 19:41:25
+Changes in batuque:
+  • Added chapters: chapitre 125, chapitre 124
+Changes in berserk:
+  • Added chapters: chapitre 376
+  • Removed chapters: chapitre 373
+Changes in blue-lock:
+  • Added chapters: chapitre 260, chapitre 259, chapitre 258
+  • Removed chapters: chapitre 256, chapitre 255, chapitre 254
+Changes in catechism:
+  • Added chapters: chapitre 4
+Changes in choujin-x:
+  • Added chapters: chapitre 51.3, chapitre 51.2, chapitre 51.1
+  • Removed chapters: chapitre 50.3, chapitre 50.2, chapitre 50.1, chapitre 49.3
+Changes in dgray-man:
+  • Added chapters: chapitre 251
+  • Removed chapters: chapitre 248
+Changes in eyeshield-21:
+  • Added chapters: chapitre fr
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1455, chapitre 1454, chapitre 1453
+  • Removed chapters: chapitre 1452, chapitre 1451, chapitre 1450
+Changes in kingdom:
+  • Added chapters: chapitre 795, chapitre 794, chapitre 793
+  • Removed chapters: chapitre 792, chapitre 791, chapitre 790
+Changes in one-punch-man:
+  • Added chapters: chapitre 197, chapitre 196, chapitre 195
+  • Removed chapters: chapitre 200, chapitre 199, chapitre 198
+Changes in out:
+  • Added chapters: chapitre 196, chapitre 195, chapitre 194, chapitre 193, chapitre 192, chapitre 191, chapitre 190
+Changes in the-pool:
+  • Added chapters: chapitre 3
+Changes in vinland-saga:
+  • Added chapters: chapitre 210
+  • Removed chapters: chapitre 207
+Changes in yomi-no-tsugai:
+  • Added chapters: chapitre 23
+  • Removed chapters: chapitre 20
+
+Update 43 : 13/05/2024 | 01:30:39
+No added / deprecated files !

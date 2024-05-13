@@ -1,7 +1,8 @@
 import pandas as pd
-from .utils import Delete_table
-from src.foundation.core.essentials import WEBSITES_DICT
+from .utils import clean_table
+from src.foundation.core.essentials import SETTINGS
 from src.foundation.core.emojis import EMOJIS
+from src.foundation.database.manage import TABLES
 
 
 def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
@@ -18,37 +19,47 @@ def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
     """
 
     LOG.info("Datas migration ..")
-    websites = [{'NomSite': website} for website in WEBSITES_DICT.keys()]
+    websites = []
+    for key in SETTINGS["websites"].keys():
+        if key != 'fav_language':
+            websites.append({'Website': key,
+                             'Language': SETTINGS["websites"][key]["language"],
+                             'Link': SETTINGS["websites"][key]["link"],
+                             'n_update': SETTINGS["websites"][key]["n_update"],
+                             'n_manga': SETTINGS["websites"][key]["n_manga"],
+                             'time_to_update': SETTINGS["websites"][key]["time_to_update"],
+                             'last_update': SETTINGS["websites"][key]["last_update"]
+                             })
 
     nb_websites = len(websites)
     latest_website_index = nb_websites - 1
     failed_migrations = []
 
-    tables = ["Mangas", "Chapitres", "ChapterLink"]
-
-    # df_sites -> Table "SitesWeb"
-    df_sites = pd.DataFrame(websites)
-    df_sites.to_sql('SitesWeb', CONN, if_exists='replace', index=False)
+    tables_to_clean = [TABLES[0], TABLES[1], TABLES[2]]
 
     LOG.info("Database Checks and Cleanup ..")
 
-    for table in tables:
-        result = Delete_table(table, CONN, SELECTOR)
+    for table in tables_to_clean:
+        result = clean_table(table, CONN, SELECTOR)
         if result:
-            LOG.info(f"Table {table} deleted ..")
+            LOG.info(f"Table {table} emptied ..")
+
+    # df_sites -> Table "Websites"
+    df_sites = pd.DataFrame(websites)
+    df_sites.to_sql(TABLES[0], CONN, if_exists='append', index=False)
 
     for website in websites:
         try:
-            website = website['NomSite']
+            website = website['Website']
 
             # [mangas.csv] -> Table "Mangas"
             df_mangas = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
-            df_mangas['NomSite'] = website
-            df_mangas.to_sql('Mangas', CONN, if_exists='append', index=False)
+            df_mangas['Website'] = website
+            df_mangas.to_sql(TABLES[1], CONN, if_exists='append', index=False)
 
-            # [chapters_links.csv] -> Table "ChapterLink"
+            # [chapters_links.csv] -> Table "Chapters"
             df_chapters_links = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/chapters_links.csv')
-            df_chapters_links.to_sql('ChapterLink', CONN, if_exists='append', index=False)
+            df_chapters_links.to_sql(TABLES[2], CONN, if_exists='append', index=False)
 
             # Save changes to the database
             CONN.commit()

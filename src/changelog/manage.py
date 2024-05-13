@@ -33,8 +33,13 @@ def generate_changelog(PATH_TO_WEBSITE: str, website: str):
             changelog = "No added / deprecated files !\n"
 
         update_time = datetime.now().strftime("%d/%m/%Y | %H:%M:%S")
+        SETTINGS["websites"][website]["last_update"] = update_time
+
         update_number = SETTINGS["websites"][website]["n_update"]
         update_number += 1
+
+        n_manga = len(current_state.keys())
+        SETTINGS["websites"][website]["n_manga"] = n_manga
 
         report = f"\nUpdate {update_number} : {update_time}\n{changelog}"
 

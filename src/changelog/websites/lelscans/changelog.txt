@@ -380,3 +380,34 @@ Changes in my-hero-academia:
   • Added chapters: chapitre 421
 Changes in one-piece:
   • Added chapters: chapitre 1113, chapitre 1112
+
+Update 43 : 12/05/2024 | 15:37:28
+Changes in black-clover:
+  • Added chapters: chapitre 371, chapitre 370
+Changes in blue-lock:
+  • Added chapters: chapitre 260
+Changes in d-gray-man:
+  • Added chapters: chapitre 251
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1455
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 259
+Changes in my-hero-academia:
+  • Added chapters: chapitre 422
+Changes in one-piece:
+  • Added chapters: chapitre 1114
+
+Update 44 : 12/05/2024 | 19:41:29
+No added / deprecated files !
+
+Update 45 : 12/05/2024 | 20:11:19
+No added / deprecated files !
+
+Update 46 : 12/05/2024 | 20:13:13
+No added / deprecated files !
+
+Update 47 : 12/05/2024 | 23:28:14
+No added / deprecated files !
+
+Update 48 : 13/05/2024 | 01:30:44
+No added / deprecated files !

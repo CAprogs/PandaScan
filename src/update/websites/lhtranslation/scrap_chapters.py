@@ -25,16 +25,16 @@ def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []
-    last_manga_index = len(datas['NomManga']) - 1
-    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
+    last_manga_index = len(datas['MangaName']) - 1
+    columns = ["Website", "MangaName", "Chapter", "ChapterLink"]
 
-    for index, manga_name in enumerate(datas['NomManga']):
-        url = datas['links'][index]
+    for index, manga_name in enumerate(datas['MangaName']):
+        url = datas['MangaLink'][index]
 
         try:
             DRIVER.get(url)
             LOG.debug(f"Manga : {manga_name}")
-            manga_chapters_dict[manga_name] = []
+            manga_chapters_dict[manga_name] = set()
             time.sleep(0.5)
             elements = DRIVER.find_elements(By.CLASS_NAME, 'wp-manga-chapter  ')
 
@@ -55,10 +55,11 @@ def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
                     except Exception as e:
                         LOG.debug(f"Error : {chapter} | {chapter_link} | {e}")
                         continue
-                manga_chapters_dict[manga_name].append(chapter)
+                manga_chapters_dict[manga_name].add(chapter)
                 chapters_and_links.append(["lhtranslation", manga_name, chapter, chapter_link])
                 LOG.debug(f"{chapter} added | {chapter_link}")
 
+            datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
             LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
 
         except Exception as e:
@@ -67,7 +68,7 @@ def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
             if index != last_manga_index:
                 continue
 
-    if len(failed_mangas) == len(datas['NomManga']):
+    if len(failed_mangas) == len(datas['MangaName']):
         LOG.debug("Error : All mangas failed ..")
         return "failed"
     elif failed_mangas != []:
@@ -81,4 +82,6 @@ def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
     yml_data = yaml.dump(manga_chapters_dict)
     with open(f'{PATH_TO_LHTRANSLATION}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
+
+    datas.to_csv(f'{PATH_TO_LHTRANSLATION}/datas/mangas.csv', index=False)
     return "success"

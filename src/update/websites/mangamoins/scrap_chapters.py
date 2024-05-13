@@ -24,11 +24,11 @@ def Scrap_chapters(PATH_TO_MANGAMOINS: str, LOG):
     manga_chapters_dict = {}
     chapters_and_links = []
     filter = [".", ":"]
-    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
+    columns = ["Website", "MangaName", "Chapter", "ChapterLink"]
     page = 1
 
-    for manga in datas['NomManga']:
-        manga_chapters_dict[manga] = []
+    for manga in datas['MangaName']:
+        manga_chapters_dict[manga] = set()
 
     while True:
         url = f"https://mangamoins.shaeishu.co/?p={page}"
@@ -71,7 +71,7 @@ def Scrap_chapters(PATH_TO_MANGAMOINS: str, LOG):
                     chapter_link = "https://mangamoins.shaeishu.co/download" + link
                     chapter_element = manga.find('div', class_="sortiefooter")
                     chapter = "chapitre " + chapter_element.find('h3').text.replace("#", "")
-                    manga_chapters_dict[manga_name].append(chapter)
+                    manga_chapters_dict[manga_name].add(chapter)
                     chapters_and_links.append(["mangamoins", manga_name, chapter, chapter_link])
                     LOG.debug(f"{chapter} added | link : {chapter_link}")
             page += 1
@@ -80,7 +80,8 @@ def Scrap_chapters(PATH_TO_MANGAMOINS: str, LOG):
             LOG.debug(f"Error : {e} | {url}")
             return "failed"
 
-    for manga_name in manga_chapters_dict.keys():
+    for index, manga_name in enumerate(manga_chapters_dict.keys()):
+        datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
         LOG.debug(f"{manga_name} : {len(manga_chapters_dict[manga_name])} chapters fetched.")
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
@@ -89,4 +90,6 @@ def Scrap_chapters(PATH_TO_MANGAMOINS: str, LOG):
     yml_data = yaml.dump(manga_chapters_dict)
     with open(f'{PATH_TO_MANGAMOINS}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
+
+    datas.to_csv(f'{PATH_TO_MANGAMOINS}/datas/mangas.csv', index=False)
     return "success"

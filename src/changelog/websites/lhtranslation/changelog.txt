@@ -327,3 +327,81 @@ Changes in zatsuyo-gakari-ken-shien-jutsu-shi-ha-party-tsuiho-ni-akogareru-seken
   • Added chapters: chapter 6.1, chapter 5.3, chapter 5.2
 Changes in zensei-wa-ken-mikado-konjou-kuzu-ouji:
   • Added chapters: chapter 39.2
+
+Update 4 : 12/05/2024 | 19:51:38
+=> Added new entry 'a-talented-ogre-hides-its-horns' with chapters: chapter 1
+Changes in akuma-wa-rozario-ni-kiss-wo-suru:
+  • Added chapters: chapter 4
+Changes in akuyaku-onzoushi-no-kanchigai-seija-seikatsu-nidome-no-jinsei-wa-yaritai-houdai-shitai-dake-na-no-ni:
+  • Added chapters: chapter 8, chapter 7, chapter 6
+Changes in garbage-brave-isekai-ni-shoukan-sare-suterareta-yuusha-no-fukushuu-monogatari:
+  • Added chapters: chapter 43
+Changes in genjitsushugi-yuusha-no-oukoku-saikenki:
+  • Added chapters: chapter 59.2, chapter 59.1
+Changes in genkai-level-1-kara-no-nariagari-saijaku-level-no-ore-ga-isekai-saikyou-ni-naru-made:
+  • Added chapters: chapter 32.2, chapter 32.1, chapter 31.2, chapter 31.1
+Changes in hachinantte-sore-wa-nai-deshou:
+  • Added chapters: chapter 91
+Changes in hazure-skill-kage-ga-usui-o-motsu-guild-shokuin-ga-jitsuha-densetsu-no-ansatsusha:
+  • Added chapters: chapter 36
+Changes in hazure-waku-no-joutai-ijou-skill-de-saikyou-ni-natta-ore-ga-subete-wo-juurin-suru-made:
+  • Added chapters: chapter 48.2, chapter 48.1
+Changes in henkyou-gurashi-no-maou-tensei-shite-saikyou-no-majutsushi-ni-naru:
+  • Added chapters: chapter 38
+Changes in heroic-tale-of-villainous-prince:
+  • Added chapters: chapter 9.2, chapter 9.1, chapter 8.2
+Changes in isekai-cheat-magic-swordsman:
+  • Added chapters: chapter 35.2, chapter 35.1, chapter 34.2, chapter 34.1
+Changes in isekai-kaeri-no-daikenja-sama-wa-sore-demo-kossori-kurashite-iru-tsumori-desu:
+  • Added chapters: chapter 29, chapter 28
+Changes in isekai-kenkokuki:
+  • Added chapters: chapter 65
+Changes in isekai-meikyuu-no-saishinbu-o-mezasou:
+  • Added chapters: chapter 30
+Changes in isekai-nonbiri-nouka:
+  • Added chapters: chapter 237, chapter 236, chapter 235
+Changes in isekai-ryouridou:
+  • Added chapters: chapter 51, chapter 50
+Changes in kaifuku-jutsushi-no-yarinaoshi:
+  • Added chapters: chapter 61.2, chapter 61.1
+Changes in kuro-no-shoukanshi:
+  • Added chapters: chapter 140, chapter 139, chapter 138, chapter 137
+Changes in magi-craft-meister:
+  • Added chapters: chapter 59, chapter 58, chapter 57
+Changes in maou-ni-natta-node-dungeon-tsukutte-jingai-musume-to-honobono-suru:
+  • Added chapters: chapter 69.2, chapter 69.1, chapter 68.2, chapter 68.1, chapter 67.2
+Changes in maou-sama-no-machizukuri-saikyou-no-danjon-wa-kindai-toshi:
+  • Added chapters: chapter 64, chapter 63
+Changes in maseki-gurume-mamono-no-chikara-wo-tabeta-ore-wa-saikyou:
+  • Added chapters: chapter 55, chapter 54, chapter 53
+Changes in my-classmate-is-a-princess-knight:
+  • Added chapters: chapter 64
+Changes in nito-no-taidana-isekai-shoukougun-saijaku-shoku-healer-nano-ni-saikyou-wa-cheat-desu-ka:
+  • Added chapters: chapter 33.2
+Changes in s-rank-monster-no-behemoth-dakedo-neko-to-machigawarete-erufu-musume-no-kishi-pet-toshite-kurashitemasu:
+  • Added chapters: chapter 66
+Changes in sasen-sareta-munou-ouji-wa-jitsuryoku-o-kakushitai:
+  • Added chapters: chapter 13
+Changes in sekai-de-tadahitori-no-mamono-tsukai-tenshoku-shitara-maou-ni-machigawa-remashita:
+  • Added chapters: chapter 53.2, chapter 53.1, chapter 52.2, chapter 52.1
+Changes in synduality-ellie:
+  • Added chapters: chapter 5, chapter 4, chapter 3
+Changes in tensei-kenja-no-isekai-life:
+  • Added chapters: chapter 68.2, chapter 68.1, chapter 67.2, chapter 67.1
+Changes in tensei-shitara-ken-deshita:
+  • Added chapters: chapter 76
+Changes in the-maou-armys-strongest-magician-was-a-human:
+  • Added chapters: chapter 42.2, chapter 42.1, chapter 41
+Changes in the-useless-tamer-will-turn-into-the-top-unconsciously-by-my-previous-life-knowledge:
+  • Added chapters: chapter 36, chapter 35
+Changes in yuusha-party-ni-kawaii-ko-ga-ita-no-de-kokuhaku-shite-mita:
+  • Added chapters: chapter 38.2, chapter 38.1, chapter 37.2, chapter 37.1, chapter 36.2, chapter 36.1
+Changes in yuusha-to-yobareta-nochi-ni-soshite-musou-otoko-wa-kazoku-wo-tsukuru:
+  • Added chapters: chapter 35, chapter 34, chapter 33, chapter 32, chapter 31
+Changes in zako-ni-ha-tanya-ga-oniaida-www-to-iwareta-tanya-level-9999-no-ore-tsuiho-saretanode-boken-sha-ni-tenshoku-suru-saikyo-buki-de-muso-shinagara-guild-de-tanoshiku-kurashimasu:
+  • Added chapters: chapter 9.1, chapter 8.2
+Changes in zensei-wa-ken-mikado-konjou-kuzu-ouji:
+  • Added chapters: chapter 41.2, chapter 41, chapter 40
+
+Update 5 : 13/05/2024 | 01:39:52
+No added / deprecated files !

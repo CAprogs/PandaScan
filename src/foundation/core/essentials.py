@@ -2,12 +2,12 @@ import os
 import platform
 import requests
 import json
-import sqlite3 as sql
 from tkinter import messagebox
 from pathlib import Path
-from ..selenium.driver import set_driver_config
+from src.foundation.database.manage import DatabaseHandler
 from src.foundation.logger.log import CustomLogger, LOG_FORMATS
 from .emojis import EMOJIS
+from ..selenium.driver import set_driver_config
 
 
 # Get OS name
@@ -16,29 +16,6 @@ OS_NAME = platform.system()
 # Cursor types
 INACTIVE_CURSOR = "arrow"
 ACTIVE_CURSOR = "hand2"
-
-# Available websites
-WEBSITES_DICT = {"fmteam": "FR",
-                 "lelscans": "FR",
-                 "animesama": "FR",
-                 "lelmanga": "FR",
-                 "mangamoins": "FR",
-                 "tcbscans": "EN",
-                 "manganelo": "EN",
-                 "mangasaki": "EN",
-                 "lhtranslation": "EN"
-                 }
-
-LANGUAGES = ["All", EMOJIS[6], EMOJIS[7]]
-
-# Available languages mode
-LANGUAGES[1] = "FR" if os.name == "nt" else EMOJIS[6]
-LANGUAGES[2] = "EN" if os.name == "nt" else EMOJIS[7]
-
-# Set list of websites depending on their language
-ALL_WEBSITES = [website for website in WEBSITES_DICT.keys()]
-FR_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "FR"]
-EN_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "EN"]
 
 # Pandascan directory
 MAIN_DIRECTORY = Path(os.path.abspath(os.getcwd()))
@@ -67,12 +44,26 @@ PATH_TO_LHTRANSLATION = SRC_DIRECTORY / "update/websites/lhtranslation"
 with open(PATH_TO_CONFIG) as json_file:
     SETTINGS = json.load(json_file)
 
+# Available websites
+WEBSITES_DICT = {key: value["language"] for key, value in SETTINGS["websites"].items() if key != "fav_language"}
+
+LANGUAGES = ["All", EMOJIS[6], EMOJIS[7]]
+
+# Available languages mode
+LANGUAGES[1] = "FR" if os.name == "nt" else EMOJIS[6]
+LANGUAGES[2] = "EN" if os.name == "nt" else EMOJIS[7]
+
+# Set list of websites depending on their language
+ALL_WEBSITES = [website for website in WEBSITES_DICT.keys()]
+FR_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "FR"]
+EN_WEBSITES = [website for website, lang in WEBSITES_DICT.items() if lang == "EN"]
+
 # Set the default websites
-if SETTINGS["websites"]["languages"] == "All":
+if SETTINGS["websites"]["fav_language"] == "All":
     WEBSITES = ALL_WEBSITES
-elif SETTINGS["websites"]["languages"] == "FR":
+elif SETTINGS["websites"]["fav_language"] == "FR":
     WEBSITES = FR_WEBSITES
-elif SETTINGS["websites"]["languages"] == "EN":
+elif SETTINGS["websites"]["fav_language"] == "EN":
     WEBSITES = EN_WEBSITES
 
 # Instanciate the logger
@@ -87,13 +78,9 @@ elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == "I
 DRIVER = set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS)
 
 # Load SQl datas
-try:
-    CONN = sql.connect(f'{SRC_DIRECTORY}/foundation/database/Pan_datas.db')
-    SELECTOR = CONN.cursor()
-    print(f"\nDatas Loaded {EMOJIS[3]}")
-except sql.Error as e:
-    messagebox.showinfo(f"Database Error [{EMOJIS[15]}]", f"{EMOJIS[9]} Oups, the database is missing. {EMOJIS[17]}\n Error: {str(e)}")
-    exit()
+DB = DatabaseHandler(f'{SRC_DIRECTORY}/foundation/database/Pan_datas.db')
+CONN = DB.conn
+SELECTOR = DB.cursor
 
 
 def check_connection():

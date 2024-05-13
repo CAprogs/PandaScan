@@ -35,6 +35,7 @@ from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN,
 from src.foundation.core.essentials import MAIN_DIRECTORY, SRC_DIRECTORY, DRIVER, SETTINGS, LOG, LANGUAGES
 from src.foundation.core.essentials import WEBSITES, ALL_WEBSITES, FR_WEBSITES, EN_WEBSITES
 from src.foundation.core.emojis import EMOJIS
+from src.foundation.database.manage import TABLES
 
 
 POLICE_1 = ("Inter", 15 * -1)
@@ -165,7 +166,7 @@ def main():
             event (Any): The event triggering the function.
         """
         keyword = '%' + entry_1.get() + '%'
-        query = "SELECT NomManga FROM Mangas WHERE NomManga LIKE ? AND NomSite = ?"
+        query = f"SELECT MangaName FROM {TABLES[1]} WHERE MangaName LIKE ? AND Website = ?"
         SELECTOR.execute(query, (keyword, website_list_var.get()))
         results = [row[0] for row in SELECTOR.fetchall()]
         result_box.delete(0, tk.END)
@@ -270,7 +271,7 @@ def main():
         Args:
             selected_manga_name (str): name of the selected manga
         """
-        query = "SELECT Chapitres FROM ChapterLink WHERE NomSite = ? AND NomManga = ?"
+        query = f"SELECT Chapter FROM {TABLES[2]} WHERE Website = ? AND MangaName = ?"
         SELECTOR.execute(query, (website_list_var.get(), selected_manga_name))
         results = [result[0] for result in SELECTOR.fetchall()]
         chapters_box.delete(0, tk.END)
@@ -405,7 +406,7 @@ def main():
     # === Dropdown selection of the language preference
 
     language_list_var = StringVar(main_window)
-    language_list_var.set(SETTINGS["websites"]["languages"])
+    language_list_var.set(SETTINGS["websites"]["fav_language"])
     language_menu = OptionMenu(main_window, language_list_var, LANGUAGES[0], LANGUAGES[1], LANGUAGES[2])
     manage_menu(language_menu, LANGUAGES, language_list_var)
     language_menu.place(x=420.0, y=150.0, width=47.0)

@@ -25,19 +25,19 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []
-    columns = ["NomSite", "NomManga", "Chapitres", "ChapterLink"]
+    columns = ["Website", "MangaName", "Chapter", "ChapterLink"]
 
     pattern = r'/ch/(\d+)/sub/(\d+)'
 
-    for index, manga_name in enumerate(datas['NomManga']):
-        url = datas['links'][index]
+    for index, manga_name in enumerate(datas['MangaName']):
+        url = datas['MangaLink'][index]
         DRIVER.get(url)
 
         time.sleep(2)
 
         i = 2
         LOG.debug(f"Manga : {manga_name}")
-        manga_chapters_dict[manga_name] = []
+        manga_chapters_dict[manga_name] = set()
 
         while True:
             balise = str(f'//*[@id="comic"]/div[3]/div[2]/div[{i}]/div[1]/a[1]')
@@ -53,13 +53,14 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
                     chapter_number = download_link.split("/")[-1]
 
                 chapter = "chapitre " + chapter_number
-                manga_chapters_dict[manga_name].append(chapter)
+                manga_chapters_dict[manga_name].add(chapter)
                 chapters_and_links.append(["fmteam", manga_name, chapter, download_link])
                 LOG.debug(f"{chapter} added | link : {download_link}")
                 i += 1
             except Exception as e:
+                datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
                 LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
-                if manga_chapters_dict[manga_name] == []:
+                if manga_chapters_dict[manga_name] == set():
                     failed_mangas.append(manga_name)
                 try:
                     int(chapter_number)
@@ -69,7 +70,7 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
                     LOG.debug(f"Chapter N°{int(ch_number) - 1} doesn't exist | {manga_name}\n {e}")
                     break
 
-    if len(failed_mangas) == len(datas['NomManga']):
+    if len(failed_mangas) == len(datas['MangaName']):
         LOG.debug("Error : All mangas failed ..")
         return "failed"
     elif failed_mangas != []:
@@ -83,4 +84,6 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
 
     with open(f'{PATH_TO_FMTEAM}/datas/mangas_chapters_temp.yml', 'w') as file:
         file.write(yml_data)
+
+    datas.to_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv', index=False)
     return "success"

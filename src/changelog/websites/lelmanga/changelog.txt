@@ -359,3 +359,32 @@ Changes in the-pool:
   • Added chapters: chapitre 3
 Changes in vinland-saga:
   • Added chapters: chapitre 210
+
+Update 24 : 12/05/2024 | 19:43:57
+Changes in blue-lock:
+  • Added chapters: chapitre 260
+Changes in burning-kabaddi:
+  • Added chapters: chapitre 37, chapitre 36, chapitre 35, chapitre 34.5
+Changes in chainsaw-man:
+  • Added chapters: chapitre 164, chapitre 163
+Changes in choujin-x:
+  • Added chapters: chapitre 51.3
+Changes in d-gray-man:
+  • Added chapters: chapitre 251
+Changes in dandadan:
+  • Added chapters: chapitre 151, chapitre 150, chapitre 149, chapitre 148
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 259
+Changes in kaiju-no-8:
+  • Added chapters: chapitre 106.5, chapitre 106, chapitre 105
+Changes in my-hero-academia:
+  • Added chapters: chapitre 422
+Changes in one-piece:
+  • Added chapters: chapitre 1114
+Changes in sakamoto-days:
+  • Added chapters: chapitre 165
+Changes in shuumatsu-no-valkyrie:
+  • Added chapters: chapitre 89.5, chapitre 89
+
+Update 25 : 13/05/2024 | 01:32:54
+No added / deprecated files !

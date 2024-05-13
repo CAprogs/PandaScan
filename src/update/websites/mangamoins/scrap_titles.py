@@ -87,6 +87,7 @@ def Scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
 
     LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
-    datas = pd.DataFrame(manga_name_list, columns=["NomManga"])
+    datas = pd.DataFrame(manga_name_list, columns=["MangaName"])
+    datas['n_chapter'] = 0
     datas.to_csv(f'{PATH_TO_MANGAMOINS}/datas/mangas.csv', index=False)
     return "success"

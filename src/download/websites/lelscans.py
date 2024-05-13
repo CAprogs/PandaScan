@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from src.foundation.core.essentials import SELECTOR, LOG
 from src.foundation.core.emojis import EMOJIS
+from ..utils import fetch_chapterlink
 
 
 def init_download(selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str):
@@ -18,9 +19,7 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
     """
 
     page = 1
-    query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
-    SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
-    url = SELECTOR.fetchone()[0]
+    url = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
 
     while True:
         chapter_link = url + f"/{page}"

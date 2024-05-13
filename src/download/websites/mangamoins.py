@@ -4,6 +4,7 @@ import io
 from src.foundation.core.essentials import SELECTOR
 from src.foundation.core.essentials import LOG
 from src.foundation.core.emojis import EMOJIS
+from ..utils import fetch_chapterlink
 
 
 def init_download(selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str):
@@ -19,9 +20,7 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
         str: download status (success or failed)
     """
 
-    query = "SELECT ChapterLink FROM ChapterLink WHERE NomManga = ? AND NomSite = ? AND Chapitres = ?"
-    SELECTOR.execute(query, (selected_manga_name, selected_website, chapter_name))
-    chapter_link = SELECTOR.fetchone()[0]
+    chapter_link = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
 
     try:
         http_response = requests.get(chapter_link)

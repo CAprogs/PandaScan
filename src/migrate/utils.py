@@ -1,6 +1,6 @@
 
-def Delete_table(table: str, CONN, SELECTOR):
-    """Delete the content of a table.
+def clean_table(table: str, CONN, SELECTOR):
+    """Empty the content of a table.
 
     Args:
         table (str): name of the table to delete
