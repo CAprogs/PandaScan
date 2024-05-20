@@ -61,6 +61,8 @@ def Scrap_chapters(DRIVER, PATH_TO_LHTRANSLATION: str, LOG):
 
             datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
             LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
+            manga_chapters_dict[manga_name] = list(manga_chapters_dict[manga_name])
+            manga_chapters_dict[manga_name].sort(key=lambda x: float(x.split()[1]), reverse=True)
 
         except Exception as e:
             failed_mangas.append(manga_name)

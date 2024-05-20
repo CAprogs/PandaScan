@@ -42,19 +42,30 @@ def Scrap_chapters(PATH_TO_ANIMESAMA: str, LOG):
             manga_chapters_dict[manga_name] = set()
             options = select_element.find("ul").contents
 
-            for option in options:
+            for option in [option for option in options if option != '\n']:
                 soup_2 = BeautifulSoup(str(option), 'html.parser')
                 li_element = soup_2.find('li', {'data-num': True})
                 a_element = li_element.find('a')
                 # extract the chapter and his link
-                chapter = "chapitre " + li_element['data-num']
                 chapter_link = a_element['href']
+                inversed_chapter_link_list = chapter_link.split('-')[::-1]
+                for index, i in enumerate(inversed_chapter_link_list):
+                    if i == 'vf':
+                        continue
+                    elif i.isdigit():
+                        chap_nb = i
+                        if inversed_chapter_link_list[index + 1].isdigit():
+                            chap_nb = inversed_chapter_link_list[index + 1] + '.' + i
+                        chapter = "chapitre " + chap_nb
+                        break
                 manga_chapters_dict[manga_name].add(chapter)
                 chapters_and_links.append(["animesama", manga_name, chapter, chapter_link])
                 LOG.debug(f"{chapter} added | link : {chapter_link}")
 
             datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
             LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched.")
+            manga_chapters_dict[manga_name] = list(manga_chapters_dict[manga_name])
+            manga_chapters_dict[manga_name].sort(key=lambda x: float(x.split()[1]), reverse=True)
 
         except Exception as e:
             failed_mangas.append(manga_name)
