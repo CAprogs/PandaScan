@@ -411,3 +411,32 @@ No added / deprecated files !
 
 Update 48 : 13/05/2024 | 01:30:44
 No added / deprecated files !
+
+Update 49 : 20/05/2024 | 03:53:18
+Changes in blue-lock:
+  • Added chapters: chapitre 261
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1456
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 260
+Changes in kingdom:
+  • Added chapters: chapitre 796
+Changes in my-hero-academia:
+  • Added chapters: chapitre 423
+
+Update 50 : 14/07/2024 | 18:18:24
+Changes in blue-lock:
+  • Added chapters: chapitre 268, chapitre 267, chapitre 266, chapitre 265, chapitre 264, chapitre 263, chapitre 262
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1462, chapitre 1461, chapitre 1460, chapitre 1459, chapitre 1458, chapitre 1457
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 263, chapitre 262.2, chapitre 262, chapitre 261, chapitre 226.2
+Changes in kingdom:
+  • Added chapters: chapitre 803, chapitre 802, chapitre 801, chapitre 800, chapitre 799, chapitre 798, chapitre 797
+Changes in my-hero-academia:
+  • Added chapters: chapitre 427, chapitre 426, chapitre 425, chapitre 424
+Changes in one-piece:
+  • Added chapters: chapitre 1120, chapitre 1119, chapitre 1118, chapitre 1117, chapitre 1116, chapitre 1115
+
+Update 51 : 14/07/2024 | 22:51:38
+No added / deprecated files !

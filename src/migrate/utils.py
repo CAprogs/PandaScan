@@ -19,3 +19,22 @@ def clean_table(table: str, CONN, SELECTOR):
         return True
     else:
         return False
+
+
+def found_and_clean_duplicates(df, columns: list):
+    """
+    Search duplicated values from a CSV based on a combination of columns
+
+    Args:
+        df (DataFrame): dataframe to treat
+        columns (list): list of columns used to find duplicates
+
+    Returns:
+        tuple: If the dataframe doesn't contains any duplicates then return (df, None) otherwise (df, df_duplicates).
+    """
+    df_duplicates = df[df.duplicated(subset=columns, keep=False)]
+
+    if not df_duplicates.empty:
+        df.drop_duplicates(subset=columns, inplace=True)
+        return df, df_duplicates
+    return df, None

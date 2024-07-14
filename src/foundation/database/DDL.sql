@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS "Mangas" (
     "has_tome" TEXT,
     "last_tome"	TEXT,
     "MangaLink"	TEXT,
-    CONSTRAINT "FK_Mangas_SitesWeb" FOREIGN KEY ("Website") REFERENCES "Websites" ("Website"),
+    CONSTRAINT "FK_Websites" FOREIGN KEY ("Website") REFERENCES "Websites" ("Website"),
     CONSTRAINT "PK_Mangas" PRIMARY KEY ("MangaName", "Website")
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "Chapters" (
     "MangaName" TEXT,
     "Chapter" TEXT,
     "ChapterLink" TEXT,
-    CONSTRAINT "FK_ChapterLink_Mangas" FOREIGN KEY ("MangaName", "Website") REFERENCES "Mangas" ("MangaName", "Website"),
+    CONSTRAINT "FK_Mangas" FOREIGN KEY ("MangaName", "Website") REFERENCES "Mangas" ("MangaName", "Website"),
     CONSTRAINT "PK_ChapterLink" PRIMARY KEY ("Website", "MangaName", "Chapter")
 );
 
@@ -51,6 +51,16 @@ CREATE TABLE IF NOT EXISTS "Historic" (
     "size" INTEGER, -- peut etre null si le status est failed ou le type de traitement est "update"
     "changelog" TEXT, -- peut etre null si le status est type de traitement est download ou le status est failed. "add" ou "delete
     "error" TEXT, -- peut etre null si le status est success
-    CONSTRAINT "FK_ChapterLink" FOREIGN KEY ("Website", "MangaName", "Chapter") REFERENCES "ChapterLink" ("Website", "MangaName", "Chapter"),
+    CONSTRAINT "FK_Chapters" FOREIGN KEY ("Website", "MangaName", "Chapter") REFERENCES "Chapters" ("Website", "MangaName", "Chapter"),
     CONSTRAINT "PK_Historic" PRIMARY KEY ("Website", "MangaName", "Chapter", "datetime")
+);
+
+-- table "Duplicates"
+
+CREATE TABLE IF NOT EXISTS "Duplicates" (
+    "Website" TEXT,
+    "MangaName" TEXT,
+    "Chapter" TEXT,
+    "ChapterLink" TEXT,
+    CONSTRAINT "PK_Duplicates" PRIMARY KEY ("Website", "MangaName", "Chapter", "ChapterLink")
 );

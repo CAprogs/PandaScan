@@ -1,7 +1,7 @@
 {
     "App_version": "v3.0.4",
     "driver": {
-        "path": "",
+        "path": "/Users/charles-albert/Desktop/PandaScan/src/../chromedriver-mac-arm64/chromedriver",
         "headless": true,
         "user_agent": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "api_endpoint": "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json"
@@ -16,63 +16,54 @@
             "language": "FR",
             "enabled": true,
             "n_manga": 24,
-            "n_update": 43,
-            "time_to_update": 201.91,
-            "last_update": "13/05/2024 | 01:30:39"
+            "n_update": 48,
+            "time_to_update": 189.95,
+            "last_update": "14/07/2024 | 22:51:26"
         },
         "lelscans": {
             "link": "https://lelscans.net/",
             "language": "FR",
             "enabled": true,
             "n_manga": 34,
-            "n_update": 48,
-            "time_to_update": 5.48,
-            "last_update": "13/05/2024 | 01:30:44"
-        },
-        "animesama": {
-            "link": "https://anime-sama.me/",
-            "language": "FR",
-            "enabled": true,
-            "n_manga": 0,
-            "n_update": 27,
-            "time_to_update": 76.06,
-            "last_update": ""
+            "n_update": 51,
+            "time_to_update": 12.22,
+            "last_update": "14/07/2024 | 22:51:38"
         },
         "tcbscans": {
             "link": "https://tcbscans.com/",
             "language": "EN",
             "enabled": true,
-            "n_manga": 0,
-            "n_update": 11,
-            "time_to_update": 13.85,
-            "last_update": ""
+            "n_manga": 16,
+            "n_update": 13,
+            "time_to_update": 13.32,
+            "last_update": "14/07/2024 | 22:51:51"
         },
         "lelmanga": {
             "link": "https://www.lelmanga.com/",
             "language": "FR",
             "enabled": true,
             "n_manga": 66,
-            "n_update": 25,
-            "time_to_update": 12.51,
-            "last_update": "13/05/2024 | 01:32:54"
+            "n_update": 27,
+            "time_to_update": 28.71,
+            "last_update": "14/07/2024 | 22:52:20"
         },
         "manganelo": {
             "link": "https://ww7.manganelo.tv/",
             "language": "EN",
             "enabled": true,
-            "n_manga": 800,
-            "n_update": 11,
-            "time_to_update": 302.87,
-            "last_update": "13/05/2024 | 01:37:57"
+            "n_manga": 784,
+            "n_update": 13,
+            "time_to_update": 670.41,
+            "last_update": "14/07/2024 | 23:03:30"
         },
         "mangamoins": {
             "link": "https://mangamoins.shaeishu.co/?p=1",
             "language": "FR",
             "enabled": true,
-            "n_manga": 19,
-            "n_update": 21,
-            "time_to_update": 11.64,
-            "last_update": "13/05/2024 | 01:38:09"
+            "n_manga": 23,
+            "n_update": 23,
+            "time_to_update": 23.71,
+            "last_update": "14/07/2024 | 23:03:54"
         },
         "mangasaki": {
             "link": "https://www.mangasaki.org/",
@@ -87,10 +78,10 @@
             "link": "https://lhtranslation.net/home/",
             "language": "EN",
             "enabled": true,
-            "n_manga": 89,
-            "n_update": 5,
-            "time_to_update": 102.93,
-            "last_update": "13/05/2024 | 01:39:52"
+            "n_manga": 95,
+            "n_update": 7,
+            "time_to_update": 125.48,
+            "last_update": "14/07/2024 | 23:06:00"
         }
     },
     "Download": {

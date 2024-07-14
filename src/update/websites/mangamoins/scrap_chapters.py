@@ -81,10 +81,10 @@ def Scrap_chapters(PATH_TO_MANGAMOINS: str, LOG):
             return "failed"
 
     for index, manga_name in enumerate(manga_chapters_dict.keys()):
-        datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
-        LOG.debug(f"{manga_name} : {len(manga_chapters_dict[manga_name])} chapters fetched.")
         manga_chapters_dict[manga_name] = list(manga_chapters_dict[manga_name])
         manga_chapters_dict[manga_name].sort(key=lambda x: float(x.split()[1]), reverse=True)
+        datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
+        LOG.debug(f"{manga_name} : {len(manga_chapters_dict[manga_name])} chapters fetched.")
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
     links_dataframe.to_csv(f'{PATH_TO_MANGAMOINS}/datas/chapters_links.csv', index=False)

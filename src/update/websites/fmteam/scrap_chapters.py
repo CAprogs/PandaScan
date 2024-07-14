@@ -51,18 +51,22 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
                     chapter_number = ch_number + "." + sub_number
                 else:
                     chapter_number = download_link.split("/")[-1]
+                    if not chapter_number.isdigit():
+                        chapter_number = download_link.split("/")[-2]
+                        if not chapter_number.isdigit() and '-' in chapter_number:
+                            chapter_number = chapter_number.split('-')[-1]
 
-                chapter = "chapitre " + chapter_number
+                chapter = "chapitre " + str(chapter_number)
                 manga_chapters_dict[manga_name].add(chapter)
                 chapters_and_links.append(["fmteam", manga_name, chapter, download_link])
                 LOG.debug(f"{chapter} added | link : {download_link}")
                 i += 1
             except Exception as e:
-                datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
-                LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
                 manga_chapters_dict[manga_name] = list(manga_chapters_dict[manga_name])
                 manga_chapters_dict[manga_name].sort(key=lambda x: float(x.split()[1]), reverse=True)
-                if manga_chapters_dict[manga_name] == set():
+                datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
+                LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
+                if manga_chapters_dict[manga_name] == list():
                     failed_mangas.append(manga_name)
                 try:
                     int(chapter_number)

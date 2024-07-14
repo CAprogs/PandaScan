@@ -32,7 +32,6 @@ PATH_TO_CONFIG = SRC_DIRECTORY / "config.json"
 # paths to websites file ( Update )
 PATH_TO_LELSCANS = SRC_DIRECTORY / "update/websites/lelscans"
 PATH_TO_FMTEAM = SRC_DIRECTORY / "update/websites/fmteam"
-PATH_TO_ANIMESAMA = SRC_DIRECTORY / "update/websites/animesama"
 PATH_TO_TCBSCANS = SRC_DIRECTORY / "update/websites/tcbscans"
 PATH_TO_LELMANGA = SRC_DIRECTORY / "update/websites/lelmanga"
 PATH_TO_MANGANELO = SRC_DIRECTORY / "update/websites/manganelo"
@@ -78,7 +77,8 @@ elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == "I
 DRIVER = set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS)
 
 # Load SQl datas
-DB = DatabaseHandler(f'{SRC_DIRECTORY}/foundation/database/Pan_datas.db')
+DATABASE_DIRECTORY = f'{SRC_DIRECTORY}/foundation/database/'
+DB = DatabaseHandler(f'{DATABASE_DIRECTORY}Pan_datas.db', f'{DATABASE_DIRECTORY}DDL.sql')
 CONN = DB.conn
 SELECTOR = DB.cursor
 

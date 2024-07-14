@@ -146,3 +146,27 @@ Changes in astro-royale:
   • Added chapters: chapitre 04
 Changes in spy-x-family:
   • Added chapters: chapitre 98
+
+Update 22 : 20/05/2024 | 04:00:31
+Changes in astro-royale:
+  • Added chapters: chapitre 05
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 260
+Changes in my-hero-academia:
+  • Added chapters: chapitre 423
+
+Update 23 : 14/07/2024 | 23:03:54
+Changes in astro-royale:
+  • Added chapters: chapitre 13, chapitre 12, chapitre 11, chapitre 10, chapitre 09, chapitre 08, chapitre 07, chapitre 06
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 263, chapitre 262, chapitre 261
+=> Added new entry 'jujutsu-kaisen-262-partie-2' with chapters: chapitre 262
+=> Added new entry 'jujutsu-kaisen-colo' with chapters: chapitre 262
+=> Added new entry 'my-hero-academi' with chapters: chapitre 427
+Changes in my-hero-academia:
+  • Added chapters: chapitre 426, chapitre 425, chapitre 424
+Changes in one-piece:
+  • Added chapters: chapitre 1120, chapitre 1119, chapitre 1118, chapitre 1117, chapitre 1116, chapitre 1115
+Changes in spy-x-family:
+  • Added chapters: chapitre 101, chapitre 100, chapitre 99
+=> Added new entry 'spy-x-family--mission-de-recherche' with chapters: chapitre 01

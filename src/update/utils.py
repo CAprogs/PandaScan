@@ -4,9 +4,8 @@ from typing import Literal
 from src.changelog.manage import generate_changelog
 from src.foundation.core.essentials import DRIVER, PATH_TO_CONFIG
 from src.foundation.core.essentials import PATH_TO_FMTEAM, PATH_TO_LELSCANS
-from src.foundation.core.essentials import PATH_TO_ANIMESAMA, PATH_TO_TCBSCANS, PATH_TO_LELMANGA
-from src.foundation.core.essentials import PATH_TO_MANGANELO, PATH_TO_MANGAMOINS, PATH_TO_MANGASAKI
-from src.foundation.core.essentials import PATH_TO_LHTRANSLATION
+from src.foundation.core.essentials import PATH_TO_TCBSCANS, PATH_TO_LELMANGA, PATH_TO_MANGANELO
+from src.foundation.core.essentials import PATH_TO_MANGAMOINS, PATH_TO_MANGASAKI, PATH_TO_LHTRANSLATION
 from src.foundation.core.emojis import EMOJIS
 
 
@@ -99,7 +98,6 @@ def check_and_update(selected_website: str, SETTINGS, i: int, LOG):
     if SETTINGS["websites"][selected_website]["enabled"]:
         from src.update.websites.lelscans.update_datas import Update_lelscans
         from src.update.websites.fmteam.update_datas import Update_fmteam
-        from src.update.websites.animesama.update_datas import Update_animesama
         from src.update.websites.tcbscans.update_datas import Update_tcbscans
         from src.update.websites.lelmanga.update_datas import Update_lelmanga
         from src.update.websites.manganelo.update_datas import Update_manganelo
@@ -115,9 +113,6 @@ def check_and_update(selected_website: str, SETTINGS, i: int, LOG):
         elif selected_website == "fmteam":
             path = PATH_TO_FMTEAM
             i = Update_fmteam(DRIVER, path, LOG)
-        elif selected_website == "animesama":
-            path = PATH_TO_ANIMESAMA
-            i = Update_animesama(path, LOG)
         elif selected_website == "tcbscans":
             path = PATH_TO_TCBSCANS
             i = Update_tcbscans(path, LOG)

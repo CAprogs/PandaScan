@@ -274,8 +274,9 @@ def main():
         query = f"SELECT Chapter FROM {TABLES[2]} WHERE Website = ? AND MangaName = ?"
         SELECTOR.execute(query, (website_list_var.get(), selected_manga_name))
         results = [result[0] for result in SELECTOR.fetchall()]
+        sorted_results = sorted(results, key=lambda x: float(x.split(' ')[-1]), reverse=True)
         chapters_box.delete(0, tk.END)
-        chapters_box.insert(tk.END, *results)
+        chapters_box.insert(tk.END, *sorted_results)
         result = chapters_box.get(tk.END)
         if Check_box_var.get() == 1 or result != "":
             Clear_range_menus()

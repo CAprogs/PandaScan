@@ -46,6 +46,7 @@ def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SET
     except Exception as e:
         LOG.info("""The path provided is obsolete or doesn't refer to the 'chromedriver.exe' file ⚠️
                 \nIf you previously downloaded the chromedriver, you might need to authorize its execution.
+                \nIf the issue persists, please update your browser to the latest version by going to : chrome://settings/help
                 \nRefer to the 'README' file for more information.
                 """)
         LOG.debug({str(e)})

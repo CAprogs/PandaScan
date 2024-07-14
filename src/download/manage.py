@@ -1,7 +1,5 @@
-from src.download.websites import lelscans, fmteam
-from src.download.websites import animesama, tcbscans, lelmanga
-from src.download.websites import manganelo, mangamoins, mangasaki
-from src.download.websites import lhtranslation
+from src.download.websites import lelscans, fmteam, tcbscans, lelmanga
+from src.download.websites import manganelo, mangamoins, mangasaki, lhtranslation
 from src.download.utils import check_manga_path
 
 
@@ -27,9 +25,6 @@ def download(selected_website: str, chapter_file_path: str, selected_manga_name:
 
     elif selected_website == "fmteam":
         status = fmteam.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name, DRIVER)
-
-    elif selected_website == "animesama":
-        status = animesama.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)
 
     elif selected_website == "tcbscans":
         status = tcbscans.init_download(selected_website, chapter_file_path, selected_manga_name, chapter_name)

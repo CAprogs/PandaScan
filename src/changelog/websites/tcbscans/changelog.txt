@@ -66,3 +66,18 @@ Changes in my-hero-academia:
   • Added chapters: chapter 417, chapter 416, chapter 415, chapter 414
 Changes in one-piece:
   • Added chapters: chapter 1110, chapter 1109, chapter 1108, chapter 1107, chapter 1106
+
+Update 12 : 14/07/2024 | 21:59:01
+Changes in black-clover:
+  • Added chapters: chapter 370.371
+Changes in chainsaw-man:
+  • Added chapters: chapter 170, chapter 169, chapter 168, chapter 167, chapter 166, chapter 165, chapter 164, chapter 163, chapter 162, chapter 161, chapter 160
+Changes in jujutsu-kaisen:
+  • Added chapters: chapter 263, chapter 262.5, chapter 262, chapter 261, chapter 260, chapter 259, chapter 258, chapter 257, chapter 256, chapter 255, chapter 254
+Changes in my-hero-academia:
+  • Added chapters: chapter 427, chapter 426, chapter 425, chapter 424, chapter 423, chapter 422, chapter 421, chapter 420, chapter 419, chapter 418
+Changes in one-piece:
+  • Added chapters: chapter 1120, chapter 1119, chapter 1118, chapter 1117, chapter 1116, chapter 1115, chapter 1114, chapter 1113, chapter 1112, chapter 1111
+
+Update 13 : 14/07/2024 | 22:51:51
+No added / deprecated files !

@@ -1,5 +1,5 @@
 import pandas as pd
-from .utils import clean_table
+from .utils import clean_table, found_and_clean_duplicates
 from src.foundation.core.essentials import SETTINGS
 from src.foundation.core.emojis import EMOJIS
 from src.foundation.database.manage import TABLES
@@ -35,7 +35,7 @@ def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
     latest_website_index = nb_websites - 1
     failed_migrations = []
 
-    tables_to_clean = [TABLES[0], TABLES[1], TABLES[2]]
+    tables_to_clean = [TABLES[0], TABLES[1], TABLES[2], TABLES[4]]
 
     LOG.info("Database Checks and Cleanup ..")
 
@@ -59,7 +59,12 @@ def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
 
             # [chapters_links.csv] -> Table "Chapters"
             df_chapters_links = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/chapters_links.csv')
+            df_chapters_links, df_duplicates = found_and_clean_duplicates(df_chapters_links, ['Website', 'MangaName', 'Chapter'])
             df_chapters_links.to_sql(TABLES[2], CONN, if_exists='append', index=False)
+
+            # [df_duplicates] -> Table "Duplicates"
+            if df_duplicates is not None:
+                df_duplicates.to_sql(TABLES[4], CONN, if_exists='append', index=False)
 
             # Save changes to the database
             CONN.commit()

@@ -1,21 +1,23 @@
 import sqlite3 as sql
 from tkinter import messagebox
+from .utils import create_db_from_ddl
 from ..core.emojis import EMOJIS
 from ..selenium.utils import exit_app
 # from datetime import datetime
 
 
-TABLES = ['Websites', 'Mangas', 'Chapters', 'Historic']
+TABLES = ['Websites', 'Mangas', 'Chapters', 'Historic', 'Duplicates']
 
 
 class DatabaseHandler:
-    def __init__(self, path_to_db: str):
+    def __init__(self, path_to_db: str, path_to_ddl: str):
         try:
+            create_db_from_ddl(path_to_db, path_to_ddl, overwrite=False)
             self.conn = sql.connect(path_to_db)
             self.cursor = self.conn.cursor()
             print(f"\nDatas Loaded {EMOJIS[3]}")
         except sql.Error as e:
-            messagebox.showinfo(f"Database Error [{EMOJIS[15]}]", f"{EMOJIS[9]} Oups, the database is missing. {EMOJIS[17]}\n Error: {str(e)}")
+            messagebox.showinfo(f"An Error occured when trying to load Datas [{EMOJIS[15]}] : {e}")
             exit_app()
 
     def insert_data(self, table_name: str, data: dict):

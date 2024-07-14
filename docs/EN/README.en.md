@@ -16,8 +16,8 @@
 
 ## About 🥢
 
-- Over **`4050 mangas`** available
-- Over **`282 000 chapters`** downloadable
+- Over **`3500 mangas`** available
+- Over **`260 000 chapters`** downloadable
 
 <details>
   <summary> Available websites 🌐 </summary>
@@ -26,9 +26,8 @@
 | :-------- | :-------   |
 | [lelscans.net](https://lelscans.net/lecture-ligne-one-piece) | [tcbscans.com](https://tcbscans.com/) |
 | [fmteam.fr](https://fmteam.fr/comics) | [manganelo.tv](https://ww7.manganelo.tv/) |
-| [anime-sama.me](https://anime-sama.me/) | [mangasaki.org](https://www.mangasaki.org/) |
-| [lelmanga.com](https://www.lelmanga.com/) | [lhtranslation.net](https://lhtranslation.net/home/) |
-| [mangamoins.shaeishu.co](https://mangamoins.shaeishu.co/?p=1) |  |
+| [lelmanga.com](https://www.lelmanga.com/) | [mangasaki.org](https://www.mangasaki.org/) |
+| [mangamoins.shaeishu.co](https://mangamoins.shaeishu.co/?p=1) | [lhtranslation.net](https://lhtranslation.net/home/) |
 
 </details>
 
