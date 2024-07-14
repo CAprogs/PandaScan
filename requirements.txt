@@ -1,6 +1,6 @@
 attrs==23.1.0
 beautifulsoup4==4.12.2
-certifi==2023.7.22
+certifi==2024.7.4
 charset-normalizer==3.3.2
 emoji==2.8.0
 h11==0.14.0
