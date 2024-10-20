@@ -81,3 +81,18 @@ Changes in one-piece:
 
 Update 13 : 14/07/2024 | 22:51:51
 No added / deprecated files !
+
+Update 14 : 20/10/2024 | 23:29:50
+Changes in black-clover:
+  • Added chapters: chapter 373, chapter 372
+Changes in chainsaw-man:
+  • Added chapters: chapter 179, chapter 178, chapter 177, chapter 176, chapter 175, chapter 174, chapter 173, chapter 172, chapter 171
+Changes in hunter-x-hunter:
+  • Added chapters: chapter 403, chapter 402, chapter 401
+Changes in jujutsu-kaisen:
+  • Added chapters: chapter 271, chapter 270, chapter 269, chapter 268, chapter 267, chapter 266, chapter 265, chapter 264
+Changes in my-hero-academia:
+  • Added chapters: chapter 430, chapter 429, chapter 428
+=> Added new entry 'my-hero-academia-one-shot-you-re-next' with chapters: chapter 1
+Changes in one-piece:
+  • Added chapters: chapter 1130, chapter 1129, chapter 1128, chapter 1127, chapter 1126, chapter 1125, chapter 1124, chapter 1123, chapter 1122, chapter 1121

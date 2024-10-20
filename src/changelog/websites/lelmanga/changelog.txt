@@ -464,3 +464,37 @@ Changes in vinland-saga:
   • Added chapters: chapitre 212, chapitre 211
 Changes in yomotsuhegui-le-fruit-du-royaume-des-morts:
   • Added chapters: chapitre 18, chapitre 17, chapitre 16, chapitre 15, chapitre 14, chapitre 13, chapitre 12, chapitre 11
+
+Update 28 : 20/10/2024 | 23:30:01
+Changes in blue-lock:
+  • Added chapters: chapitre 279, chapitre 278, chapitre 277, chapitre 276, chapitre 275, chapitre 274, chapitre 273, chapitre 272, chapitre 271, chapitre 270, chapitre 269
+Changes in boruto-two-blue-vortex:
+  • Added chapters: chapitre 15, chapitre 14, chapitre 13, chapitre 12
+Changes in chainsaw-man:
+  • Added chapters: chapitre 180, chapitre 179, chapitre 178, chapitre 177, chapitre 176, chapitre 175, chapitre 173, chapitre 172, chapitre 171
+Changes in choujin-x:
+  • Added chapters: chapitre 58.1, chapitre 57, chapitre 56.2, chapitre 53.2, chapitre 53.1, chapitre 52.4
+Changes in dandadan:
+  • Added chapters: chapitre 170, chapitre 169, chapitre 168, chapitre 167, chapitre 166, chapitre 165
+Changes in fairy-tail-100-years-quest:
+  • Added chapters: chapitre 170, chapitre 169, chapitre 168, chapitre 167, chapitre 166, chapitre 165, chapitre 164
+Changes in four-knights-of-the-apocalypse:
+  • Added chapters: chapitre 166, chapitre 165, chapitre 164, chapitre 163, chapitre 162, chapitre 161, chapitre 160, chapitre 159, chapitre 158, chapitre 157, chapitre 156, chapitre 155, chapitre 154, chapitre 153
+Changes in hunter-x-hunter:
+  • Added chapters: chapitre 402, chapitre 401
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 271, chapitre 270, chapitre 269, chapitre 268, chapitre 267, chapitre 266, chapitre 265, chapitre 264
+Changes in kaiju-no-8:
+  • Added chapters: chapitre 115, chapitre 114, chapitre 113, chapitre 112, chapitre 111, chapitre 110
+Changes in kingdom:
+  • Added chapters: chapitre 812, chapitre 811, chapitre 810, chapitre 809, chapitre 808, chapitre 807, chapitre 806, chapitre 805, chapitre 804
+Changes in my-hero-academia:
+  • Added chapters: chapitre 430, chapitre 429, chapitre 428
+Changes in one-piece:
+  • Added chapters: chapitre 1130, chapitre 1129, chapitre 1128, chapitre 1127, chapitre 1126, chapitre 1125, chapitre 1124, chapitre 1123, chapitre 1122, chapitre 1121
+Changes in one-punch-man:
+  • Added chapters: chapitre 267, chapitre 266, chapitre 265, chapitre 264, chapitre 263
+Changes in sakamoto-days:
+  • Added chapters: chapitre 186, chapitre 185, chapitre 184, chapitre 183, chapitre 182, chapitre 181, chapitre 180, chapitre 178, chapitre 177
+Changes in vinland-saga:
+  • Added chapters: chapitre 214, chapitre 213

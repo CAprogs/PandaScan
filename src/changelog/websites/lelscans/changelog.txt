@@ -440,3 +440,64 @@ Changes in one-piece:
 
 Update 51 : 14/07/2024 | 22:51:38
 No added / deprecated files !
+
+Update 52 : 08/08/2024 | 02:31:36
+Changes in blue-lock:
+  • Added chapters: chapitre 272, chapitre 271, chapitre 270, chapitre 269
+Changes in d-gray-man:
+  • Added chapters: chapitre 252
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1466, chapitre 1465, chapitre 1464, chapitre 1463
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 265, chapitre 264
+Changes in kingdom:
+  • Added chapters: chapitre 806, chapitre 805, chapitre 804
+Changes in my-hero-academia:
+  • Added chapters: chapitre 430, chapitre 429, chapitre 428
+Changes in one-piece:
+  • Added chapters: chapitre 1122, chapitre 1121
+
+Update 53 : 13/09/2024 | 21:21:47
+Changes in blue-lock:
+  • Added chapters: chapitre 275, chapitre 274, chapitre 273
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1469, chapitre 1468, chapitre 1467
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 268, chapitre 267, chapitre 266
+Changes in kingdom:
+  • Added chapters: chapitre 809, chapitre 808, chapitre 807
+Changes in one-piece:
+  • Added chapters: chapitre 1126, chapitre 1125, chapitre 1124, chapitre 1123
+Changes in one-punch-man:
+  • Added chapters: chapitre 201
+
+Update 54 : 06/10/2024 | 17:53:09
+Changes in blue-lock:
+  • Added chapters: chapitre 812, chapitre 277, chapitre 276
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1472, chapitre 1471, chapitre 1470
+Changes in hunter-x-hunter:
+  • Added chapters: chapitre 401
+Changes in jujutsu-kaisen:
+  • Added chapters: chapitre 271, chapitre 270, chapitre 269
+Changes in kingdom:
+  • Added chapters: chapitre 811, chapitre 810
+Changes in one-piece:
+  • Added chapters: chapitre 1128, chapitre 1127
+Changes in one-punch-man:
+  • Added chapters: chapitre 203, chapitre 202
+
+Update 55 : 20/10/2024 | 23:29:42
+Changes in blue-lock:
+  • Added chapters: chapitre 279, chapitre 278
+  • Removed chapters: chapitre 812
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1473
+Changes in hunter-x-hunter:
+  • Added chapters: chapitre 402
+Changes in kingdom:
+  • Added chapters: chapitre 814, chapitre 813
+Changes in one-piece:
+  • Added chapters: chapitre 1130, chapitre 1129
+Changes in one-punch-man:
+  • Added chapters: chapitre 204

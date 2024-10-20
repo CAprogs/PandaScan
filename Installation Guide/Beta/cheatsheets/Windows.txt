@@ -20,7 +20,7 @@ path\to\panda.bat =
 conda init powershell
 
 2. Powershell
-conda create --name pandavenv -y && conda activate pandavenv && cd path\to\Pandascan_Beta && conda install pip -y && pip install -r requirements.txt && python App.py
+conda create --name pandavenv -y ;; conda activate pandavenv ;; cd path\to\Pandascan_Beta ;; conda install pip -y ;; pip install -r requirements.txt ;; python App.py
 
 ========> Create an executable
 
