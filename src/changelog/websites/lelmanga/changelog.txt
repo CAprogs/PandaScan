@@ -498,3 +498,6 @@ Changes in sakamoto-days:
   • Added chapters: chapitre 186, chapitre 185, chapitre 184, chapitre 183, chapitre 182, chapitre 181, chapitre 180, chapitre 178, chapitre 177
 Changes in vinland-saga:
   • Added chapters: chapitre 214, chapitre 213
+
+Update 29 : 26/10/2024 | 18:57:03
+No added / deprecated files !

@@ -96,3 +96,6 @@ Changes in my-hero-academia:
 => Added new entry 'my-hero-academia-one-shot-you-re-next' with chapters: chapter 1
 Changes in one-piece:
   • Added chapters: chapter 1130, chapter 1129, chapter 1128, chapter 1127, chapter 1126, chapter 1125, chapter 1124, chapter 1123, chapter 1122, chapter 1121
+
+Update 15 : 26/10/2024 | 18:48:48
+No added / deprecated files !

@@ -501,3 +501,19 @@ Changes in one-piece:
   • Added chapters: chapitre 1130, chapitre 1129
 Changes in one-punch-man:
   • Added chapters: chapitre 204
+
+Update 56 : 26/10/2024 | 17:08:57
+Changes in blue-lock:
+  • Added chapters: chapitre 280
+Changes in hajime-no-ippo:
+  • Added chapters: chapitre 1474
+Changes in hunter-x-hunter:
+  • Added chapters: chapitre 403
+Changes in kingdom:
+  • Added chapters: chapitre 815
+
+Update 57 : 26/10/2024 | 18:38:11
+No added / deprecated files !
+
+Update 58 : 26/10/2024 | 18:58:57
+No added / deprecated files !
