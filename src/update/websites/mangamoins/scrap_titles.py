@@ -66,6 +66,9 @@ def Scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
                     break
                 for manga in mangas:
                     title_element = manga.find("p")
+                    if title_element.text == "":
+                        LOG.debug(f"No title element | {url}")
+                        continue
                     manga_name = title_element.next.lower().replace(" ", "-")
                     for filter in filters:
                         if filter in manga_name:
