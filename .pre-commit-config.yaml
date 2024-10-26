@@ -1,0 +1,39 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+    - id: check-merge-conflict
+    - id: check-ast
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+    - id: check-symlinks
+    - id: check-json
+    - id: check-toml
+    - id: check-yaml
+    - id: name-tests-test
+      args: [ --pytest-test-first ]
+    - id: no-commit-to-branch
+      args: [ -b , main ]
+    - id: requirements-txt-fixer
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.18.0
+  hooks:
+    - id: pyupgrade
+- repo: https://github.com/gitleaks/gitleaks
+  rev: v8.21.1
+  hooks:
+    - id: gitleaks
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.7.0
+  hooks:
+    - id: ruff
+      args: [ --fix ]
+    - id: ruff-format
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.12.0
+  hooks:
+  - id: mypy
+    verbose: true
+    args: [ --install-types, --non-interactive, --pretty, --disallow-untyped-defs, --strict-equality,  --warn-no-return, --ignore-missing-imports ]
