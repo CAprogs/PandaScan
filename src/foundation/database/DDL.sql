@@ -61,6 +61,5 @@ CREATE TABLE IF NOT EXISTS "Duplicates" (
     "Website" TEXT,
     "MangaName" TEXT,
     "Chapter" TEXT,
-    "ChapterLink" TEXT,
-    CONSTRAINT "PK_Duplicates" PRIMARY KEY ("Website", "MangaName", "Chapter", "ChapterLink")
+    "ChapterLink" TEXT
 );

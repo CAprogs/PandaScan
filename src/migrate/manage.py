@@ -55,16 +55,19 @@ def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
             # [mangas.csv] -> Table "Mangas"
             df_mangas = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
             df_mangas['Website'] = website
+            df_mangas, df_mangas_duplicates = found_and_clean_duplicates(df_mangas, ['MangaName'])
+            df_mangas_duplicates = df_mangas_duplicates[['Website', 'MangaName']] if df_mangas_duplicates is not None else None
             df_mangas.to_sql(TABLES[1], CONN, if_exists='append', index=False)
 
             # [chapters_links.csv] -> Table "Chapters"
             df_chapters_links = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/chapters_links.csv')
-            df_chapters_links, df_duplicates = found_and_clean_duplicates(df_chapters_links, ['Website', 'MangaName', 'Chapter'])
+            df_chapters_links, df_chapters_duplicates = found_and_clean_duplicates(df_chapters_links, ['Website', 'MangaName', 'Chapter'])
             df_chapters_links.to_sql(TABLES[2], CONN, if_exists='append', index=False)
 
-            # [df_duplicates] -> Table "Duplicates"
-            if df_duplicates is not None:
-                df_duplicates.to_sql(TABLES[4], CONN, if_exists='append', index=False)
+            # [df_chapters_duplicates / df_mangas_duplicates] -> Table "Duplicates"
+            for df in [df_mangas_duplicates, df_chapters_duplicates]:
+                if df is not None:
+                    df.to_sql(TABLES[4], CONN, if_exists='append', index=False)
 
             # Save changes to the database
             CONN.commit()
