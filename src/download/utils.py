@@ -15,7 +15,6 @@ def check_manga_path(chapter_file_path: str):
     Returns:
         bool: True(manga already exists), False(otherwise)
     """
-
     if not os.path.exists(chapter_file_path):
         os.makedirs(chapter_file_path)
         return False
@@ -31,10 +30,9 @@ def set_download_path(DRIVER, path: str):
         DRIVER (ANY): the chromedriver
         path (str): path to the folder where to save files
     """
-
     try:
-        params = {'behavior': 'allow', 'downloadPath': path}
-        DRIVER.execute_cdp_cmd('Page.setDownloadBehavior', params)
+        params = {"behavior": "allow", "downloadPath": path}
+        DRIVER.execute_cdp_cmd("Page.setDownloadBehavior", params)
     except Exception as e:
         LOG.debug(f"Error while setting download path : {e}")
 
@@ -46,8 +44,7 @@ def extract_zip(zip_file_path: str, extraction_path: str):
         zip_file_path (str): path of the zip file
         extraction_path (str): path of the folder where to extract files
     """
-
-    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+    with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
         zip_ref.extractall(extraction_path)
 
 
@@ -61,11 +58,10 @@ def find_latest_zip(chapter_file_path: str, timeout: int = 60):
     Returns:
         str: path of the latest zip file
     """
-
     start_time = time.time()
 
     while time.time() - start_time < timeout:
-        zip_files = glob.glob(os.path.join(chapter_file_path, '*.zip'))
+        zip_files = glob.glob(os.path.join(chapter_file_path, "*.zip"))
         if zip_files:
             return max(zip_files, key=os.path.getctime)
         time.sleep(1)
@@ -73,15 +69,15 @@ def find_latest_zip(chapter_file_path: str, timeout: int = 60):
 
 
 def fetch_chapterlink(SELECTOR, *args):
-    """fetch the chapter link.
+    """Fetch the chapter link.
 
     Args:
         SELECTOR (Any): the DB cursor
+        *args (tuple): arguments to pass to the query (MangaName, Website, Chapter)
 
     Returns:
         str: the chapter link
     """
-
     query = f"SELECT ChapterLink FROM {TABLES[2]} WHERE MangaName = ? AND Website = ? AND Chapter = ?"
     SELECTOR.execute(query, *args)
     return SELECTOR.fetchone()[0]

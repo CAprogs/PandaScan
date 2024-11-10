@@ -1,7 +1,7 @@
 from ..mangamoins import scrap_titles, scrap_chapters
 
 
-def Update_mangamoins(PATH_TO_MANGAMOINS: str, LOG):
+def update_mangamoins(PATH_TO_MANGAMOINS: str, LOG):
     """Update mangamoins datas.
 
     Args:
@@ -11,10 +11,9 @@ def Update_mangamoins(PATH_TO_MANGAMOINS: str, LOG):
     Returns:
         int: 1 if success , 0 if an error occured
     """
-
-    result = scrap_titles.Scrap_titles(PATH_TO_MANGAMOINS, LOG)
+    result = scrap_titles.scrap_titles(PATH_TO_MANGAMOINS, LOG)
     if result == "success":
-        result = scrap_chapters.Scrap_chapters(PATH_TO_MANGAMOINS, LOG)
+        result = scrap_chapters.scrap_chapters(PATH_TO_MANGAMOINS, LOG)
         if result == "success":
             return 1
         else:

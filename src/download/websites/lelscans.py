@@ -1,3 +1,4 @@
+# ruff: noqa : E501
 import requests
 from bs4 import BeautifulSoup
 from src.foundation.core.essentials import SELECTOR, LOG
@@ -17,14 +18,13 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
     Returns:
         str: download status (success or failed)
     """
-
     page = 1
     url = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
 
     while True:
         chapter_link = url + f"/{page}"
         try:
-            http_response = requests.get(chapter_link)
+            http_response = requests.get(url=chapter_link, timeout=10)
             if http_response.status_code == 200:
                 save_path = f"{chapter_file_path}/{page}.jpg"
                 response = lelscans(http_response, save_path, page)
@@ -40,7 +40,9 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
                 LOG.debug(f"Request failed | Status code : {http_response.status_code}")
                 return "failed"
         except requests.ConnectionError as e:
-            LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+            LOG.debug(
+                f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}"
+            )
             return "failed"
 
 
@@ -55,15 +57,14 @@ def lelscans(http_response: int, save_path: str, page: int):
     Returns:
         bool: True(download successful), False(otherwise)
     """
-
     soup = BeautifulSoup(http_response.content, "html.parser")
 
     image_element = soup.find("img", src=True)
     if image_element:
         image_url = image_element["src"]
-        image_response = requests.get('https://lelscans.net/' + image_url)
+        image_response = requests.get(url="https://lelscans.net/" + image_url, timeout=10)
         if image_response.status_code == 200:
-            with open(save_path, 'wb') as f:
+            with open(save_path, "wb") as f:
                 f.write(image_response.content)
             LOG.debug(f"Image {page} downloaded")
             return True

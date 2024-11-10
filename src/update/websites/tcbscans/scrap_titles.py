@@ -3,7 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-def Scrap_titles(PATH_TO_TCBSCANS: str, LOG):
+def scrap_titles(PATH_TO_TCBSCANS: str, LOG):
     """Scrap mangas titles from tcbscans.
 
     Args:
@@ -13,17 +13,18 @@ def Scrap_titles(PATH_TO_TCBSCANS: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     links_list = []
     manga_name_list = []
 
     url = "https://tcbscans.com/projects"
 
     try:
-        response = requests.get(url)
+        response = requests.get(url=url, timeout=10)
         html_content = response.text
         soup = BeautifulSoup(html_content, "html.parser")
-        select_element = soup.select_one('body > main > div.overflow-hidden > div > div.grid.grid-cols-1.md\\:grid-cols-2.gap-3')
+        select_element = soup.select_one(
+            "body > main > div.overflow-hidden > div > div.grid.grid-cols-1.md\\:grid-cols-2.gap-3"
+        )  # noqa: E501
 
         if select_element:
             mangas = select_element.find_all("div", class_="relative h-24 w-24 sm:mb-0 mb-3")
@@ -31,7 +32,7 @@ def Scrap_titles(PATH_TO_TCBSCANS: str, LOG):
                 LOG.debug(f"No manga added | {url}")
                 return "failed"
             for manga in mangas:
-                link = 'https://tcbscans.com' + manga.find("a").get("href")
+                link = "https://tcbscans.com" + manga.find("a").get("href")
                 manga_name = link.split("/")[-1]
                 links_list.append(link)
                 manga_name_list.append(manga_name)
@@ -51,6 +52,6 @@ def Scrap_titles(PATH_TO_TCBSCANS: str, LOG):
 
     data_to_add = [{"MangaName": name, "MangaLink": link} for name, link in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)
-    datas['n_chapter'] = 0
-    datas.to_csv(f'{PATH_TO_TCBSCANS}/datas/mangas.csv', index=False)
+    datas["n_chapter"] = 0
+    datas.to_csv(f"{PATH_TO_TCBSCANS}/datas/mangas.csv", index=False)
     return "success"

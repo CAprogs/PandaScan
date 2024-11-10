@@ -1,3 +1,4 @@
+# ruff: noqa : E501
 import requests
 from bs4 import BeautifulSoup
 from src.foundation.core.essentials import SELECTOR
@@ -18,21 +19,20 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
     Returns:
         str: download status (success or failed)
     """
-
     page = 0
     chapter_link = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
     try:
-        http_response = requests.get(chapter_link)
+        http_response = requests.get(url=chapter_link, timeout=10)
         if http_response.status_code == 200:
             soup_1 = BeautifulSoup(http_response.text, "html.parser")
-            select_element = soup_1.select_one('body > div.body-site > div.container-chapter-reader')
-            expected_imgs = str(select_element.contents).count('<img')
+            select_element = soup_1.select_one("body > div.body-site > div.container-chapter-reader")
+            expected_imgs = str(select_element.contents).count("<img")
             img_list = select_element.find_all("img")
 
             if img_list != [] and len(img_list) == expected_imgs:
                 for img in img_list:
                     try:
-                        img_link = img['data-src']
+                        img_link = img["data-src"]
                     except Exception as e:
                         LOG.debug(f"Download aborted | {chapter_name} | Error : {e}")
                         return "failed"
@@ -51,7 +51,9 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
             LOG.debug(f"Request failed | Status code : {http_response.status_code}")
             return "failed"
     except requests.ConnectionError as e:
-        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+        LOG.debug(
+            f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}"
+        )
         return "failed"
 
 
@@ -66,10 +68,9 @@ def manganelo(img_link: str, save_path: str, page: int):
     Returns:
         bool: True(download successful), False(otherwise)
     """
-
-    image_response = requests.get(img_link)
+    image_response = requests.get(url=img_link, timeout=10)
     if image_response.status_code == 200:
-        with open(save_path, 'wb') as f:
+        with open(save_path, "wb") as f:
             f.write(image_response.content)
         LOG.debug(f"Image {page} downloaded")
         return True

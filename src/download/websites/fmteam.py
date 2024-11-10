@@ -1,3 +1,4 @@
+# ruff: noqa : E501
 import os
 from src.foundation.core.essentials import SELECTOR, LOG
 from src.foundation.core.emojis import EMOJIS
@@ -5,7 +6,9 @@ from src.download.utils import set_download_path, find_latest_zip, extract_zip
 from ..utils import fetch_chapterlink
 
 
-def init_download(selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str, DRIVER):
+def init_download(
+    selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str, DRIVER
+):
     """Initialize the download from fmteam.
 
     Args:
@@ -18,7 +21,6 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
     Returns:
         str: download status (success, skipped or failed)
     """
-
     chapter_link = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
 
     if not isinstance(chapter_file_path, str):
@@ -41,5 +43,7 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
         LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}")
         return "success"
     except Exception as e:
-        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+        LOG.debug(
+            f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}"
+        )
         return "failed"

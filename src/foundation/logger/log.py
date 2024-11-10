@@ -1,12 +1,13 @@
 import logging
 
 
-LOG_FORMATS = ["%(message)s",
-               "%(levelname)s - %(message)s"]
+LOG_FORMATS = ["%(message)s", "%(levelname)s - %(message)s"]
 
 
 class CustomLogger:
-    def __init__(self, level: str = "INFO", format: str = "[%(levelname)s] %(message)s", state: bool = True):
+    """Custom logger class to display messages in the console."""
+
+    def __init__(self, level: str = "INFO", format: str = "[%(levelname)s] %(message)s", state: bool = True):  # noqa : D107
         self.logger = logging.getLogger()
         self.logger.setLevel(level)
         self.state = state
@@ -17,7 +18,7 @@ class CustomLogger:
         self.logger.addHandler(stream_handler)
 
     def debug(self, message: str):
-        """display a debug message
+        """Display a debug message.
 
         Args:
             message (str): message to display
@@ -26,7 +27,7 @@ class CustomLogger:
             self.logger.debug(f"{message}\n")
 
     def info(self, message: str):
-        """display an info message
+        """Display an info message.
 
         Args:
             message (str): message to display

@@ -1,3 +1,4 @@
+# ruff: noqa : E501
 import requests
 from lxml import html
 from src.foundation.core.essentials import SELECTOR, LOG
@@ -17,11 +18,12 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
     Returns:
         str: download status (success or failed)
     """
-
     page = 0
-    chapter_link = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name)) + "?style=list"
+    chapter_link = (
+        fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name)) + "?style=list"
+    )
     try:
-        http_response = requests.get(chapter_link)
+        http_response = requests.get(url=chapter_link, timeout=10)
         if http_response.status_code == 200:
             while True:
                 xpath = f'//*[@id="image-{page}"]'
@@ -36,10 +38,14 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
                     LOG.debug(f"Request failed | {selected_website} | {selected_manga_name} | {chapter_name}")
                     return "failed"
         else:
-            LOG.debug(f"Request failed : {selected_website} {EMOJIS[4]}, Status code : {http_response.status_code}")
+            LOG.debug(
+                f"Request failed : {selected_website} {EMOJIS[4]}, Status code : {http_response.status_code}"
+            )
             return "failed"
     except requests.ConnectionError as e:
-        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+        LOG.debug(
+            f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}"
+        )
         return "failed"
 
 
@@ -55,14 +61,13 @@ def lhtranslation(http_response: int, xpath: str, save_path: str, page: int):
     Returns:
         bool: True(download successful), False(otherwise)
     """
-
     tree = html.fromstring(http_response.content)
     image_element = tree.xpath(xpath)
     if image_element:
-        image_url = image_element[0].get('data-src')
-        image_response = requests.get(image_url)
+        image_url = image_element[0].get("data-src")
+        image_response = requests.get(url=image_url, timeout=10)
         if image_response.status_code == 200:
-            with open(save_path, 'wb') as f:
+            with open(save_path, "wb") as f:
                 f.write(image_response.content)
             LOG.debug(f"Image {page} downloaded.")
             return True

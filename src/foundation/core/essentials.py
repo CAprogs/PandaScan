@@ -1,3 +1,4 @@
+# ruff: noqa : E501
 import os
 import platform
 import requests
@@ -44,7 +45,9 @@ with open(PATH_TO_CONFIG) as json_file:
     SETTINGS = json.load(json_file)
 
 # Available websites
-WEBSITES_DICT = {key: value["language"] for key, value in SETTINGS["websites"].items() if key != "fav_language"}
+WEBSITES_DICT = {
+    key: value["language"] for key, value in SETTINGS["websites"].items() if key != "fav_language"
+}
 
 LANGUAGES = ["All", EMOJIS[6], EMOJIS[7]]
 
@@ -77,8 +80,8 @@ elif SETTINGS["logger"]["enabled"] is True and SETTINGS["logger"]["level"] == "I
 DRIVER = set_driver_config(OS_NAME, SRC_DIRECTORY, PATH_TO_CONFIG, SETTINGS, LOG, EMOJIS)
 
 # Load SQl datas
-DATABASE_DIRECTORY = f'{SRC_DIRECTORY}/foundation/database/'
-DB = DatabaseHandler(f'{DATABASE_DIRECTORY}Pan_datas.db', f'{DATABASE_DIRECTORY}DDL.sql')
+DATABASE_DIRECTORY = f"{SRC_DIRECTORY}/foundation/database/"
+DB = DatabaseHandler(f"{DATABASE_DIRECTORY}Pan_datas.db", f"{DATABASE_DIRECTORY}DDL.sql")
 CONN = DB.conn
 SELECTOR = DB.cursor
 
@@ -89,11 +92,10 @@ def check_connection():
     Returns:
         bool: True (connected to the internet), False (otherwise)
     """
-
     try:
-        response = requests.get("https://www.google.com")
+        response = requests.get(url="https://www.google.com", timeout=10)
         if response.status_code == 200:
-            print(f"\nConnected to Internet {EMOJIS[3]}\n")
+            print(f"\n{'Connected to Internet ':.<25} {EMOJIS[3]}\n")
             return True
         else:
             return False
@@ -102,12 +104,12 @@ def check_connection():
 
 
 def check_version():
-    """Check if app's version is the latest
-    """
-
+    """Check if app's version is the latest."""
     filters = [".", "v"]
     try:
-        response = requests.get("https://api.github.com/repos/CAprogs/PandaScan/releases/latest")
+        response = requests.get(
+            url="https://api.github.com/repos/CAprogs/PandaScan/releases/latest", timeout=10
+        )
     except requests.RequestException as e:
         print(f"\n{e}\n")
         return
@@ -115,7 +117,7 @@ def check_version():
     try:
         if response.status_code == 200:
             release_info = response.json()
-            latest_version = release_info['tag_name'].replace("-beta", "")
+            latest_version = release_info["tag_name"].replace("-beta", "")
             current_version = SETTINGS["App_version"]
             str_latest_v = latest_version
             str_current_v = current_version
@@ -124,15 +126,18 @@ def check_version():
                 current_version = current_version.replace(filter, "")
 
             if int(latest_version) > int(current_version):
-                messagebox.showinfo(f"App's Update [{EMOJIS[8]}]", f"""
+                messagebox.showinfo(
+                    f"App's Update [{EMOJIS[8]}]",
+                    f"""
                                     A new version of Pandascan is available !
 
                                     latest : {str_latest_v}
                                     current : {str_current_v}
 
-                                    https://github.com/CAprogs/PandaScan/releases""")
+                                    https://github.com/CAprogs/PandaScan/releases""",
+                )
             elif int(latest_version) == int(current_version):
-                LOG.info(f"App's up-to-date {EMOJIS[3]}")
+                LOG.info(f"{'App\'s up-to-date ':.<25} {EMOJIS[3]}")
         else:
             LOG.debug(f"An error occured {EMOJIS[9]}, status code : {response.status_code}")
     except Exception as e:
@@ -148,11 +153,9 @@ def relative_to_assets(path: str) -> Path:
     Returns:
         str: the relative path to the asset
     """
-
     return ASSETS_DIRECTORY / Path(path)
 
 
 def clear_console():
-    """Clear the console.
-    """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    """Clear the console."""
+    os.system("cls" if os.name == "nt" else "clear")  # noqa : S603

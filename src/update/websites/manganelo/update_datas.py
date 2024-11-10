@@ -1,7 +1,7 @@
 from ..manganelo import scrap_titles, scrap_chapters
 
 
-def Update_manganelo(PATH_TO_MANGANELO: str, LOG):
+def update_manganelo(PATH_TO_MANGANELO: str, LOG):
     """Update manganelo datas.
 
     Args:
@@ -11,10 +11,9 @@ def Update_manganelo(PATH_TO_MANGANELO: str, LOG):
     Returns:
         int: 1 if success , 0 if an error occured
     """
-
-    result = scrap_titles.Scrap_titles(PATH_TO_MANGANELO, LOG)
+    result = scrap_titles.scrap_titles(PATH_TO_MANGANELO, LOG)
     if result == "success":
-        result = scrap_chapters.Scrap_chapters(PATH_TO_MANGANELO, LOG)
+        result = scrap_chapters.scrap_chapters(PATH_TO_MANGANELO, LOG)
         if result == "success":
             return 1
         else:

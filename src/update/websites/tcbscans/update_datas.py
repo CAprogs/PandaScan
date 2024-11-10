@@ -1,7 +1,7 @@
 from ..tcbscans import scrap_titles, scrap_chapters
 
 
-def Update_tcbscans(PATH_TO_TCBSCANS: str, LOG):
+def update_tcbscans(PATH_TO_TCBSCANS: str, LOG):
     """Update tcbscans datas.
 
     Args:
@@ -11,10 +11,9 @@ def Update_tcbscans(PATH_TO_TCBSCANS: str, LOG):
     Returns:
         int: 1 if success , 0 if an error occured
     """
-
-    result = scrap_titles.Scrap_titles(PATH_TO_TCBSCANS, LOG)
+    result = scrap_titles.scrap_titles(PATH_TO_TCBSCANS, LOG)
     if result == "success":
-        result = scrap_chapters.Scrap_chapters(PATH_TO_TCBSCANS, LOG)
+        result = scrap_chapters.scrap_chapters(PATH_TO_TCBSCANS, LOG)
         if result == "success":
             return 1
         else:

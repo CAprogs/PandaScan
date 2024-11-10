@@ -1,3 +1,4 @@
+import sys
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from .utils import check_driver, check_extensions, dump_config
@@ -17,9 +18,8 @@ def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SET
     Returns:
         Any: the webdriver
     """
-
-    ublock_path = f'{SRC_DIRECTORY}/foundation/selenium/extensions/ublock.crx'
-    adguard_path = f'{SRC_DIRECTORY}/foundation/selenium/extensions/adguard.crx'
+    ublock_path = f"{SRC_DIRECTORY}/foundation/selenium/extensions/ublock.crx"
+    adguard_path = f"{SRC_DIRECTORY}/foundation/selenium/extensions/adguard.crx"
     check_extensions(ublock_path, adguard_path, EMOJIS)
 
     check_driver(OS_NAME, LOG, SETTINGS["driver"]["path"], PATH_TO_CONFIG, SETTINGS, SRC_DIRECTORY)
@@ -29,9 +29,9 @@ def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SET
 
     # Instantiate chrome options
     options = webdriver.ChromeOptions()
-    if SETTINGS['driver']['headless']:
+    if SETTINGS["driver"]["headless"]:
         options.add_argument("--headless=new")
-        options.add_argument(SETTINGS['driver']['user_agent'])
+        options.add_argument(SETTINGS["driver"]["user_agent"])
         LOG.debug("Browser mode : Headless")
     else:
         LOG.debug("Browser mode : Headed")
@@ -53,12 +53,12 @@ def set_driver_config(OS_NAME: str, SRC_DIRECTORY: str, PATH_TO_CONFIG: str, SET
         SETTINGS["driver"]["path"] = ""
         dump_config(PATH_TO_CONFIG, SETTINGS)
         print(f"PandaScan exited. {EMOJIS[1]}\n")
-        exit()
+        sys.exit()
 
     if SETTINGS["driver"].get("downloaded_driver") is not None:
         SETTINGS["driver"].pop("downloaded_driver")
         dump_config(PATH_TO_CONFIG, SETTINGS)
     driver.maximize_window()
-    print(f"\nChromeDriver found {EMOJIS[3]}")
+    print(f"\n{'ChromeDriver found ':.<25} {EMOJIS[3]}")
 
     return driver

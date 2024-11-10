@@ -5,7 +5,7 @@ import time
 from selenium.webdriver.common.by import By
 
 
-def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
+def scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
     """Scrap the mangas chapters from fmteam.
 
     Args:
@@ -16,9 +16,8 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     try:
-        datas = pd.read_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv')
+        datas = pd.read_csv(f"{PATH_TO_FMTEAM}/datas/mangas.csv")
     except Exception as e:
         LOG.debug(f"Error : {e}")
         return "failed"
@@ -27,10 +26,10 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
     failed_mangas = []
     columns = ["Website", "MangaName", "Chapter", "ChapterLink"]
 
-    pattern = r'/ch/(\d+)/sub/(\d+)'
+    pattern = r"/ch/(\d+)/sub/(\d+)"
 
-    for index, manga_name in enumerate(datas['MangaName']):
-        url = datas['MangaLink'][index]
+    for index, manga_name in enumerate(datas["MangaName"]):
+        url = datas["MangaLink"][index]
         DRIVER.get(url)
 
         time.sleep(2)
@@ -43,7 +42,7 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
             balise = str(f'//*[@id="comic"]/div[3]/div[2]/div[{i}]/div[1]/a[1]')
             try:
                 element = DRIVER.find_element(By.XPATH, balise)
-                download_link = element.get_attribute('href')
+                download_link = element.get_attribute("href")
                 if "sub" in download_link:
                     matches = re.search(pattern, download_link)
                     ch_number = matches.group(1)
@@ -53,8 +52,8 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
                     chapter_number = download_link.split("/")[-1]
                     if not chapter_number.isdigit():
                         chapter_number = download_link.split("/")[-2]
-                        if not chapter_number.isdigit() and '-' in chapter_number:
-                            chapter_number = chapter_number.split('-')[-1]
+                        if not chapter_number.isdigit() and "-" in chapter_number:
+                            chapter_number = chapter_number.split("-")[-1]
 
                 chapter = "chapitre " + str(chapter_number)
                 manga_chapters_dict[manga_name].add(chapter)
@@ -64,7 +63,7 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
             except Exception as e:
                 manga_chapters_dict[manga_name] = list(manga_chapters_dict[manga_name])
                 manga_chapters_dict[manga_name].sort(key=lambda x: float(x.split()[1]), reverse=True)
-                datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
+                datas.loc[index, "n_chapter"] = len(manga_chapters_dict[manga_name])
                 LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
                 if manga_chapters_dict[manga_name] == list():
                     failed_mangas.append(manga_name)
@@ -76,7 +75,7 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
                     LOG.debug(f"Chapter N°{int(ch_number) - 1} doesn't exist | {manga_name}\n {e}")
                     break
 
-    if len(failed_mangas) == len(datas['MangaName']):
+    if len(failed_mangas) == len(datas["MangaName"]):
         LOG.debug("Error : All mangas failed ..")
         return "failed"
     elif failed_mangas != []:
@@ -85,11 +84,11 @@ def Scrap_chapters(DRIVER, PATH_TO_FMTEAM: str, LOG):
             LOG.debug(manga)
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
-    links_dataframe.to_csv(f'{PATH_TO_FMTEAM}/datas/chapters_links.csv', index=False)
+    links_dataframe.to_csv(f"{PATH_TO_FMTEAM}/datas/chapters_links.csv", index=False)
     yml_data = yaml.dump(manga_chapters_dict)
 
-    with open(f'{PATH_TO_FMTEAM}/datas/mangas_chapters_temp.yml', 'w') as file:
+    with open(f"{PATH_TO_FMTEAM}/datas/mangas_chapters_temp.yml", "w") as file:
         file.write(yml_data)
 
-    datas.to_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv', index=False)
+    datas.to_csv(f"{PATH_TO_FMTEAM}/datas/mangas.csv", index=False)
     return "success"

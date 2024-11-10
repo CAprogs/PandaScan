@@ -1,3 +1,4 @@
+# ruff: noqa: E501
 import tkinter.filedialog as filedialog
 import json
 import tkinter as tk
@@ -11,24 +12,24 @@ from src.foundation.core.essentials import OS_NAME, PATH_TO_CONFIG, LOG
 from src.foundation.core.emojis import EMOJIS
 
 
-INFO_POLICE = ("Inter", 8 * -1)          # INFOS font
-TITLE_POLICE = ("Inter Bold", 12 * -1)   # TITLES -||-
+INFO_POLICE = ("Inter", 8 * -1)  # INFOS font
+TITLE_POLICE = ("Inter Bold", 12 * -1)  # TITLES -||-
 CORPUS_POLICE = ("Inter Bold", 10 * -1)  # Alternative titles -||-
-CURRENT_COLOR = "#FFFFFF"                # Dominant color (white)
-ALT_COLOR = "#FFC700"                    # Alternative INFOS -||-
-ENTRY_TEXT_COLOR = "#000716"             # Text entry -||-
-BACKGROUND_BUTTON_COLOR = "red"          # Background buttons -||-
-FR_WEBSITES_COLOR = "#0031AF"            # French websites -||-
-EN_WEBSITES_COLOR = "#640000"            # English websites -||-
+CURRENT_COLOR = "#FFFFFF"  # Dominant color (white)
+ALT_COLOR = "#FFC700"  # Alternative INFOS -||-
+ENTRY_TEXT_COLOR = "#000716"  # Text entry -||-
+BACKGROUND_BUTTON_COLOR = "red"  # Background buttons -||-
+FR_WEBSITES_COLOR = "#0031AF"  # French websites -||-
+EN_WEBSITES_COLOR = "#640000"  # English websites -||-
 
-settings_window = None                  # State of the SETTINGS window
-chromedriver_button_state = False       # State of the CHROMEDRIVER button
-update_button_state = True              # -||- UPDATE button
-download_button_state = True            # -||- DOWNLOAD button
-chromedriver_clicks = 0                 # Number of clicks on the CHROMEDRIVER button
-update_clicks = 0                       # -||- UPDATE button
-download_clicks = 0                     # -||- DOWNLOAD button
-save_clicks = 0                         # -||- SAVE button
+settings_window = None  # State of the SETTINGS window
+chromedriver_button_state = False  # State of the CHROMEDRIVER button
+update_button_state = True  # -||- UPDATE button
+download_button_state = True  # -||- DOWNLOAD button
+chromedriver_clicks = 0  # Number of clicks on the CHROMEDRIVER button
+update_clicks = 0  # -||- UPDATE button
+download_clicks = 0  # -||- DOWNLOAD button
+save_clicks = 0  # -||- SAVE button
 
 # CHROMEDRIVER_PAGE
 TEXT_1 = "Path*"
@@ -65,7 +66,6 @@ def show_settings(main_window, SETTINGS, settings_button):
         SETTINGS (Any): .json file
         settings_button (Any): attached button
     """
-
     global settings_window, update_mode_menu
 
     if settings_window is None:
@@ -85,7 +85,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             width=483,
             bd=0,
             highlightthickness=0,
-            relief="ridge"
+            relief="ridge",
         )
         canvas.place(x=0, y=0)
 
@@ -107,9 +107,7 @@ def show_settings(main_window, SETTINGS, settings_button):
         # === FUNCTIONS
 
         def on_closing():
-            """Tasks to perform when closing the window.
-            """
-
+            """Tasks to perform when closing the window."""
             settings_button.config(state="normal")
 
             LOG.debug(f"Settings exited {EMOJIS[1]}")
@@ -179,7 +177,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 element.place(x=x, y=y, width=width, height=height)
             settings_window.update()
 
-        def Switch_update_mode(*args):
+        def switch_update_mode(*_):
             manage_menu(update_mode_menu, ["manual", "auto"], update_mode_var)
 
         def check_previous_deactivate_button(button):
@@ -188,10 +186,16 @@ def show_settings(main_window, SETTINGS, settings_button):
             Args:
                 button (Any): the widget button
             """
-            global chromedriver_clicks, chromedriver_button_state, update_clicks, update_button_state, download_clicks, download_button_state
+            global \
+                chromedriver_clicks, \
+                chromedriver_button_state, \
+                update_clicks, \
+                update_button_state, \
+                download_clicks, \
+                download_button_state
 
             def manage_page_deactivation(button, button_image_1, button_image_2, window_state):
-                """Masquer les éléments de la page correspondante
+                """Mask the elements of a page.
 
                 Args:
                     button (Any): the widget button
@@ -214,25 +218,37 @@ def show_settings(main_window, SETTINGS, settings_button):
                 deactivate_button(button, chromedriver_page_2)
                 chromedriver_clicks += 1
                 if update_button_state is False:
-                    update_button_state = manage_page_deactivation(button_2, update_page_1, update_page_2, update_button_state)
+                    update_button_state = manage_page_deactivation(
+                        button_2, update_page_1, update_page_2, update_button_state
+                    )
                 elif download_button_state is False:
-                    download_button_state = manage_page_deactivation(button_3, download_page_1, download_page_2, download_button_state)
+                    download_button_state = manage_page_deactivation(
+                        button_3, download_page_1, download_page_2, download_button_state
+                    )
             # Update button
             elif button == button_2:
                 deactivate_button(button, update_page_2)
                 update_clicks += 1
                 if download_button_state is False:
-                    download_button_state = manage_page_deactivation(button_3, download_page_1, download_page_2, download_button_state)
+                    download_button_state = manage_page_deactivation(
+                        button_3, download_page_1, download_page_2, download_button_state
+                    )
                 elif chromedriver_button_state is False:
-                    chromedriver_button_state = manage_page_deactivation(button_1, chromedriver_page_1, chromedriver_page_2, chromedriver_button_state)
+                    chromedriver_button_state = manage_page_deactivation(
+                        button_1, chromedriver_page_1, chromedriver_page_2, chromedriver_button_state
+                    )
             # Download button
             elif button == button_3:
                 deactivate_button(button, download_page_2)
                 download_clicks += 1
                 if chromedriver_button_state is False:
-                    chromedriver_button_state = manage_page_deactivation(button_1, chromedriver_page_1, chromedriver_page_2, chromedriver_button_state)
+                    chromedriver_button_state = manage_page_deactivation(
+                        button_1, chromedriver_page_1, chromedriver_page_2, chromedriver_button_state
+                    )
                 elif update_button_state is False:
-                    update_button_state = manage_page_deactivation(button_2, update_page_1, update_page_2, update_button_state)
+                    update_button_state = manage_page_deactivation(
+                        button_2, update_page_1, update_page_2, update_button_state
+                    )
 
         def manage_window(button):
             """Manage the display of a page.
@@ -245,11 +261,15 @@ def show_settings(main_window, SETTINGS, settings_button):
             show_text(button)
 
         def chromedriver_settings():
-            """Load the elements of the Chromedriver page.
-            """
+            """Load the elements of the Chromedriver page."""
             global chromedriver_button_state, chromedriver_clicks
             global chromedriver_entry, choose_file_path, chromedriver_checkbox
-            global chromedriver_path, chromedriver_path_info, chromedriver_mode, chromedriver_checkbox_info_1, chromedriver_checkbox_info_2
+            global \
+                chromedriver_path, \
+                chromedriver_path_info, \
+                chromedriver_mode, \
+                chromedriver_checkbox_info_1, \
+                chromedriver_checkbox_info_2
 
             chromedriver_button_state = False
 
@@ -258,31 +278,62 @@ def show_settings(main_window, SETTINGS, settings_button):
                 return
 
             # [ TEXT ]   Path*
-            chromedriver_path = canvas.create_text(49.0, 75.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=TITLE_POLICE)
+            chromedriver_path = canvas.create_text(
+                49.0, 75.0, anchor="nw", text=TEXT_1, fill=CURRENT_COLOR, font=TITLE_POLICE
+            )
             # [ WIDGET ] Entry
-            chromedriver_entry = Entry(settings_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0)
+            chromedriver_entry = Entry(
+                settings_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0
+            )
             chromedriver_entry.insert(0, SETTINGS["driver"]["path"])
             chromedriver_entry.place(x=92.0, y=76.0, width=228.0, height=13.0)
             # [ WIDGET ] Button choose file
-            choose_file_path = Button(settings_window, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, text=TEXT_100, font=CORPUS_POLICE, command=lambda: choose_file(chromedriver_entry))
+            choose_file_path = Button(
+                settings_window,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                text=TEXT_100,
+                font=CORPUS_POLICE,
+                command=lambda: choose_file(chromedriver_entry),
+            )
             choose_file_path.configure(highlightbackground=BACKGROUND_BUTTON_COLOR)
             choose_file_path.place(x=340.0, y=70.0, width=50.0, height=25.0)
             # [ TEXT ]   Info path
-            chromedriver_path_info = canvas.create_text(93.0, 95.0, anchor="nw", text=TEXT_2, fill=CURRENT_COLOR, font=INFO_POLICE)
+            chromedriver_path_info = canvas.create_text(
+                93.0, 95.0, anchor="nw", text=TEXT_2, fill=CURRENT_COLOR, font=INFO_POLICE
+            )
             # [ TEXT ]   Mode chromedriver
-            chromedriver_mode = canvas.create_text(49.0, 110.0, anchor="nw", text=TEXT_3, fill=CURRENT_COLOR, font=TITLE_POLICE)
+            chromedriver_mode = canvas.create_text(
+                49.0, 110.0, anchor="nw", text=TEXT_3, fill=CURRENT_COLOR, font=TITLE_POLICE
+            )
             # [ WIDGET ] Checkbox
-            chromedriver_checkbox = Checkbutton(settings_window, variable=chromedriver_mode_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            chromedriver_checkbox = Checkbutton(
+                settings_window,
+                variable=chromedriver_mode_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             chromedriver_checkbox.place(x=93.0, y=113.0, width=14.0, height=12.0)
             # [ TEXT ]   Infos checkbox
-            chromedriver_checkbox_info_1 = canvas.create_text(93.0, 130.0, anchor="nw", text=TEXT_4, fill=CURRENT_COLOR, font=INFO_POLICE)
-            chromedriver_checkbox_info_2 = canvas.create_text(93.0, 142.0, anchor="nw", text=TEXT_5, fill=ALT_COLOR, font=INFO_POLICE)
+            chromedriver_checkbox_info_1 = canvas.create_text(
+                93.0, 130.0, anchor="nw", text=TEXT_4, fill=CURRENT_COLOR, font=INFO_POLICE
+            )
+            chromedriver_checkbox_info_2 = canvas.create_text(
+                93.0, 142.0, anchor="nw", text=TEXT_5, fill=ALT_COLOR, font=INFO_POLICE
+            )
 
             # Widgets to manage
             widgets_to_manage[button_1] = {
                 chromedriver_entry: (92.0, 76.0, 228.0, 13.0),
                 choose_file_path: (340.0, 70.0, 50.0, 25.0),
-                chromedriver_checkbox: (93.0, 113.0, 14.0, 12.0)
+                chromedriver_checkbox: (93.0, 113.0, 14.0, 12.0),
             }
             # Labels to manage
             labels_to_manage[button_1] = {
@@ -290,17 +341,23 @@ def show_settings(main_window, SETTINGS, settings_button):
                 chromedriver_path_info: (93.0, 95.0),
                 chromedriver_mode: (49.0, 110.0),
                 chromedriver_checkbox_info_1: (93.0, 130.0),
-                chromedriver_checkbox_info_2: (93.0, 142.0)
+                chromedriver_checkbox_info_2: (93.0, 142.0),
             }
 
             chromedriver_clicks = 1
 
         def update_settings():
-            """Load the elements of the Update page.
-            """
+            """Load the elements of the Update page."""
             global update_button_state, update_clicks
             global update_mode_menu, update_checkbox_1, update_checkbox_2, update_checkbox_3
-            global update_mode, update_mode_info_1, update_mode_info_2, update_websites, update_websites_info, update_scantrad, update_lelscan, update_fmteam
+            global \
+                update_mode, \
+                update_mode_info_1, \
+                update_mode_info_2, \
+                update_websites, \
+                update_websites_info, \
+                update_lelscan, \
+                update_fmteam
             global update_mode_var
 
             update_button_state = False
@@ -310,61 +367,167 @@ def show_settings(main_window, SETTINGS, settings_button):
                 return
 
             # [ TEXT ]   Update mode
-            update_mode = canvas.create_text(49.0, 75.0, anchor="nw", text=TEXT_6, fill=CURRENT_COLOR, font=TITLE_POLICE)
+            update_mode = canvas.create_text(
+                49.0, 75.0, anchor="nw", text=TEXT_6, fill=CURRENT_COLOR, font=TITLE_POLICE
+            )
             # [ WIDGET ] Menu [Update mode]
             update_mode_var = StringVar(settings_window)
             update_mode_var.set(SETTINGS["Update"]["mode"])
             update_mode_menu = OptionMenu(settings_window, update_mode_var, update_mode_var.get())
             manage_menu(update_mode_menu, ["manual", "auto"], update_mode_var)
-            update_mode_var.trace_add("write", Switch_update_mode)
+            update_mode_var.trace_add("write", switch_update_mode)
             update_mode_menu.place(x=92.0, y=76.0)
             update_mode_menu.configure(bg=CURRENT_COLOR)
             # [ TEXT ]   Infos [Update mode]
-            update_mode_info_1 = canvas.create_text(93.0, 96.0, anchor="nw", text=TEXT_7, fill=CURRENT_COLOR, font=INFO_POLICE)
-            update_mode_info_2 = canvas.create_text(93.0, 108.0, anchor="nw", text=TEXT_8, fill=ALT_COLOR, font=INFO_POLICE)
+            update_mode_info_1 = canvas.create_text(
+                93.0, 96.0, anchor="nw", text=TEXT_7, fill=CURRENT_COLOR, font=INFO_POLICE
+            )
+            update_mode_info_2 = canvas.create_text(
+                93.0, 108.0, anchor="nw", text=TEXT_8, fill=ALT_COLOR, font=INFO_POLICE
+            )
             # [ TEXT ]   Websites
-            update_websites = canvas.create_text(49.0, 125.0, anchor="nw", text=TEXT_9, fill=CURRENT_COLOR, font=TITLE_POLICE)
+            update_websites = canvas.create_text(
+                49.0, 125.0, anchor="nw", text=TEXT_9, fill=CURRENT_COLOR, font=TITLE_POLICE
+            )
             # [ TEXT ]   Info [Websites]
-            update_websites_info = canvas.create_text(50.0, 140.0, anchor="nw", text=TEXT_10, fill=CURRENT_COLOR, font=INFO_POLICE)
+            update_websites_info = canvas.create_text(
+                50.0, 140.0, anchor="nw", text=TEXT_10, fill=CURRENT_COLOR, font=INFO_POLICE
+            )
             # [ TEXT ]   Lelscans
-            update_lelscan = canvas.create_text(65.0, 158.0, anchor="nw", text=TEXT_11, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_lelscan = canvas.create_text(
+                65.0, 158.0, anchor="nw", text=TEXT_11, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_2 [Lelscan]
-            update_checkbox_1 = Checkbutton(settings_window, variable=lelscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_1 = Checkbutton(
+                settings_window,
+                variable=lelscans_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_1.place(x=125.0, y=158.0, width=14.0, height=12.0)
             # [ TEXT ]   Fmteam
-            update_fmteam = canvas.create_text(65.0, 176.0, anchor="nw", text=TEXT_12, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_fmteam = canvas.create_text(
+                65.0, 176.0, anchor="nw", text=TEXT_12, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_3 [Fmteam]
-            update_checkbox_2 = Checkbutton(settings_window, variable=fmteam_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_2 = Checkbutton(
+                settings_window,
+                variable=fmteam_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_2.place(x=125.0, y=176.0, width=14.0, height=12.0)
             # [ TEXT ]   Lelmanga
-            update_lelmanga = canvas.create_text(65.0, 196.0, anchor="nw", text=TEXT_13, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_lelmanga = canvas.create_text(
+                65.0, 196.0, anchor="nw", text=TEXT_13, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_4 [Lelmanga]
-            update_checkbox_3 = Checkbutton(settings_window, variable=lelmanga_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_3 = Checkbutton(
+                settings_window,
+                variable=lelmanga_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_3.place(x=125.0, y=196.0, width=14.0, height=12.0)
             # [ TEXT ]   Mangamoins
-            update_mangamoins = canvas.create_text(65.0, 216.0, anchor="nw", text=TEXT_14, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_mangamoins = canvas.create_text(
+                65.0, 216.0, anchor="nw", text=TEXT_14, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_5 [Mangamoins]
-            update_checkbox_4 = Checkbutton(settings_window, variable=mangamoins_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_4 = Checkbutton(
+                settings_window,
+                variable=mangamoins_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_4.place(x=125.0, y=216.0, width=14.0, height=12.0)
             # [ TEXT ]   Tcbscans
-            update_tcbscans = canvas.create_text(65.0, 236.0, anchor="nw", text=TEXT_15, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_tcbscans = canvas.create_text(
+                65.0, 236.0, anchor="nw", text=TEXT_15, fill=FR_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_6 [Tcbscans]
-            update_checkbox_5 = Checkbutton(settings_window, variable=tcbscans_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_5 = Checkbutton(
+                settings_window,
+                variable=tcbscans_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_5.place(x=125.0, y=236.0, width=14.0, height=12.0)
             # [ TEXT ]   Manganelo
-            update_manganelo = canvas.create_text(195.0, 158.0, anchor="nw", text=TEXT_16, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_manganelo = canvas.create_text(
+                195.0, 158.0, anchor="nw", text=TEXT_16, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_7 [Manganelo]
-            update_checkbox_6 = Checkbutton(settings_window, variable=manganelo_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_6 = Checkbutton(
+                settings_window,
+                variable=manganelo_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_6.place(x=265.0, y=158.0, width=14.0, height=12.0)
             # [ TEXT ]   Mangasaki
-            update_mangasaki = canvas.create_text(195.0, 176.0, anchor="nw", text=TEXT_17, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_mangasaki = canvas.create_text(
+                195.0, 176.0, anchor="nw", text=TEXT_17, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_8 [Mangasaki]
-            update_checkbox_7 = Checkbutton(settings_window, variable=mangasaki_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_7 = Checkbutton(
+                settings_window,
+                variable=mangasaki_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_7.place(x=265.0, y=176.0, width=14.0, height=12.0)
             # [ TEXT ]   Lhtranslation
-            update_lhtranslation = canvas.create_text(195.0, 196.0, anchor="nw", text=TEXT_18, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE)
+            update_lhtranslation = canvas.create_text(
+                195.0, 196.0, anchor="nw", text=TEXT_18, fill=EN_WEBSITES_COLOR, font=CORPUS_POLICE
+            )
             # [ WIDGET ] Checkbox_8 [Lhtranslation]
-            update_checkbox_8 = Checkbutton(settings_window, variable=lhtranslation_checkbox_var, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, bg=CURRENT_COLOR, justify="left", highlightthickness=0)
+            update_checkbox_8 = Checkbutton(
+                settings_window,
+                variable=lhtranslation_checkbox_var,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                bg=CURRENT_COLOR,
+                justify="left",
+                highlightthickness=0,
+            )
             update_checkbox_8.place(x=265.0, y=196.0, width=14.0, height=12.0)
 
             # Widgets to manage
@@ -377,7 +540,8 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_checkbox_5: (125.0, 236.0, 14.0, 12.0),
                 update_checkbox_6: (265.0, 158.0, 14.0, 12.0),
                 update_checkbox_7: (265.0, 176.0, 14.0, 12.0),
-                update_checkbox_8: (265.0, 196.0, 14.0, 12.0)}
+                update_checkbox_8: (265.0, 196.0, 14.0, 12.0),
+            }
             # Labels to manage
             labels_to_manage[button_2] = {
                 update_mode: (49.0, 75.0),
@@ -392,13 +556,13 @@ def show_settings(main_window, SETTINGS, settings_button):
                 update_tcbscans: (65.0, 236.0),
                 update_manganelo: (195.0, 158.0),
                 update_mangasaki: (195.0, 176.0),
-                update_lhtranslation: (195.0, 196.0)}
+                update_lhtranslation: (195.0, 196.0),
+            }
 
             check_previous_deactivate_button(button_2)
 
         def download_settings():
-            """Load the elements of the Download page.
-            """
+            """Load the elements of the Download page."""
             global download_button_state, download_clicks
             global download_entry, choose_directory_path
             global download_path, download_path_info
@@ -410,32 +574,45 @@ def show_settings(main_window, SETTINGS, settings_button):
                 return
 
             # [ TEXT ]   Path
-            download_path = canvas.create_text(55.0, 75.0, anchor="nw", text=TEXT_50, fill=CURRENT_COLOR, font=TITLE_POLICE)
+            download_path = canvas.create_text(
+                55.0, 75.0, anchor="nw", text=TEXT_50, fill=CURRENT_COLOR, font=TITLE_POLICE
+            )
             # [ WIDGET ] Entry
-            download_entry = Entry(settings_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0)
+            download_entry = Entry(
+                settings_window, bd=0, bg=CURRENT_COLOR, fg=ENTRY_TEXT_COLOR, highlightthickness=0
+            )
             download_entry.insert(0, SETTINGS["Download"]["path"])
             download_entry.place(x=92.0, y=76.0, width=228.0, height=13.0)
             # [ WIDGET ] Choose directory button
-            choose_directory_path = Button(settings_window, cursor=ACTIVE_CURSOR, width=0, height=0, bd=0, text=TEXT_100, font=CORPUS_POLICE, command=lambda: choose_directory(download_entry))
+            choose_directory_path = Button(
+                settings_window,
+                cursor=ACTIVE_CURSOR,
+                width=0,
+                height=0,
+                bd=0,
+                text=TEXT_100,
+                font=CORPUS_POLICE,
+                command=lambda: choose_directory(download_entry),
+            )
             choose_directory_path.configure(highlightbackground=BACKGROUND_BUTTON_COLOR)
             choose_directory_path.place(x=340.0, y=70.0, width=50.0, height=25.0)
             # [ TEXT ]   Info path
-            download_path_info = canvas.create_text(55.0, 100.0, anchor="nw", text=TEXT_51, fill=CURRENT_COLOR, font=INFO_POLICE)
+            download_path_info = canvas.create_text(
+                55.0, 100.0, anchor="nw", text=TEXT_51, fill=CURRENT_COLOR, font=INFO_POLICE
+            )
 
             # Widgets to manage
             widgets_to_manage[button_3] = {
                 download_entry: (92.0, 76.0, 228.0, 13.0),
-                choose_directory_path: (340.0, 70.0, 50.0, 25.0)}
+                choose_directory_path: (340.0, 70.0, 50.0, 25.0),
+            }
             # Labels to manage
-            labels_to_manage[button_3] = {
-                download_path: (55.0, 75.0),
-                download_path_info: (55.0, 100.0)}
+            labels_to_manage[button_3] = {download_path: (55.0, 75.0), download_path_info: (55.0, 100.0)}
 
             check_previous_deactivate_button(button_3)
 
         def save_settings():
-            """Save the changes to the config file.
-            """
+            """Save the changes to the config file."""
             global save_clicks
 
             save_confirm = messagebox.askquestion(message=f"Save new settings {EMOJIS[19]}")
@@ -454,7 +631,7 @@ def show_settings(main_window, SETTINGS, settings_button):
                 SETTINGS["websites"]["lhtranslation"]["enabled"] = lhtranslation_checkbox_var.get()
                 SETTINGS["Download"]["path"] = check_path(OS_NAME, download_entry.get())
 
-                with open(PATH_TO_CONFIG, 'w') as json_file:
+                with open(PATH_TO_CONFIG, "w") as json_file:
                     json.dump(SETTINGS, json_file, indent=4)
 
                 save_clicks += 1
@@ -462,7 +639,6 @@ def show_settings(main_window, SETTINGS, settings_button):
                 return LOG.debug(f"New settings saved {EMOJIS[3]}")
 
             else:
-
                 save_clicks = 0
                 return LOG.debug(f"Saving canceled {EMOJIS[4]}")
 
@@ -493,7 +669,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             command=chromedriver_settings,
             relief="flat",
             state=tk.DISABLED,
-            cursor=INACTIVE_CURSOR
+            cursor=INACTIVE_CURSOR,
         )
         button_1.place(x=29, y=23, width=108, height=28)
 
@@ -508,7 +684,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             command=update_settings,
             relief="flat",
             state=tk.NORMAL,
-            cursor=ACTIVE_CURSOR
+            cursor=ACTIVE_CURSOR,
         )
         button_2.place(x=157, y=24, width=61, height=27)
         button_hover(button_2, update_page_1, update_page_2)
@@ -524,7 +700,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             command=download_settings,
             relief="flat",
             state=tk.NORMAL,
-            cursor=ACTIVE_CURSOR
+            cursor=ACTIVE_CURSOR,
         )
         button_3.place(x=237, y=23, width=80, height=28)
         button_hover(button_3, download_page_1, download_page_2)
@@ -540,7 +716,7 @@ def show_settings(main_window, SETTINGS, settings_button):
             command=save_settings,
             relief="flat",
             state=tk.NORMAL,
-            cursor=ACTIVE_CURSOR
+            cursor=ACTIVE_CURSOR,
         )
         button_4.place(x=210, y=271, width=91, height=25)
         button_hover(button_4, save_button_1, save_button_2)

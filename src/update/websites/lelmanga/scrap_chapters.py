@@ -4,7 +4,7 @@ import yaml
 from bs4 import BeautifulSoup
 
 
-def Scrap_chapters(PATH_TO_LELMANGA: str, LOG):
+def scrap_chapters(PATH_TO_LELMANGA: str, LOG):
     """Scrap the mangas chapters from lelmanga.
 
     Args:
@@ -14,42 +14,41 @@ def Scrap_chapters(PATH_TO_LELMANGA: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     try:
-        datas = pd.read_csv(f'{PATH_TO_LELMANGA}/datas/mangas.csv')
+        datas = pd.read_csv(f"{PATH_TO_LELMANGA}/datas/mangas.csv")
     except Exception as e:
         LOG.debug(f"Error : {e}")
         return "failed"
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []
-    last_manga_index = len(datas['MangaName']) - 1
+    last_manga_index = len(datas["MangaName"]) - 1
     columns = ["Website", "MangaName", "Chapter", "ChapterLink"]
     filters = [" (VUS)", " Volume", " (Volume )", " (Volume)", " (RAW)", " (SPOILER)"]
 
-    for index, manga_name in enumerate(datas['MangaName']):
-        url = datas['MangaLink'][index]
+    for index, manga_name in enumerate(datas["MangaName"]):
+        url = datas["MangaLink"][index]
 
         try:
-            response = requests.get(url)
+            response = requests.get(url=url, timeout=10)
             html_content = response.text
             soup_1 = BeautifulSoup(html_content, "html.parser")
-            select_element = soup_1.select_one('#chapterlist')
+            select_element = soup_1.select_one("#chapterlist")
 
             LOG.debug(f"Manga : {manga_name}")
             manga_chapters_dict[manga_name] = set()
             ul_element = select_element.find("ul")
-            li_elements = ul_element.find_all('li', {'data-num': True})
+            li_elements = ul_element.find_all("li", {"data-num": True})
 
             for li_element in li_elements:
-                soup_2 = BeautifulSoup(str(li_element), 'html.parser')
-                a_element = soup_2.find('a')
+                soup_2 = BeautifulSoup(str(li_element), "html.parser")
+                a_element = soup_2.find("a")
                 # extract the chapter and his link
-                chapter_link = a_element['href']
-                if li_element['data-num'] == "":
+                chapter_link = a_element["href"]
+                if li_element["data-num"] == "":
                     chapter = "chapitre " + chapter_link.split("-")[-1].replace("/", "")
                 else:
-                    chapter = "chapitre " + li_element['data-num']
+                    chapter = "chapitre " + li_element["data-num"]
                 for filter in filters:
                     if filter in chapter:
                         chapter = chapter.replace(filter, "")
@@ -59,7 +58,7 @@ def Scrap_chapters(PATH_TO_LELMANGA: str, LOG):
 
             manga_chapters_dict[manga_name] = list(manga_chapters_dict[manga_name])
             manga_chapters_dict[manga_name].sort(key=lambda x: float(x.split()[1]), reverse=True)
-            datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
+            datas.loc[index, "n_chapter"] = len(manga_chapters_dict[manga_name])
             LOG.debug(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
 
         except Exception as e:
@@ -68,7 +67,7 @@ def Scrap_chapters(PATH_TO_LELMANGA: str, LOG):
             if index != last_manga_index:
                 continue
 
-    if len(failed_mangas) == len(datas['MangaName']):
+    if len(failed_mangas) == len(datas["MangaName"]):
         LOG.debug("Error : All mangas failed ..")
         return "failed"
     elif failed_mangas != []:
@@ -77,11 +76,11 @@ def Scrap_chapters(PATH_TO_LELMANGA: str, LOG):
             LOG.debug(manga)
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
-    links_dataframe.to_csv(f'{PATH_TO_LELMANGA}/datas/chapters_links.csv', index=False)
+    links_dataframe.to_csv(f"{PATH_TO_LELMANGA}/datas/chapters_links.csv", index=False)
 
     yml_data = yaml.dump(manga_chapters_dict)
-    with open(f'{PATH_TO_LELMANGA}/datas/mangas_chapters_temp.yml', 'w') as file:
+    with open(f"{PATH_TO_LELMANGA}/datas/mangas_chapters_temp.yml", "w") as file:
         file.write(yml_data)
 
-    datas.to_csv(f'{PATH_TO_LELMANGA}/datas/mangas.csv', index=False)
+    datas.to_csv(f"{PATH_TO_LELMANGA}/datas/mangas.csv", index=False)
     return "success"

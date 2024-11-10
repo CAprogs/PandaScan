@@ -1,3 +1,4 @@
+# ruff: noqa : E501
 import requests
 import zipfile
 import io
@@ -19,15 +20,14 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
     Returns:
         str: download status (success or failed)
     """
-
     chapter_link = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
 
     try:
-        http_response = requests.get(chapter_link)
+        http_response = requests.get(url=chapter_link, timeout=10)
         if http_response.status_code == 200:
             response = mangamoins(http_response, chapter_file_path)
             if response is True:
-                LOG.debug(f'{chapter_name} downloaded {EMOJIS[3]}')
+                LOG.debug(f"{chapter_name} downloaded {EMOJIS[3]}")
                 return "success"
             elif response is False:
                 LOG.debug(f"Download aborted , request failed {EMOJIS[4]}")
@@ -36,7 +36,9 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
             LOG.debug(f"Request failed | Status code : {http_response.status_code}")
             return "failed"
     except requests.ConnectionError as e:
-        LOG.debug(f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}")
+        LOG.debug(
+            f"Request failed : {selected_website} | {selected_manga_name} | {chapter_name}\n Error : {e}"
+        )
         return "failed"
 
 
@@ -50,7 +52,6 @@ def mangamoins(http_response: int, chapter_file_path: str):
     Returns:
         bool: True(download successful), False(otherwise)
     """
-
     # Créer un flux binaire avec io.BytesIO à partir du contenu de la réponse
     zip_stream = io.BytesIO(http_response.content)
     # Créer un objet zipfile.ZipFile à partir du flux binaire

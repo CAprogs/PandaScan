@@ -3,7 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-def Scrap_titles(PATH_TO_MANGANELO: str, LOG):
+def scrap_titles(PATH_TO_MANGANELO: str, LOG):
     """Scrap mangas titles from manganelo.
 
     Args:
@@ -13,20 +13,47 @@ def Scrap_titles(PATH_TO_MANGANELO: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     links_list = []
     manga_name_list = []
-    filters = [".", ",", ";", ":", "!", "?", "'", "(", ")", "～", "*", "&", "=", "«", "»", "·", "~", "，", "'", "\"", " -", "「", " –", "’", "」"]
+    filters = [
+        ".",
+        ",",
+        ";",
+        ":",
+        "!",
+        "?",
+        "'",
+        "(",
+        ")",
+        "～",
+        "*",
+        "&",
+        "=",
+        "«",
+        "»",
+        "·",
+        "~",
+        "，",
+        "'",
+        '"',
+        " -",
+        "「",
+        " –",
+        "’",
+        "」",
+    ]
     page = 1
 
     while True:
         url = f"https://ww7.manganelo.tv/genre?page={page}"
 
         try:
-            response = requests.get(url)
+            response = requests.get(url=url, timeout=10)
             html_content = response.text
             soup = BeautifulSoup(html_content, "html.parser")
-            select_element = soup.select_one('body > div.body-site > div.container.container-main > div.panel-content-genres')
+            select_element = soup.select_one(
+                "body > div.body-site > div.container.container-main > div.panel-content-genres"
+            )  # noqa : E501
             if select_element is None:
                 LOG.debug(f"No element found here | {url}")
                 break
@@ -58,6 +85,6 @@ def Scrap_titles(PATH_TO_MANGANELO: str, LOG):
 
     data_to_add = [{"MangaName": name, "MangaLink": link} for name, link in zip(manga_name_list, links_list)]
     datas = pd.DataFrame(data_to_add)
-    datas['n_chapter'] = 0
-    datas.to_csv(f'{PATH_TO_MANGANELO}/datas/mangas.csv', index=False)
+    datas["n_chapter"] = 0
+    datas.to_csv(f"{PATH_TO_MANGANELO}/datas/mangas.csv", index=False)
     return "success"

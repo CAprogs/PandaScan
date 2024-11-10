@@ -11,18 +11,17 @@ def button_hover(button, button_image_1, button_image_2, Download_state=False):
         button_image_2 (Any): alternative image
         Download_state (bool): download button state
     """
-    def set_button_color(event, button, button_image, Download_state):
-        """Associate an image with a button
+
+    def set_button_color(_, button, button_image, Download_state):
+        """Associate an image with a button.
 
         Args:
-            event (Any): the event triggering the function
+            _ (Any): the event triggering the function
             button (Any): the widget button
             button_image (Any): the image to set
             Download_state (bool): download button state
         """
-        if Download_state is True:
-            None
-        else:
+        if Download_state is False:
             button.configure(image=button_image)
 
     button.bind("<Enter>", lambda event: set_button_color(event, button, button_image_2, Download_state))
@@ -40,7 +39,7 @@ def deactivate_button_hover(button):
 
 
 def activate_button(button, button_image_1, button_image_2):
-    """Activate a button
+    """Activate a button.
 
     Args:
         button (Any): the widget button
@@ -52,7 +51,7 @@ def activate_button(button, button_image_1, button_image_2):
 
 
 def deactivate_button(button, button_image_2):
-    """Deactivate a button
+    """Deactivate a button.
 
     Args:
         button (Any): the widget button
@@ -63,15 +62,14 @@ def deactivate_button(button, button_image_2):
 
 
 def manage_menu(menu, menu_list: list, menu_list_var: str):
-    """Manage menu displayed items
+    """Manage menu displayed items.
 
     Args:
         menu (Any): the menu
         menu_list (list): menu's elements
         menu_list_var (str): element selected in the menu
     """
-
-    menu['menu'].delete(0, 'end')
+    menu["menu"].delete(0, "end")
     for element in menu_list:
         if element != menu_list_var.get():
-            menu['menu'].add_command(label=element, command=tk._setit(menu_list_var, element))
+            menu["menu"].add_command(label=element, command=tk._setit(menu_list_var, element))

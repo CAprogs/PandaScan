@@ -2,7 +2,7 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 
 
-def Scrap_titles(DRIVER, PATH_TO_FMTEAM: str, LOG):
+def scrap_titles(DRIVER, PATH_TO_FMTEAM: str, LOG):
     """Scrap the mangas titles from fmteam.
 
     Args:
@@ -13,7 +13,6 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     manga_name_list = []
     links_list = []
 
@@ -30,7 +29,7 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM: str, LOG):
 
             try:
                 element = DRIVER.find_element(By.XPATH, balise)
-                url_manga = element.get_attribute('href')
+                url_manga = element.get_attribute("href")
                 manga_name = url_manga.split("/")[-1]
                 LOG.debug(f"{manga_name} added")
                 links_list.append(url_manga)
@@ -45,10 +44,12 @@ def Scrap_titles(DRIVER, PATH_TO_FMTEAM: str, LOG):
 
         LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
-        data_to_add = [{"MangaName": name, "MangaLink": link} for name, link in zip(manga_name_list, links_list)]
+        data_to_add = [
+            {"MangaName": name, "MangaLink": link} for name, link in zip(manga_name_list, links_list)
+        ]  # noqa: E501
         datas = pd.DataFrame(data_to_add)
-        datas['n_chapter'] = 0
-        datas.to_csv(f'{PATH_TO_FMTEAM}/datas/mangas.csv', index=False)
+        datas["n_chapter"] = 0
+        datas.to_csv(f"{PATH_TO_FMTEAM}/datas/mangas.csv", index=False)
         return "success"
 
     except Exception as e:

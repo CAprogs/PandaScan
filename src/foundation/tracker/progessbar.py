@@ -3,9 +3,10 @@ import sys
 
 
 class ProgressBar:
-    """Creates a progress bar that can be updated and displayed in the console.
-    """
-    def __init__(self, total: int, length: int = 50, fill: str = '█'):
+    """Creates a progress bar that can be updated and displayed in the console."""
+
+    def __init__(self, total: int, length: int = 50, fill: str = "█"):
+        """Initialize the progress bar with the total number of steps."""
         self.total = total
         self.length = length
         self.fill = fill
@@ -13,8 +14,7 @@ class ProgressBar:
         self.start_time = time.perf_counter()
 
     def reset(self):
-        """Reset the progress bar.
-        """
+        """Reset the progress bar."""
         self.progress = 0
         self.start_time = time.perf_counter()
 
@@ -25,10 +25,9 @@ class ProgressBar:
             progress (int): the current progress
         """
         self.progress = progress
-        if self.progress > self.total:
-            self.progress = self.total
+        self.progress = min(self.progress, self.total)
 
-    def display(self, prefix: str = 'Progress:', suffix: str = 'Completed'):
+    def display(self, prefix: str = "Progress:", suffix: str = "Completed"):
         """Display the progress bar.
 
         Args:
@@ -38,12 +37,17 @@ class ProgressBar:
         percent = float(self.progress) / float(self.total)
         fill_length = int(self.length * percent)
         bar_fill = self.fill * fill_length
-        bar_empty = ' ' * (self.length - fill_length)
+        bar_empty = " " * (self.length - fill_length)
         bar = bar_fill + bar_empty
 
         elapsed_time = time.perf_counter() - self.start_time
         eta = round(elapsed_time / percent * (1 - percent), 2)
-        print('\r%s |%s| %s%% %s (ETA: %s)' % (f"{prefix} [{self.progress}/{self.total}]", bar, round(percent * 100, 2), suffix, eta), end='\r')
+        print(
+            "\r{} |{}| {}% {} (ETA: {})".format(
+                f"{prefix} [{self.progress}/{self.total}]", bar, round(percent * 100, 2), suffix, eta
+            ),
+            end="\r",
+        )  # noqa : E501
         sys.stdout.flush()
         if self.progress == self.total:
             print()

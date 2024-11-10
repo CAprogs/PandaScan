@@ -1,24 +1,22 @@
-'''
-██████╗  █████╗ ███╗   ██╗██████╗  █████╗     ███████╗ ██████╗ █████╗ ███╗   ██╗
+"""██████╗  █████╗ ███╗   ██╗██████╗  █████╗     ███████╗ ██████╗ █████╗ ███╗   ██╗
 ██╔══██╗██╔══██╗████╗  ██║██╔══██╗██╔══██╗    ██╔════╝██╔════╝██╔══██╗████╗  ██║
 ██████╔╝███████║██╔██╗ ██║██║  ██║███████║    ███████╗██║     ███████║██╔██╗ ██║
 ██╔═══╝ ██╔══██║██║╚██╗██║██║  ██║██╔══██║    ╚════██║██║     ██╔══██║██║╚██╗██║
 ██║     ██║  ██║██║ ╚████║██████╔╝██║  ██║    ███████║╚██████╗██║  ██║██║ ╚████║
 ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝ BETA
-'''
+"""  # noqa: D205, D210, D415
 # ------------------------------------------------------------------------------------------------------------
 # Welcome to PandaScan ( BETA ) 🐼 | @2023 by CAprogs
 # This project aims to download mangas scans with ease for local access and private use.
 # For now, Chromedriver is required to use PandaScan. Please follow the 'README' file for more information.
-# You are now able to change Settings directly in App.
+# You are now able to change settings directly in App.
 #    ° Choose between "manual" or "auto" update.
 #    ° Select where to save your scans after a download.
-#    ° Updating PandaScan generates changelog files | Check changelogs in 'changelog > choose a website > changelog.txt'.
-# Please note that some websites may provide empty folders when downloading due to non availability of the actual scans.
+#    ° Updating PandaScan generates changelog files | Check changelogs in 'changelog > choose a website > changelog.txt'. # noqa: E501
+# Please note that some websites may provide empty folders when downloading due to non availability of the actual scans. # noqa: E501
 # If you like this project, please consider giving it a ⭐️ on Github.🫶
 # Credits: @Tkinter-designer by ParthJadhav
 # ------------------------------------------------------------------------------------------------------------
-
 
 import os
 import tkinter as tk
@@ -28,7 +26,7 @@ from tkinter import PhotoImage, StringVar, OptionMenu, messagebox
 from src.foundation.tracker.progessbar import ProgressBar
 from src.download.manage import download
 from src.update.manage import manual_update, auto_update
-from src.gui.Settings import show_settings
+from src.gui.settings import show_settings
 from src.gui.utils import button_hover, manage_menu
 from src.foundation.core.essentials import relative_to_assets, check_connection, check_version, clear_console
 from src.foundation.core.essentials import INACTIVE_CURSOR, ACTIVE_CURSOR, CONN, SELECTOR
@@ -41,22 +39,22 @@ from src.foundation.database.manage import TABLES
 POLICE_1 = ("Inter", 15 * -1)
 POLICE_2 = ("Inter", 16 * -1)
 POLICE_3 = ("Inter", 12 * -1)
-CURRENT_COLOR = "#FFFFFF"                     # dominant text color
-ALT_COLOR = "#6B0000"                         # -||- info text color
-ENTRY_TEXT_COLOR = "#000716"                  # -||- entry text color
+CURRENT_COLOR = "#FFFFFF"  # dominant text color
+ALT_COLOR = "#6B0000"  # -||- info text color
+ENTRY_TEXT_COLOR = "#000716"  # -||- entry text color
 
-nb_of_manga_chapters = 0                      # number of chapters from a manga (total)
-nb_of_chapters_to_download = 0                # number of chapters to download
-download_id = 0                               # id of the current download
-downloads_succeeded = 0                       # number of succeeded downloads
-downloads_failed = 0                          # number of failed downloads
-downloads_skipped = 0                         # number of skipped downloads
-selected_manga_name = ''                      # name of the selected manga
-selected_manga_chapters = []                  # list that contains the selected chapters
-start_index = ""                              # index associated to the first chapter of a range
-end_index = ""                                # index associated to the last chapter of a range
-download_button_state = False                 # state of the download button
-manga_file_path = ''                          # path to the manga folder
+nb_of_manga_chapters = 0  # number of chapters from a manga (total)
+nb_of_chapters_to_download = 0  # number of chapters to download
+download_id = 0  # id of the current download
+downloads_succeeded = 0  # number of succeeded downloads
+downloads_failed = 0  # number of failed downloads
+downloads_skipped = 0  # number of skipped downloads
+selected_manga_name = ""  # name of the selected manga
+selected_manga_chapters = []  # list that contains the selected chapters
+start_index = ""  # index associated to the first chapter of a range
+end_index = ""  # index associated to the last chapter of a range
+download_button_state = False  # state of the download button
+manga_file_path = ""  # path to the manga folder
 
 TEXT_1 = "Manga name"
 TEXT_2 = "Chapter / Volume"
@@ -64,42 +62,36 @@ TEXT_3 = "-"
 
 
 def main():
-    """Load application components."
+    """Load application components.
 
     Returns:
         str: a message when app's closing
     """
-
     if not check_connection():
-        messagebox.showinfo(f"Error [{EMOJIS[14]}]", f"{EMOJIS[9]} Oups, no internet connection detected {EMOJIS[11]}")
+        messagebox.showinfo(
+            f"Error [{EMOJIS[14]}]", f"{EMOJIS[9]} " f"Oups, no internet connection detected {EMOJIS[11]}"
+        )
         return print(f"\nPandascan exited {EMOJIS[1]}\n")
 
-    print(f"PandaScan is running {EMOJIS[3]}\n")
+    print(f"{'PandaScan is running ':.<25} {EMOJIS[3]}\n")
     check_version()
 
     main_window = Tk()
     logo = PhotoImage(file=relative_to_assets("pandacon.gif"))
-    main_window.call('wm', 'iconphoto', main_window._w, logo)
+    main_window.call("wm", "iconphoto", main_window._w, logo)
 
     main_window.title(f"PandaScan {EMOJIS[0]}")
     main_window.geometry("962x686")
     main_window.configure(bg=CURRENT_COLOR)
     canvas = Canvas(
-        main_window,
-        bg=CURRENT_COLOR,
-        height=686,
-        width=962,
-        bd=0,
-        highlightthickness=0,
-        relief="ridge"
+        main_window, bg=CURRENT_COLOR, height=686, width=962, bd=0, highlightthickness=0, relief="ridge"
     )
     canvas.place(x=0, y=0)
 
     # === FUNCTIONS
 
     def on_closing():
-        """Tasks when closing the application.
-        """
+        """Tasks when closing the application."""
         if DRIVER:
             DRIVER.quit()
         CONN.close()
@@ -107,43 +99,38 @@ def main():
         clear_console()
         print(f"\nApp closed {EMOJIS[2]}\n")
 
-    def Clear_range_menus():
-        """Clear and reset the selection range dropdown menus.
-        """
-        min_chapter_menu['menu'].delete(0, 'end')
-        max_chapter_menu['menu'].delete(0, 'end')
-        Check_box_var.set(0)
+    def clear_range_menus():
+        """Clear and reset the selection range dropdown menus."""
+        min_chapter_menu["menu"].delete(0, "end")
+        max_chapter_menu["menu"].delete(0, "end")
+        check_box_var.set(0)
         min_chapter_var.set(" ")
         max_chapter_var.set(" ")
         min_chapter_menu.configure(state="disabled")
         max_chapter_menu.configure(state="disabled")
-        Check_box.configure(state="disabled")
+        check_box.configure(state="disabled")
 
-    def Reload_page():
-        """Reset app's widgets.
-        """
+    def reload_page():
+        """Reset app's widgets."""
         global selected_manga_name
 
-        selected_manga_name = ''
+        selected_manga_name = ""
 
         entry_1.delete(0, tk.END)
-        canvas.itemconfigure(Chapter_selected, text='')
-        canvas.itemconfigure(Manga_selected, text='')
+        canvas.itemconfigure(chapter_selected, text="")
+        canvas.itemconfigure(manga_selected, text="")
         result_box.delete(0, tk.END)
         chapters_box.delete(0, tk.END)
-        Clear_range_menus()
+        clear_range_menus()
 
-    def Switch_website(*args):
-        """Change the website.
-        """
-
+    def switch_website(*_):  # noqa: ARG001
+        """Change the website."""
         manage_menu(website_menu, WEBSITES, website_list_var)
         LOG.debug(f"Website : {website_list_var.get()}")
-        Reload_page()
+        reload_page()
 
-    def Switch_language(*args):
-        """Fetch the website's menu with the websites associated to the selected language.
-        """
+    def switch_language(*_):  # noqa: ARG001
+        """Fetch the website's menu with the websites associated to the selected language."""
         global WEBSITES
 
         if language_list_var.get() == LANGUAGES[0]:
@@ -157,26 +144,26 @@ def main():
         manage_menu(language_menu, LANGUAGES, language_list_var)
         manage_menu(website_menu, WEBSITES, website_list_var)
         LOG.debug(f"Languages displayed : {language_list_var.get()}")
-        Reload_page()
+        reload_page()
 
-    def update_results(event):
+    def update_results(_event):
         """Update the results in the list of mangas.
 
         Args:
-            event (Any): The event triggering the function.
+            _event (Any): The event triggering the function.
         """
-        keyword = '%' + entry_1.get() + '%'
+        keyword = "%" + entry_1.get() + "%"
         query = f"SELECT MangaName FROM {TABLES[1]} WHERE MangaName LIKE ? AND Website = ?"
         SELECTOR.execute(query, (keyword, website_list_var.get()))
         results = [row[0] for row in SELECTOR.fetchall()]
         result_box.delete(0, tk.END)
         result_box.insert(tk.END, *results)
 
-    def on_mangas_select(event):
+    def on_mangas_select(_event):
         """Actions when a manga is selected.
 
         Args:
-            event (Any): The event triggering the function.
+            _event (Any): The event triggering the function.
         """
         global selected_manga_name
 
@@ -184,54 +171,52 @@ def main():
         if selected_indices:
             selected_manga_name = result_box.get(selected_indices[0])
             update_chapters(selected_manga_name)
-            truncated_text = selected_manga_name[:15] + "..." if len(selected_manga_name) > 15 else selected_manga_name
-            canvas.itemconfigure(Manga_selected, text=truncated_text)
+            truncated_text = (
+                selected_manga_name[:15] + "..." if len(selected_manga_name) > 15 else selected_manga_name
+            )  # noqa: E501
+            canvas.itemconfigure(manga_selected, text=truncated_text)
 
             result = chapters_box.get(tk.END)
 
-            min_chapter_menu['menu'].delete(0, 'end')
-            max_chapter_menu['menu'].delete(0, 'end')
+            min_chapter_menu["menu"].delete(0, "end")
+            max_chapter_menu["menu"].delete(0, "end")
 
             if result != "":
                 fetch_chapters_in_menu()
             else:
                 min_chapter_var.set(" ")
                 max_chapter_var.set(" ")
-                Check_box_var.set(0)
+                check_box_var.set(0)
                 min_chapter_menu.configure(state="disabled")
                 max_chapter_menu.configure(state="disabled")
-                Check_box.configure(state="disabled")
+                check_box.configure(state="disabled")
 
-    def on_menu_select(*args):
-        """Handle the re-selection of the chapter range.
-        """
-        if Check_box_var.get() == 1:
+    def on_menu_select(*_):
+        """Handle the re-selection of the chapter range."""
+        if check_box_var.get() == 1:
             chapters_box.selection_clear(0, tk.END)
             select_range()
 
     def fetch_chapters_in_menu():
-        """Fill the list of chapters in the dropdown menus for range selection.
-        """
+        """Fill the list of chapters in the dropdown menus for range selection."""
         if "chapitre" in chapters_box.get(0):
             num_chapters = [chapitre.replace("chapitre ", "") for chapitre in chapters_box.get(0, tk.END)]
         elif "chapter" in chapters_box.get(0):
             num_chapters = [chapter.replace("chapter ", "") for chapter in chapters_box.get(0, tk.END)]
         for chapter in num_chapters:
-            min_chapter_menu['menu'].add_command(label=chapter, command=tk._setit(min_chapter_var, chapter))
-            max_chapter_menu['menu'].add_command(label=chapter, command=tk._setit(max_chapter_var, chapter))
+            min_chapter_menu["menu"].add_command(label=chapter, command=tk._setit(min_chapter_var, chapter))
+            max_chapter_menu["menu"].add_command(label=chapter, command=tk._setit(max_chapter_var, chapter))
         min_chapter_var.set(num_chapters[-1])
         max_chapter_var.set(num_chapters[0])
         min_chapter_menu.configure(state="normal")
         max_chapter_menu.configure(state="normal")
-        Check_box.configure(state="normal")
+        check_box.configure(state="normal")
 
-    def select_range(*args):
-        """Select a range of chapters.
-        """
+    def select_range(*_):
+        """Select a range of chapters."""
         global nb_of_manga_chapters, selected_manga_chapters, start_index, end_index
 
-        if Check_box_var.get() == 1:
-
+        if check_box_var.get() == 1:
             min_var = min_chapter_var.get()
             max_var = max_chapter_var.get()
             if "chapitre" in chapters_box.get(0):
@@ -258,12 +243,12 @@ def main():
             chapters_box.select_set(start_index, end_index)
             selected_manga_chapters = selected_range
             nb_of_manga_chapters = len(selected_manga_chapters)
-            canvas.itemconfigure(Chapter_selected, text=f'{nb_of_manga_chapters} selected')
+            canvas.itemconfigure(chapter_selected, text=f"{nb_of_manga_chapters} selected")
 
         else:
             chapters_box.selection_clear(0, tk.END)
             selected_manga_chapters = []
-            canvas.itemconfigure(Chapter_selected, text='0 selected')
+            canvas.itemconfigure(chapter_selected, text="0 selected")
 
     def update_chapters(selected_manga_name: str):
         """Update the results in the Chapter List when a manga is selected.
@@ -274,29 +259,28 @@ def main():
         query = f"SELECT Chapter FROM {TABLES[2]} WHERE Website = ? AND MangaName = ?"
         SELECTOR.execute(query, (website_list_var.get(), selected_manga_name))
         results = [result[0] for result in SELECTOR.fetchall()]
-        sorted_results = sorted(results, key=lambda x: float(x.split(' ')[-1]), reverse=True)
+        sorted_results = sorted(results, key=lambda x: float(x.split(" ")[-1]), reverse=True)
         chapters_box.delete(0, tk.END)
         chapters_box.insert(tk.END, *sorted_results)
         result = chapters_box.get(tk.END)
-        if Check_box_var.get() == 1 or result != "":
-            Clear_range_menus()
+        if check_box_var.get() == 1 or result != "":
+            clear_range_menus()
 
-    def on_chapters_select(event):
+    def on_chapters_select(_event):
         """Tasks when a chapter is selected.
 
         Args:
-            event (Any): The event triggering the function.
+            _event (Any): The event triggering the function.
         """
         global selected_manga_chapters, nb_of_manga_chapters
 
         selected_chapters = chapters_box.curselection()
         selected_manga_chapters = [chapters_box.get(index) for index in selected_chapters]
         nb_of_manga_chapters = len(selected_manga_chapters)
-        canvas.itemconfigure(Chapter_selected, text=f'{nb_of_manga_chapters} selected')
+        canvas.itemconfigure(chapter_selected, text=f"{nb_of_manga_chapters} selected")
 
-    def Set_download():
-        """Handle the download of selected chapters.
-        """
+    def set_download():
+        """Handle the download of selected chapters."""
         global download_id, downloads_succeeded, downloads_failed, downloads_skipped
 
         download_id = 0
@@ -304,21 +288,23 @@ def main():
         downloads_failed = 0
         downloads_skipped = 0
 
-        def Start_download(progress_bar: ProgressBar):
+        def start_download(progress_bar: ProgressBar):
             """Start the download of selected chapters.
 
             Args:
                 progress_bar (ProgressBar): A progress bar object.
             """
-            global download_id, download_button_state, downloads_succeeded, downloads_failed, downloads_skipped
+            global download_id, download_button_state, downloads_succeeded, downloads_failed, downloads_skipped  # noqa: E501
 
             chapter_name = selected_manga_chapters[download_id]
-            if os.path.exists(SETTINGS['Download']['path']):
-                chapter_file_path = manga_file_path + '/' + chapter_name
+            if os.path.exists(SETTINGS["Download"]["path"]):
+                chapter_file_path = manga_file_path + "/" + chapter_name
             else:
                 chapter_file_path = manga_file_path / chapter_name
 
-            status = download(website_list_var.get(), chapter_file_path, selected_manga_name, chapter_name, DRIVER)
+            status = download(
+                website_list_var.get(), chapter_file_path, selected_manga_name, chapter_name, DRIVER
+            )  # noqa: E501
             if status == "success":
                 downloads_succeeded += 1
             elif status == "failed":
@@ -329,12 +315,14 @@ def main():
             download_id += 1
             if progress_bar is not None:
                 progress_bar.update(download_id)
-                progress_bar.display(prefix='Download', suffix=f'[{status}]')
+                progress_bar.display(prefix="Download", suffix=f"[{status}]")
 
             if download_id < nb_of_manga_chapters:
-                main_window.after(100, Start_download(progress_bar))
+                main_window.after(100, start_download(progress_bar))
             else:
-                messagebox.showinfo(f"Download info [{EMOJIS[13]}]", f"""
+                messagebox.showinfo(
+                    f"Download info [{EMOJIS[13]}]",
+                    f"""
                                     Manga : {selected_manga_name}
 
                                     succeeded : {downloads_succeeded}/{nb_of_manga_chapters} {EMOJIS[3]}
@@ -342,12 +330,14 @@ def main():
                                     skipped : {downloads_skipped} {EMOJIS[12]}
 
                                     Stored in : {manga_file_path}
-                                    \n\nThanks for using PandaScan {EMOJIS[0]}""")
+                                    \n\nThanks for using PandaScan {EMOJIS[0]}""",
+                )
                 download_button.configure(state="normal")
                 download_button_state = False
 
-        def Manage_download():
-            """
+        def manage_download():
+            """EntryPoint of any download action.
+
             - Deactivate the download button
             - Instantiate a progress bar (INFO mode only)
             - Start the download of selected chapters
@@ -356,46 +346,45 @@ def main():
 
             download_button_state = True
             download_button.configure(state="disabled")
-            if SETTINGS['logger']['level'] == "INFO":
+            if SETTINGS["logger"]["level"] == "INFO":
                 progress_bar = ProgressBar(nb_of_manga_chapters)
             else:
                 progress_bar = None
-            Start_download(progress_bar)
+            start_download(progress_bar)
 
-        def Set_download_directory():
-            """Handle the download directory.
-            """
+        def set_download_directory():
+            """Handle the download directory."""
             global manga_file_path
 
-            if os.path.exists(SETTINGS['Download']['path']):
-                manga_file_path = SETTINGS['Download']['path'] + '/' + selected_manga_name
+            if os.path.exists(SETTINGS["Download"]["path"]):
+                manga_file_path = SETTINGS["Download"]["path"] + "/" + selected_manga_name
             else:
                 manga_file_path = MAIN_DIRECTORY / selected_manga_name
                 if not os.path.exists(manga_file_path):
                     os.makedirs(manga_file_path)
-            Manage_download()
+            manage_download()
 
         if nb_of_manga_chapters == 0 or selected_manga_chapters == []:
             messagebox.showinfo(f"Info [{EMOJIS[13]}]", f"No Chapter Selected {EMOJIS[10]}, Try again")
         else:
             clear_console()
             LOG.info(f"Downloading {selected_manga_name} ..")
-            Set_download_directory()
+            set_download_directory()
 
     # === BASIC ELEMENTS
 
     # App Name
-    Name_App = PhotoImage(file=relative_to_assets("Name_App.png"))
-    canvas.create_image(481.0, 65.0, image=Name_App)
+    app_name = PhotoImage(file=relative_to_assets("App_Name.png"))
+    canvas.create_image(481.0, 65.0, image=app_name)
     # App Logo
-    Logo_App = PhotoImage(file=relative_to_assets("Logo_App.png"))
-    canvas.create_image(85.0, 65.0, image=Logo_App)
+    logo_app = PhotoImage(file=relative_to_assets("Logo_App.png"))
+    canvas.create_image(85.0, 65.0, image=logo_app)
     # Searchbar Background
-    SearchBar_background = PhotoImage(file=relative_to_assets("SearchBar_background.png"))
-    canvas.create_image(495.0, 209.0, image=SearchBar_background)
+    SearchBar_background = PhotoImage(file=relative_to_assets("SearchBar_background.png"))  # noqa: N806
+    canvas.create_image(495.0, 209.0, image=SearchBar_background)  # noqa: N806
     # Searchbar Foreground
-    SearchBar_foreground = PhotoImage(file=relative_to_assets("SearchBar_foreground.png"))
-    canvas.create_image(511.0, 202.0, image=SearchBar_foreground)
+    SearchBar_foreground = PhotoImage(file=relative_to_assets("SearchBar_foreground.png"))  # noqa: N806
+    canvas.create_image(511.0, 202.0, image=SearchBar_foreground)  # noqa: N806
 
     # === Manga search bar ( SearchBar )
 
@@ -412,7 +401,7 @@ def main():
     manage_menu(language_menu, LANGUAGES, language_list_var)
     language_menu.place(x=420.0, y=150.0, width=47.0)
     language_menu.configure(bg=CURRENT_COLOR)
-    language_list_var.trace_add("write", Switch_language)
+    language_list_var.trace_add("write", switch_language)
 
     # === Dropdown selection of the website
 
@@ -422,17 +411,17 @@ def main():
     manage_menu(website_menu, WEBSITES, website_list_var)
     website_menu.place(x=470.0, y=150.0)
     website_menu.configure(bg=CURRENT_COLOR)
-    website_list_var.trace_add("write", Switch_website)
+    website_list_var.trace_add("write", switch_website)
 
     # === ( ChapterBox : Image )
 
-    Chapters_list_Box = PhotoImage(file=relative_to_assets("Chapters_list_Box.png"))
-    canvas.create_image(588.0, 392.0, image=Chapters_list_Box)
+    chapters_list_box = PhotoImage(file=relative_to_assets("Chapters_list_Box.png"))
+    canvas.create_image(588.0, 392.0, image=chapters_list_box)
 
     # === ( MangaBox : Image )
 
-    Manga_name_listBox = PhotoImage(file=relative_to_assets("Manga_name_listBox.png"))
-    canvas.create_image(382.0, 392.0, image=Manga_name_listBox)
+    manga_name_list_box = PhotoImage(file=relative_to_assets("Manga_name_listBox.png"))
+    canvas.create_image(382.0, 392.0, image=manga_name_list_box)
 
     # === Manga Display area ( MangaBox )
 
@@ -467,11 +456,11 @@ def main():
     # ===  Events associated to the widgets
 
     # Search the manga + Update the results
-    entry_1.bind('<KeyRelease>', update_results)
+    entry_1.bind("<KeyRelease>", update_results)
     # Selection of the manga + display the name of the manga selected
-    result_box.bind('<<ListboxSelect>>', on_mangas_select)
+    result_box.bind("<<ListboxSelect>>", on_mangas_select)
     # Selection of chapters + display the number of chapters selected
-    chapters_box.bind('<<ListboxSelect>>', on_chapters_select)
+    chapters_box.bind("<<ListboxSelect>>", on_chapters_select)
 
     # === Select a range of chapters ( Menus + Checkbox )
 
@@ -481,7 +470,7 @@ def main():
     min_chapter_menu = OptionMenu(main_window, min_chapter_var, "")
     min_chapter_menu.place(x=520.0, y=526.0, width=60.0, height=18.0)
     min_chapter_menu.configure(bg=CURRENT_COLOR, state="disabled")
-    min_chapter_var.trace_add("write", lambda *args: on_menu_select())
+    min_chapter_var.trace_add("write", lambda *_: on_menu_select())
 
     # "-" text
     canvas.create_text(585.0, 527.0, anchor="nw", text=TEXT_3, fill=ALT_COLOR, font=POLICE_3)
@@ -492,26 +481,28 @@ def main():
     max_chapter_menu = OptionMenu(main_window, max_chapter_var, "")
     max_chapter_menu.place(x=595.0, y=526.0, width=60.0, height=18.0)
     max_chapter_menu.configure(bg=CURRENT_COLOR, state="disabled")
-    max_chapter_var.trace_add("write", lambda *args: on_menu_select())
+    max_chapter_var.trace_add("write", lambda *_: on_menu_select())
 
     # validation checkbox
-    Check_box_var = IntVar(main_window)
-    Check_box = Checkbutton(main_window, variable=Check_box_var, command=select_range, bg="white", state="disabled")
-    Check_box.place(x=655.0, y=524.0)
+    check_box_var = IntVar(main_window)
+    check_box = Checkbutton(
+        main_window, variable=check_box_var, command=select_range, bg="white", state="disabled"
+    )  # noqa: E501
+    check_box.place(x=655.0, y=524.0)
 
     # === Number of chapters selected ( Chapters_info Box )
 
     chapters_info_box = PhotoImage(file=relative_to_assets("Chapters_info.png"))
     canvas.create_image(588.0, 584.0, image=chapters_info_box)
     # Number of chapters selected
-    Chapter_selected = canvas.create_text(550.0, 570.0, anchor="nw", text="", fill=ALT_COLOR, font=POLICE_2)
+    chapter_selected = canvas.create_text(550.0, 570.0, anchor="nw", text="", fill=ALT_COLOR, font=POLICE_2)
 
     # === Name of the selected manga ( Manga_info Box )
 
-    Manga_name_info_box = PhotoImage(file=relative_to_assets("Manga_name_info.png"))
-    canvas.create_image(381.0, 584.0, image=Manga_name_info_box)
+    manga_name_info_box = PhotoImage(file=relative_to_assets("Manga_name_info.png"))
+    canvas.create_image(381.0, 584.0, image=manga_name_info_box)
     # Manga selected
-    Manga_selected = canvas.create_text(305.0, 570.0, anchor="nw", text="", fill=ALT_COLOR, font=POLICE_2)
+    manga_selected = canvas.create_text(305.0, 570.0, anchor="nw", text="", fill=ALT_COLOR, font=POLICE_2)
 
     # === BUTTONS
 
@@ -523,9 +514,9 @@ def main():
         image=button_download_1,
         borderwidth=0,
         highlightthickness=0,
-        command=Set_download,
+        command=set_download,
         relief="flat",
-        cursor=ACTIVE_CURSOR
+        cursor=ACTIVE_CURSOR,
     )
     download_button.place(x=801.0, y=584.0, width=95.0, height=93)
     button_hover(download_button, button_download_1, button_download_2, download_button_state)
@@ -540,7 +531,7 @@ def main():
         highlightthickness=0,
         command=lambda: show_settings(main_window, SETTINGS, settings_button),
         relief="flat",
-        cursor=ACTIVE_CURSOR
+        cursor=ACTIVE_CURSOR,
     )
     settings_button.place(x=830.0, y=25.0, width=108.0, height=40)
     button_hover(settings_button, button_settings_1, button_settings_2, download_button_state)
@@ -554,17 +545,21 @@ def main():
         borderwidth=0,
         highlightthickness=0,
         relief="flat",
-        cursor=ACTIVE_CURSOR
+        cursor=ACTIVE_CURSOR,
     )
     update_button.place(x=664.0, y=57.0, width=41.0, height=44.0)
 
-    if SETTINGS['Update']['mode'] == "auto":
+    if SETTINGS["Update"]["mode"] == "auto":
         main_window.withdraw()
         update_button.config(state=tk.DISABLED, cursor=INACTIVE_CURSOR)
         auto_update(SRC_DIRECTORY, ALL_WEBSITES, SETTINGS, CONN, SELECTOR, LOG)
         main_window.deiconify()
-    elif SETTINGS['Update']['mode'] == "manual":
-        update_button.config(command=lambda: manual_update(SRC_DIRECTORY, website_list_var.get(), SETTINGS, CONN, SELECTOR, LOG))
+    elif SETTINGS["Update"]["mode"] == "manual":
+        update_button.config(
+            command=lambda: manual_update(
+                SRC_DIRECTORY, website_list_var.get(), SETTINGS, CONN, SELECTOR, LOG
+            )
+        )
         button_hover(update_button, button_update_1, button_update_2, download_button_state)
 
     main_window.protocol("WM_DELETE_WINDOW", on_closing)

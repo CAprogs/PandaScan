@@ -3,7 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-def Scrap_titles(PATH_TO_LELSCANS: str, LOG):
+def scrap_titles(PATH_TO_LELSCANS: str, LOG):
     """Scrap mangas titles from lelscans.
 
     Args:
@@ -13,17 +13,16 @@ def Scrap_titles(PATH_TO_LELSCANS: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     links_list = []
     manga_name_list = []
 
     url = "https://lelscans.net/scan-hunter-x-hunter/400/1"
 
     try:
-        response = requests.get(url)
+        response = requests.get(url=url, timeout=10)
         html_content = response.text
         soup = BeautifulSoup(html_content, "html.parser")
-        select_element = soup.select_one('#header-image > h2 > form > select:nth-child(2)')
+        select_element = soup.select_one("#header-image > h2 > form > select:nth-child(2)")
 
         for option in select_element.find_all("option"):
             url_manga = option["value"]
@@ -45,10 +44,12 @@ def Scrap_titles(PATH_TO_LELSCANS: str, LOG):
 
         LOG.info(f"{len(manga_name_list)} mangas fetched")
 
-        data_to_add = [{"MangaName": name, "MangaLink": link} for name, link in zip(manga_name_list, links_list)]
+        data_to_add = [
+            {"MangaName": name, "MangaLink": link} for name, link in zip(manga_name_list, links_list)
+        ]  # noqa: E501
         datas = pd.DataFrame(data_to_add)
-        datas['n_chapter'] = 0
-        datas.to_csv(f'{PATH_TO_LELSCANS}/datas/mangas.csv', index=False)
+        datas["n_chapter"] = 0
+        datas.to_csv(f"{PATH_TO_LELSCANS}/datas/mangas.csv", index=False)
         return "success"
 
     except Exception as e:

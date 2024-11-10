@@ -11,7 +11,7 @@ def read_previous_state(PATH_TO_WEBSITE: str):
         A yaml file or an empty dict
     """
     try:
-        with open(f'{PATH_TO_WEBSITE}/datas/mangas_chapters.yml', 'r') as file:
+        with open(f"{PATH_TO_WEBSITE}/datas/mangas_chapters.yml") as file:
             return yaml.safe_load(file)
     except FileNotFoundError:
         return {}
@@ -24,7 +24,7 @@ def write_current_state(state, PATH_TO_WEBSITE: str):
         state (Any): the current yaml file
         PATH_TO_WEBSITE (str): path to the website folder (update module)
     """
-    with open(f'{PATH_TO_WEBSITE}/datas/mangas_chapters.yml', 'w') as file:
+    with open(f"{PATH_TO_WEBSITE}/datas/mangas_chapters.yml", "w") as file:
         yaml.dump(state, file)
 
 
@@ -51,7 +51,9 @@ def generate_report(current_state, previous_state):
                 if removed_chapters:
                     change_report.append(f"  • Removed chapters: {', '.join(removed_chapters)}\n")
         else:
-            change_report.append(f"=> Added new entry '{key}' with chapters: {', '.join(current_state[key])}\n")
+            change_report.append(
+                f"=> Added new entry '{key}' with chapters: {', '.join(current_state[key])}\n"
+            )  # noqa : E501
 
     deprecated_keys = [key for key in previous_state if key not in current_state]
     if deprecated_keys:

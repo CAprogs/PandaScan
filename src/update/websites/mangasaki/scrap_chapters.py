@@ -3,7 +3,7 @@ import yaml
 from selenium.webdriver.common.by import By
 
 
-def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
+def scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
     """Scrap the mangas chapters from mangasaki.
 
     Args:
@@ -14,20 +14,19 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     try:
-        datas = pd.read_csv(f'{PATH_TO_MANGASAKI}/datas/mangas.csv')
+        datas = pd.read_csv(f"{PATH_TO_MANGASAKI}/datas/mangas.csv")
     except Exception as e:
         LOG.debug(f"Error : {e}")
         return "failed"
     manga_chapters_dict = {}
     chapters_and_links = []
     failed_mangas = []
-    last_manga_index = len(datas['MangaName']) - 1
+    last_manga_index = len(datas["MangaName"]) - 1
     columns = ["Website", "MangaName", "Chapter", "ChapterLink"]
 
-    for index, manga_name in enumerate(datas['MangaName']):
-        url = datas['MangaLink'][index]
+    for index, manga_name in enumerate(datas["MangaName"]):
+        url = datas["MangaLink"][index]
         i = 0
         previous_chapter_number = 0
 
@@ -39,11 +38,13 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
                 DRIVER.get(url + f"?page={i}")
 
                 if i == 0:
-                    ul_elements = DRIVER.find_elements(By.TAG_NAME, 'ul')[16]
-                    last_page_element = ul_elements.find_elements(By.TAG_NAME, 'li')[-1].find_element(By.TAG_NAME, 'a')
+                    ul_elements = DRIVER.find_elements(By.TAG_NAME, "ul")[16]
+                    last_page_element = ul_elements.find_elements(By.TAG_NAME, "li")[-1].find_element(
+                        By.TAG_NAME, "a"
+                    )
                     if last_page_element and last_page_element.text == "last »":
                         try:
-                            last_page = int(last_page_element.get_attribute('href').split("=")[-1])
+                            last_page = int(last_page_element.get_attribute("href").split("=")[-1])
                         except Exception as e:
                             LOG.debug(f"No last_page_element | {url} | {e}")
                             last_page_element = None
@@ -53,13 +54,13 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
                 elif i > last_page:
                     break
 
-                select_element = DRIVER.find_element(By.TAG_NAME, 'tbody')
-                options = select_element.find_elements(By.TAG_NAME, 'tr')
+                select_element = DRIVER.find_element(By.TAG_NAME, "tbody")
+                options = select_element.find_elements(By.TAG_NAME, "tr")
 
                 for option in options:
                     # extract the chapter and his link
-                    link_element = option.find_elements(By.TAG_NAME, 'td')[0].find_element(By.TAG_NAME, 'a')
-                    chapter_link = link_element.get_attribute('href')
+                    link_element = option.find_elements(By.TAG_NAME, "td")[0].find_element(By.TAG_NAME, "a")
+                    chapter_link = link_element.get_attribute("href")
                     pattern = f"https://www.mangasaki.org/chapter/{manga_name}-"
                     if pattern not in chapter_link:
                         continue
@@ -90,7 +91,9 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
                                 LOG.debug(f"{e} | {chapter_number}")
                                 continue
                         elif float(chapter_number) == float(previous_chapter_number):
-                            LOG.debug(f"The chapter number is the same as the previous one. | {chapter_number}")
+                            LOG.debug(
+                                f"The chapter number is the same as the previous one. | {chapter_number}"
+                            )  # noqa : E501
                             continue
 
                         previous_chapter_number = chapter_number
@@ -112,10 +115,10 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
 
         manga_chapters_dict[manga_name] = list(manga_chapters_dict[manga_name])
         manga_chapters_dict[manga_name].sort(key=lambda x: float(x.split()[1]), reverse=True)
-        datas.loc[index, 'n_chapter'] = len(manga_chapters_dict[manga_name])
+        datas.loc[index, "n_chapter"] = len(manga_chapters_dict[manga_name])
         LOG.info(f"{len(manga_chapters_dict[manga_name])} chapters fetched")
 
-    if len(failed_mangas) == len(datas['MangaName']):
+    if len(failed_mangas) == len(datas["MangaName"]):
         LOG.debug("Error : All mangas failed ..")
         return "failed"
     elif failed_mangas != []:
@@ -124,11 +127,11 @@ def Scrap_chapters(DRIVER, PATH_TO_MANGASAKI: str, LOG):
             LOG.debug(manga)
 
     links_dataframe = pd.DataFrame(chapters_and_links, columns=columns)
-    links_dataframe.to_csv(f'{PATH_TO_MANGASAKI}/datas/chapters_links.csv', index=False)
+    links_dataframe.to_csv(f"{PATH_TO_MANGASAKI}/datas/chapters_links.csv", index=False)
 
     yml_data = yaml.dump(manga_chapters_dict)
-    with open(f'{PATH_TO_MANGASAKI}/datas/mangas_chapters_temp.yml', 'w') as file:
+    with open(f"{PATH_TO_MANGASAKI}/datas/mangas_chapters_temp.yml", "w") as file:
         file.write(yml_data)
 
-    datas.to_csv(f'{PATH_TO_MANGASAKI}/datas/mangas.csv', index=False)
+    datas.to_csv(f"{PATH_TO_MANGASAKI}/datas/mangas.csv", index=False)
     return "success"

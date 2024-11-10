@@ -3,7 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-def Get_number_of_pages(soup, LOG):
+def get_number_of_pages(soup, LOG):
     """Get the number of pages from mangamoins.
 
     Args:
@@ -14,7 +14,7 @@ def Get_number_of_pages(soup, LOG):
         int/None: the number of pages if success, None if an error occured
     """
     try:
-        select_element = soup.select_one('body > main > div.ContentGauche > div.bottom_pages > div')
+        select_element = soup.select_one("body > main > div.ContentGauche > div.bottom_pages > div")
         if select_element:
             pages_element = select_element.find_all("a")
             last_page = pages_element[-1].text
@@ -27,7 +27,7 @@ def Get_number_of_pages(soup, LOG):
         return None
 
 
-def Scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
+def scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
     """Scrap mangas titles from mangamoins.
 
     Args:
@@ -37,7 +37,6 @@ def Scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     manga_name_list = []
     filters = [".", ":"]
     page = 1
@@ -46,18 +45,18 @@ def Scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
         url = f"https://mangamoins.shaeishu.co/?p={page}"
 
         try:
-            response = requests.get(url)
+            response = requests.get(url=url, timeout=10)
             html_content = response.text
             soup = BeautifulSoup(html_content, "html.parser")
             if page == 1:
-                last_page = Get_number_of_pages(soup, LOG)
+                last_page = get_number_of_pages(soup, LOG)
                 if last_page is None:
                     LOG.debug("Error : No page element found")
                     return "failed"
             elif page > last_page:
                 LOG.debug(f"Last page : {url}")
                 break
-            select_element = soup.select_one('body > main > div.ContentGauche > div.LastSorties')
+            select_element = soup.select_one("body > main > div.ContentGauche > div.LastSorties")
 
             if select_element:
                 mangas = select_element.find_all("div", class_="sortie")
@@ -91,6 +90,6 @@ def Scrap_titles(PATH_TO_MANGAMOINS: str, LOG):
     LOG.info(f"{len(manga_name_list)} mangas fetched.")
 
     datas = pd.DataFrame(manga_name_list, columns=["MangaName"])
-    datas['n_chapter'] = 0
-    datas.to_csv(f'{PATH_TO_MANGAMOINS}/datas/mangas.csv', index=False)
+    datas["n_chapter"] = 0
+    datas.to_csv(f"{PATH_TO_MANGAMOINS}/datas/mangas.csv", index=False)
     return "success"

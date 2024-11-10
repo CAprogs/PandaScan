@@ -1,3 +1,4 @@
+# ruff : noqa : E501
 import pandas as pd
 from .utils import clean_table, found_and_clean_duplicates
 from src.foundation.core.essentials import SETTINGS
@@ -5,7 +6,7 @@ from src.foundation.core.emojis import EMOJIS
 from src.foundation.database.manage import TABLES
 
 
-def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
+def manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
     """Migrate the CSV and YAML data to the database.
 
     Args:
@@ -17,19 +18,21 @@ def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
     Returns:
         str: 'success' if passed, 'failed' if an error occured
     """
-
     LOG.info("Datas migration ..")
     websites = []
     for key in SETTINGS["websites"].keys():
-        if key != 'fav_language':
-            websites.append({'Website': key,
-                             'Language': SETTINGS["websites"][key]["language"],
-                             'Link': SETTINGS["websites"][key]["link"],
-                             'n_update': SETTINGS["websites"][key]["n_update"],
-                             'n_manga': SETTINGS["websites"][key]["n_manga"],
-                             'time_to_update': SETTINGS["websites"][key]["time_to_update"],
-                             'last_update': SETTINGS["websites"][key]["last_update"]
-                             })
+        if key != "fav_language":
+            websites.append(
+                {
+                    "Website": key,
+                    "Language": SETTINGS["websites"][key]["language"],
+                    "Link": SETTINGS["websites"][key]["link"],
+                    "n_update": SETTINGS["websites"][key]["n_update"],
+                    "n_manga": SETTINGS["websites"][key]["n_manga"],
+                    "time_to_update": SETTINGS["websites"][key]["time_to_update"],
+                    "last_update": SETTINGS["websites"][key]["last_update"],
+                }
+            )
 
     nb_websites = len(websites)
     latest_website_index = nb_websites - 1
@@ -46,28 +49,34 @@ def Manage_migration(SRC_DIRECTORY: str, CONN, SELECTOR, LOG):
 
     # df_sites -> Table "Websites"
     df_sites = pd.DataFrame(websites)
-    df_sites.to_sql(TABLES[0], CONN, if_exists='append', index=False)
+    df_sites.to_sql(TABLES[0], CONN, if_exists="append", index=False)
 
     for website in websites:
         try:
-            website = website['Website']
+            website = website["Website"]
 
             # [mangas.csv] -> Table "Mangas"
-            df_mangas = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/mangas.csv')
-            df_mangas['Website'] = website
-            df_mangas, df_mangas_duplicates = found_and_clean_duplicates(df_mangas, ['MangaName'])
-            df_mangas_duplicates = df_mangas_duplicates[['Website', 'MangaName']] if df_mangas_duplicates is not None else None
-            df_mangas.to_sql(TABLES[1], CONN, if_exists='append', index=False)
+            df_mangas = pd.read_csv(f"{SRC_DIRECTORY}/update/websites/{website}/datas/mangas.csv")
+            df_mangas["Website"] = website
+            df_mangas, df_mangas_duplicates = found_and_clean_duplicates(df_mangas, ["MangaName"])
+            df_mangas_duplicates = (
+                df_mangas_duplicates[["Website", "MangaName"]] if df_mangas_duplicates is not None else None
+            )
+            df_mangas.to_sql(TABLES[1], CONN, if_exists="append", index=False)
 
             # [chapters_links.csv] -> Table "Chapters"
-            df_chapters_links = pd.read_csv(f'{SRC_DIRECTORY}/update/websites/{website}/datas/chapters_links.csv')
-            df_chapters_links, df_chapters_duplicates = found_and_clean_duplicates(df_chapters_links, ['Website', 'MangaName', 'Chapter'])
-            df_chapters_links.to_sql(TABLES[2], CONN, if_exists='append', index=False)
+            df_chapters_links = pd.read_csv(
+                f"{SRC_DIRECTORY}/update/websites/{website}/datas/chapters_links.csv"
+            )
+            df_chapters_links, df_chapters_duplicates = found_and_clean_duplicates(
+                df_chapters_links, ["Website", "MangaName", "Chapter"]
+            )
+            df_chapters_links.to_sql(TABLES[2], CONN, if_exists="append", index=False)
 
             # [df_chapters_duplicates / df_mangas_duplicates] -> Table "Duplicates"
             for df in [df_mangas_duplicates, df_chapters_duplicates]:
                 if df is not None:
-                    df.to_sql(TABLES[4], CONN, if_exists='append', index=False)
+                    df.to_sql(TABLES[4], CONN, if_exists="append", index=False)
 
             # Save changes to the database
             CONN.commit()

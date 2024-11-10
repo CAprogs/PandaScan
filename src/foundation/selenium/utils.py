@@ -1,3 +1,4 @@
+# ruff : noqa : E501
 import json
 import os
 import time
@@ -9,17 +10,15 @@ import platform
 
 
 def clear_console():
-    """Clear the console.
-    """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    """Clear the console."""
+    os.system("cls" if os.name == "nt" else "clear")  # noqa : S605
 
 
 def exit_app():
-    """Exit the application.
-    """
+    """Exit the application."""
     clear_console()
     print("\nPandaScan exited. ⚠️\n")
-    exit()
+    sys.exit()
 
 
 def dump_config(PATH_TO_CONFIG: str, SETTINGS):
@@ -29,7 +28,7 @@ def dump_config(PATH_TO_CONFIG: str, SETTINGS):
         PATH_TO_CONFIG (str): path to the config.json file
         SETTINGS (Any): the config.json file
     """
-    with open(PATH_TO_CONFIG, 'w') as json_file:
+    with open(PATH_TO_CONFIG, "w") as json_file:
         json.dump(SETTINGS, json_file, indent=4)
 
 
@@ -43,9 +42,9 @@ def check_extensions(extension_path_1: str, extension_path_2: str, EMOJIS):
     """
     if not os.path.exists(extension_path_1) or not os.path.exists(extension_path_2):
         print(f"\nSome CRX extensions are missing. ⚠️\n\nPandaScan exited {EMOJIS[1]}")
-        exit()
+        sys.exit()
     else:
-        print(f"\nExtensions found {EMOJIS[3]}")
+        print(f"\n{'Extensions found ':.<25} {EMOJIS[3]}")
 
 
 def check_path(OS_NAME: str, path: str, interrupt: bool = False):
@@ -59,7 +58,6 @@ def check_path(OS_NAME: str, path: str, interrupt: bool = False):
     Returns:
         str: the right path (depending on the OS) or an empty string if the path doesn’t exist
     """
-
     if not os.path.exists(path):
         if interrupt:
             print(f"\nPath '{path}' doesn’t exist.")
@@ -83,14 +81,14 @@ def download_chromedriver(LOG, SETTINGS, SRC_DIRECTORY: str):
     Returns:
         str | None: the path to the downloaded chromedriver or None if the download failed
     """
-    MAIN_DIRECTORY = f"{SRC_DIRECTORY}/.."
+    main_directory = f"{SRC_DIRECTORY}/.."
     interface = None
     processor = platform.processor()
     architecture = platform.architecture()
     os_platform = sys.platform
 
     try:
-        response = requests.get(SETTINGS["driver"]["api_endpoint"])
+        response = requests.get(url=SETTINGS["driver"]["api_endpoint"], timeout=10)
     except requests.exceptions.RequestException as e:
         LOG.debug({str(e)})
         return None
@@ -101,15 +99,15 @@ def download_chromedriver(LOG, SETTINGS, SRC_DIRECTORY: str):
         data = response.json()
         download_datas = data["channels"]["Stable"]["downloads"]["chromedriver"]
 
-        if os_platform == 'win32' or os_platform == 'cygwin' or os_platform == 'msys':
-            if architecture[0] == '64bit':
+        if os_platform == "win32" or os_platform == "cygwin" or os_platform == "msys":
+            if architecture[0] == "64bit":
                 interface = "win64"
             else:
                 interface = "win32"
-        elif os_platform == 'linux':
+        elif os_platform == "linux":
             interface = "linux64"
-        elif os_platform == 'darwin':
-            if processor == 'arm':
+        elif os_platform == "darwin":
+            if processor == "arm":
                 interface = "mac-arm64"
             else:
                 interface = "mac-x64"
@@ -117,18 +115,18 @@ def download_chromedriver(LOG, SETTINGS, SRC_DIRECTORY: str):
             print("OS not supported ⚠️")
             return None
 
-        chromedriver_url = [data["url"] for data in download_datas if data['platform'] == str(interface)]
-        response = requests.get(chromedriver_url[0])
+        chromedriver_url = [data["url"] for data in download_datas if data["platform"] == str(interface)]
+        response = requests.get(url=chromedriver_url[0], timeout=10)
 
         with zipfile.ZipFile(io.BytesIO(response.content)) as zip_ref:
-            zip_ref.extractall(MAIN_DIRECTORY)
+            zip_ref.extractall(main_directory)
             files = zip_ref.namelist()
 
             for file in files:
-                if 'LICENSE' not in file:
+                if "LICENSE" not in file:
                     if "win" in interface and not file.endswith(".exe"):
                         file += ".exe"
-                    driver_path = f"{MAIN_DIRECTORY}/{file}"
+                    driver_path = f"{main_directory}/{file}"
 
         if SETTINGS["driver"].get("downloaded_driver") is None:
             SETTINGS["driver"]["downloaded_driver"] = driver_path
@@ -170,12 +168,10 @@ def check_driver(OS_NAME: str, LOG, driver_path: str, PATH_TO_CONFIG: str, SETTI
         SETTINGS (Any): the config.json file
         SRC_DIRECTORY (str): path to the src directory
     """
-
     if SETTINGS["driver"].get("downloaded_driver") is not None:
         driver_path = SETTINGS["driver"]["downloaded_driver"]
 
     while "chromedriver" not in driver_path or not os.path.exists(driver_path) or "LICENSE" in driver_path:
-
         menu_answer = None
 
         while menu_answer not in ["1", "2"]:
@@ -204,7 +200,7 @@ def check_driver(OS_NAME: str, LOG, driver_path: str, PATH_TO_CONFIG: str, SETTI
 
     SETTINGS["driver"]["path"] = driver_path
     if OS_NAME != "Windows":
-        os.system("chmod +x " + driver_path)
+        os.system("chmod +x " + driver_path)  # noqa : S605
     dump_config(PATH_TO_CONFIG, SETTINGS)
 
     clear_console()

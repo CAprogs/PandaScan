@@ -1,3 +1,4 @@
+# ruff: noqa : E501
 import requests
 from selenium.webdriver.common.by import By
 from src.foundation.core.essentials import SELECTOR, LOG
@@ -5,7 +6,9 @@ from src.foundation.core.emojis import EMOJIS
 from ..utils import fetch_chapterlink
 
 
-def init_download(selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str, DRIVER):
+def init_download(
+    selected_website: str, chapter_file_path: str, selected_manga_name: str, chapter_name: str, DRIVER
+):
     """Initialize the download from mangasaki.
 
     Args:
@@ -18,13 +21,12 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
     Returns:
         str: download status (success, skipped or failed)
     """
-
     page = 0
     chapter_link = fetch_chapterlink(SELECTOR, (selected_manga_name, selected_website, chapter_name))
     try:
         DRIVER.get(chapter_link)
-        main_element = DRIVER.find_element(By.ID, 'images')
-        img_elements = main_element.find_elements(By.TAG_NAME, 'img')
+        main_element = DRIVER.find_element(By.ID, "images")
+        img_elements = main_element.find_elements(By.TAG_NAME, "img")
 
         if not isinstance(chapter_file_path, str):
             chapter_file_path = chapter_file_path._str
@@ -34,7 +36,7 @@ def init_download(selected_website: str, chapter_file_path: str, selected_manga_
             return "failed"
 
         for img in img_elements:
-            img_url = img.get_attribute('src')
+            img_url = img.get_attribute("src")
             save_path = f"{chapter_file_path}/{page}.jpg"
             response = mangasaki(img_url, save_path, page)
             if response is False:
@@ -60,11 +62,10 @@ def mangasaki(img_url: str, save_path: str, page: int):
     Returns:
         bool: True(download successful), False(otherwise)
     """
-
     try:
-        img_response = requests.get(img_url)
+        img_response = requests.get(url=img_url, timeout=10)
         if img_response.status_code == 200:
-            with open(save_path, 'wb') as f:
+            with open(save_path, "wb") as f:
                 f.write(img_response.content)
         else:
             LOG.debug(f"Image {page} failed to be downloaded | Status Code : {img_response.status_code}")
