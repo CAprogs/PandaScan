@@ -61,7 +61,7 @@ exclude = [
 ]
 fix = false
 required-version = ">=0.6.8"
-line-length = 100
+line-length = 110
 indent-width = 4
 output-format = "concise"
 
@@ -86,7 +86,7 @@ select = [
         "PLR5501",
         "ARG"
         ]
-ignore = ["S101", "D300", "D206"]
+ignore = ["S101", "D300", "D206", "N803", "S608", "D100"]
 fixable = ["ALL"]
 unfixable = []
 
