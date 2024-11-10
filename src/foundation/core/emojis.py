@@ -1,5 +1,6 @@
 import emoji
 
+# fmt: off
 EMOJIS = [
     emoji.emojize(":panda_face:", language="alias"),                # 🐼 0
     emoji.emojize(":door:", language="alias"),                      # 🚪 1
@@ -21,3 +22,4 @@ EMOJIS = [
     emoji.emojize(":rotating_light:", language="alias"),            # 🚨 17
     emoji.emojize(":robot_face:", language="alias"),                # 🤖 18
     emoji.emojize(":question:", language="alias")]                  # ❓ 19
+# fmt: on
